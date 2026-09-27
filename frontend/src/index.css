@@ -1,0 +1,611 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #0b2d5c;
+    --navy-deep: #071b33;
+    --signal: #e01b24;
+    --tech: #16c7d9;
+    --shell-pad: 1.25rem;
+
+    /**
+     * Fixed-header metrics — the single source of truth.
+     *
+     * The header is `position: fixed`, so every page that starts at the top of
+     * the document has to reserve `--header-h` itself. The navbar reads these
+     * same variables for its own heights, which is what keeps the reservation
+     * and the real bar from drifting apart. The enquiry rail is lg-only, so
+     * below that breakpoint it contributes nothing.
+     */
+    --utility-h: 0rem;
+    --navbar-h: 4.75rem;
+    --navbar-h-scrolled: 4.5rem;
+    --header-h: calc(var(--utility-h) + var(--navbar-h));
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --shell-pad: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --utility-h: 2.25rem;
+      --navbar-h: 5.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :root {
+      --shell-pad: 4rem;
+    }
+  }
+
+  * {
+    @apply border-navy-100;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    /* Guard against any single element forcing sideways scroll. */
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display type gets slightly tightened optical spacing. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* --- Browser surfaces: themed, not left to defaults --- */
+
+  ::selection {
+    background: var(--tech);
+    color: var(--navy-deep);
+  }
+
+  html {
+    scrollbar-color: #9db4d2 #eef3fa;
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #eef3fa;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #9db4d2;
+    border: 3px solid #eef3fa;
+    border-radius: 99px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--navy);
+  }
+
+  /* Dark surfaces carry their own scrollbar treatment. */
+  .scroll-dark {
+    scrollbar-color: #2f4e75 #071b33;
+  }
+
+  /* One consistent, visible focus ring in brand cyan. */
+  :focus-visible {
+    outline: 2px solid var(--tech);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Links inherit a tuned underline rather than the browser default. */
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  input,
+  textarea,
+  select {
+    caret-color: var(--signal);
+  }
+
+  /* Real data reads as data. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  img {
+    /* Prevents layout jump before an image resolves. */
+    background-color: theme('colors.navy.50');
+  }
+}
+
+@layer components {
+  /* Page shell: one container rule used everywhere. */
+  .shell {
+    width: 100%;
+    max-width: theme('maxWidth.shell');
+    margin-inline: auto;
+    padding-inline: var(--shell-pad);
+  }
+
+  /* Eyebrow / technical label role. */
+  .eyebrow {
+    @apply font-mono text-label uppercase;
+  }
+
+  /**
+   * One-viewport hero.
+   *
+   * The section reserves the fixed header with its own padding-top, and
+   * `box-sizing: border-box` means the content box is then exactly
+   * `viewport - header`. Declared twice so browsers without `svh` still get a
+   * sane height; the second declaration wins wherever it parses.
+   *
+   * Phones are deliberately left out — a hand-held viewport is too short to
+   * hold the hero without crushing it, so there it sizes to its content.
+   */
+  @media (min-width: 1024px) {
+    .hero-viewport {
+      min-height: 100vh;
+      min-height: 100svh;
+    }
+  }
+
+  /* Blueprint grid — the connective technical texture of the site. */
+  .blueprint {
+    background-image: linear-gradient(
+        to right,
+        rgba(22, 199, 217, 0.13) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(22, 199, 217, 0.13) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .blueprint-light {
+    background-image: linear-gradient(
+        to right,
+        rgba(11, 45, 92, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(11, 45, 92, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Fine measurement rule used to index sections and data. */
+  .tick-rule {
+    background-image: repeating-linear-gradient(
+      to right,
+      currentColor 0 1px,
+      transparent 1px 10px
+    );
+  }
+}
+
+@layer utilities {
+  /* Progressive reveal used by the scroll observer hook. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 9%,
+      #000 91%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 9%,
+      #000 91%,
+      transparent
+    );
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Impact ("By the numbers") — micro-interactions
+ * ------------------------------------------------------------------------- */
+
+/* Pointer tilt; --rx/--ry are written by the card's pointer handler. */
+.impact-card {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.impact-card:hover {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+}
+
+/* Slow drift on the photograph once the section is in view. */
+.impact.is-visible .impact-photo {
+  animation: impact-kenburns 18s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
+}
+
+/* Gradient sweep across the red headline line. */
+.impact.is-visible .impact-headline-accent {
+  animation: impact-text-sheen 6s ease-in-out 1.2s infinite;
+}
+
+/* Swoosh bands breathe gently, each anchored to its own corner so no edge ever opens. */
+.impact-drift {
+  transform-box: view-box;
+  animation: impact-breathe 12s ease-in-out infinite;
+}
+
+.impact-drift-tr { transform-origin: 100% 0; }
+.impact-drift-br { transform-origin: 100% 100%; animation-duration: 14s; animation-delay: -4s; }
+.impact-drift-bl { transform-origin: 0 100%; animation-delay: -7s; }
+
+/* Banner sheen: passes across on its own every few seconds. */
+.impact-sheen {
+  animation: impact-sheen 5.5s cubic-bezier(0.16, 1, 0.3, 1) 1.6s infinite;
+}
+
+/* Medal glint. */
+.impact-glint {
+  transform: rotate(20deg);
+  animation: impact-glint 4.2s ease-in-out 1s infinite;
+}
+
+/* Growth chart builds once the banner has revealed. */
+.impact-bar {
+  transform: scaleY(0);
+  transform-box: fill-box;
+  transform-origin: bottom;
+}
+
+.is-visible .impact-bar {
+  animation: impact-bar-grow 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--bar-delay, 0ms) forwards;
+}
+
+.impact-arrow {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.is-visible .impact-arrow {
+  animation: impact-draw 1100ms cubic-bezier(0.65, 0, 0.35, 1) 950ms forwards;
+}
+
+.impact-arrow-head {
+  opacity: 0;
+}
+
+.is-visible .impact-arrow-head {
+  animation: impact-pop 420ms cubic-bezier(0.16, 1, 0.3, 1) 1950ms forwards;
+}
+
+@keyframes impact-kenburns {
+  from { transform: scale(1) translateX(0); }
+  to { transform: scale(1.07) translateX(-1.5%); }
+}
+
+@keyframes impact-text-sheen {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes impact-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@keyframes impact-sheen {
+  0% { transform: translateX(0) skewX(-12deg); }
+  45%, 100% { transform: translateX(460%) skewX(-12deg); }
+}
+
+@keyframes impact-glint {
+  0% { transform: translateX(0) rotate(20deg); }
+  40%, 100% { transform: translateX(150px) rotate(20deg); }
+}
+
+@keyframes impact-bar-grow {
+  to { transform: scaleY(1); }
+}
+
+@keyframes impact-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes impact-pop {
+  from { opacity: 0; transform: translate(-4px, 4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+ * About page
+ * ------------------------------------------------------------------------- */
+
+/* Fine film grain — one tiny SVG noise tile, far cheaper than a blur. */
+.about-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.about-grain-dark::after {
+  mix-blend-mode: screen;
+  opacity: 0.07;
+}
+
+/* Hero headline lines rise out of a clip mask. */
+.about-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.about-line > span {
+  display: inline-block;
+}
+
+/* Slow instrument rotations in the hero plate. */
+.about-spin-slow,
+.about-spin-rev {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: about-rotate 90s linear infinite;
+}
+
+.about-spin-rev {
+  animation-duration: 140s;
+  animation-direction: reverse;
+}
+
+@keyframes about-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* A light sweep that travels along a hairline — the red/blue light movement. */
+.about-scan {
+  animation: about-scan 5.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes about-scan {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20%, 80% { opacity: 1; }
+  100% { transform: translateX(400%); opacity: 0; }
+}
+
+/* Magnetic buttons compose the pointer offset with their own hover lift. */
+.about-magnet {
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition: translate 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Journey timeline — the spine draws with scroll progress. */
+.about-spine {
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+}
+
+.about-milestone-icon {
+  transition:
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease;
+}
+
+.is-active .about-milestone-icon {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+/* Feature tiles — hairlines draw across the tile on hover/focus. */
+.about-tile::before,
+.about-tile::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-tile::before {
+  top: -1px;
+  background: theme('colors.signal.DEFAULT');
+  transform-origin: left;
+}
+
+.about-tile::after {
+  bottom: -1px;
+  background: theme('colors.royal.DEFAULT');
+  transform-origin: right;
+}
+
+.about-tile:hover::before,
+.about-tile:hover::after,
+.about-tile:focus-within::before,
+.about-tile:focus-within::after {
+  transform: scaleX(1);
+}
+
+/* Cards re-entering after a filter change. */
+.about-enter {
+  animation: about-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+@keyframes about-enter {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Institute card pin hop. */
+.group:hover .about-pin-hop,
+.group:focus-within .about-pin-hop {
+  animation: about-pin-hop 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes about-pin-hop {
+  0%, 70%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-4px); }
+  85% { transform: translateY(-1.5px); }
+}
+
+/* Map — outline, links and pins assemble once the section is visible. */
+.about-map-outline,
+.about-map-link {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.is-visible .about-map-outline {
+  animation: impact-draw 1800ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.is-visible .about-map-link {
+  animation: impact-draw 1100ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: calc(900ms + var(--i, 0) * 90ms);
+}
+
+.about-map-pin {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  transition:
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(700ms + var(--i, 0) * 80ms);
+}
+
+.is-visible .about-map-pin {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.is-visible .about-map-pin:hover,
+.is-visible .about-map-pin:focus-visible {
+  transform: translate(-50%, -50%) scale(1.18);
+  transition-delay: 0ms;
+}
+
+.about-pulse {
+  animation: about-pulse 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes about-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Image reveal — a navy shutter lifts off the photograph. */
+.about-shutter {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.is-visible .about-shutter {
+  clip-path: inset(0 0 100% 0);
+}
+
+/* Photo parallax driven by --progress from useScrollProgress. */
+.about-parallax {
+  transform: translate3d(0, calc((var(--progress, 0.5) - 0.5) * -8%), 0) scale(1.12);
+}
+
+/* Placement bars grow from the baseline. */
+.about-bar {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.is-visible .about-bar {
+  transform: scaleY(1);
+}
+
+/* Native dialog backdrop for the institute detail view. */
+.about-dialog::backdrop {
+  background: rgba(3, 11, 23, 0.62);
+}
+
+.about-dialog[open] {
+  animation: about-enter 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Respect the user's motion preference across every animated surface. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* About page: nothing waits on a stagger, nothing drifts. */
+  .about-map-pin,
+  .about-map-link,
+  .about-bar,
+  .about-shutter,
+  .about-enter {
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  .about-parallax {
+    transform: scale(1.12);
+  }
+}

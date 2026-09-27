@@ -1,0 +1,32 @@
+{
+  "name": "satpuda-iti-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Frontend for Satpuda Private Industrial Training Institute (Satpuda Pvt. I.T.I.)",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check:opacity && vite build",
+    "preview": "vite preview",
+    "check:opacity": "node scripts/check-opacity.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.454.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}
