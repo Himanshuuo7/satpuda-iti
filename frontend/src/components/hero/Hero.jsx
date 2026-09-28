@@ -217,23 +217,13 @@ export function Hero() {
 
             <div className="mt-[clamp(1.75rem,4.5vh,2.75rem)] flex flex-col gap-3.5 sm:flex-row sm:items-center">
               <span data-hero="cta" className="contents sm:block">
-                <Button to="/courses" variant="primary" size="lg" className="w-full sm:w-auto">
-                  Explore Trades
+                <Button to="/admission" variant="primary" size="lg" className="w-full sm:w-auto">
+                  Apply Now
                   <ArrowRight
                     aria-hidden="true"
                     strokeWidth={2}
                     className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
                   />
-                </Button>
-              </span>
-              <span data-hero="cta" className="contents sm:block">
-                <Button
-                  to="/admission"
-                  variant="outlineStrong"
-                  size="lg"
-                  className="w-full sm:w-auto"
-                >
-                  Apply Now
                 </Button>
               </span>
             </div>

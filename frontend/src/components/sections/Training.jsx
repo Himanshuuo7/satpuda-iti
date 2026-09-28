@@ -31,7 +31,6 @@ export function Training() {
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <SectionHeading
-                index="04"
                 eyebrow="Learning Process"
                 title={
                   <>
@@ -111,9 +110,7 @@ export function Training() {
                   className="reveal group flex items-baseline gap-4 border-b border-navy-100 py-3.5"
                   style={{ '--reveal-delay': `${i * 40}ms` }}
                 >
-                  <span className="font-mono text-[0.625rem] tabular text-tech-700">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                  <span aria-hidden="true" className="h-px w-3 shrink-0 -translate-y-1 bg-tech-700" />
                   <span className="text-[0.9375rem] text-navy-700 transition-colors duration-200 group-hover:text-navy-800">
                     {method}
                   </span>

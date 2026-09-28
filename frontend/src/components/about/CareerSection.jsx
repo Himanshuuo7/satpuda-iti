@@ -183,7 +183,6 @@ export function CareerSection() {
         <div className="lg:col-span-6">
           <SectionHeading
             id="career-title"
-            index="07"
             eyebrow="Industry & career"
             title={
               <>

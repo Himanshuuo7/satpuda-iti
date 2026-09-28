@@ -52,7 +52,6 @@ export function InstituteNetwork({ onView }) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
           <SectionHeading
             id="network-title"
-            index="04"
             eyebrow="Our ITI network"
             title={
               <>

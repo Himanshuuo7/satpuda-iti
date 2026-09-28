@@ -50,7 +50,6 @@ export function SafetySection() {
         <SectionHeading
           id="quality-title"
           tone="dark"
-          index="09"
           eyebrow="Safety & quality"
           title={
             <>
@@ -80,7 +79,6 @@ export function SafetySection() {
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-label uppercase text-tech">{c.label}</span>
-                <span className="font-mono text-[0.625rem] tabular text-navy-200/60">{String(i + 1).padStart(2, '0')}</span>
               </div>
               <p className="mt-4 text-[0.9688rem] leading-[1.65] text-white">{c.en}</p>
               <p lang="hi" className="mt-3 text-[0.8125rem] leading-[1.7] text-navy-100/60">

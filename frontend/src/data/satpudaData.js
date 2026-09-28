@@ -114,9 +114,8 @@ export const accreditations = [
 export const trades = [
   {
     id: 'electrician',
-    index: '01',
     name: 'Electrician',
-    slug: '/courses/electrician',
+    slug: '/trades/electrician',
     icon: 'Zap',
     scheme: 'CTS · NCVT',
     // Factual scope of the NCVT trade itself — not an institute claim.
@@ -124,27 +123,24 @@ export const trades = [
   },
   {
     id: 'fitter',
-    index: '02',
     name: 'Fitter',
-    slug: '/courses/fitter',
+    slug: '/trades/fitter',
     icon: 'Wrench',
     scheme: 'CTS · NCVT',
     scope: 'Bench work, fitting, assembly, measurement and machine maintenance.',
   },
   {
     id: 'diesel-mechanic',
-    index: '03',
     name: 'Mechanic Diesel',
-    slug: '/courses/diesel-mechanic',
+    slug: '/trades/mechanic-diesel',
     icon: 'Cog',
     scheme: 'CTS · NCVT',
     scope: 'Diesel engines, fuel systems, overhaul and preventive maintenance.',
   },
   {
     id: 'copa',
-    index: '04',
     name: 'COPA',
-    slug: '/courses/copa',
+    slug: '/trades/copa',
     icon: 'MonitorCog',
     scope: 'Computer operator and programming assistant.',
     scheme: 'CTS · NCVT',
@@ -330,17 +326,6 @@ export const campuses = [
     established: 2010,
     ref: 'DGET-6/12/6/2010-TC',
     flagship: true,
-  },
-  {
-    id: 'garra',
-    name: 'Maharana Pratap I.T.I. Garra',
-    city: 'Garra',
-    district: 'Balaghat',
-    phone: '+91 6262604121',
-    email: 'satpudagarra@gmail.com',
-    address: 'Maharana Pratap Pvt. ITI, Station Road, Garra, Balaghat, Madhya Pradesh, 481001',
-    established: 1999,
-    ref: 'DGET-6/12/22/99-TC',
   },
   {
     id: 'budhi',
@@ -546,11 +531,9 @@ export const navigation = [
   },
   {
     label: 'Trades',
-    to: '/courses',
-    children: [
-      { label: 'All Trades', to: '/courses' },
-      ...trades.map((t) => ({ label: t.name, to: t.slug })),
-    ],
+    // No page of its own — the label opens the menu of the four trades.
+    match: '/trades',
+    children: trades.map((t) => ({ label: t.name, to: t.slug })),
   },
   { label: 'Training', to: '/training' },
   { label: 'Placements', to: '/placements' },
@@ -562,7 +545,6 @@ export const navigation = [
       ...campuses.slice(0, 6).map((c) => ({ label: c.city, to: '/campuses' })),
     ],
   },
-  { label: 'Gallery', to: '/gallery' },
   { label: 'Contact', to: '/contact' },
 ];
 

@@ -47,7 +47,7 @@ export const brand = {
 export const photos = {
   garraWorkshop: {
     src: garraWorkshop,
-    alt: 'Fitter trainees working at bench vices with hacksaws in the Satpuda ITI Garra workshop',
+    alt: 'Fitter trainees working at bench vices with hacksaws in a Satpuda ITI workshop',
     ratio: '16/9',
   },
   campusPanorama: {

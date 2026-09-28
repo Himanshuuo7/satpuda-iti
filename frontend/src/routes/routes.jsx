@@ -10,43 +10,9 @@ import PlaceholderPage from '../pages/PlaceholderPage';
  */
 const Home = lazy(() => import('../pages/Home'));
 const About = lazy(() => import('../pages/About'));
+const TradePage = lazy(() => import('../pages/TradePage'));
 
 export const placeholderRoutes = [
-  {
-    path: '/courses',
-    title: 'Trades & Courses.',
-    eyebrow: 'Programs',
-    description:
-      'Detailed trade pages for Electrician, Fitter, Mechanic Diesel and COPA are being prepared, covering curriculum, workshop facilities and intake.',
-  },
-  {
-    path: '/courses/electrician',
-    title: 'Electrician.',
-    eyebrow: 'Trade · CTS · NCVT',
-    description:
-      'The Electrician trade page is being prepared. The trade runs under the Craftsman Training Scheme, affiliated to NCVT, New Delhi.',
-  },
-  {
-    path: '/courses/fitter',
-    title: 'Fitter.',
-    eyebrow: 'Trade · CTS · NCVT',
-    description:
-      'The Fitter trade page is being prepared. The trade runs under the Craftsman Training Scheme, affiliated to NCVT, New Delhi.',
-  },
-  {
-    path: '/courses/diesel-mechanic',
-    title: 'Mechanic Diesel.',
-    eyebrow: 'Trade · CTS · NCVT',
-    description:
-      'The Mechanic Diesel trade page is being prepared. The trade runs under the Craftsman Training Scheme, affiliated to NCVT, New Delhi.',
-  },
-  {
-    path: '/courses/copa',
-    title: 'COPA.',
-    eyebrow: 'Trade · CTS · NCVT',
-    description:
-      'The COPA (Computer Operator and Programming Assistant) trade page is being prepared. The trade runs under the Craftsman Training Scheme, affiliated to NCVT, New Delhi.',
-  },
   {
     path: '/training',
     title: 'Training.',
@@ -69,13 +35,6 @@ export const placeholderRoutes = [
       'Individual campus pages are being prepared. Every campus address, phone number and email is listed on the homepage campus section.',
   },
   {
-    path: '/gallery',
-    title: 'Gallery.',
-    eyebrow: 'Campus Life',
-    description:
-      'The full photo gallery is being prepared. A preview of campus, classroom and workshop photography appears on the homepage.',
-  },
-  {
     path: '/contact',
     title: 'Contact.',
     eyebrow: 'Get in touch',
@@ -91,4 +50,17 @@ export const placeholderRoutes = [
   },
 ];
 
-export { Home, About, PlaceholderPage };
+/**
+ * Old and index trade URLs. The trade pages moved from /courses/* to /trades/*,
+ * and the trades overview lives on the homepage, so these only redirect.
+ */
+export const tradeRedirects = [
+  { from: '/trades', to: { pathname: '/', hash: '#trades' } },
+  { from: '/courses', to: { pathname: '/', hash: '#trades' } },
+  { from: '/courses/electrician', to: '/trades/electrician' },
+  { from: '/courses/fitter', to: '/trades/fitter' },
+  { from: '/courses/diesel-mechanic', to: '/trades/mechanic-diesel' },
+  { from: '/courses/copa', to: '/trades/copa' },
+];
+
+export { Home, About, TradePage, PlaceholderPage };

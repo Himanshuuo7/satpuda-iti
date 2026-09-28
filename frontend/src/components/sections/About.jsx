@@ -24,7 +24,6 @@ export function About() {
           {/* Left: statement */}
           <div className="lg:col-span-5">
             <div className="reveal flex items-center gap-3">
-              <span className="font-mono text-label tabular text-signal">01</span>
               <span aria-hidden="true" className="h-px w-8 tick-rule text-navy-300" />
               <span className="eyebrow text-ink-muted">About the Institute</span>
             </div>

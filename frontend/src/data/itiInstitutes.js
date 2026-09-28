@@ -15,6 +15,12 @@
  * `mapPoint` is a town-level approximation used only to place a pin on the
  * schematic MP map. It is never presented as a precise location. `coordinates`
  * is reserved for precise, sourced coordinates and is null unless one exists.
+ *
+ * `mapsQuery` is the Google Maps search that lands on the institute, checked
+ * against the live map on 2026-09-28: where Google lists the institute, a
+ * search that pins that listing; otherwise the landmark or locality from the
+ * official address (Kundipura: its thana; Betul, Sarni: their localities, which
+ * Google outlines rather than pins). It is null where `coordinates` are used.
  */
 
 const VERIFIED_AT = '2026-09-26';
@@ -24,7 +30,6 @@ const SRC = {
   balaghat: 'https://satpudaiti.com/campus-balaghat/',
   manjhapur: 'https://satpudaiti.com/iti-manjhapur/',
   budhi: 'https://satpudaiti.com/iti-bhudhi/',
-  garra: 'https://satpudaiti.com/iti-garra-balaghat/',
   baihar: 'https://satpudaiti.com/iti-baihar/',
   chhindwara: 'https://satpudaiti.com/chhindwara/',
   betul: 'https://satpudaiti.com/betul/',
@@ -64,34 +69,11 @@ export const itiInstitutes = [
     flagship: true,
     coordinates: { lat: 21.8254, lng: 80.1492 },
     mapPoint: { lat: 21.8254, lng: 80.1492, precision: 'exact' },
+    mapsQuery: null,
     sourceUrls: [SRC.contact, SRC.balaghat, SRC.manjhapur, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes:
       'Campus page names Kamal Bramhe as contact person, not principal. Coordinates from the official contact-page map embed (shared Satpuda campus).',
-  },
-  {
-    id: 'garra',
-    name: 'Maharana Pratap Private ITI, Garra',
-    shortName: 'Garra',
-    location: 'Garra, Balaghat',
-    district: 'Balaghat',
-    state: 'Madhya Pradesh',
-    established: null,
-    toVerify: ['established'],
-    address: 'Maharana Pratap Pvt. ITI, Station Road, Garra, Balaghat, Madhya Pradesh 481001',
-    principal: 'Surendra Thakre',
-    phone: '+91 6262604121',
-    email: 'satpudagarra@gmail.com',
-    trades: [t('electrician', 120)],
-    affiliation: AFFILIATION,
-    dgetRef: 'DGET-6/12/22/99-TC',
-    itiCode: null,
-    coordinates: null,
-    mapPoint: { lat: 21.8, lng: 80.16, precision: 'town' },
-    sourceUrls: [SRC.contact, SRC.balaghat, SRC.garra],
-    verifiedAt: VERIFIED_AT,
-    notes:
-      'Information to be verified: Balaghat page says established 1999; the campus page says 29-May-2014. Two candidate ITI codes in the Govt. list — unresolved.',
   },
   {
     id: 'budhi',
@@ -111,6 +93,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 21.81, lng: 80.19, precision: 'town' },
+    mapsQuery: 'New Satpuda ITI Budhi',
     sourceUrls: [SRC.contact, SRC.balaghat, SRC.budhi],
     verifiedAt: VERIFIED_AT,
     notes:
@@ -134,6 +117,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 21.77, lng: 79.8, precision: 'town' },
+    mapsQuery: 'New Satpuda ITI Katangi',
     sourceUrls: [SRC.contact, SRC.balaghat],
     verifiedAt: VERIFIED_AT,
     notes: 'Trades not published on the official site.',
@@ -156,6 +140,7 @@ export const itiInstitutes = [
     itiCode: 'PR23000323',
     coordinates: null,
     mapPoint: { lat: 22.1, lng: 80.55, precision: 'town' },
+    mapsQuery: 'Maharana Pratap ITI Baihar',
     sourceUrls: [SRC.contact, SRC.baihar, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2014".',
@@ -178,6 +163,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 22.07, lng: 78.95, precision: 'town' },
+    mapsQuery: 'Kundipura Thana, Chhindwara',
     sourceUrls: [SRC.contact, SRC.chhindwara],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2003". Two candidate ITI codes in the Govt. list — unresolved.',
@@ -200,6 +186,7 @@ export const itiInstitutes = [
     itiCode: 'PR23000299',
     coordinates: null,
     mapPoint: { lat: 22.05, lng: 78.93, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Chhindwara Warehouse',
     sourceUrls: [SRC.contact, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes: 'No official campus page; trades and year not published.',
@@ -222,6 +209,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 21.78, lng: 78.23, precision: 'town' },
+    mapsQuery: 'Chikhli Khurd, Multai, Madhya Pradesh',
     sourceUrls: [SRC.contact, SRC.betul],
     verifiedAt: VERIFIED_AT,
     notes:
@@ -245,6 +233,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 21.77, lng: 78.26, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Multai',
     sourceUrls: [SRC.contact, SRC.multai],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2015".',
@@ -267,6 +256,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 22.1, lng: 78.17, precision: 'town' },
+    mapsQuery: 'Salaiya, Sarni, Madhya Pradesh 460449',
     sourceUrls: [SRC.contact, SRC.sarni],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Dec 2017".',
@@ -289,6 +279,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 22.61, lng: 77.76, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Itarsi',
     sourceUrls: [SRC.contact, SRC.itarsi],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2007". Only campus publishing COPA.',
@@ -311,6 +302,7 @@ export const itiInstitutes = [
     itiCode: 'PR23000096',
     coordinates: null,
     mapPoint: { lat: 22.09, lng: 79.54, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Seoni',
     sourceUrls: [SRC.contact, SRC.seoni, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2007".',
@@ -333,6 +325,7 @@ export const itiInstitutes = [
     itiCode: 'PR23000099',
     coordinates: null,
     mapPoint: { lat: 22.6, lng: 80.37, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Mandla',
     sourceUrls: [SRC.contact, SRC.mandla, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes:
@@ -356,6 +349,7 @@ export const itiInstitutes = [
     itiCode: 'PR23000162',
     coordinates: null,
     mapPoint: { lat: 24.53, lng: 81.3, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Rewa',
     sourceUrls: [SRC.contact, SRC.rewa, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2007".',
@@ -378,6 +372,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 24.55, lng: 81.28, precision: 'town' },
+    mapsQuery: 'Shiksha Private ITI Rewa',
     sourceUrls: [SRC.contact],
     verifiedAt: VERIFIED_AT,
     notes: 'Listed on the contact page only; shares its phone number with Satpuda ITI Rewa.',
@@ -400,6 +395,7 @@ export const itiInstitutes = [
     itiCode: null,
     coordinates: null,
     mapPoint: { lat: 24.67, lng: 81.88, precision: 'town' },
+    mapsQuery: 'Satpuda ITI Mauganj',
     sourceUrls: [SRC.contact, SRC.mauganj],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2010". Mauganj became a district in 2023 (earlier part of Rewa).',
@@ -422,7 +418,7 @@ export const regionCount = (regionId) =>
 
 /**
  * Attributed organisational claims about the size of the network. They
- * conflict with each other and with the 16 individually verifiable records, so
+ * conflict with each other and with the 15 individually verifiable records, so
  * they are only ever shown quoted and sourced — never as the page's own count.
  */
 export const networkClaims = [
@@ -434,7 +430,24 @@ export const networkClaims = [
 /** Precise head-office location (official contact-page map embed). */
 export const headOffice = itiInstitutes[0];
 
-export const mapsHrefFor = (inst) =>
+/**
+ * What Google Maps is asked to find: the precise point where one is sourced,
+ * then the checked `mapsQuery`, then the name and published address. Every
+ * maps URL below shares it, so the embedded map and the page it opens show
+ * the same place.
+ */
+const mapsQueryFor = (inst) =>
   inst.coordinates
-    ? `https://www.google.com/maps/search/?api=1&query=${inst.coordinates.lat},${inst.coordinates.lng}`
-    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${inst.name}, ${inst.address}`)}`;
+    ? `${inst.coordinates.lat},${inst.coordinates.lng}`
+    : inst.mapsQuery ?? `${inst.name}, ${inst.address}`;
+
+export const mapsHrefFor = (inst) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQueryFor(inst))}`;
+
+/** Route from the visitor's current location. */
+export const mapsDirectionsFor = (inst) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapsQueryFor(inst))}`;
+
+/** Keyless Google Maps embed with a pin on the institute. */
+export const mapsEmbedFor = (inst) =>
+  `https://maps.google.com/maps?q=${encodeURIComponent(mapsQueryFor(inst))}&t=m&z=15&ie=UTF8&iwloc=&output=embed`;

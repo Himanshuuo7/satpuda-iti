@@ -24,7 +24,6 @@ const QUICK_LINKS = [
   { label: 'Training', to: '/training' },
   { label: 'Placements', to: '/placements' },
   { label: 'Campuses', to: '/campuses' },
-  { label: 'Gallery', to: '/gallery' },
   { label: 'Admission', to: '/admission' },
 ];
 

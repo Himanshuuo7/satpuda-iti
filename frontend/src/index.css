@@ -575,6 +575,346 @@
   animation: about-enter 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ---------------------------------------------------------------------------
+ * Home — campus network
+ * ------------------------------------------------------------------------- */
+
+/* Register rows settle in with the section, and again after a filter change. */
+.is-visible .campus-enter {
+  animation: about-enter 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+
+/* Detail content swaps in line by line. */
+.campus-swap > * {
+  animation: campus-swap 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes campus-swap {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Position counter rolls up. */
+.campus-tick {
+  animation: campus-tick 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes campus-tick {
+  from { opacity: 0; transform: translateY(70%); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Cyan glow that follows a mouse across the navy panel. */
+.spotlight {
+  background: radial-gradient(420px circle at var(--sx, 50%) var(--sy, 0%), rgba(22, 199, 217, 0.12), transparent 65%);
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .spotlight-host:hover .spotlight {
+    opacity: 1;
+  }
+}
+
+/* The phone rings on hover. */
+.group:hover .campus-ring,
+.group:focus-visible .campus-ring {
+  animation: campus-ring 700ms ease-in-out;
+}
+
+@keyframes campus-ring {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-14deg); }
+  40% { transform: rotate(12deg); }
+  60% { transform: rotate(-8deg); }
+  80% { transform: rotate(4deg); }
+}
+
+/* Copy / copied icon swap. */
+.campus-pop {
+  animation: campus-pop 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes campus-pop {
+  from { opacity: 0; transform: scale(0.5) rotate(-20deg); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+ * Trade pages
+ * ------------------------------------------------------------------------- */
+
+/* Hero entrance: headline lines rise out of a mask, the rest settles in. */
+.trade-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.trade-line > span {
+  display: inline-block;
+  animation: trade-line 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes trade-line {
+  from { transform: translateY(110%); }
+  to { transform: none; }
+}
+
+.trade-rise {
+  animation: trade-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes trade-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Electrician — current travels the single-line diagram; the lamp answers. */
+.trade-current {
+  stroke-dasharray: 14 520;
+  animation: trade-current 3.2s linear infinite;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes trade-current {
+  from { stroke-dashoffset: 534; }
+  to { stroke-dashoffset: 0; }
+}
+
+.trade-glow {
+  animation: trade-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes trade-glow {
+  0%, 55%, 100% { opacity: 0.15; }
+  70% { opacity: 0.85; }
+}
+
+.trade-needle {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: trade-needle 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes trade-needle {
+  0%, 100% { transform: rotate(-38deg); }
+  60% { transform: rotate(24deg); }
+}
+
+/* Fitter — the male part slides home into its slot, once. */
+.trade-fit {
+  animation: trade-fit 1400ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both;
+}
+
+@keyframes trade-fit {
+  from { transform: translateY(-46px); opacity: 0.4; }
+  to { transform: none; opacity: 1; }
+}
+
+.trade-dim {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: impact-draw 900ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: var(--d, 900ms);
+}
+
+/* Mechanic Diesel — piston, rod and crank of a four-stroke cycle. The rod's
+   pivot is its piston pin, so translate + rotate keep its big end on the
+   crank pin. Keyframes are the slider-crank solution at 16 crank angles. */
+.trade-piston,
+.trade-rod,
+.trade-crank {
+  transform-box: view-box;
+  animation-duration: 3.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.trade-piston { animation-name: trade-piston; }
+.trade-rod { animation-name: trade-rod; transform-origin: 160px 150px; }
+.trade-crank { animation-name: trade-crank; transform-origin: 160px 268px; }
+
+@keyframes trade-crank {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes trade-piston {
+  0% { transform: translateY(0px); }
+  6.25% { transform: translateY(2.77px); }
+  12.5% { transform: translateY(10.41px); }
+  18.75% { transform: translateY(21.08px); }
+  25% { transform: translateY(32.47px); }
+  31.25% { transform: translateY(42.51px); }
+  37.5% { transform: translateY(50px); }
+  43.75% { transform: translateY(54.51px); }
+  50% { transform: translateY(56px); }
+  56.25% { transform: translateY(54.51px); }
+  62.5% { transform: translateY(50px); }
+  68.75% { transform: translateY(42.51px); }
+  75% { transform: translateY(32.47px); }
+  81.25% { transform: translateY(21.08px); }
+  87.5% { transform: translateY(10.41px); }
+  93.75% { transform: translateY(2.77px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes trade-rod {
+  0% { transform: translateY(0px) rotate(0deg); }
+  6.25% { transform: translateY(2.77px) rotate(-6.84deg); }
+  12.5% { transform: translateY(10.41px) rotate(-12.71deg); }
+  18.75% { transform: translateY(21.08px) rotate(-16.7deg); }
+  25% { transform: translateY(32.47px) rotate(-18.13deg); }
+  31.25% { transform: translateY(42.51px) rotate(-16.7deg); }
+  37.5% { transform: translateY(50px) rotate(-12.71deg); }
+  43.75% { transform: translateY(54.51px) rotate(-6.84deg); }
+  50% { transform: translateY(56px) rotate(0deg); }
+  56.25% { transform: translateY(54.51px) rotate(6.84deg); }
+  62.5% { transform: translateY(50px) rotate(12.71deg); }
+  68.75% { transform: translateY(42.51px) rotate(16.7deg); }
+  75% { transform: translateY(32.47px) rotate(18.13deg); }
+  81.25% { transform: translateY(21.08px) rotate(16.7deg); }
+  87.5% { transform: translateY(10.41px) rotate(12.71deg); }
+  93.75% { transform: translateY(2.77px) rotate(6.84deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Two crank turns make one four-stroke cycle; each stroke label lights in turn
+   and the injector fires at the start of the power stroke. */
+.trade-stroke {
+  animation: trade-stroke 6.4s steps(1, end) infinite;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes trade-stroke {
+  0% { opacity: 1; }
+  25%, 100% { opacity: 0.28; }
+}
+
+.trade-spray {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: trade-spray 6.4s ease-out infinite;
+}
+
+@keyframes trade-spray {
+  0%, 49%, 62%, 100% { opacity: 0; transform: scaleY(0.2); }
+  51% { opacity: 1; transform: scaleY(1); }
+}
+
+/* COPA — terminal lines type in, the cursor blinks. */
+.trade-type {
+  animation: trade-rise 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(500ms + var(--i, 0) * 220ms);
+}
+
+.trade-cursor {
+  animation: trade-cursor 1.1s steps(1, end) infinite;
+}
+
+@keyframes trade-cursor {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Bars grow from their start once their section is in view. */
+.trade-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+.is-visible .trade-bar,
+.is-visible.trade-bar {
+  transform: scaleX(1);
+}
+
+/* Fitter tolerance bands close in from full width. */
+.trade-band {
+  transform: scaleX(1);
+  transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(300ms + var(--i, 0) * 180ms);
+}
+
+.is-visible .trade-band {
+  transform: scaleX(var(--w, 1));
+}
+
+/* A pulse runs the practical sequence rail. */
+.trade-rail-pulse {
+  animation: trade-rail 3.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes trade-rail {
+  0% { transform: translateX(-100%); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateX(500%); opacity: 0; }
+}
+
+@media (max-width: 1023px) {
+  .trade-rail-pulse {
+    animation-name: trade-rail-y;
+  }
+
+  @keyframes trade-rail-y {
+    0% { transform: translateY(-100%); opacity: 0; }
+    15%, 85% { opacity: 1; }
+    100% { transform: translateY(500%); opacity: 0; }
+  }
+}
+
+/* Career path — the spine fills with scroll; each step lights as it is reached. */
+.trade-spine {
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+}
+
+.trade-step-dot {
+  transition:
+    background-color 400ms ease,
+    border-color 400ms ease,
+    color 400ms ease,
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-visible > .trade-step-dot {
+  transform: scale(1.06);
+}
+
+/* FAQ answers open on grid rows so height animates without measuring. */
+.trade-faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trade-faq-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+
+.trade-faq-panel > div {
+  overflow: hidden;
+}
+
+.trade-faq-panel > div > p {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 300ms ease, transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trade-faq-panel[data-open='true'] > div > p {
+  opacity: 1;
+  transform: none;
+  transition-delay: 80ms;
+}
+
 /* Respect the user's motion preference across every animated surface. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -607,5 +947,34 @@
 
   .about-parallax {
     transform: scale(1.12);
+  }
+
+  /* Home campus network: no staggers, no drift. */
+  .campus-enter,
+  .campus-swap > * {
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  /* Trade pages: everything lands in place; nothing loops. */
+  .trade-line > span,
+  .trade-rise,
+  .trade-type,
+  .trade-fit,
+  .trade-dim,
+  .trade-bar,
+  .trade-band {
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  .trade-current,
+  .trade-rail-pulse,
+  .trade-spray {
+    display: none;
+  }
+
+  .trade-spine {
+    transform: none;
   }
 }

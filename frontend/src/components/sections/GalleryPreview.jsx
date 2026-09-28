@@ -1,6 +1,3 @@
-import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
 import SectionHeading from '../ui/SectionHeading';
 import Figure from '../ui/Figure';
 import { galleryPreview } from '../../data/media';
@@ -42,23 +39,11 @@ export function GalleryPreview() {
       <div className="shell">
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
-            index="07"
             eyebrow="Gallery"
             title="Life on campus."
             lede={institute.excellenceNote}
             className="max-w-2xl"
           />
-          <Link
-            to="/gallery"
-            className="reveal group inline-flex shrink-0 items-center gap-2.5 self-start border-b border-navy-300 pb-1.5 font-medium tracking-tight text-navy-800 transition-colors duration-200 hover:border-signal hover:text-signal lg:self-auto"
-          >
-            View full gallery
-            <ArrowUpRight
-              aria-hidden="true"
-              strokeWidth={2}
-              className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </Link>
         </div>
 
         <ul className="mt-14 grid grid-flow-row-dense auto-rows-[8.5rem] grid-cols-2 gap-3 sm:auto-rows-[11rem] sm:gap-4 lg:grid-cols-4 xl:auto-rows-[12.5rem]">

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ChevronDown, Mail, Phone, X } from 'lucide-react';
 
 import Logo from '../ui/Logo';
@@ -20,6 +20,7 @@ import cn from '../../utils/cn';
  */
 export function MobileDrawer({ open, onClose }) {
   const [expanded, setExpanded] = useState(null);
+  const { pathname } = useLocation();
   const panelRef = useRef(null);
   const closeRef = useRef(null);
   const restoreRef = useRef(null);
@@ -97,13 +98,13 @@ export function MobileDrawer({ open, onClose }) {
           open ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        {/* Technical backdrop */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 blueprint opacity-50" />
-        <GearOutline
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-20 top-24 h-72 w-72 text-tech/[0.07]"
-          spin
-        />
+        {/* Technical backdrop. Clipped in its own layer: the gear hangs off the
+            right edge, and unclipped it would widen the panel's scroll area and
+            let the menu slide sideways. */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 blueprint opacity-50" />
+          <GearOutline className="absolute -right-20 top-24 h-72 w-72 text-tech/[0.07]" spin />
+        </div>
 
         <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4">
           <Logo tone="dark" />
@@ -120,13 +121,36 @@ export function MobileDrawer({ open, onClose }) {
 
         <nav aria-label="Mobile" className="relative flex-1 px-5 py-4">
           <ul className="flex flex-col">
-            {navigation.map((item, i) => {
+            {navigation.map((item) => {
               const hasChildren = Boolean(item.children);
               const isOpen = expanded === item.label;
+              // An item without a page of its own (Trades) only expands.
+              const menuOnly = hasChildren && !item.to;
 
               return (
                 <li key={item.label} className="border-b border-white/[0.07] last:border-0">
                   <div className="flex items-center">
+                    {menuOnly ? (
+                      <button
+                        type="button"
+                        tabIndex={open ? 0 : -1}
+                        aria-expanded={isOpen}
+                        onClick={() => setExpanded(isOpen ? null : item.label)}
+                        className={cn(
+                          'flex flex-1 items-center justify-between py-4 text-left font-display text-[1.375rem] font-medium tracking-tight transition-colors duration-200',
+                          pathname.startsWith(item.match) ? 'text-signal' : 'text-white hover:text-tech'
+                        )}
+                      >
+                        {item.label}
+                        <span className="flex h-11 w-11 items-center justify-center text-navy-200">
+                          <ChevronDown
+                            aria-hidden="true"
+                            strokeWidth={2}
+                            className={cn('h-4 w-4 transition-transform duration-300 ease-out', isOpen && 'rotate-180')}
+                          />
+                        </span>
+                      </button>
+                    ) : (
                     <NavLink
                       to={item.to}
                       end={item.to === '/'}
@@ -134,18 +158,16 @@ export function MobileDrawer({ open, onClose }) {
                       tabIndex={open ? 0 : -1}
                       className={({ isActive }) =>
                         cn(
-                          'flex flex-1 items-baseline gap-4 py-4 font-display text-[1.375rem] font-medium tracking-tight transition-colors duration-200',
+                          'flex flex-1 items-baseline py-4 font-display text-[1.375rem] font-medium tracking-tight transition-colors duration-200',
                           isActive ? 'text-signal' : 'text-white hover:text-tech'
                         )
                       }
                     >
-                      <span className="font-mono text-[0.625rem] tabular text-tech/60">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
                       {item.label}
                     </NavLink>
+                    )}
 
-                    {hasChildren && (
+                    {hasChildren && !menuOnly && (
                       <button
                         type="button"
                         tabIndex={open ? 0 : -1}
@@ -180,7 +202,7 @@ export function MobileDrawer({ open, onClose }) {
                               to={child.to}
                               onClick={onClose}
                               tabIndex={open && isOpen ? 0 : -1}
-                              className="flex items-center gap-3 py-2.5 pl-9 text-[0.9375rem] text-navy-100/80 transition-colors duration-150 hover:text-white"
+                              className="flex items-center gap-3 py-2.5 pl-4 text-[0.9375rem] text-navy-100/80 transition-colors duration-150 hover:text-white"
                             >
                               <span aria-hidden="true" className="h-0.5 w-4 bg-tech/60" />
                               {child.label}

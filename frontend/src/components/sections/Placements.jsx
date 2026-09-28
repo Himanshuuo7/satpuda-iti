@@ -33,7 +33,6 @@ export function Placements() {
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-5">
             <SectionHeading
-              index="05"
               eyebrow="Placements"
               title={
                 <>
@@ -108,7 +107,7 @@ export function Placements() {
                         {row.year}
                       </th>
                       <td className="px-4 py-4 text-right font-mono text-[0.8125rem] tabular text-ink-muted sm:px-5">
-                        {String(row.drives).padStart(2, '0')}
+                        {row.drives}
                       </td>
                       <td className="px-4 py-4 text-right font-mono text-[0.8125rem] tabular text-navy-700 sm:px-5">
                         {row.placed}

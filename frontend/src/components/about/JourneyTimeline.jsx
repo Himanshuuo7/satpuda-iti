@@ -52,7 +52,6 @@ export function JourneyTimeline() {
       <div className="shell relative">
         <SectionHeading
           id="journey-title"
-          index="02"
           eyebrow="Our journey"
           title={
             <>

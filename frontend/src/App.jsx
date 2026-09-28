@@ -1,11 +1,18 @@
 import { Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/ui/ScrollToTop';
 import { NotFoundPage } from './pages/PlaceholderPage';
-import { About, Home, PlaceholderPage, placeholderRoutes } from './routes/routes';
+import {
+  About,
+  Home,
+  PlaceholderPage,
+  TradePage,
+  placeholderRoutes,
+  tradeRedirects,
+} from './routes/routes';
 
 /**
  * App shell: persistent header and footer around the routed view.
@@ -44,6 +51,11 @@ export function App() {
           />
 
           <Route path="/about" element={<About />} />
+          <Route path="/trades/:tradeId" element={<TradePage />} />
+
+          {tradeRedirects.map(({ from, to }) => (
+            <Route key={from} path={from} element={<Navigate to={to} replace />} />
+          ))}
 
           {placeholderRoutes.map((route) => (
             <Route

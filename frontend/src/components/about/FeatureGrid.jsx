@@ -29,7 +29,6 @@ export function FeatureGrid() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <SectionHeading
             id="why-title"
-            index="03"
             eyebrow="What makes Satpuda different"
             title={
               <>
@@ -108,9 +107,6 @@ export function FeatureGrid() {
                 <div className="flex items-start justify-between">
                   <span className="grid h-11 w-11 place-items-center rounded-edge border border-navy-100 text-royal transition-[background-color,color,border-color,transform] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:-rotate-6 group-hover:border-royal group-hover:bg-royal group-hover:text-white">
                     <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <span className="font-mono text-[0.625rem] tabular text-ink-soft transition-colors duration-300 group-hover:text-signal">
-                    {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
                 <h3 className="mt-6 text-[1.0625rem] font-semibold tracking-tight text-navy-800 transition-colors duration-300 group-hover:text-royal">

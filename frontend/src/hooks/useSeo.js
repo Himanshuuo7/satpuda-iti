@@ -32,6 +32,15 @@ export function useSeo({ title, description }) {
       setMeta('meta[name="twitter:description"]', 'content', description);
     }
     setMeta('meta[property="og:url"]', 'content', window.location.href);
+
+    // Canonical is the route's own path, without query or hash.
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `${window.location.origin}${window.location.pathname}`);
   }, [title, description]);
 }
 

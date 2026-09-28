@@ -138,6 +138,9 @@ export function Navbar() {
             {navigation.map((item) => {
               const hasChildren = Boolean(item.children);
               const isOpen = openMenu === item.label;
+              // An item without a page of its own (Trades) is only a menu.
+              const menuOnly = hasChildren && !item.to;
+              const inSection = menuOnly && location.pathname.startsWith(item.match);
 
               return (
                 <li
@@ -147,6 +150,35 @@ export function Navbar() {
                   onMouseLeave={() => hasChildren && closeWithDelay()}
                 >
                   <div className="flex items-center">
+                    {menuOnly ? (
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-haspopup="true"
+                        onClick={() => setOpenMenu(isOpen ? null : item.label)}
+                        className={cn(
+                          'group relative flex items-center rounded-edge py-2 pl-3 text-[0.9375rem] font-medium tracking-tight transition-colors duration-200',
+                          inSection ? 'text-navy-800' : 'text-navy-700/80 hover:text-navy-800'
+                        )}
+                      >
+                        {item.label}
+                        <ChevronDown
+                          aria-hidden="true"
+                          strokeWidth={2}
+                          className={cn(
+                            'ml-1 h-3.5 w-3.5 text-navy-700/70 transition-transform duration-300 ease-out',
+                            isOpen && 'rotate-180'
+                          )}
+                        />
+                        <span
+                          aria-hidden="true"
+                          className={cn(
+                            'absolute -bottom-1 left-3 right-[1.125rem] h-[2px] origin-left rounded-full bg-signal transition-transform duration-300 ease-out',
+                            inSection ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                          )}
+                        />
+                      </button>
+                    ) : (
                     <NavLink
                       to={item.to}
                       end={item.to === '/'}
@@ -171,8 +203,9 @@ export function Navbar() {
                         </>
                       )}
                     </NavLink>
+                    )}
 
-                    {hasChildren && (
+                    {hasChildren && !menuOnly && (
                       <button
                         type="button"
                         aria-expanded={isOpen}

@@ -62,16 +62,13 @@ export function FinalCTA() {
           className="reveal mx-auto mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           style={{ '--reveal-delay': '180ms' }}
         >
-          <Button to="/courses" variant="primary" size="lg" className="w-full sm:w-auto">
-            Explore Trades
+          <Button to="/admission" variant="primary" size="lg" className="w-full sm:w-auto">
+            Apply Now
             <ArrowRight
               aria-hidden="true"
               strokeWidth={2}
               className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
             />
-          </Button>
-          <Button to="/admission" variant="ghostLight" size="lg" className="w-full sm:w-auto">
-            Apply Now
           </Button>
         </div>
 

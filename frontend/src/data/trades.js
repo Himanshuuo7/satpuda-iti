@@ -24,7 +24,7 @@ export const tradeDetails = [
     summary:
       'A job-oriented vocational course; successful candidates are awarded vocational training certificates.',
     scheme: 'CTS · NCVT',
-    slug: '/courses/electrician',
+    slug: '/trades/electrician',
     icon: 'Zap',
     sourceUrls: ['https://satpudaiti.com/betul/', 'https://satpudaiti.com/iti-rewa/'],
   },
@@ -37,7 +37,7 @@ export const tradeDetails = [
     summary:
       'Opens routes into shipbuilding and repair, infrastructure and defence organisations, and public-sector industry.',
     scheme: 'CTS · NCVT',
-    slug: '/courses/fitter',
+    slug: '/trades/fitter',
     icon: 'Wrench',
     sourceUrls: ['https://satpudaiti.com/betul/'],
   },
@@ -50,7 +50,7 @@ export const tradeDetails = [
     summary:
       'Automobile engineering with a specialisation in the mechanics of diesel engines.',
     scheme: 'CTS · NCVT',
-    slug: '/courses/diesel-mechanic',
+    slug: '/trades/mechanic-diesel',
     icon: 'Cog',
     sourceUrls: ['https://satpudaiti.com/betul/'],
   },
@@ -64,7 +64,7 @@ export const tradeDetails = [
     summary:
       'Operates computers and peripheral equipment to process business, scientific and engineering data.',
     scheme: 'CTS · NCVT',
-    slug: '/courses/copa',
+    slug: '/trades/copa',
     icon: 'MonitorCog',
     sourceUrls: ['https://satpudaiti.com/itarsi/'],
   },

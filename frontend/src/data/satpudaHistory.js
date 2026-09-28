@@ -38,10 +38,10 @@ export const milestones = [
   {
     year: '1999',
     title: 'The Samiti begins',
-    body: 'Maharana Pratap Shikshan Samiti enters education and training in Balaghat. Maharana Pratap ITI, Garra carries DGET reference 6/12/22/99-TC.',
+    body: 'Maharana Pratap Shikshan Samiti enters education and training in Balaghat.',
     kind: 'origin',
-    campuses: ['garra'],
-    sourceUrls: ['https://satpudaiti.com/about-us/', 'https://satpudaiti.com/campus-balaghat/'],
+    campuses: [],
+    sourceUrls: ['https://satpudaiti.com/about-us/'],
   },
   {
     year: '2003',

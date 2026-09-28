@@ -1,7 +1,7 @@
 import cn from '../../utils/cn';
 
 /**
- * Section masthead: a technical index rule, an eyebrow label, the heading, and
+ * Section masthead: a technical rule, an eyebrow label, the heading, and
  * an optional lede held to a comfortable reading measure.
  *
  * `tone` switches the whole block between the light canvas and the navy
@@ -10,7 +10,6 @@ import cn from '../../utils/cn';
  */
 export function SectionHeading({
   id,
-  index,
   eyebrow,
   title,
   lede,
@@ -29,23 +28,13 @@ export function SectionHeading({
         className
       )}
     >
-      {(index || eyebrow) && (
+      {eyebrow && (
         <div
           className={cn(
             'reveal flex items-center gap-3',
             align === 'center' && 'justify-center'
           )}
         >
-          {index && (
-            <span
-              className={cn(
-                'font-mono text-label tabular',
-                dark ? 'text-tech' : 'text-signal'
-              )}
-            >
-              {index}
-            </span>
-          )}
           <span
             aria-hidden="true"
             className={cn(
@@ -53,16 +42,14 @@ export function SectionHeading({
               dark ? 'text-tech/60' : 'text-navy-300'
             )}
           />
-          {eyebrow && (
-            <span
-              className={cn(
-                'eyebrow',
-                dark ? 'text-navy-100/75' : 'text-ink-muted'
-              )}
-            >
-              {eyebrow}
-            </span>
-          )}
+          <span
+            className={cn(
+              'eyebrow',
+              dark ? 'text-navy-100/75' : 'text-ink-muted'
+            )}
+          >
+            {eyebrow}
+          </span>
         </div>
       )}
 

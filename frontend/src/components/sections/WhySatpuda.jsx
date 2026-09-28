@@ -24,7 +24,6 @@ export function WhySatpuda() {
     >
       <div className="shell">
         <SectionHeading
-          index="03"
           eyebrow="Why Satpuda"
           title={differentiators.heading}
           lede="The institute publishes this comparison against a baseline ITI. Both columns below are reproduced from its own statement."

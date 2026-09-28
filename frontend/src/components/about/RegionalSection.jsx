@@ -41,7 +41,6 @@ export function RegionalSection({ onView }) {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             id="regions-title"
-            index="10"
             eyebrow="Institutes by region"
             title={
               <>

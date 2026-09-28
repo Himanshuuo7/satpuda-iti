@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import Button from '../ui/Button';
 import Figure from '../ui/Figure';
 import GearOutline from '../ui/GearOutline';
 import { homeCounters, trades } from '../../data/satpudaData';
@@ -142,17 +141,6 @@ function TradeCard({ trade, i }) {
               className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/10 to-transparent"
             />
           </Figure>
-
-          {/* Numbered tab, notched into the corner. */}
-          <span className="absolute left-0 top-0 rounded-br-[0.75rem] bg-white px-4 pb-2.5 pt-3 transition-colors duration-500 ease-out group-hover:bg-navy-800">
-            <span className="block font-display text-[1.375rem] font-bold leading-none text-navy-800 transition-colors duration-500 ease-out group-hover:text-white">
-              {trade.index}
-            </span>
-            <span
-              aria-hidden="true"
-              className="mt-1.5 block h-[3px] w-6 rounded-full bg-signal transition-[width] duration-500 ease-out group-hover:w-10"
-            />
-          </span>
 
           {/* Hand-lettered note */}
           {note.length > 0 && (
@@ -329,17 +317,6 @@ export function Trades() {
         {/* ------------------------------- Closing -------------------------------- */}
         <div className="reveal relative mt-12 lg:mt-14">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-8 lg:pr-[15rem] xl:pr-[17rem]">
-            <Button to="/courses" variant="solid" className="w-full rounded-[0.625rem] sm:w-auto">
-              View all trades
-              <ArrowUpRight
-                aria-hidden="true"
-                strokeWidth={2}
-                className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </Button>
-
-            <span aria-hidden="true" className="hidden h-12 w-px bg-navy-100 lg:block" />
-
             <ul className="flex flex-wrap items-center gap-y-5">
               {MEASURES.map(({ icon: Icon, value, label }) => (
                 <li

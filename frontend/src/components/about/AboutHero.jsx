@@ -329,15 +329,12 @@ export function AboutHero() {
         {/* Chapter index */}
         <nav aria-label="On this page" className="relative -mx-[var(--shell-pad)] overflow-x-auto px-[var(--shell-pad)] mask-fade-r lg:[-webkit-mask-image:none] lg:[mask-image:none]">
           <ol className="flex h-[5.5rem] min-w-max items-center gap-6 sm:gap-8">
-            {CHAPTERS.map((c, i) => (
+            {CHAPTERS.map((c) => (
               <li key={c.id}>
                 <a
                   href={`#${c.id}`}
                   className="group flex items-baseline gap-2 rounded-sharp py-2 text-[0.875rem] font-medium text-navy-700 transition-colors duration-200 hover:text-royal"
                 >
-                  <span className="font-mono text-[0.625rem] tabular text-signal">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   <span className="relative">
                     {c.label}
                     <span

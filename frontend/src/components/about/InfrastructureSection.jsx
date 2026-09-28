@@ -51,7 +51,6 @@ export function InfrastructureSection() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
           <SectionHeading
             id="infra-title"
-            index="08"
             eyebrow="Infrastructure"
             title={
               <>
@@ -70,7 +69,7 @@ export function InfrastructureSection() {
               16:9 ≈ 5/12 at 5:4). */}
           <Plate
             photo={{ ...photos.garraWorkshop, ratio: '16/9' }}
-            caption="Fitter workshop · Satpuda ITI Garra"
+            caption="Fitter workshop · Satpuda ITI"
             className="lg:col-span-7"
           />
           <Plate
@@ -98,7 +97,7 @@ export function InfrastructureSection() {
             <ol className="mt-5 divide-y divide-navy-100 border-y border-navy-100">
               {training.facilities.map((f, i) => (
                 <li key={f} className="reveal flex gap-5 py-4" style={{ '--reveal-delay': `${i * 50}ms` }}>
-                  <span className="font-mono text-[0.6875rem] tabular text-royal">{String(i + 1).padStart(2, '0')}</span>
+                  <span aria-hidden="true" className="mt-[0.7rem] h-px w-3 shrink-0 bg-royal" />
                   <p className="text-[0.9688rem] leading-[1.65] text-navy-700">{f}</p>
                 </li>
               ))}

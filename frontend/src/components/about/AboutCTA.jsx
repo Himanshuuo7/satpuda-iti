@@ -86,12 +86,6 @@ export function AboutCTA() {
                 <ArrowDownRight aria-hidden="true" strokeWidth={2} className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
               </Button>
             </Magnetic>
-            <Magnetic>
-              <Button to="/courses" variant="ghostLight" size="lg" className="w-full sm:w-auto">
-                Explore Trades
-                <ArrowRight aria-hidden="true" strokeWidth={2} className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-              </Button>
-            </Magnetic>
           </div>
 
           <p className="reveal mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.9375rem] text-navy-100/70" style={{ '--reveal-delay': '220ms' }}>

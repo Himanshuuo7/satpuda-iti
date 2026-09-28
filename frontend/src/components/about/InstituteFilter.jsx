@@ -51,7 +51,7 @@ export function InstituteFilter({ query, onQuery, trade, onTrade, region, onRegi
             onChange={(e) => onTrade(e.target.value)}
             className="h-12 w-full cursor-pointer appearance-none rounded-edge border border-navy-100 bg-white pl-4 pr-10 text-[0.9375rem] text-navy-800 focus:border-royal focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tech"
           >
-            <option value="all">All trades</option>
+            <option value="all">Any trade</option>
             {tradeDetails.map((t) => (
               <option key={t.id} value={t.id}>
                 {t.name}

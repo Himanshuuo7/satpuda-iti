@@ -87,7 +87,6 @@ export function StorySection() {
         <div className="lg:col-span-7">
           <SectionHeading
             id="story-title"
-            index="01"
             eyebrow="Our story"
             title={
               <>

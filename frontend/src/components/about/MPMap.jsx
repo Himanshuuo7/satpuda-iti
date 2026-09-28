@@ -88,7 +88,6 @@ export function MPMap({ onView }) {
         <SectionHeading
           id="presence-title"
           tone="dark"
-          index="05"
           eyebrow="Presence across MP"
           title={
             <>

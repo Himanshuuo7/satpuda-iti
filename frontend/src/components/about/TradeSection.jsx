@@ -104,7 +104,6 @@ export function TradeSection() {
       <div className="shell">
         <SectionHeading
           id="trades-title"
-          index="06"
           eyebrow="Training & trades"
           title={
             <>
