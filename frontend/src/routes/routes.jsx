@@ -11,29 +11,11 @@ import PlaceholderPage from '../pages/PlaceholderPage';
 const Home = lazy(() => import('../pages/Home'));
 const About = lazy(() => import('../pages/About'));
 const TradePage = lazy(() => import('../pages/TradePage'));
+const PlacementPage = lazy(() => import('../pages/PlacementPage'));
+const TrainingPage = lazy(() => import('../pages/TrainingPage'));
+const ActivityPage = lazy(() => import('../pages/ActivityPage'));
 
 export const placeholderRoutes = [
-  {
-    path: '/training',
-    title: 'Training.',
-    eyebrow: 'Learning Process',
-    description:
-      'The full training section — learning process, curriculum, competency-based learning and faculty development — is being prepared.',
-  },
-  {
-    path: '/placements',
-    title: 'Placements.',
-    eyebrow: 'Placement Cell',
-    description:
-      'The complete placement section, including the year-by-year record, recruiters, career path and entrepreneurship development, is being prepared. A summary appears on the homepage.',
-  },
-  {
-    path: '/campuses',
-    title: 'Campuses.',
-    eyebrow: 'Network',
-    description:
-      'Individual campus pages are being prepared. Every campus address, phone number and email is listed on the homepage campus section.',
-  },
   {
     path: '/contact',
     title: 'Contact.',
@@ -51,16 +33,30 @@ export const placeholderRoutes = [
 ];
 
 /**
- * Old and index trade URLs. The trade pages moved from /courses/* to /trades/*,
- * and the trades overview lives on the homepage, so these only redirect.
+ * Old and index URLs that only redirect. The trade pages moved from /courses/*
+ * to /trades/*, the trades overview lives on the homepage, and the rest are the
+ * institute's own addresses for pages that now live in the Placement and
+ * Activity sections.
  */
-export const tradeRedirects = [
+export const redirects = [
   { from: '/trades', to: { pathname: '/', hash: '#trades' } },
   { from: '/courses', to: { pathname: '/', hash: '#trades' } },
   { from: '/courses/electrician', to: '/trades/electrician' },
   { from: '/courses/fitter', to: '/trades/fitter' },
   { from: '/courses/diesel-mechanic', to: '/trades/mechanic-diesel' },
   { from: '/courses/copa', to: '/trades/copa' },
+  // The institute's own address for the section is singular.
+  { from: '/placement', to: '/placements' },
+  // The institute's Activity menu links these as pages of their own.
+  { from: '/activities', to: '/activity/students-life' },
+  { from: '/safety', to: '/activity/safety' },
+  { from: '/gallery', to: '/activity/gallery' },
+  { from: '/events', to: '/activity/news' },
+  // These four briefly lived under Training.
+  { from: '/training/activities', to: '/activity/students-life' },
+  { from: '/training/safety', to: '/activity/safety' },
+  { from: '/training/gallery', to: '/activity/gallery' },
+  { from: '/training/news', to: '/activity/news' },
 ];
 
-export { Home, About, TradePage, PlaceholderPage };
+export { Home, About, TradePage, PlacementPage, TrainingPage, ActivityPage, PlaceholderPage };

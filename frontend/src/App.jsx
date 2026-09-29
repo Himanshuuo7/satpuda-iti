@@ -7,11 +7,14 @@ import ScrollToTop from './components/ui/ScrollToTop';
 import { NotFoundPage } from './pages/PlaceholderPage';
 import {
   About,
+  ActivityPage,
   Home,
   PlaceholderPage,
+  PlacementPage,
   TradePage,
+  TrainingPage,
   placeholderRoutes,
-  tradeRedirects,
+  redirects,
 } from './routes/routes';
 
 /**
@@ -52,8 +55,11 @@ export function App() {
 
           <Route path="/about" element={<About />} />
           <Route path="/trades/:tradeId" element={<TradePage />} />
+          <Route path="/placements/:slug?" element={<PlacementPage />} />
+          <Route path="/training/:slug?" element={<TrainingPage />} />
+          <Route path="/activity/:slug?" element={<ActivityPage />} />
 
-          {tradeRedirects.map(({ from, to }) => (
+          {redirects.map(({ from, to }) => (
             <Route key={from} path={from} element={<Navigate to={to} replace />} />
           ))}
 

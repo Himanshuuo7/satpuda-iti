@@ -97,7 +97,7 @@ export function SafetySection() {
           <div className="lg:col-span-7">
             <h3 className="reveal flex items-center gap-3 font-mono text-label uppercase text-navy-100/80">
               <span aria-hidden="true" className="h-px w-6 bg-tech" />
-              Quality policy · published targets
+              Quality policy · our targets
             </h3>
             <table className="reveal mt-5 w-full border-collapse text-left" style={{ '--reveal-delay': '80ms' }}>
               <caption className="sr-only">Satpuda ITI quality policy targets</caption>
@@ -147,7 +147,7 @@ export function SafetySection() {
             </ul>
             <p className="reveal mt-6 text-[0.75rem] leading-relaxed text-navy-200/70">
               Affiliated with NCVT, New Delhi · Recommended by the Quality Council of India · Administered by the
-              Directorate of Technical Education, Govt. of MP. Source: satpudaiti.com/about-us.
+              Directorate of Technical Education, Govt. of MP.
             </p>
           </div>
         </div>

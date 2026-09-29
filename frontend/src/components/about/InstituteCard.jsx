@@ -62,7 +62,7 @@ export function InstituteCard({ inst, index, onView }) {
             ))}
           </ul>
         ) : (
-          <p className="text-[0.8125rem] italic text-ink-soft">Trades not published on the official site</p>
+          <p className="text-[0.8125rem] italic text-ink-soft">Contact the campus for trades</p>
         )}
       </div>
 

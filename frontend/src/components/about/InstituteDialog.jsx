@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ExternalLink, Mail, Navigation, Phone, X } from 'lucide-react';
+import { Mail, Navigation, Phone, X } from 'lucide-react';
 
 import { mapsHrefFor } from '../../data/itiInstitutes';
 import { tradeById } from '../../data/trades';
@@ -9,8 +9,8 @@ import { telHref } from '../../utils/format';
  * Full institute record in a native modal <dialog>.
  *
  * `showModal()` gives focus trapping, Escape-to-close and an inert page for
- * free; focus returns to the "View institute" button on close. Unpublished
- * fields read "Not published", and a field two official pages disagree on reads
+ * free; focus returns to the "View institute" button on close. Missing fields
+ * point the reader to the campus, and a field still being confirmed reads
  * "To be verified" — the dialog never guesses.
  */
 
@@ -28,7 +28,7 @@ function Row({ label, children, note }) {
 
 const Missing = ({ verify }) => (
   <span className={verify ? 'font-medium text-signal-600' : 'text-ink-soft'}>
-    {verify ? 'To be verified' : 'Not published'}
+    {verify ? 'To be verified' : 'Contact the campus'}
   </span>
 );
 
@@ -92,10 +92,7 @@ export function InstituteDialog({ inst, onClose }) {
             <dl>
               <Row label="Address">{inst.address}</Row>
               <Row label="Established">{inst.established ?? <Missing verify={verify('established')} />}</Row>
-              <Row
-                label={inst.principal ? 'Principal' : 'Contact person'}
-                note={inst.principal || inst.contactPerson ? 'As listed on the official campus page' : undefined}
-              >
+              <Row label={inst.principal ? 'Principal' : 'Contact person'}>
                 {inst.principal ?? inst.contactPerson ?? <Missing />}
               </Row>
               <Row label="Phone">
@@ -132,7 +129,7 @@ export function InstituteDialog({ inst, onClose }) {
                 </Row>
               )}
               {inst.itiCode && (
-                <Row label="ITI code" note="From the Govt. of India list of MP private ITIs — confirm on NCVT MIS.">
+                <Row label="ITI code">
                   <span className="font-mono text-[0.875rem]">{inst.itiCode}</span>
                 </Row>
               )}
@@ -160,27 +157,6 @@ export function InstituteDialog({ inst, onClose }) {
                 <Navigation aria-hidden="true" className="h-4 w-4" /> Open in Maps
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
-            </div>
-
-            <div className="mt-6 border-t border-navy-50 pt-4">
-              <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
-                Sources · checked {inst.verifiedAt}
-              </p>
-              <ul className="mt-2 space-y-1">
-                {inst.sourceUrls.map((url) => (
-                  <li key={url}>
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 break-all text-[0.8125rem] text-ink-muted underline decoration-navy-200 underline-offset-4 hover:text-royal"
-                    >
-                      {url.replace(/^https?:\/\/(www\.)?/, '')}
-                      <ExternalLink aria-hidden="true" className="h-3 w-3 shrink-0" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>

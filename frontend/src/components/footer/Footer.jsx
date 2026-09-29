@@ -9,6 +9,7 @@ import {
   institute,
   trades,
 } from '../../data/satpudaData';
+import { activityPages } from '../../data/activityPages';
 import { telHref } from '../../utils/format';
 
 /**
@@ -21,9 +22,9 @@ import { telHref } from '../../utils/format';
 
 const QUICK_LINKS = [
   { label: 'About Satpuda ITI', to: '/about' },
+  { label: 'Placement', to: '/placements' },
   { label: 'Training', to: '/training' },
-  { label: 'Placements', to: '/placements' },
-  { label: 'Campuses', to: '/campuses' },
+  { label: 'Activity', to: activityPages[0].to },
   { label: 'Admission', to: '/admission' },
 ];
 
@@ -181,7 +182,7 @@ export function Footer() {
             {campuses.map((campus) => (
               <li key={campus.id}>
                 <Link
-                  to="/campuses"
+                  to={{ pathname: '/', hash: '#campuses' }}
                   className="inline-flex min-h-[1.75rem] items-center text-[0.8125rem] text-navy-100/60 transition-colors duration-200 hover:text-tech"
                 >
                   {campus.city}

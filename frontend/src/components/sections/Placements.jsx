@@ -57,7 +57,7 @@ export function Placements() {
             </p>
 
             <div className="reveal mt-9" style={{ '--reveal-delay': '220ms' }}>
-              <Button to="/placements" variant="outline">
+              <Button to="/placements/details" variant="outline">
                 Placement details
                 <ArrowRight
                   aria-hidden="true"
@@ -73,7 +73,7 @@ export function Placements() {
             <div className="overflow-hidden rounded-panel border border-navy-100 bg-white shadow-card">
               <table className="w-full border-collapse text-left">
                 <caption className="sr-only">
-                  Satpuda ITI placement record by year, as published on the official website
+                  Satpuda ITI placement record by year
                 </caption>
                 <thead>
                   <tr className="border-b border-navy-100 bg-canvas-soft">
@@ -137,10 +137,6 @@ export function Placements() {
                 </tbody>
               </table>
             </div>
-
-            <p className="mt-3 font-mono text-[0.625rem] uppercase tracking-[0.1em] text-ink-soft">
-              {placement.sourceNote}
-            </p>
           </div>
         </div>
 
@@ -169,9 +165,6 @@ export function Placements() {
               ))}
             </ul>
           </div>
-          <p className="mt-6 text-[0.8125rem] text-ink-soft">
-            Recruiter marks as displayed on the official Satpuda ITI website.
-          </p>
         </div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export function WhySatpuda() {
         <SectionHeading
           eyebrow="Why Satpuda"
           title={differentiators.heading}
-          lede="The institute publishes this comparison against a baseline ITI. Both columns below are reproduced from its own statement."
+          lede="How training at Satpuda compares with a typical ITI, point by point."
           className="max-w-2xl"
         />
 

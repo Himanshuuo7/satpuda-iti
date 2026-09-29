@@ -110,7 +110,7 @@ export function TradeSection() {
               Four NCVT trades. <span className="text-ink-muted">Not every trade at every campus.</span>
             </>
           }
-          lede="Trades run under the Craftsman Training Scheme (CTS), affiliated to NCVT, New Delhi. Durations are those published on each campus page; the matrix shows exactly which campus publishes which trade."
+          lede="Trades run under the Craftsman Training Scheme (CTS), affiliated to NCVT, New Delhi. The matrix below shows which trades each campus offers."
           className="max-w-3xl"
         />
 
@@ -130,7 +130,7 @@ export function TradeSection() {
           >
             <table className="w-full min-w-[40rem] border-collapse text-left text-[0.875rem]">
               <caption className="border-b border-navy-100 bg-canvas-soft px-5 py-3 text-left font-mono text-label uppercase text-ink-muted">
-                Trades published per campus
+                Trades offered per campus
               </caption>
               <thead>
                 <tr className="border-b border-navy-100">
@@ -163,7 +163,7 @@ export function TradeSection() {
                           ) : (
                             <span className="text-navy-200">
                               <span aria-hidden="true">—</span>
-                              <span className="sr-only">{inst.trades.length ? 'Not offered' : 'Not published'}</span>
+                              <span className="sr-only">{inst.trades.length ? 'Not offered' : 'Contact the campus'}</span>
                             </span>
                           )}
                         </td>
@@ -175,7 +175,7 @@ export function TradeSection() {
             </table>
           </div>
           <p className="border-t border-navy-100 px-5 py-3 text-[0.75rem] text-ink-soft">
-            {UNPUBLISHED.join(', ')} — trade lists not published on the official site.
+            {UNPUBLISHED.join(', ')} — contact the campus for its trade list.
           </p>
         </div>
       </div>

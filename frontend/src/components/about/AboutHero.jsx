@@ -20,7 +20,7 @@ const districts = new Set(itiInstitutes.map((i) => i.district)).size;
 
 const FACTS = [
   { value: String(story.foundedYear), label: 'Founded in Balaghat' },
-  { value: String(itiInstitutes.length), label: 'Verified ITI records' },
+  { value: String(itiInstitutes.length), label: 'ITI campuses' },
   { value: String(districts), label: 'Districts in MP' },
   { value: String(tradeDetails.length), label: 'NCVT trades' },
 ];

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ChevronDown, Mail, MapPin, Menu, Phone } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronDown, Mail, MapPin, Menu, Phone } from 'lucide-react';
 
 import Logo from '../ui/Logo';
 import Button from '../ui/Button';
@@ -141,6 +141,10 @@ export function Navbar() {
               // An item without a page of its own (Trades) is only a menu.
               const menuOnly = hasChildren && !item.to;
               const inSection = menuOnly && location.pathname.startsWith(item.match);
+              // Children with a description get the wider, annotated panel; a long
+              // one (Training) splits into two columns, centred under its label.
+              const rich = hasChildren && item.children.some((c) => c.description);
+              const wide = rich && item.children.length > 6;
 
               return (
                 <li
@@ -227,30 +231,81 @@ export function Navbar() {
 
                   {hasChildren && (
                     <div
+                      data-open={isOpen}
                       className={cn(
-                        'absolute left-0 top-full z-10 pt-3 transition-all duration-200 ease-out',
+                        'absolute top-full z-10 pt-3 transition-all duration-200 ease-out',
+                        wide ? 'left-1/2 -translate-x-1/2' : 'left-0',
                         isOpen
                           ? 'pointer-events-auto translate-y-0 opacity-100'
                           : 'pointer-events-none -translate-y-1 opacity-0'
                       )}
                     >
-                      <ul className="min-w-[15rem] overflow-hidden rounded-panel border border-navy-100 bg-white p-1.5 shadow-lift">
-                        {item.children.map((child) => (
-                          <li key={`${child.label}-${child.to}`}>
-                            <Link
-                              to={child.to}
-                              tabIndex={isOpen ? 0 : -1}
-                              className="group flex items-center justify-between gap-3 rounded-edge px-3 py-2.5 text-[0.8125rem] font-medium text-navy-700 transition-colors duration-150 hover:bg-navy-50 hover:text-navy-800"
-                            >
-                              {child.label}
-                              <span
-                                aria-hidden="true"
-                                className="h-px w-3 bg-signal opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-                              />
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                      <div
+                        className={cn(
+                          'overflow-hidden rounded-panel border border-navy-100 bg-white shadow-lift',
+                          wide ? 'w-[min(44rem,calc(100vw-4rem))]' : rich ? 'w-[25rem]' : 'min-w-[15rem]'
+                        )}
+                      >
+                        <ul className={cn('p-1.5', wide && 'grid grid-cols-2 gap-x-1')}>
+                          {item.children.map((child, idx) =>
+                            rich ? (
+                              <li key={`${child.label}-${child.to}`} className="nav-drop-item" style={{ '--i': idx }}>
+                                <Link
+                                  to={child.to}
+                                  tabIndex={isOpen ? 0 : -1}
+                                  className="group flex items-start gap-3 rounded-edge px-3 py-2.5 transition-colors duration-150 hover:bg-navy-50"
+                                >
+                                  <span className="mt-[0.2rem] font-mono text-[0.625rem] tabular text-ink-soft transition-colors duration-150 group-hover:text-signal">
+                                    {String(idx + 1).padStart(2, '0')}
+                                  </span>
+                                  <span className="min-w-0 flex-1">
+                                    <span className="block text-[0.8438rem] font-semibold leading-snug text-navy-800">
+                                      {child.label}
+                                    </span>
+                                    <span className="mt-0.5 block text-[0.75rem] leading-snug text-ink-muted">
+                                      {child.description}
+                                    </span>
+                                  </span>
+                                  <ArrowUpRight
+                                    aria-hidden="true"
+                                    strokeWidth={2}
+                                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-navy-300 opacity-0 transition-[opacity,transform,color] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal group-hover:opacity-100"
+                                  />
+                                </Link>
+                              </li>
+                            ) : (
+                              <li key={`${child.label}-${child.to}`} className="nav-drop-item" style={{ '--i': idx }}>
+                                <Link
+                                  to={child.to}
+                                  tabIndex={isOpen ? 0 : -1}
+                                  className="group flex items-center justify-between gap-3 rounded-edge px-3 py-2.5 text-[0.8125rem] font-medium text-navy-700 transition-colors duration-150 hover:bg-navy-50 hover:text-navy-800"
+                                >
+                                  {child.label}
+                                  <span
+                                    aria-hidden="true"
+                                    className="h-px w-3 bg-signal opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                                  />
+                                </Link>
+                              </li>
+                            )
+                          )}
+                        </ul>
+
+                        {rich && item.to && (
+                          <Link
+                            to={item.to}
+                            tabIndex={isOpen ? 0 : -1}
+                            className="group flex items-center justify-between border-t border-navy-100 bg-canvas-soft px-4.5 py-3 text-[0.8125rem] font-semibold text-navy-800 transition-colors duration-150 hover:text-signal"
+                          >
+                            {item.label} overview
+                            <ArrowRight
+                              aria-hidden="true"
+                              strokeWidth={2}
+                              className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                            />
+                          </Link>
+                        )}
+                      </div>
                     </div>
                   )}
                 </li>

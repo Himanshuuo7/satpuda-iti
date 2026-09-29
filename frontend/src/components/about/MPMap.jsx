@@ -210,7 +210,7 @@ export function MPMap({ onView }) {
                     <p className="mt-1 text-[0.8125rem] text-navy-100/70">
                       {inst.trades.length
                         ? inst.trades.map((t) => tradeById[t.id]?.name).join(', ')
-                        : 'Trades not published'}
+                        : 'Contact the campus for trades'}
                     </p>
                     <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
                       <a href={telHref(inst.phone)} className="inline-flex min-h-[2.25rem] items-center gap-1.5 font-mono text-[0.8125rem] tabular text-navy-100 hover:text-tech">

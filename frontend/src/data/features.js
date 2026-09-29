@@ -97,7 +97,7 @@ export const features = [
   {
     id: 'alumni',
     title: 'Alumni Support',
-    detail: 'Every passed-out trainee is followed up — a published quality-policy target.',
+    detail: 'Every passed-out trainee is followed up — one of our quality-policy targets.',
     icon: 'Users',
     group: 'career',
     sourceUrls: [ABOUT],

@@ -1,13 +1,9 @@
 /**
- * Satpuda ITI — story and verified milestones.
+ * Satpuda ITI — story and milestones.
  *
- * Milestones come only from dated statements on official Satpuda pages: the
- * "started from" line on each campus page, DGET references on the Balaghat
- * page, the published placement table and the 2022 "23 years" graphic on
- * /about-us/. Retrieved 2026-09-26. No milestone is inferred.
+ * Institution years come from the Samiti's "Our Institutions" board
+ * (src/assets/iti detail.jpg); placement years from the placement table.
  */
-
-const VERIFIED_AT = '2026-09-26';
 
 export const story = {
   foundedYear: 1999,
@@ -22,106 +18,127 @@ export const story = {
     'The group started with a motto of nourishing young minds by providing high-class training to master a trade and be industry ready, and has since worked to reduce the gap between what industry requires and the skills trainees bring.',
     'From Balaghat the network grew across Madhya Pradesh — into Chhindwara, Narmadapuram, Seoni, Rewa, Mandla, Betul and Mauganj — running NCVT-affiliated Craftsman Training Scheme trades administered by the Directorate of Technical Education, Govt. of MP.',
   ],
-  sourceUrls: [
-    'https://satpudaiti.com/',
-    'https://satpudaiti.com/campus-balaghat/',
-    'https://satpudaiti.com/about-us/',
-  ],
-  verifiedAt: VERIFIED_AT,
 };
 
 /**
- * `kind` drives the timeline icon: origin | campus | record | legacy.
- * `campuses` lists institute ids from itiInstitutes.js.
+ * `kind` drives the timeline icon: origin | campus | college | school | record | legacy.
+ * `institutions` lists what opened that year — name, place and affiliation as
+ * printed on the Samiti's institutions board.
  */
+const NCVT = 'NCVT & QCI, New Delhi';
+const iti = (place) => ({ name: 'Satpuda Private ITI', place, affiliation: NCVT });
+
 export const milestones = [
   {
     year: '1999',
-    title: 'The Samiti begins',
-    body: 'Maharana Pratap Shikshan Samiti enters education and training in Balaghat.',
+    title: 'Where it all began',
+    body: 'Maharana Pratap Shikshan Samiti opens its first Satpuda Private ITI at Garra, Balaghat.',
     kind: 'origin',
-    campuses: [],
-    sourceUrls: ['https://satpudaiti.com/about-us/'],
+    institutions: [iti('Garra, Balaghat')],
   },
   {
     year: '2003',
     title: 'First step beyond Balaghat',
-    body: 'Satpuda ITI Kundipura opens in Chhindwara (August 2003).',
+    body: 'A second ITI opens in Chhindwara, near Kundipura Thana.',
     kind: 'campus',
-    campuses: ['chhindwara-kundipura'],
-    sourceUrls: ['https://satpudaiti.com/chhindwara/'],
+    institutions: [iti('Near Kundipura Thana, Chhindwara')],
+  },
+  {
+    year: '2006',
+    title: 'Into teacher education',
+    body: 'Satpuda D.Ed. College opens on the Manjhapur campus.',
+    kind: 'college',
+    institutions: [
+      {
+        name: 'Satpuda D.Ed. College',
+        place: 'Manjhapur, Balaghat',
+        affiliation: 'Madhyamik Shiksha Mandal, Bhopal · CBSE, New Delhi',
+      },
+    ],
   },
   {
     year: '2007',
-    title: 'Three new regions',
-    body: 'Campuses start at Itarsi, Seoni and Rewa in August 2007 — extending the network west to Narmadapuram and north to Vindhya.',
+    title: 'Seoni and Mandla',
+    body: 'Two new ITIs extend the network into Seoni and Mandla districts.',
     kind: 'campus',
-    campuses: ['itarsi', 'seoni', 'rewa'],
-    sourceUrls: [
-      'https://satpudaiti.com/itarsi/',
-      'https://satpudaiti.com/seoni/',
-      'https://satpudaiti.com/iti-rewa/',
+    institutions: [iti('Seladehi, Seoni'), iti('Poundi, Mandla')],
+  },
+  {
+    year: '2009',
+    title: 'Three institutions in one year',
+    body: 'An ITI opens in Betul, while Manjhapur adds a public school and a B.Ed. college.',
+    kind: 'school',
+    institutions: [
+      iti('Bharat Bharti, Betul'),
+      { name: 'Satpuda Valley Public School', place: 'Manjhapur, Balaghat', affiliation: 'CBSE & MP Board, Bhopal' },
+      {
+        name: 'Satpuda B.Ed. College',
+        place: 'Manjhapur, Balaghat',
+        affiliation: 'Rani Durgawati Vishwavidyalaya & NCTE, New Delhi',
+      },
     ],
   },
   {
     year: '2010',
-    title: 'The Manjhapur campus',
-    body: 'Satpuda Private ITI Manjhapur is established (DGET-6/12/6/2010-TC) and Satpuda ITI Mauganj starts in August 2010.',
+    title: 'The Manjhapur ITI',
+    body: 'Satpuda Private ITI opens on the Manjhapur campus — today the group’s flagship.',
     kind: 'campus',
-    campuses: ['manjhapur', 'mauganj'],
-    sourceUrls: ['https://satpudaiti.com/campus-balaghat/', 'https://satpudaiti.com/mauganj/'],
+    institutions: [iti('Manjhapur, Balaghat')],
   },
   {
-    year: '2014',
-    title: 'Into Baihar',
-    body: 'Maharana Pratap ITI Baihar starts in August 2014.',
+    year: '2011',
+    title: 'North to Rewa',
+    body: 'The network reaches the Vindhya region with an ITI at Chorhata, Rewa.',
     kind: 'campus',
-    campuses: ['baihar'],
-    sourceUrls: ['https://satpudaiti.com/iti-baihar/'],
+    institutions: [iti('Chorhata, Rewa')],
+  },
+  {
+    year: '2012',
+    title: 'A second Chhindwara ITI',
+    body: 'Satpuda Private ITI opens near the Warehouse in Chhindwara.',
+    kind: 'campus',
+    institutions: [iti('Near Warehouse, Chhindwara')],
   },
   {
     year: '2015',
-    title: 'Largest single-year expansion',
-    body: 'New Satpuda ITIs at Budhi and Katangi receive DGET references, and campuses start at Betul, Multai and Mandla.',
+    title: 'Multai',
+    body: 'Satpuda Private ITI opens at Chikhali Khurd, Multai.',
     kind: 'campus',
-    campuses: ['budhi', 'katangi', 'betul', 'multai', 'mandla'],
-    sourceUrls: [
-      'https://satpudaiti.com/campus-balaghat/',
-      'https://satpudaiti.com/betul/',
-      'https://satpudaiti.com/multai/',
-      'https://satpudaiti.com/mandla/',
-    ],
+    institutions: [iti('Chikhali Khurd, Multai')],
+  },
+  {
+    year: '2016',
+    title: 'Three new ITIs',
+    body: 'Itarsi, Sarni and Mauganj join the network in a single year.',
+    kind: 'campus',
+    institutions: [iti('Itarsi'), iti('Bagdona, Sarni'), iti('Mauganj, Rewa')],
   },
   {
     year: '2017',
-    title: 'Sarni joins',
-    body: 'Satpuda ITI Sarni starts in December 2017. The same year the group records 587 placements across 11 campus drives.',
-    kind: 'campus',
-    campuses: ['sarni'],
-    sourceUrls: ['https://satpudaiti.com/iti-sarni/', 'https://satpudaiti.com/placement/'],
+    title: '587 trainees placed',
+    body: '587 trainees placed across 11 campus drives.',
+    kind: 'record',
+    institutions: [],
   },
   {
     year: '2018',
     title: 'Peak placement year',
-    body: '1,044 trainees placed through 23 campus drives — the highest year in the published record.',
+    body: '1,044 trainees placed through 23 campus drives — the group’s highest year.',
     kind: 'record',
-    campuses: [],
-    sourceUrls: ['https://satpudaiti.com/placement/'],
+    institutions: [],
   },
   {
     year: '2021',
     title: '94% placement rate',
-    body: '632 trainees placed across 10 drives, as published by the institute.',
+    body: '632 trainees placed across 10 campus drives.',
     kind: 'record',
-    campuses: [],
-    sourceUrls: ['https://satpudaiti.com/placement/'],
+    institutions: [],
   },
   {
     year: '2022',
     title: '23 years of technical education',
     body: 'Satpuda Group marks 23 years (1999–2022) across ITI, school, polytechnic and education colleges.',
     kind: 'legacy',
-    campuses: [],
-    sourceUrls: ['https://satpudaiti.com/about-us/'],
+    institutions: [],
   },
-].map((m) => ({ ...m, verifiedAt: VERIFIED_AT }));
+];

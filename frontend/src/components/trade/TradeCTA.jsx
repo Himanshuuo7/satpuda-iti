@@ -12,8 +12,7 @@ import useSpotlight from '../../hooks/useSpotlight';
 /**
  * Closing call to action — the page's heaviest red lands on "Apply", the
  * published enquiry line sits beneath it, and the other three trades are one
- * click away. The curriculum source closes the page so every fact above can
- * be checked.
+ * click away.
  */
 
 const TRADE_ICON = { electrician: Zap, fitter: Wrench, 'mechanic-diesel': Cog, copa: MonitorCog };
@@ -128,30 +127,6 @@ export function TradeCTA({ trade }) {
             </ul>
           </nav>
         </div>
-
-        <p className="reveal mt-16 border-t border-white/10 pt-6 font-mono text-[0.625rem] uppercase leading-relaxed tracking-[0.12em] text-navy-200/60">
-          Course details:{' '}
-          <a
-            href={trade.source.url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-navy-100 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-tech"
-          >
-            {trade.source.label}
-            <span className="sr-only"> (PDF, opens in a new tab)</span>
-          </a>
-          {' · '}
-          <a
-            href={trade.ctsList}
-            target="_blank"
-            rel="noreferrer"
-            className="text-navy-100 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-tech"
-          >
-            DGT list of CTS trades
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-          . Campuses from the official Satpuda campus pages.
-        </p>
       </div>
     </section>
   );

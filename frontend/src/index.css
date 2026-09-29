@@ -915,6 +915,296 @@
   transition-delay: 80ms;
 }
 
+/* ---------------------------------------------------------------------------
+ * Navigation dropdowns
+ * ------------------------------------------------------------------------- */
+
+/* Items settle in one after another as a menu opens. */
+.nav-drop-item {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 240ms ease,
+    transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-open='true'] .nav-drop-item {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(40ms + var(--i, 0) * 28ms);
+}
+
+/* ---------------------------------------------------------------------------
+ * Section hubs — Placement and Training (the sec-* motion classes)
+ * ------------------------------------------------------------------------- */
+
+/* Page entrance: headline lines rise out of a mask, the rest settles in. */
+.sec-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.sec-line > span {
+  display: inline-block;
+  animation: sec-line 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes sec-line {
+  from { transform: translateY(110%); }
+  to { transform: none; }
+}
+
+.sec-rise {
+  animation: sec-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes sec-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Diagram strokes draw themselves once (paths carry pathLength="1"). */
+.sec-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: sec-draw 1300ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes sec-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.sec-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sec-pop 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes sec-pop {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Devanagari needs room above and below the line for its matras; the display
+   ramp's tight line-height (≈1.0) makes wrapped Hindi lines collide. */
+.font-display[lang='hi'],
+.font-display [lang='hi'],
+[lang='hi'].text-display-md,
+[lang='hi'].text-display-sm {
+  line-height: 1.3;
+}
+
+/* Route change inside the section: the new page fades up in place. */
+.sec-page {
+  animation: sec-page 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes sec-page {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Sub-navigation: one indicator slides to whichever page is active. */
+.sec-indicator {
+  width: var(--w, 0px);
+  transform: translateX(var(--x, 0px));
+  transition:
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 200ms ease;
+}
+
+/* Tiles — hairlines draw across the top and left edges on hover/focus. */
+.sec-tile::before,
+.sec-tile::after {
+  content: '';
+  position: absolute;
+  background: var(--signal);
+  pointer-events: none;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sec-tile::before {
+  inset: 0 0 auto 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.sec-tile::after {
+  inset: 0 auto 0 0;
+  width: 2px;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.sec-tile:hover::before,
+.sec-tile:focus-within::before {
+  transform: scaleX(1);
+}
+
+.sec-tile:hover::after,
+.sec-tile:focus-within::after {
+  transform: scaleY(1);
+  transition-delay: 80ms;
+}
+
+/* A rail that fills with scroll progress (useScrollProgress). */
+.sec-fill-y {
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+}
+
+/* Roadmap segments draw in once their section is visible. */
+.sec-seg-x,
+.sec-seg-y {
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 90ms + 200ms);
+}
+
+.sec-seg-x {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.sec-seg-y {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.sec-seg-x-rev {
+  transform-origin: right;
+}
+
+.is-visible .sec-seg-x,
+.is-visible.sec-seg-x {
+  transform: scaleX(1);
+}
+
+.is-visible .sec-seg-y,
+.is-visible.sec-seg-y {
+  transform: scaleY(1);
+}
+
+/* Skill Connect hub — the word ring turns slowly; each word stays upright.
+   Both keyframes spell out from and to: a word also carries its centring
+   translate, and a `to`-only rotation would interpolate as a matrix and
+   cancel out. */
+.sec-orbit {
+  animation: sec-spin 80s linear infinite;
+}
+
+.sec-orbit-word {
+  transform: translate(-50%, -50%);
+  animation: sec-counter 80s linear infinite;
+}
+
+@keyframes sec-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sec-counter {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@media (hover: hover) {
+  .sec-hub:hover .sec-orbit,
+  .sec-hub:hover .sec-orbit-word {
+    animation-play-state: paused;
+  }
+}
+
+/* Connectors between the hub and its clusters grow out from the hub. */
+.sec-link {
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1) 300ms;
+}
+
+.sec-link-x { transform: scaleX(0); }
+.sec-link-y { transform: scaleY(0); }
+
+.is-visible .sec-link-x { transform: scaleX(1); }
+.is-visible .sec-link-y { transform: scaleY(1); }
+
+/* Chart bars grow from the baseline, then ease between metrics. */
+.sec-bar {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition:
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    height 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 200ms ease;
+  transition-delay: calc(var(--i, 0) * 70ms), 0ms, 0ms;
+}
+
+.is-visible .sec-bar {
+  transform: scaleY(1);
+}
+
+/* Horizontal bars grow from the start line once their section is visible. */
+.sec-bar-x {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 80ms + 150ms);
+}
+
+.is-visible .sec-bar-x {
+  transform: scaleX(1);
+}
+
+/* A soft ring that breathes out from a focal point. */
+.sec-ring {
+  animation: sec-ring 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes sec-ring {
+  0% { transform: scale(0.92); opacity: 0.55; }
+  70%, 100% { transform: scale(1.18); opacity: 0; }
+}
+
+/* Photo viewer: a deep backdrop, and each photo settles in as it changes. */
+.sec-lightbox::backdrop {
+  background: rgba(3, 11, 23, 0.9);
+  backdrop-filter: blur(4px);
+}
+
+.sec-lightbox[open] {
+  animation: sec-fade 280ms ease-out;
+}
+
+.sec-lightbox-figure {
+  animation: sec-lightbox-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes sec-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sec-lightbox-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Name marquee: pause while the pointer rests on it. */
+.sec-marquee-rev {
+  animation-direction: reverse;
+}
+
+@media (hover: hover) {
+  .sec-marquee:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+}
+
 /* Respect the user's motion preference across every animated surface. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -975,6 +1265,36 @@
   }
 
   .trade-spine {
+    transform: none;
+  }
+
+  /* Placement & Training sections: everything lands in place; nothing drifts or loops. */
+  .nav-drop-item,
+  .sec-line > span,
+  .sec-rise,
+  .sec-seg-x,
+  .sec-seg-y,
+  .sec-link,
+  .sec-bar {
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  .sec-orbit,
+  .sec-orbit-word,
+  .sec-ring {
+    animation: none;
+  }
+
+  .sec-bar-x {
+    transition-delay: 0ms !important;
+  }
+
+  .sec-draw {
+    stroke-dashoffset: 0;
+  }
+
+  .sec-fill-y {
     transform: none;
   }
 }

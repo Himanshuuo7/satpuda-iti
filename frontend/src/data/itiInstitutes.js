@@ -5,7 +5,8 @@
  * record) and was retrieved on `verifiedAt`. Nothing is invented: a value the
  * official site does not publish is `null` (or an empty array for trades), and
  * a value two official pages disagree on is recorded in `notes` and either
- * resolved to the more specific source or left `null`.
+ * resolved to the more specific source or left `null`. Where the Samiti's
+ * institutions board (src/assets/iti detail.jpg) gives a year, it wins.
  *
  * `itiCode` is only set where the Govt. of India PMJDY list of MP private ITIs
  * matches the institute by name AND address or email. NCVT MIS itself could
@@ -175,13 +176,13 @@ export const itiInstitutes = [
     location: 'Chhindwara',
     district: 'Chhindwara',
     state: 'Madhya Pradesh',
-    established: null,
+    established: '2012',
     address: 'Behind Phataka Godown, Chhindwara, Madhya Pradesh 480001',
     principal: null,
     phone: '+91 6262604124',
     email: 'satpudachhindwara@gmail.com',
     trades: [],
-    affiliation: null,
+    affiliation: AFFILIATION,
     dgetRef: null,
     itiCode: 'PR23000299',
     coordinates: null,
@@ -189,7 +190,7 @@ export const itiInstitutes = [
     mapsQuery: 'Satpuda ITI Chhindwara Warehouse',
     sourceUrls: [SRC.contact, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
-    notes: 'No official campus page; trades and year not published.',
+    notes: 'No official campus page; trades not published. Year and affiliation from the institutions board ("Near Warehouse").',
   },
   {
     id: 'betul',
@@ -245,7 +246,7 @@ export const itiInstitutes = [
     location: 'Salaiya, Sarni',
     district: 'Betul',
     state: 'Madhya Pradesh',
-    established: '2017',
+    established: '2016',
     address: 'Salaiya, Near Geeta Mandir, Sarni, Madhya Pradesh 460449',
     principal: 'Niranjan More',
     phone: '+91 6262604127',
@@ -259,7 +260,7 @@ export const itiInstitutes = [
     mapsQuery: 'Salaiya, Sarni, Madhya Pradesh 460449',
     sourceUrls: [SRC.contact, SRC.sarni],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Dec 2017".',
+    notes: 'Institutions board: 2016 ("Bagdona, Sarni"); the campus page said Dec 2017.',
   },
   {
     id: 'itarsi',
@@ -268,7 +269,7 @@ export const itiInstitutes = [
     location: 'Itarsi, Narmadapuram',
     district: 'Narmadapuram',
     state: 'Madhya Pradesh',
-    established: '2007',
+    established: '2016',
     address: 'Near FCI, Jamani Road, Itarsi, Madhya Pradesh 461114',
     principal: 'Raju Patle',
     phone: '+91 6262604126',
@@ -282,7 +283,7 @@ export const itiInstitutes = [
     mapsQuery: 'Satpuda ITI Itarsi',
     sourceUrls: [SRC.contact, SRC.itarsi],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Aug 2007". Only campus publishing COPA.',
+    notes: 'Institutions board: 2016; the campus page said Aug 2007. Only campus publishing COPA.',
   },
   {
     id: 'seoni',
@@ -314,7 +315,7 @@ export const itiInstitutes = [
     location: 'Maharajpur Poundi, Mandla',
     district: 'Mandla',
     state: 'Madhya Pradesh',
-    established: '2015',
+    established: '2007',
     address: 'Nainpur Road, Maharajpur Poundi, Mandla, Madhya Pradesh 481661',
     principal: 'Nand Kishor Kushre',
     phone: '+91 6262604118',
@@ -329,7 +330,7 @@ export const itiInstitutes = [
     sourceUrls: [SRC.contact, SRC.mandla, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes:
-      'Campus page: "started from Aug 2015". Its address line wrongly repeats Mauganj (template error); contact page address used.',
+      'Institutions board: 2007 ("Pondi, Mandla"); the campus page said Aug 2015. Its address line wrongly repeats Mauganj (template error); contact page address used.',
   },
   {
     id: 'rewa',
@@ -338,7 +339,7 @@ export const itiInstitutes = [
     location: 'Chorhata, Rewa',
     district: 'Rewa',
     state: 'Madhya Pradesh',
-    established: '2007',
+    established: '2011',
     address: 'Chorhata, Rewa, Madhya Pradesh 486001',
     principal: 'Abhilash Khare',
     phone: '+91 6262604134',
@@ -352,7 +353,7 @@ export const itiInstitutes = [
     mapsQuery: 'Satpuda ITI Rewa',
     sourceUrls: [SRC.contact, SRC.rewa, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Aug 2007".',
+    notes: 'Institutions board: 2011 ("Chorhata, Rewa"); the campus page said Aug 2007.',
   },
   {
     id: 'shiksha-rewa',
@@ -384,7 +385,7 @@ export const itiInstitutes = [
     location: 'Mauganj',
     district: 'Mauganj',
     state: 'Madhya Pradesh',
-    established: '2010',
+    established: '2016',
     address: 'Mauganj Rewa Sidhi Road, Mauganj, Madhya Pradesh 486331',
     principal: 'Vivek Tiwari',
     phone: '+91 6262604132',
@@ -398,7 +399,7 @@ export const itiInstitutes = [
     mapsQuery: 'Satpuda ITI Mauganj',
     sourceUrls: [SRC.contact, SRC.mauganj],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Aug 2010". Mauganj became a district in 2023 (earlier part of Rewa).',
+    notes: 'Institutions board: 2016; the campus page said Aug 2010. Mauganj became a district in 2023 (earlier part of Rewa).',
   },
 ];
 
@@ -415,17 +416,6 @@ export const regionCount = (regionId) =>
   regionId === 'all'
     ? itiInstitutes.length
     : itiInstitutes.filter((i) => i.district.toLowerCase() === regionId).length;
-
-/**
- * Attributed organisational claims about the size of the network. They
- * conflict with each other and with the 15 individually verifiable records, so
- * they are only ever shown quoted and sourced — never as the page's own count.
- */
-export const networkClaims = [
-  { claim: '20+ Institutes', context: 'Satpuda ITI website footer', source: 'https://satpudaiti.com/about-us/' },
-  { claim: '18 institutes in 10 locations', context: 'Satpuda Group website (2021)', source: 'http://ardentsatpuda.satpudaiti.com/' },
-  { claim: '15 ITI campuses', context: 'Satpuda ITI homepage counter', source: 'https://satpudaiti.com/' },
-];
 
 /** Precise head-office location (official contact-page map embed). */
 export const headOffice = itiInstitutes[0];

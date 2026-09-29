@@ -13,8 +13,7 @@ import { itiInstitutes } from '../../data/itiInstitutes';
  *
  * The founding year is set as a large outlined numeral that stays pinned while
  * the story scrolls beside it. Mission and vision are the institute's own
- * published wording. The three counters are either derived from the data files
- * or quoted from the official site with their source.
+ * wording. The three counters are derived from the data files.
  */
 
 const PLACED_TOTAL = placement.record.reduce((n, r) => n + r.placed, 0);
@@ -108,9 +107,9 @@ export function StorySection() {
           </div>
 
           <div className="reveal mt-12 grid gap-8 sm:grid-cols-3" style={{ '--reveal-delay': '160ms' }}>
-            <Counter value={23} suffix=" yrs" label="Of technical education" note="1999–2022 · official" />
-            <Counter value={itiInstitutes.length} label="Verified ITI records" note="satpudaiti.com/contact" />
-            <Counter value={PLACED_TOTAL} label={`Trainees placed, ${FIRST}–${LAST}`} note="Published placement table" />
+            <Counter value={23} suffix=" yrs" label="Of technical education" note="1999–2022" />
+            <Counter value={itiInstitutes.length} label="ITI campuses" note="Across Madhya Pradesh" />
+            <Counter value={PLACED_TOTAL} label={`Trainees placed, ${FIRST}–${LAST}`} note="Through campus drives" />
           </div>
 
           {/* Mission & vision */}
@@ -141,7 +140,7 @@ export function StorySection() {
                 <p className="mt-1 text-[1rem] text-ink-muted">{story.taglineEn}</p>
               </blockquote>
               <figcaption className="mt-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
-                Satpuda ITIs — official about page
+                Satpuda ITIs
               </figcaption>
             </div>
           </figure>

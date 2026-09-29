@@ -181,7 +181,7 @@ export function Campuses() {
             lede="From the head office at Manjhapur, Balaghat, the network reaches west to Itarsi and north to Rewa and Mauganj. Pick a campus to see its trades, contacts and the way there."
             className="max-w-xl"
           />
-          <Button to="/campuses" variant="outline" className="reveal self-start lg:self-auto">
+          <Button to="/about#network" variant="outline" className="reveal self-start lg:self-auto">
             All campuses
             <ArrowRight
               aria-hidden="true"
@@ -378,7 +378,7 @@ export function Campuses() {
                           </ul>
                         ) : (
                           <p className="mt-2 text-[0.8125rem] text-navy-100/55">
-                            Not published on the official site.
+                            Contact the campus for trades.
                           </p>
                         )}
                       </div>

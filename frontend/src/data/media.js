@@ -23,6 +23,23 @@ import practicalTraining from '../assets/images/gallery/practical-training.jpg';
 import students01 from '../assets/images/gallery/students-01.jpg';
 import students02 from '../assets/images/gallery/students-02.jpg';
 import students03 from '../assets/images/gallery/students-03.jpg';
+import benchPractical from '../assets/images/gallery/bench-practical.jpg';
+import certificates from '../assets/images/gallery/certificates.jpg';
+import culturalDance from '../assets/images/gallery/cultural-dance.jpg';
+import examHall from '../assets/images/gallery/exam-hall.jpg';
+import facultyClassroom from '../assets/images/gallery/faculty-classroom.jpg';
+import fittingWorkshop from '../assets/images/gallery/fitting-workshop.jpg';
+import industrialVisit from '../assets/images/gallery/industrial-visit.jpg';
+import moilVisit from '../assets/images/gallery/moil-visit.jpg';
+import nsdcTraining from '../assets/images/gallery/nsdc-training.jpg';
+import powerHouseVisit from '../assets/images/gallery/power-house-visit.jpg';
+import sportsGroup from '../assets/images/gallery/sports-group.jpg';
+import sportsTrophy from '../assets/images/gallery/sports-trophy.jpg';
+import wiringProject from '../assets/images/gallery/wiring-project.jpg';
+import workshopAssembly from '../assets/images/gallery/workshop-assembly.jpg';
+import workshopFloor from '../assets/images/gallery/workshop-floor.jpg';
+import workshopSeminar from '../assets/images/gallery/workshop-seminar.jpg';
+import activitiesCollage from '../assets/images/gallery/activities-collage.jpg';
 
 // Alumni portraits
 import shailendra from '../assets/images/testimonials/shailendra-mishra.png';
@@ -85,7 +102,131 @@ export const photos = {
     alt: 'Satpuda ITI trainees at an institute event',
     ratio: '4/3',
   },
+  // From the institute's gallery and activities pages.
+  benchPractical: {
+    src: benchPractical,
+    alt: 'Trainees working at a bench with their instructor during a practical session',
+    ratio: '4/3',
+  },
+  certificates: {
+    src: certificates,
+    alt: 'Trainees holding up their certificates in a hall at Satpuda Pvt. ITI',
+    ratio: '3/2',
+  },
+  culturalDance: {
+    src: culturalDance,
+    alt: 'Trainees performing a dance on stage at a Satpuda Pvt. ITI cultural programme',
+    ratio: '3/2',
+  },
+  examHall: {
+    src: examHall,
+    alt: 'Trainees seated at rows of desks in a Satpuda ITI examination hall',
+    ratio: '3/2',
+  },
+  facultyClassroom: {
+    src: facultyClassroom,
+    alt: 'Faculty members with trainees in a Satpuda ITI classroom',
+    ratio: '2/1',
+  },
+  fittingWorkshop: {
+    src: fittingWorkshop,
+    alt: 'Fitting workshop with rows of bench vices at a Satpuda ITI campus',
+    ratio: '4/3',
+  },
+  industrialVisit: {
+    src: industrialVisit,
+    alt: 'Trainees with their instructor during an industrial visit',
+    ratio: '16/9',
+  },
+  moilVisit: {
+    src: moilVisit,
+    alt: 'Trainees on an industrial visit to the MOIL site at Tirodi',
+    ratio: '2/1',
+  },
+  nsdcTraining: {
+    src: nsdcTraining,
+    alt: 'Trainees attending an NSDC training session in a large hall',
+    ratio: '2/1',
+  },
+  powerHouseVisit: {
+    src: powerHouseVisit,
+    alt: 'Trainees during a power house visit',
+    ratio: '1/1',
+  },
+  sportsGroup: {
+    src: sportsGroup,
+    alt: 'Satpuda ITI trainees and staff in a group photo on the sports ground',
+    ratio: '3/2',
+  },
+  sportsTrophy: {
+    src: sportsTrophy,
+    alt: 'Trainees celebrating with a trophy after a sports event',
+    ratio: '3/2',
+  },
+  wiringProject: {
+    src: wiringProject,
+    alt: 'Electrical wiring project board built by trainees',
+    ratio: '4/3',
+  },
+  workshopAssembly: {
+    src: workshopAssembly,
+    alt: 'Trainees gathered in a Satpuda ITI workshop hall for a session',
+    ratio: '4/3',
+  },
+  workshopFloor: {
+    src: workshopFloor,
+    alt: 'Workshop floor with work tables at a Satpuda ITI campus',
+    ratio: '4/3',
+  },
+  workshopSeminar: {
+    src: workshopSeminar,
+    alt: 'Trainees seated in rows in a workshop hall during a session',
+    ratio: '16/9',
+  },
+  activitiesCollage: {
+    src: activitiesCollage,
+    alt: 'Satpuda ITI activities board: newspaper coverage of institute events and photographs from industrial visits',
+    ratio: '10/7',
+  },
 };
+
+/**
+ * The Gallery page's photographs, grouped for its filter. Every photograph is
+ * the institute's own; the grouping is by what each one shows.
+ */
+export const galleryGroups = [
+  { id: 'workshop', label: 'Workshops & practicals' },
+  { id: 'classroom', label: 'Classrooms & sessions' },
+  { id: 'visits', label: 'Industrial visits' },
+  { id: 'life', label: 'Campus life' },
+];
+
+export const galleryPhotos = [
+  ['garraWorkshop', 'workshop'],
+  ['campusPanorama', 'classroom'],
+  ['culturalDance', 'life'],
+  ['moilVisit', 'visits'],
+  ['practicalTraining', 'workshop'],
+  ['facultyClassroom', 'classroom'],
+  ['sportsTrophy', 'life'],
+  ['powerHouseVisit', 'visits'],
+  ['benchPractical', 'workshop'],
+  ['nsdcTraining', 'classroom'],
+  ['students01', 'life'],
+  ['industrialVisit', 'visits'],
+  ['wiringProject', 'workshop'],
+  ['examHall', 'classroom'],
+  ['sportsGroup', 'life'],
+  ['practicalWorkshop', 'workshop'],
+  ['classroom', 'classroom'],
+  ['certificates', 'life'],
+  ['workshopFloor', 'workshop'],
+  ['workshopSeminar', 'classroom'],
+  ['students02', 'life'],
+  ['fittingWorkshop', 'workshop'],
+  ['workshopAssembly', 'classroom'],
+  ['students03', 'life'],
+].map(([key, group]) => ({ key, group, ...photos[key] }));
 
 export const portraits = {
   'shailendra-mishra.png': shailendra,
@@ -95,21 +236,39 @@ export const portraits = {
 };
 
 /**
- * Recruiter marks shown on the official homepage. They are presented as
- * published logos only — the site does not name the companies in text, so no
- * company name is asserted here.
+ * Recruiter marks shown on the official homepage, in file order
+ * (recruiter-1.png … recruiter-11.png). Each company also appears on the
+ * institute's recruiters board, so the marks are named for their alt text.
  */
 const recruiterModules = import.meta.glob(
   '../assets/images/recruiters/*.png',
   { eager: true, import: 'default' }
 );
 
+const RECRUITER_NAMES = [
+  'IndianOil',
+  'Bridgestone',
+  'Suzuki',
+  'Mahindra',
+  'Tata Motors',
+  'Honda',
+  'Bajaj',
+  'BHEL',
+  'Toyota',
+  'Hero',
+  'Hyundai',
+];
+
 export const recruiterLogos = Object.entries(recruiterModules)
   .sort(([a], [b]) => {
     const n = (s) => Number(s.match(/recruiter-(\d+)/)?.[1] ?? 0);
     return n(a) - n(b);
   })
-  .map((entry, i) => ({ src: entry[1], alt: `Recruiter ${i + 1}` }));
+  .map((entry, i) => ({
+    src: entry[1],
+    name: RECRUITER_NAMES[i] ?? `Recruiter ${i + 1}`,
+    alt: RECRUITER_NAMES[i] ? `${RECRUITER_NAMES[i]} logo` : `Recruiter ${i + 1}`,
+  }));
 
 /** Ordered set used by the homepage gallery preview. */
 export const galleryPreview = [

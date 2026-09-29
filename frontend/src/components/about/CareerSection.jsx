@@ -9,8 +9,7 @@ import cn from '../../utils/cn';
 /**
  * Industry & career.
  *
- * Six pillars, each a paraphrase of a specific line on the official training
- * or placement page. The placement record is the institute's own published
+ * Six pillars of career support. The placement record is the institute's own
  * table, charted as one series (trainees placed) with the rate, drives and
  * salary in each bar's tooltip and a full table view beneath. The language is
  * "support" and "record" — never a guarantee.
@@ -21,37 +20,31 @@ const PILLARS = [
     icon: Factory,
     title: 'Industry exposure',
     body: 'Periodic industry visits, with faculty and students taking up real-life problems from industry for problem solving.',
-    source: '/placement',
   },
   {
     icon: HardHat,
     title: 'On-the-job training',
     body: 'Field exposure, hands-on practice and industrial projects are part of the learning process.',
-    source: '/training',
   },
   {
     icon: TrendingUp,
     title: 'Skill development',
     body: 'STEP (Skill Enhancement Training Programme) and NSDC courses alongside the NCVT trade.',
-    source: '/about-us',
   },
   {
     icon: Briefcase,
     title: 'Placement support',
     body: 'The placement cell arranges campus interviews and contacts local industries for their manpower requirements.',
-    source: '/placement',
   },
   {
     icon: Lightbulb,
     title: 'Entrepreneurship',
     body: 'Self-employment camps share information on government self-employment schemes.',
-    source: '/placement',
   },
   {
     icon: Compass,
     title: 'Career development',
     body: 'Counselling from private and government sectors, guest faculty, and seminars on local employment opportunities.',
-    source: '/placement',
   },
 ];
 
@@ -159,11 +152,7 @@ function PlacementChart() {
       </details>
 
       <p className="mt-4 text-[0.75rem] leading-relaxed text-ink-soft">
-        Figures as published by Satpuda ITI on{' '}
-        <a href="https://satpudaiti.com/placement/" target="_blank" rel="noopener noreferrer" className="underline decoration-navy-200 underline-offset-4 hover:text-royal">
-          satpudaiti.com/placement
-        </a>
-        . Placement support is not a guarantee of employment.
+        Placement support is not a guarantee of employment.
       </p>
     </figure>
   );
@@ -206,7 +195,6 @@ export function CareerSection() {
                 />
                 <h3 className="mt-4 text-[1rem] font-semibold text-navy-800">{p.title}</h3>
                 <p className="mt-1.5 text-[0.875rem] leading-[1.6] text-ink-muted">{p.body}</p>
-                <p className="mt-2 font-mono text-[0.5625rem] uppercase tracking-[0.14em] text-ink-soft">satpudaiti.com{p.source}</p>
               </li>
             ))}
           </ul>

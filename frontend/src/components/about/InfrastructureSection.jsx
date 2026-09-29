@@ -116,9 +116,6 @@ export function InfrastructureSection() {
                 </li>
               ))}
             </ul>
-            <p className="reveal mt-6 text-[0.75rem] text-ink-soft" style={{ '--reveal-delay': '120ms' }}>
-              Source: satpudaiti.com/training · Photographs: satpudaiti.com gallery
-            </p>
           </div>
         </div>
       </div>

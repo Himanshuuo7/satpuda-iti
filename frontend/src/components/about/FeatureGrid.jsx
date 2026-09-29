@@ -36,7 +36,7 @@ export function FeatureGrid() {
                 <span className="text-royal">Satpuda ITIs.</span>
               </>
             }
-            lede="Satpuda publishes this list against a baseline ITI. Each point is the institute’s own; the one-line notes draw on its training and placement pages."
+            lede="What a Satpuda trainee gets, set against a typical ITI — from how trades are taught to the support that continues after the course."
             className="lg:col-span-7"
           />
 
@@ -119,10 +119,6 @@ export function FeatureGrid() {
           {/* Fills the odd cell in the two-column layout so no bare hairline shows. */}
           <li aria-hidden="true" className="hidden bg-white blueprint-light sm:block lg:hidden" />
         </ul>
-
-        <p className="mt-4 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-soft">
-          Source: satpudaiti.com/about-us · /training · /placement
-        </p>
       </div>
     </section>
   );

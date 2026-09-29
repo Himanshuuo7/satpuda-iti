@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Award, Building2, Flag, Trophy } from 'lucide-react';
+import { Award, Building2, Flag, GraduationCap, School, Trophy } from 'lucide-react';
 
 import SectionHeading from '../ui/SectionHeading';
 import useRevealEach from '../../hooks/useRevealEach';
 import useScrollProgress from '../../hooks/useScrollProgress';
 import { milestones } from '../../data/satpudaHistory';
-import { itiInstitutes } from '../../data/itiInstitutes';
 import cn from '../../utils/cn';
 
 /**
@@ -14,11 +13,17 @@ import cn from '../../utils/cn';
  * On phones the spine runs down the left edge; from `md` it sits in the centre
  * and milestones alternate sides. The milestone crossing the middle of the
  * viewport becomes active (year highlighted, icon turns), and every milestone
- * already passed stays "reached". Dates come only from official pages.
+ * already passed stays "reached". Each year lists the institutions it opened.
  */
 
-const KIND_ICON = { origin: Flag, campus: Building2, record: Trophy, legacy: Award };
-const nameOf = Object.fromEntries(itiInstitutes.map((i) => [i.id, i.shortName]));
+const KIND_ICON = {
+  origin: Flag,
+  campus: Building2,
+  college: GraduationCap,
+  school: School,
+  record: Trophy,
+  legacy: Award,
+};
 
 export function JourneyTimeline() {
   const ref = useRevealEach();
@@ -55,10 +60,10 @@ export function JourneyTimeline() {
           eyebrow="Our journey"
           title={
             <>
-              Milestones, <span className="text-ink-muted">as the record shows them.</span>
+              From one ITI in Garra <span className="text-ink-muted">to a network across MP.</span>
             </>
           }
-          lede="Every date below comes from an official Satpuda page — a campus “started from” line, a DGET reference or the published placement table. Nothing is estimated."
+          lede="Since 1999, Maharana Pratap Shikshan Samiti has opened ITIs, colleges and a school across Madhya Pradesh — here is how the Satpuda family grew, year by year."
           className="max-w-3xl"
         />
 
@@ -126,30 +131,25 @@ export function JourneyTimeline() {
                     {m.body}
                   </p>
 
-                  {m.campuses.length > 0 && (
+                  {m.institutions.length > 0 && (
                     <ul
-                      aria-label="Campuses"
-                      className={cn('mt-4 flex flex-wrap gap-1.5', !right && 'md:justify-end')}
+                      aria-label={`Institutions opened in ${m.year}`}
+                      className={cn(
+                        'mt-5 max-w-md divide-y divide-navy-50 overflow-hidden rounded-edge border border-navy-100 bg-white text-left',
+                        !right && 'md:ml-auto'
+                      )}
                     >
-                      {m.campuses.map((id) => (
-                        <li
-                          key={id}
-                          className="rounded-sharp border border-navy-100 bg-white px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-navy-600"
-                        >
-                          {nameOf[id]}
+                      {m.institutions.map((inst) => (
+                        <li key={`${inst.name}-${inst.place}`} className="px-4 py-3">
+                          <p className="text-[0.9063rem] font-semibold text-navy-800">{inst.name}</p>
+                          <p className="mt-0.5 text-[0.8125rem] text-ink-muted">{inst.place}</p>
+                          <p className="mt-1.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-royal">
+                            {inst.affiliation}
+                          </p>
                         </li>
                       ))}
                     </ul>
                   )}
-
-                  <a
-                    href={m.sourceUrls[0]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-block font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-soft underline decoration-navy-200 underline-offset-4 transition-colors hover:text-royal"
-                  >
-                    Source<span className="sr-only"> for {m.year} (opens in a new tab)</span>
-                  </a>
                 </div>
               </li>
             );

@@ -14,6 +14,10 @@
  * require touching components.
  */
 
+import { PLACEMENT_BASE, placementPages } from './placementPages';
+import { TRAINING_BASE, trainingPages } from './trainingPages';
+import { ACTIVITY_BASE, activityPages } from './activityPages';
+
 // ---------------------------------------------------------------------------
 // Institute identity
 // ---------------------------------------------------------------------------
@@ -244,7 +248,6 @@ export const placement = {
     'To provide newspapers, magazines and employment news to trainees.',
     'To provide computer and internet facilities for job searching and on-line job registration.',
   ],
-  sourceNote: 'Figures as published by Satpuda ITI on satpudaiti.com/placement',
 };
 
 /**
@@ -535,15 +538,23 @@ export const navigation = [
     match: '/trades',
     children: trades.map((t) => ({ label: t.name, to: t.slug })),
   },
-  { label: 'Training', to: '/training' },
-  { label: 'Placements', to: '/placements' },
+  // Placement, then Training — the order and the dropdowns of the institute's
+  // own menu.
   {
-    label: 'Campuses',
-    to: '/campuses',
-    children: [
-      { label: 'All Campuses', to: '/campuses' },
-      ...campuses.slice(0, 6).map((c) => ({ label: c.city, to: '/campuses' })),
-    ],
+    label: 'Placement',
+    to: PLACEMENT_BASE,
+    children: placementPages.map((p) => ({ label: p.label, to: p.to, description: p.summary })),
+  },
+  {
+    label: 'Training',
+    to: TRAINING_BASE,
+    children: trainingPages.map((p) => ({ label: p.label, to: p.to, description: p.summary })),
+  },
+  {
+    label: 'Activity',
+    // A menu only, as on the institute's website — no page of its own.
+    match: ACTIVITY_BASE,
+    children: activityPages.map((p) => ({ label: p.label, to: p.to, description: p.summary })),
   },
   { label: 'Contact', to: '/contact' },
 ];

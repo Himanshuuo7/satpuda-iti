@@ -932,7 +932,7 @@ function faqsFor(t) {
     {
       q: `Which Satpuda campuses offer ${t.name}?`,
       a: campuses.length
-        ? `${campuses.map((c) => c.shortName).join(', ')} publish ${t.name} on their official campus pages. Please call the campus for current seats and admission dates.`
+        ? `${t.name} is offered at ${campuses.map((c) => c.shortName).join(', ')}. Please call the campus for current seats and admission dates.`
         : 'Please contact the head office for the campuses running this trade this session.',
     },
   ];
