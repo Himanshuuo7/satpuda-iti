@@ -15,6 +15,10 @@ export default defineConfig({
   server: {
     port: 5173,
     open: false,
+    // Dev only: forward API calls to the Express backend (backend/).
+    proxy: {
+      '/api': 'http://localhost:5000',
+    },
   },
   build: {
     target: 'es2020',

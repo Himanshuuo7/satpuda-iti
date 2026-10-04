@@ -4,7 +4,7 @@
  * per resource.
  */
 
-import { resolve } from './api';
+import { post, resolve } from './api';
 import {
   accreditations,
   campuses,
@@ -42,12 +42,10 @@ export const getCounters = () => resolve('/api/stats', () => homeCounters);
 
 export const getNotices = () => resolve('/api/notices', () => noticeBoard);
 
-export const getContact = () => resolve('/api/contact', () => contact);
+export const getContact = () => resolve('/api/contact-info', () => contact);
 
-/**
- * Admission enquiry submission. Intentionally not wired to a backend yet —
- * the contract is declared so the form can be built against it later.
- */
-export const submitEnquiry = async () => {
-  throw new Error('Enquiry submission requires the backend (not built in this phase).');
-};
+/** Online admission application (basic details). Resolves { message, data: { referenceNo } }. */
+export const submitAdmission = (form) => post('/api/admissions', form);
+
+/** Contact-page message. */
+export const submitContact = (form) => post('/api/contact', form);

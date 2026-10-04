@@ -14,23 +14,11 @@ const TradePage = lazy(() => import('../pages/TradePage'));
 const PlacementPage = lazy(() => import('../pages/PlacementPage'));
 const TrainingPage = lazy(() => import('../pages/TrainingPage'));
 const ActivityPage = lazy(() => import('../pages/ActivityPage'));
+const AdmissionPage = lazy(() => import('../pages/AdmissionPage'));
+const ContactPage = lazy(() => import('../pages/ContactPage'));
+const AdminPage = lazy(() => import('../pages/AdminPage'));
 
-export const placeholderRoutes = [
-  {
-    path: '/contact',
-    title: 'Contact.',
-    eyebrow: 'Get in touch',
-    description:
-      'The contact page with an enquiry form is being prepared. Head office and campus contact details are published in the footer and campus section.',
-  },
-  {
-    path: '/admission',
-    title: 'Admission.',
-    eyebrow: 'Apply',
-    description:
-      'Online admission enquiry is being prepared. To apply now, call the enquiry number below or email the institute directly.',
-  },
-];
+export const placeholderRoutes = [];
 
 /**
  * Old and index URLs that only redirect. The trade pages moved from /courses/*
@@ -59,4 +47,15 @@ export const redirects = [
   { from: '/training/news', to: '/activity/news' },
 ];
 
-export { Home, About, TradePage, PlacementPage, TrainingPage, ActivityPage, PlaceholderPage };
+export {
+  Home,
+  About,
+  TradePage,
+  PlacementPage,
+  TrainingPage,
+  ActivityPage,
+  AdmissionPage,
+  ContactPage,
+  AdminPage,
+  PlaceholderPage,
+};

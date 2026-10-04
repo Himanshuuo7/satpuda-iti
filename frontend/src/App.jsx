@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
@@ -8,6 +8,9 @@ import { NotFoundPage } from './pages/PlaceholderPage';
 import {
   About,
   ActivityPage,
+  AdminPage,
+  AdmissionPage,
+  ContactPage,
   Home,
   PlaceholderPage,
   PlacementPage,
@@ -37,10 +40,13 @@ function RouteFallback() {
 }
 
 export function App() {
+  // The admin dashboard has its own chrome — no public header or footer.
+  const isAdmin = useLocation().pathname.startsWith('/admin');
+
   return (
     <>
       <ScrollToTop />
-      <Navbar />
+      {!isAdmin && <Navbar />}
 
       <Suspense fallback={<RouteFallback />}>
         <Routes>
@@ -58,6 +64,9 @@ export function App() {
           <Route path="/placements/:slug?" element={<PlacementPage />} />
           <Route path="/training/:slug?" element={<TrainingPage />} />
           <Route path="/activity/:slug?" element={<ActivityPage />} />
+          <Route path="/admission" element={<AdmissionPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/admin" element={<AdminPage />} />
 
           {redirects.map(({ from, to }) => (
             <Route key={from} path={from} element={<Navigate to={to} replace />} />
@@ -81,7 +90,7 @@ export function App() {
         </Routes>
       </Suspense>
 
-      <Footer />
+      {!isAdmin && <Footer />}
     </>
   );
 }

@@ -13,10 +13,12 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 export const hasRemoteApi = Boolean(API_BASE_URL);
 
 class ApiError extends Error {
-  constructor(message, status) {
+  constructor(message, status, errors = null) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
+    /** Field-keyed validation messages from a 422, e.g. { phone: '…' }. */
+    this.errors = errors;
   }
 }
 
@@ -59,4 +61,32 @@ export async function resolve(path, local) {
     }
   }
   return local();
+}
+
+/**
+ * Form submissions. Unlike reads these always go to the backend — there is no
+ * local fallback for saving data. With no base URL set the path stays relative,
+ * which the Vite dev proxy forwards to the Express server.
+ */
+export async function post(path, body) {
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    throw new ApiError('Could not reach the server. Check your connection and try again.', 0);
+  }
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new ApiError(
+      data.message ?? 'Something went wrong. Please try again.',
+      response.status,
+      data.errors ?? null
+    );
+  }
+  return data;
 }
