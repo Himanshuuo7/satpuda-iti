@@ -6,7 +6,7 @@
  * official site does not publish is `null` (or an empty array for trades), and
  * a value two official pages disagree on is recorded in `notes` and either
  * resolved to the more specific source or left `null`. Where the Samiti's
- * institutions board (src/assets/iti detail.jpg) gives a year, it wins.
+ * institutions board (src/assets/iti detail.webp) gives a year, it wins.
  *
  * `itiCode` is only set where the Govt. of India PMJDY list of MP private ITIs
  * matches the institute by name AND address or email. NCVT MIS itself could

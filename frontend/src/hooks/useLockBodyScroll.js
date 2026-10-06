@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { lockPageScroll, unlockPageScroll } from '../utils/smoothScroll';
+
 /**
  * Freezes background scrolling while an overlay (the mobile drawer) is open.
  *
@@ -17,10 +19,13 @@ export function useLockBodyScroll(locked) {
 
     body.style.overflow = 'hidden';
     if (gap > 0) body.style.paddingRight = `${gap}px`;
+    // The smooth scroller drives the window itself, so it must pause too.
+    lockPageScroll();
 
     return () => {
       body.style.overflow = previousOverflow;
       body.style.paddingRight = previousPadding;
+      unlockPageScroll();
     };
   }, [locked]);
 }

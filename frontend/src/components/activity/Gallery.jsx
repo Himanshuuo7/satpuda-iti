@@ -34,7 +34,7 @@ function Fan() {
             .filter(Boolean)
             .join(' ')}
         >
-          <img src={p.src} alt="" aria-hidden="true" className="aspect-[4/3] h-full w-full object-cover" />
+          <img src={p.src} alt="" aria-hidden="true" decoding="async" className="aspect-[4/3] h-full w-full object-cover" />
         </div>
       ))}
     </div>

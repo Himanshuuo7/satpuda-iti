@@ -2,7 +2,7 @@
  * Satpuda ITI — story and milestones.
  *
  * Institution years come from the Samiti's "Our Institutions" board
- * (src/assets/iti detail.jpg); placement years from the placement table.
+ * (src/assets/iti detail.webp); placement years from the placement table.
  */
 
 export const story = {

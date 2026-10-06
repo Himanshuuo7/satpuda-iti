@@ -55,6 +55,14 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Any anchor target clears the fixed header. By the time a jump lands the
+     header has collapsed to its scrolled height, so that is what to reserve.
+     `:where` keeps this at zero specificity, so a section's own `scroll-mt-*`
+     still wins. */
+  :where([id]) {
+    scroll-margin-top: calc(var(--navbar-h-scrolled) + 1rem);
+  }
+
   body {
     @apply bg-canvas text-ink font-sans antialiased;
     /* Guard against any single element forcing sideways scroll. */

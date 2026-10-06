@@ -69,6 +69,7 @@ export function Lightbox({ items, index, onIndex, onClose, label = 'Photo viewer
             <img
               src={item.src}
               alt={item.alt}
+              decoding="async"
               className="max-h-[calc(100svh-10rem)] w-auto max-w-full rounded-edge bg-navy-900 object-contain shadow-deep"
             />
             <figcaption className="mt-3 max-w-2xl text-center text-[0.875rem] leading-snug text-navy-100/85">

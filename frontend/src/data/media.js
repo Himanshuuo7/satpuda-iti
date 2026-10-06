@@ -11,41 +11,41 @@
  */
 
 // Brand
-import logoMark from '../assets/images/brand/logo-round.png';
-import mpMap from '../assets/images/brand/mp-locations-map.png';
+import logoMark from '../assets/images/brand/logo-round.webp';
+import mpMap from '../assets/images/brand/mp-locations-map.webp';
 
 // Campus / training photography
-import campusPanorama from '../assets/images/gallery/campus-panorama.jpg';
-import classroom from '../assets/images/gallery/classroom.jpg';
-import garraWorkshop from '../assets/images/gallery/garra-workshop.jpg';
-import practicalWorkshop from '../assets/images/gallery/practical-workshop.jpg';
-import practicalTraining from '../assets/images/gallery/practical-training.jpg';
-import students01 from '../assets/images/gallery/students-01.jpg';
-import students02 from '../assets/images/gallery/students-02.jpg';
-import students03 from '../assets/images/gallery/students-03.jpg';
-import benchPractical from '../assets/images/gallery/bench-practical.jpg';
-import certificates from '../assets/images/gallery/certificates.jpg';
-import culturalDance from '../assets/images/gallery/cultural-dance.jpg';
-import examHall from '../assets/images/gallery/exam-hall.jpg';
-import facultyClassroom from '../assets/images/gallery/faculty-classroom.jpg';
-import fittingWorkshop from '../assets/images/gallery/fitting-workshop.jpg';
-import industrialVisit from '../assets/images/gallery/industrial-visit.jpg';
-import moilVisit from '../assets/images/gallery/moil-visit.jpg';
-import nsdcTraining from '../assets/images/gallery/nsdc-training.jpg';
-import powerHouseVisit from '../assets/images/gallery/power-house-visit.jpg';
-import sportsGroup from '../assets/images/gallery/sports-group.jpg';
-import sportsTrophy from '../assets/images/gallery/sports-trophy.jpg';
-import wiringProject from '../assets/images/gallery/wiring-project.jpg';
-import workshopAssembly from '../assets/images/gallery/workshop-assembly.jpg';
-import workshopFloor from '../assets/images/gallery/workshop-floor.jpg';
-import workshopSeminar from '../assets/images/gallery/workshop-seminar.jpg';
-import activitiesCollage from '../assets/images/gallery/activities-collage.jpg';
+import campusPanorama from '../assets/images/gallery/campus-panorama.webp';
+import classroom from '../assets/images/gallery/classroom.webp';
+import garraWorkshop from '../assets/images/gallery/garra-workshop.webp';
+import practicalWorkshop from '../assets/images/gallery/practical-workshop.webp';
+import practicalTraining from '../assets/images/gallery/practical-training.webp';
+import students01 from '../assets/images/gallery/students-01.webp';
+import students02 from '../assets/images/gallery/students-02.webp';
+import students03 from '../assets/images/gallery/students-03.webp';
+import benchPractical from '../assets/images/gallery/bench-practical.webp';
+import certificates from '../assets/images/gallery/certificates.webp';
+import culturalDance from '../assets/images/gallery/cultural-dance.webp';
+import examHall from '../assets/images/gallery/exam-hall.webp';
+import facultyClassroom from '../assets/images/gallery/faculty-classroom.webp';
+import fittingWorkshop from '../assets/images/gallery/fitting-workshop.webp';
+import industrialVisit from '../assets/images/gallery/industrial-visit.webp';
+import moilVisit from '../assets/images/gallery/moil-visit.webp';
+import nsdcTraining from '../assets/images/gallery/nsdc-training.webp';
+import powerHouseVisit from '../assets/images/gallery/power-house-visit.webp';
+import sportsGroup from '../assets/images/gallery/sports-group.webp';
+import sportsTrophy from '../assets/images/gallery/sports-trophy.webp';
+import wiringProject from '../assets/images/gallery/wiring-project.webp';
+import workshopAssembly from '../assets/images/gallery/workshop-assembly.webp';
+import workshopFloor from '../assets/images/gallery/workshop-floor.webp';
+import workshopSeminar from '../assets/images/gallery/workshop-seminar.webp';
+import activitiesCollage from '../assets/images/gallery/activities-collage.webp';
 
 // Alumni portraits
-import shailendra from '../assets/images/testimonials/shailendra-mishra.png';
-import deepak from '../assets/images/testimonials/deepak-patre.png';
-import abhimanyu from '../assets/images/testimonials/abhimanyu-jamre.png';
-import lomesh from '../assets/images/testimonials/lomesh-sanodiya.png';
+import shailendra from '../assets/images/testimonials/shailendra-mishra.webp';
+import deepak from '../assets/images/testimonials/deepak-patre.webp';
+import abhimanyu from '../assets/images/testimonials/abhimanyu-jamre.webp';
+import lomesh from '../assets/images/testimonials/lomesh-sanodiya.webp';
 
 export const brand = {
   mark: logoMark,
@@ -229,19 +229,19 @@ export const galleryPhotos = [
 ].map(([key, group]) => ({ key, group, ...photos[key] }));
 
 export const portraits = {
-  'shailendra-mishra.png': shailendra,
-  'deepak-patre.png': deepak,
-  'abhimanyu-jamre.png': abhimanyu,
-  'lomesh-sanodiya.png': lomesh,
+  'shailendra-mishra.webp': shailendra,
+  'deepak-patre.webp': deepak,
+  'abhimanyu-jamre.webp': abhimanyu,
+  'lomesh-sanodiya.webp': lomesh,
 };
 
 /**
  * Recruiter marks shown on the official homepage, in file order
- * (recruiter-1.png … recruiter-11.png). Each company also appears on the
+ * (recruiter-1.webp … recruiter-11.webp). Each company also appears on the
  * institute's recruiters board, so the marks are named for their alt text.
  */
 const recruiterModules = import.meta.glob(
-  '../assets/images/recruiters/*.png',
+  '../assets/images/recruiters/*.webp',
   { eager: true, import: 'default' }
 );
 

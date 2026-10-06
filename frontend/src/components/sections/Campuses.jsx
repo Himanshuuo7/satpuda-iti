@@ -24,6 +24,7 @@ import {
 } from '../../data/itiInstitutes';
 import { tradeById } from '../../data/trades';
 import { telHref } from '../../utils/format';
+import { scrollToTarget } from '../../utils/smoothScroll';
 import useReveal from '../../hooks/useReveal';
 import useSpotlight from '../../hooks/useSpotlight';
 import cn from '../../utils/cn';
@@ -106,11 +107,8 @@ export function Campuses() {
     setActiveId(id);
     // Below lg the panel sits under the register — bring it up so the tap
     // visibly lands instead of changing something off-screen.
-    if (!matches('(min-width: 1024px)')) {
-      panelRef.current?.scrollIntoView({
-        behavior: matches('(prefers-reduced-motion: reduce)') ? 'auto' : 'smooth',
-        block: 'start',
-      });
+    if (!matches('(min-width: 1024px)') && panelRef.current) {
+      scrollToTarget(panelRef.current);
     }
   };
 

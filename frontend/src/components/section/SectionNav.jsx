@@ -47,7 +47,8 @@ export function SectionNav({ section }) {
     const active = list.querySelector('[aria-current="page"]');
     if (active && list.scrollWidth > list.clientWidth) {
       const target = active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2;
-      list.scrollTo({ left: Math.max(target, 0), behavior: 'smooth' });
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      list.scrollTo({ left: Math.max(target, 0), behavior: reduced ? 'auto' : 'smooth' });
     }
 
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(place) : null;

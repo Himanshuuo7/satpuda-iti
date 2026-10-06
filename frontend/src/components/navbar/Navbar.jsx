@@ -33,11 +33,12 @@ export function Navbar() {
   const location = useLocation();
   const closeTimer = useRef(0);
 
-  // A navigation always dismisses transient surfaces.
+  // A navigation always dismisses transient surfaces — including a same-page
+  // jump like /about#mission, which changes only the hash.
   useEffect(() => {
     setDrawerOpen(false);
     setOpenMenu(null);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash, location.key]);
 
   useEffect(() => {
     const onKey = (e) => {
