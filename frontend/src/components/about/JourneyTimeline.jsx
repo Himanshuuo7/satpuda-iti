@@ -63,7 +63,7 @@ export function JourneyTimeline() {
               From one ITI in Garra <span className="text-ink-muted">to a network across MP.</span>
             </>
           }
-          lede="Since 1999, Maharana Pratap Shikshan Samiti has opened ITIs, colleges and a school across Madhya Pradesh — here is how the Satpuda family grew, year by year."
+          lede="1999 से Maharana Pratap Shikshan Samiti ने पूरे मध्य प्रदेश में ITI, कॉलेज और एक स्कूल खोले हैं — देखिए, Satpuda परिवार साल-दर-साल कैसे बढ़ा।"
           className="max-w-3xl"
         />
 

@@ -17,7 +17,7 @@
 export const activities = {
   titleHi: 'विविध गतिविधियां',
   // Homepage wording.
-  lede: 'There’s always something amazing happening at Satpuda ITIs. Whether it’s on-campus or around the world, our students, faculty, staff, and alumni are out seizing the day.',
+  lede: 'Satpuda ITIs में हमेशा कुछ न कुछ खास होता रहता है। कैंपस में हों या दुनिया में कहीं भी, हमारे विद्यार्थी, शिक्षक, कर्मचारी और पूर्व छात्र हर दिन का भरपूर लाभ उठा रहे हैं।',
   groups: [
     {
       id: 'days',
@@ -76,14 +76,14 @@ export const activities = {
 // ---------------------------------------------------------------------------
 
 export const safety = {
-  lead: 'Administration of institute determines, maintain and comply with health, safety and security norms including:',
+  lead: 'संस्थान का प्रशासन स्वास्थ्य, सुरक्षा और संरक्षा के मानदंड तय करता है, उन्हें बनाए रखता है और उनका पालन करता है, जिनमें शामिल हैं:',
   norms: [
-    { icon: 'Siren', text: 'Appropriate procedures and training for all staff members to implement emergency and crisis plans & Handle accidents.' },
-    { icon: 'ListChecks', text: 'The safety/ emergency procedure followed by the SITI.' },
-    { icon: 'Stethoscope', text: 'SITI have dispensary and MI Room.' },
-    { icon: 'Scale', text: 'Applicable statutory and regulatory requirements,' },
-    { icon: 'TrafficCone', text: 'Provision for emergencies covering both indoor and outdoor activities.' },
-    { icon: 'HeartPulse', text: 'Health policies which include collection of medical information for all staff and students, immunization against common diseases and maintenance of comprehensive records.' },
+    { icon: 'Siren', text: 'आपातकालीन और संकट योजनाओं को लागू करने तथा दुर्घटनाओं से निपटने के लिए सभी कर्मचारियों हेतु उपयुक्त प्रक्रियाएँ और प्रशिक्षण।' },
+    { icon: 'ListChecks', text: 'SITI द्वारा अपनाई जाने वाली सुरक्षा/आपातकालीन प्रक्रिया।' },
+    { icon: 'Stethoscope', text: 'SITI में डिस्पेंसरी और MI रूम (चिकित्सा कक्ष) उपलब्ध है।' },
+    { icon: 'Scale', text: 'लागू वैधानिक और नियामक आवश्यकताएँ।' },
+    { icon: 'TrafficCone', text: 'इनडोर और आउटडोर, दोनों तरह की गतिविधियों के दौरान आपात स्थितियों से निपटने की व्यवस्था।' },
+    { icon: 'HeartPulse', text: 'स्वास्थ्य नीतियाँ, जिनमें सभी कर्मचारियों और विद्यार्थियों की चिकित्सा जानकारी एकत्र करना, सामान्य बीमारियों से बचाव के टीके लगवाना और पूरा रिकॉर्ड रखना शामिल है।' },
   ],
   // "सुरक्षा पर विशेष ध्यान" — the safety graphic on the institute's about page.
   focusHi: 'सुरक्षा पर विशेष ध्यान',
@@ -113,9 +113,9 @@ export const safety = {
 export const news = {
   /** The homepage "New Events" board, verbatim and dated as published. */
   events: [
-    { icon: 'Handshake', title: 'Placement Drive 2021', detail: 'Monday, Wednesday', year: 2021 },
-    { icon: 'GraduationCap', title: 'Admission Drive 2021', detail: 'All Working day, Time – 9:35am – 05:30pm', year: 2021 },
-    { icon: 'CalendarDays', title: 'Upcoming Holiday', detail: 'Diwali 3rd November 2021', year: 2021 },
+    { icon: 'Handshake', title: 'Placement Drive 2021', detail: 'सोमवार, बुधवार', year: 2021 },
+    { icon: 'GraduationCap', title: 'Admission Drive 2021', detail: 'सभी कार्य दिवस, समय – सुबह 9:35 से शाम 05:30 तक', year: 2021 },
+    { icon: 'CalendarDays', title: 'Upcoming Holiday', detail: 'दिवाली, 3 नवंबर 2021', year: 2021 },
   ],
   /** Headlines of the newspaper coverage on the institute's activities board. */
   press: [

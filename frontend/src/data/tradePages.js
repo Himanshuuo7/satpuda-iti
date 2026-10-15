@@ -18,10 +18,10 @@ import { tradeById } from './trades';
 const CTS_LIST = 'https://dgt.gov.in/cts-details';
 
 /** Assessment and certification rules common to every CTS trade. */
-const PASS_RULE = '60% in trade practical and formative assessment, 33% in every other subject';
+const PASS_RULE = 'ट्रेड प्रैक्टिकल और फॉर्मेटिव मूल्यांकन में 60% अंक, और बाकी हर विषय में 33% अंक';
 
 const ENGINEERING_ENTRY =
-  'Passed 10th class with Science and Mathematics, or with a vocational subject in the same sector, or its equivalent';
+  'विज्ञान और गणित के साथ 10वीं कक्षा उत्तीर्ण, या उसी सेक्टर के व्यावसायिक विषय के साथ 10वीं उत्तीर्ण, या इसके समकक्ष';
 
 const TECHNICIAN_LADDER = ['Technician', 'Senior Technician', 'Supervisor', 'Manager'];
 
@@ -36,7 +36,7 @@ export const tradePages = [
     theme: 'electric',
     hero: {
       lede:
-        'Two years of hands-on training in wiring, earthing, electrical machines, transformers and power systems — from domestic installations to solar panels and EV charging stations.',
+        'वायरिंग, अर्थिंग, विद्युत मशीनों, ट्रांसफार्मर और पावर सिस्टम पर दो वर्ष का व्यावहारिक प्रशिक्षण — घरेलू इंस्टॉलेशन से लेकर सोलर पैनल और EV चार्जिंग स्टेशन तक।',
     },
     facts: {
       duration: 'Two years',
@@ -53,39 +53,39 @@ export const tradePages = [
     ],
     overview: {
       intro:
-        'The Electrician trade trains you to install, test, maintain and repair electrical wiring, machines and equipment safely. The first year covers safety, conductors, basic electrical laws, wiring, earthing, lighting, instruments and transformers; the second moves on to rotating machines, electronic control, power distribution and new energy systems.',
+        'Electrician ट्रेड आपको बिजली की वायरिंग, मशीनों और उपकरणों को सुरक्षित तरीके से लगाना, जाँचना, उनका रखरखाव करना और मरम्मत करना सिखाता है। पहले वर्ष में सुरक्षा, कंडक्टर, बिजली के बुनियादी नियम, वायरिंग, अर्थिंग, लाइटिंग, मापक यंत्र और ट्रांसफार्मर पढ़ाए जाते हैं; दूसरे वर्ष में रोटेटिंग मशीनें, इलेक्ट्रॉनिक कंट्रोल, बिजली वितरण और नई ऊर्जा प्रणालियाँ सिखाई जाती हैं।',
       photo: 'practicalWorkshop',
-      photoCaption: 'Practical workshop session at Satpuda ITI',
+      photoCaption: 'Satpuda ITI में प्रैक्टिकल वर्कशॉप सत्र',
       areas: [
         {
           icon: 'Zap',
           title: 'Electrical fundamentals',
-          body: "Ohm's and Kirchhoff's laws, magnetism, and single- and three-phase circuits with balanced and unbalanced loads.",
+          body: 'ओम और किरचॉफ के नियम, चुंबकत्व, और संतुलित व असंतुलित लोड वाले सिंगल-फेज़ तथा थ्री-फेज़ सर्किट।',
         },
         {
           icon: 'Plug',
           title: 'Wiring & earthing',
-          body: 'Wiring to IE rules for homes, hostels and workshops with MCBs, distribution boxes and energy meters; pipe and plate earthing.',
+          body: 'घरों, हॉस्टलों और वर्कशॉप के लिए IE नियमों के अनुसार MCB, डिस्ट्रीब्यूशन बॉक्स और एनर्जी मीटर के साथ वायरिंग; पाइप और प्लेट अर्थिंग।',
         },
         {
           icon: 'Gauge',
           title: 'Measurement & testing',
-          body: 'Analog and digital instruments, meter calibration and range extension, and smart meters.',
+          body: 'एनालॉग और डिजिटल मापक यंत्र, मीटर कैलिब्रेशन और रेंज बढ़ाना, तथा स्मार्ट मीटर।',
         },
         {
           icon: 'Cog',
           title: 'Machines & transformers',
-          body: 'Transformers, DC machines, induction motors, alternators and MG sets — testing, winding and overhaul.',
+          body: 'ट्रांसफार्मर, DC मशीनें, इंडक्शन मोटर, अल्टरनेटर और MG सेट — टेस्टिंग, वाइंडिंग और ओवरहॉल।',
         },
         {
           icon: 'CircuitBoard',
           title: 'Electronics & control',
-          body: 'Rectifiers, solid-state speed control of motors, control-cabinet wiring, UPS, inverters and stabilisers.',
+          body: 'रेक्टिफायर, मोटरों का सॉलिड-स्टेट स्पीड कंट्रोल, कंट्रोल कैबिनेट वायरिंग, UPS, इन्वर्टर और स्टेबलाइज़र।',
         },
         {
           icon: 'Sun',
           title: 'Power & new energy',
-          body: 'Solar panels, domestic service lines, circuit breakers and relays, smart grids and EV charging stations.',
+          body: 'सोलर पैनल, घरेलू सर्विस लाइन, सर्किट ब्रेकर और रिले, स्मार्ट ग्रिड और EV चार्जिंग स्टेशन।',
         },
       ],
     },
@@ -97,41 +97,41 @@ export const tradePages = [
             icon: 'HardHat',
             title: 'Safety & joints',
             items: [
-              'Prepare profiles to drawing, following safety precautions',
-              'Make wire joints; solder, crimp and measure insulation resistance of underground cable',
+              'सुरक्षा सावधानियों का पालन करते हुए ड्रॉइंग के अनुसार प्रोफ़ाइल तैयार करना',
+              'तारों के जोड़ बनाना; सोल्डरिंग और क्रिम्पिंग करना, तथा अंडरग्राउंड केबल का इंसुलेशन रेज़िस्टेंस मापना',
             ],
           },
           {
             icon: 'Zap',
             title: 'Circuits & cells',
             items: [
-              'Verify the characteristics of electrical and magnetic circuits',
-              'Install, test and maintain batteries and solar cells',
+              'विद्युत और चुंबकीय सर्किट की विशेषताओं की जाँच करना',
+              'बैटरी और सोलर सेल लगाना, जाँचना और उनका रखरखाव करना',
             ],
           },
           {
             icon: 'Plug',
             title: 'Installation',
             items: [
-              'Estimate, assemble, install and test wiring systems',
-              'Plan and prepare earthing installations',
-              'Plan, execute and test electrical illumination systems',
+              'वायरिंग सिस्टम का एस्टिमेट बनाना, उसे असेंबल करना, लगाना और जाँचना',
+              'अर्थिंग इंस्टॉलेशन की योजना बनाना और उसे तैयार करना',
+              'विद्युत प्रकाश (इल्यूमिनेशन) सिस्टम की योजना बनाना, उसे लगाना और जाँचना',
             ],
           },
           {
             icon: 'Gauge',
             title: 'Measurement',
             items: [
-              'Measure with analog and digital instruments; install and diagnose smart meters',
-              'Test instruments, verify errors and calibrate them',
+              'एनालॉग और डिजिटल यंत्रों से माप लेना; स्मार्ट मीटर लगाना और उनकी खराबी पहचानना',
+              'मापक यंत्रों की जाँच करना, उनकी त्रुटियाँ पता करना और उन्हें कैलिब्रेट करना',
             ],
           },
           {
             icon: 'Cog',
             title: 'Appliances & transformers',
             items: [
-              'Install, find faults in and repair domestic appliances',
-              'Test, evaluate and maintain transformers',
+              'घरेलू उपकरण लगाना, उनकी खराबी ढूँढ़ना और मरम्मत करना',
+              'ट्रांसफार्मर की जाँच, मूल्यांकन और रखरखाव करना',
             ],
           },
         ],
@@ -143,53 +143,53 @@ export const tradePages = [
             icon: 'Cog',
             title: 'DC machines',
             items: [
-              'Commission DC machines and evaluate their performance',
-              'Test and maintain DC machines and motor starters',
+              'DC मशीनों को चालू (कमीशन) करना और उनके प्रदर्शन का मूल्यांकन करना',
+              'DC मशीनों और मोटर स्टार्टर की जाँच और रखरखाव करना',
             ],
           },
           {
             icon: 'RotateCw',
             title: 'AC motors & alternators',
             items: [
-              'Commission, test and maintain AC motors and starters',
-              'Test and maintain alternators and MG sets; run alternators in parallel',
-              'Carry out motor winding',
+              'AC मोटर और स्टार्टर को चालू करना, जाँचना और उनका रखरखाव करना',
+              'अल्टरनेटर और MG सेट की जाँच और रखरखाव करना; अल्टरनेटर को पैरेलल में चलाना',
+              'मोटर वाइंडिंग करना',
             ],
           },
           {
             icon: 'CircuitBoard',
             title: 'Electronics & control',
             items: [
-              'Assemble and test simple electronic circuits',
-              'Wire control cabinets and their accessories',
-              'Control the speed of AC and DC motors with solid-state devices',
-              'Troubleshoot inverters, stabilisers, battery chargers, emergency lights and UPS',
+              'सरल इलेक्ट्रॉनिक सर्किट असेंबल करना और जाँचना',
+              'कंट्रोल कैबिनेट और उनके सहायक उपकरणों की वायरिंग करना',
+              'सॉलिड-स्टेट उपकरणों से AC और DC मोटरों की गति नियंत्रित करना',
+              'इन्वर्टर, स्टेबलाइज़र, बैटरी चार्जर, इमरजेंसी लाइट और UPS की खराबी दूर करना',
             ],
           },
           {
             icon: 'Sun',
             title: 'Power & new energy',
             items: [
-              'Plan, assemble and install solar panels',
-              'Erect an overhead domestic service line; outline power plant layouts and the smart grid',
-              'Find faults in and repair circuit breakers',
-              'Install and troubleshoot electric vehicle charging stations',
+              'सोलर पैनल की योजना बनाना, उन्हें असेंबल करना और लगाना',
+              'ओवरहेड घरेलू सर्विस लाइन लगाना; पावर प्लांट के लेआउट और स्मार्ट ग्रिड की रूपरेखा समझाना',
+              'सर्किट ब्रेकर की खराबी ढूँढ़ना और उनकी मरम्मत करना',
+              'इलेक्ट्रिक वाहन चार्जिंग स्टेशन लगाना और उनकी खराबी दूर करना',
             ],
           },
         ],
       },
     ],
-    core: 'Engineering Drawing and Workshop Calculation & Science run through both years.',
+    core: 'Engineering Drawing और Workshop Calculation & Science दोनों वर्षों में साथ-साथ पढ़ाए जाते हैं।',
     practice: {
       signature: 'sequence',
       title: 'From drawing to working installation.',
-      lede: 'The DGT job description for an electrician reads as a sequence — the same one practical training follows.',
+      lede: 'DGT में इलेक्ट्रीशियन के काम का विवरण एक क्रम की तरह है — प्रैक्टिकल प्रशिक्षण भी इसी क्रम में चलता है।',
       steps: [
-        { icon: 'FileText', title: 'Study the drawing', body: 'Read drawings and specifications to work out the circuit and installation details.' },
-        { icon: 'Wrench', title: 'Install', body: 'Position and install motors, transformers, switchgear, switchboards, fittings and lighting.' },
-        { icon: 'Cable', title: 'Connect', body: 'Make connections, solder terminals, draw wires and cables and do simple cable jointing.' },
-        { icon: 'Gauge', title: 'Test', body: 'Test installations and equipment and locate faults using a megger, test lamps and meters.' },
-        { icon: 'ShieldCheck', title: 'Repair & maintain', body: 'Replace defective wiring, fuses and parts, and keep fittings and machines in working order.' },
+        { icon: 'FileText', title: 'Study the drawing', body: 'सर्किट और इंस्टॉलेशन का विवरण समझने के लिए ड्रॉइंग और स्पेसिफिकेशन पढ़ना।' },
+        { icon: 'Wrench', title: 'Install', body: 'मोटर, ट्रांसफार्मर, स्विचगियर, स्विचबोर्ड, फिटिंग और लाइटिंग को सही जगह पर लगाना।' },
+        { icon: 'Cable', title: 'Connect', body: 'कनेक्शन करना, टर्मिनल सोल्डर करना, तार और केबल खींचना, तथा सामान्य केबल जॉइंटिंग करना।' },
+        { icon: 'Gauge', title: 'Test', body: 'मेगर, टेस्ट लैंप और मीटर की मदद से इंस्टॉलेशन व उपकरणों की जाँच करना और खराबी का पता लगाना।' },
+        { icon: 'ShieldCheck', title: 'Repair & maintain', body: 'खराब वायरिंग, फ्यूज़ और पुर्ज़े बदलना, और फिटिंग व मशीनों को चालू हालत में रखना।' },
       ],
       tools: [
         {
@@ -219,26 +219,26 @@ export const tradePages = [
         {
           title: 'Electrician, General',
           nco: '7411.0100',
-          body: 'Installs, maintains and repairs electrical machinery, equipment and fittings; tests installations and locates faults.',
+          body: 'विद्युत मशीनरी, उपकरण और फिटिंग लगाता है, उनका रखरखाव और मरम्मत करता है; इंस्टॉलेशन की जाँच करता है और खराबी का पता लगाता है।',
         },
         {
           title: 'Electrical Fitter',
           nco: '7412.0200',
-          body: 'Fits and assembles electrical machinery such as motors, transformers, generators, switchgear and fans, and erects panel boards and bus bars.',
+          body: 'मोटर, ट्रांसफार्मर, जनरेटर, स्विचगियर और पंखे जैसी विद्युत मशीनरी फिट और असेंबल करता है, तथा पैनल बोर्ड और बस बार लगाता है।',
         },
       ],
-      settings: ['Factories', 'Workshops', 'Power houses', 'Business premises', 'Residential buildings'],
-      settingsNote: 'Workplaces named in the DGT job description.',
+      settings: ['कारखाने', 'वर्कशॉप', 'पावर हाउस', 'व्यावसायिक परिसर', 'आवासीय भवन'],
+      settingsNote: 'DGT के कार्य-विवरण में बताए गए कार्यस्थल।',
     },
     pathway: {
       ladder: TECHNICIAN_LADDER,
       routes: [
-        { icon: 'Handshake', title: 'Apprenticeship', body: 'Apprenticeship in industry, leading to the National Apprenticeship Certificate (NAC).' },
-        { icon: 'GraduationCap', title: 'Diploma by lateral entry', body: 'Admission to diploma courses in notified engineering branches.' },
-        { icon: 'BookOpen', title: '10+2 through NIOS', body: 'Higher secondary certificate through the National Institute of Open Schooling.' },
-        { icon: 'Users', title: 'Become an instructor', body: 'Crafts Instructor Training Scheme (CITS) to teach the trade in ITIs.' },
-        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'DGT advanced diploma courses, as applicable.' },
-        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'Start your own work in the related field.' },
+        { icon: 'Handshake', title: 'Apprenticeship', body: 'उद्योग में अप्रेंटिसशिप, जिसके बाद National Apprenticeship Certificate (NAC) मिलता है।' },
+        { icon: 'GraduationCap', title: 'Diploma by lateral entry', body: 'अधिसूचित इंजीनियरिंग शाखाओं के डिप्लोमा कोर्स में प्रवेश।' },
+        { icon: 'BookOpen', title: '10+2 through NIOS', body: 'National Institute of Open Schooling (NIOS) के माध्यम से हायर सेकेंडरी (12वीं) प्रमाणपत्र।' },
+        { icon: 'Users', title: 'Become an instructor', body: 'ITI में ट्रेड पढ़ाने के लिए Crafts Instructor Training Scheme (CITS)।' },
+        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'लागू होने पर DGT के एडवांस्ड डिप्लोमा कोर्स।' },
+        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'संबंधित क्षेत्र में अपना खुद का काम शुरू करें।' },
       ],
     },
     source: {
@@ -257,7 +257,7 @@ export const tradePages = [
     theme: 'blueprint',
     hero: {
       lede:
-        'Two years of precision bench work — marking, filing, drilling, fitting and assembling metal parts to tolerances as fine as ±0.02 mm — with lathe work, welding, pipe fitting, pneumatics, hydraulics and machine maintenance.',
+        'दो वर्ष का सटीक बेंच वर्क — धातु के पुर्ज़ों की मार्किंग, फाइलिंग, ड्रिलिंग, फिटिंग और असेंबली, ±0.02 mm जितनी बारीक टॉलरेंस तक — साथ में लेथ का काम, वेल्डिंग, पाइप फिटिंग, न्यूमेटिक्स, हाइड्रोलिक्स और मशीनों का रखरखाव।',
     },
     facts: {
       duration: 'Two years',
@@ -274,39 +274,39 @@ export const tradePages = [
     ],
     overview: {
       intro:
-        'The Fitter trade trains you to size metal parts to close tolerances and fit and assemble them into working units, using hand tools, measuring instruments and machine tools. Skills build from simple to complex, and accuracy tightens step by step over the two years.',
+        'Fitter ट्रेड आपको हैंड टूल्स, मापक यंत्रों और मशीन टूल्स की मदद से धातु के पुर्ज़ों को सटीक माप में तैयार करना, और उन्हें फिट व असेंबल करके काम करने वाली यूनिट बनाना सिखाता है। कौशल सरल से जटिल की ओर बढ़ता है, और दो वर्षों में सटीकता कदम-दर-कदम बढ़ती जाती है।',
       photo: 'garraWorkshop',
-      photoCaption: 'Trainees at bench vices in a Satpuda ITI workshop',
+      photoCaption: 'Satpuda ITI की वर्कशॉप में बेंच वाइस पर काम करते प्रशिक्षु',
       areas: [
         {
           icon: 'Ruler',
           title: 'Marking & measurement',
-          body: 'Vernier callipers, micrometers, screw pitch gauges, surface plates, V-blocks and angle plates.',
+          body: 'वर्नियर कैलिपर, माइक्रोमीटर, स्क्रू पिच गेज, सरफेस प्लेट, V-ब्लॉक और एंगल प्लेट।',
         },
         {
           icon: 'Hammer',
           title: 'Basic fitting',
-          body: 'Sawing, chiselling, filing, drilling, tapping and grinding — with safety, first aid and 5S from day one.',
+          body: 'सॉइंग, चिज़लिंग, फाइलिंग, ड्रिलिंग, टैपिंग और ग्राइंडिंग — पहले दिन से ही सुरक्षा, प्राथमिक चिकित्सा और 5S के साथ।',
         },
         {
           icon: 'Flame',
           title: 'Sheet metal & joining',
-          body: 'Sheet metal work, soldering, brazing, riveting, and arc and gas (oxy-acetylene) welding.',
+          body: 'शीट मेटल का काम, सोल्डरिंग, ब्रेज़िंग, रिवेटिंग, और आर्क व गैस (ऑक्सी-एसिटिलीन) वेल्डिंग।',
         },
         {
           icon: 'Crosshair',
           title: 'Precision fits & gauges',
-          body: 'Sliding, T, step, dovetail and radius fits; scraping, lapping and honing; snap and gap gauges.',
+          body: 'स्लाइडिंग, T, स्टेप, डवटेल और रेडियस फिट; स्क्रैपिंग, लैपिंग और होनिंग; स्नैप और गैप गेज।',
         },
         {
           icon: 'Cog',
           title: 'Machines & transmission',
-          body: 'Lathe operations, drill jigs, and repairing pulleys, gears, keys and shafts.',
+          body: 'लेथ के ऑपरेशन, ड्रिल जिग, और पुली, गियर, की (key) व शाफ्ट की मरम्मत।',
         },
         {
           icon: 'Wind',
           title: 'Fluid power & maintenance',
-          body: 'Pneumatic and hydraulic circuits, preventive maintenance, erecting simple machines and testing machine-tool accuracy.',
+          body: 'न्यूमेटिक और हाइड्रोलिक सर्किट, निवारक रखरखाव, सरल मशीनें स्थापित करना और मशीन टूल की सटीकता जाँचना।',
         },
       ],
     },
@@ -318,16 +318,16 @@ export const tradePages = [
             icon: 'Hammer',
             title: 'Basic fitting',
             hours: 195,
-            items: ['Marking, hacksawing, chiselling, filing, drilling, tapping and grinding to ±0.25 mm, following safety precautions'],
+            items: ['सुरक्षा सावधानियों का पालन करते हुए ±0.25 mm तक मार्किंग, हैकसॉ से कटिंग, चिज़लिंग, फाइलिंग, ड्रिलिंग, टैपिंग और ग्राइंडिंग'],
           },
           {
             icon: 'Flame',
             title: 'Sheet metal, riveting & welding',
             hours: 315,
             items: [
-              'Make simple sheet metal items and join them by soldering, brazing and riveting',
-              'Join metal by riveting and by arc welding',
-              'Cut and join metal by gas (oxy-acetylene, LPG or oxy-hydrogen)',
+              'शीट मेटल की सरल वस्तुएँ बनाना और उन्हें सोल्डरिंग, ब्रेज़िंग व रिवेटिंग से जोड़ना',
+              'रिवेटिंग और आर्क वेल्डिंग से धातु जोड़ना',
+              'गैस (ऑक्सी-एसिटिलीन, LPG या ऑक्सी-हाइड्रोजन) से धातु काटना और जोड़ना',
             ],
           },
           {
@@ -335,8 +335,8 @@ export const tradePages = [
             title: 'Precision operations & fits',
             hours: 330,
             items: [
-              'Drill, ream, tap and die, checking with vernier, screw gauge and micrometer',
-              'Make sliding, angular, step, T, square and profile fits to ±0.04 mm and 30 minutes',
+              'ड्रिलिंग, रीमिंग, टैप और डाई का काम करना, और वर्नियर, स्क्रू गेज व माइक्रोमीटर से जाँचना',
+              '±0.04 mm और 30 मिनट (कोणीय) की सटीकता तक स्लाइडिंग, एंगुलर, स्टेप, T, स्क्वायर और प्रोफ़ाइल फिट बनाना',
             ],
           },
           {
@@ -344,8 +344,8 @@ export const tradePages = [
             title: 'Lathe & machine care',
             hours: 180,
             items: [
-              'Face, turn, part, chamfer, groove, knurl, bore, taper-turn and thread on the lathe',
-              'Repair and overhaul a drill machine, power saw, bench grinder and lathe',
+              'लेथ पर फेसिंग, टर्निंग, पार्टिंग, चैम्फरिंग, ग्रूविंग, नर्लिंग, बोरिंग, टेपर टर्निंग और थ्रेडिंग करना',
+              'ड्रिल मशीन, पावर सॉ, बेंच ग्राइंडर और लेथ की मरम्मत व ओवरहॉल करना',
             ],
           },
         ],
@@ -358,9 +358,9 @@ export const tradePages = [
             title: 'Advanced fitting & gauges',
             hours: 465,
             items: [
-              'Finish surfaces and fasten with dowels, screws, bolts, keys and cotters to ±0.02 mm and 10 minutes',
-              'Make dovetail, radius and combined fits by scraping, lapping and honing',
-              'Make snap and gap gauges to ±0.02 mm',
+              '±0.02 mm और 10 मिनट (कोणीय) की सटीकता तक सतहों की फिनिशिंग करना, और डॉवेल, स्क्रू, बोल्ट, की व कॉटर से कसना',
+              'स्क्रैपिंग, लैपिंग और होनिंग से डवटेल, रेडियस और कंबाइंड फिट बनाना',
+              '±0.02 mm की सटीकता तक स्नैप और गैप गेज बनाना',
             ],
           },
           {
@@ -368,8 +368,8 @@ export const tradePages = [
             title: 'Pipes & jigs',
             hours: 105,
             items: [
-              'Cut, thread, flare, bend and join pipes; assemble valves and test for leaks',
-              'Make a drill jig and produce components with it',
+              'पाइप काटना, थ्रेड बनाना, फ्लेयर करना, मोड़ना और जोड़ना; वाल्व असेंबल करना और लीकेज की जाँच करना',
+              'ड्रिल जिग बनाना और उससे पुर्ज़े तैयार करना',
             ],
           },
           {
@@ -377,9 +377,9 @@ export const tradePages = [
             title: 'Power transmission & fluid power',
             hours: 285,
             items: [
-              'Repair and assemble pulleys, gears, keys, jibs and shafts',
-              'Dismantle and assemble compressors, pressure gauges, FRL units, valves and actuators',
-              'Build pneumatic and hydraulic circuits',
+              'पुली, गियर, की, जिब और शाफ्ट की मरम्मत व असेंबली करना',
+              'कंप्रेसर, प्रेशर गेज, FRL यूनिट, वाल्व और एक्चुएटर खोलना और फिर से असेंबल करना',
+              'न्यूमेटिक और हाइड्रोलिक सर्किट बनाना',
             ],
           },
           {
@@ -387,29 +387,29 @@ export const tradePages = [
             title: 'Maintenance & erection',
             hours: 195,
             items: [
-              'Carry out preventive maintenance and repair of simple machines',
-              'Erect a simple machine and test machine-tool accuracy',
+              'सरल मशीनों का निवारक रखरखाव और मरम्मत करना',
+              'सरल मशीन स्थापित करना और मशीन टूल की सटीकता जाँचना',
             ],
           },
         ],
       },
     ],
-    core: 'Engineering Drawing and Workshop Science & Calculation run through both years, with two group projects.',
+    core: 'Engineering Drawing और Workshop Science & Calculation दोनों वर्षों में साथ-साथ पढ़ाए जाते हैं, और दो ग्रुप प्रोजेक्ट भी होते हैं।',
     practice: {
       signature: 'tolerance',
       title: 'Accuracy you can measure.',
-      lede: 'The curriculum tightens the tolerance on every job as skills grow — the clearest picture of what two years of fitting builds.',
+      lede: 'कौशल बढ़ने के साथ पाठ्यक्रम हर जॉब की टॉलरेंस को और कड़ा करता जाता है — यही सबसे साफ़ दिखाता है कि फिटिंग के दो वर्ष आपको क्या सिखाते हैं।',
       stages: [
-        { stage: 'Year 1 · Basic fitting', linear: '±0.25 mm', angular: null, width: 1, body: 'Marking, sawing, chiselling, filing, drilling and tapping.' },
-        { stage: 'Year 1 · Fits', linear: '±0.04 mm', angular: '30′', width: 0.16, body: 'Sliding, angular, step, T, square and profile fits.' },
-        { stage: 'Year 2 · Precision', linear: '±0.02 mm', angular: '10′', width: 0.08, body: 'Dovetail and radius fits, scraping, lapping, honing and gauges.' },
+        { stage: 'Year 1 · Basic fitting', linear: '±0.25 mm', angular: null, width: 1, body: 'मार्किंग, सॉइंग, चिज़लिंग, फाइलिंग, ड्रिलिंग और टैपिंग।' },
+        { stage: 'Year 1 · Fits', linear: '±0.04 mm', angular: '30′', width: 0.16, body: 'स्लाइडिंग, एंगुलर, स्टेप, T, स्क्वायर और प्रोफ़ाइल फिट।' },
+        { stage: 'Year 2 · Precision', linear: '±0.02 mm', angular: '10′', width: 0.08, body: 'डवटेल और रेडियस फिट, स्क्रैपिंग, लैपिंग, होनिंग और गेज।' },
       ],
       steps: [
-        { icon: 'FileText', title: 'Read the drawing', body: 'Understand the specification and function of each part.' },
-        { icon: 'PenTool', title: 'Mark out', body: 'Use a surface plate, scriber, vernier height gauge, V-blocks and angle plate.' },
-        { icon: 'Hammer', title: 'Cut & shape', body: 'Saw, chip, file, grind, drill, and cut threads with taps and dies.' },
-        { icon: 'Ruler', title: 'Measure', body: 'Check with callipers, micrometer, vernier, dial indicator and gauges.' },
-        { icon: 'Settings', title: 'Assemble & test', body: 'Fit parts with screws, rivets and pins and test the finished unit.' },
+        { icon: 'FileText', title: 'Read the drawing', body: 'हर पुर्ज़े का स्पेसिफिकेशन और उसका काम समझना।' },
+        { icon: 'PenTool', title: 'Mark out', body: 'सरफेस प्लेट, स्क्राइबर, वर्नियर हाइट गेज, V-ब्लॉक और एंगल प्लेट का उपयोग करना।' },
+        { icon: 'Hammer', title: 'Cut & shape', body: 'सॉइंग, चिपिंग, फाइलिंग, ग्राइंडिंग और ड्रिलिंग करना, और टैप व डाई से थ्रेड काटना।' },
+        { icon: 'Ruler', title: 'Measure', body: 'कैलिपर, माइक्रोमीटर, वर्नियर, डायल इंडिकेटर और गेज से जाँचना।' },
+        { icon: 'Settings', title: 'Assemble & test', body: 'स्क्रू, रिवेट और पिन से पुर्ज़े फिट करना और तैयार यूनिट की जाँच करना।' },
       ],
       tools: [
         {
@@ -439,26 +439,26 @@ export const tradePages = [
         {
           title: 'Fitter, General',
           nco: '7233.0100',
-          body: 'Sizes metal parts to close tolerances and fits and assembles them for the production or repair of machines and other metal products.',
+          body: 'मशीनों और अन्य धातु उत्पादों के निर्माण या मरम्मत के लिए धातु के पुर्ज़ों को सटीक माप में तैयार करता है, और उन्हें फिट व असेंबल करता है।',
         },
         {
           title: 'Fitter, Bench',
           nco: '7233.0200',
-          body: 'Hand fitting at the vice — cutting, filing, drilling and threading parts to size — the core of the curriculum’s Fitter job description.',
+          body: 'वाइस पर हाथ से फिटिंग — पुर्ज़ों को सही माप में काटना, फाइल करना, ड्रिल करना और थ्रेड बनाना — जो पाठ्यक्रम में Fitter के कार्य-विवरण का मूल हिस्सा है।',
         },
       ],
-      settings: ['Machine production', 'Machine repair & maintenance', 'Metal products', 'Pneumatic & hydraulic systems'],
-      settingsNote: 'Work areas named in the DGT job description.',
+      settings: ['मशीन निर्माण', 'मशीनों की मरम्मत और रखरखाव', 'धातु उत्पाद', 'न्यूमेटिक और हाइड्रोलिक सिस्टम'],
+      settingsNote: 'DGT के कार्य-विवरण में बताए गए कार्य-क्षेत्र।',
     },
     pathway: {
       ladder: TECHNICIAN_LADDER,
       routes: [
-        { icon: 'Handshake', title: 'Apprenticeship', body: 'Apprenticeship in industry, leading to the National Apprenticeship Certificate (NAC).' },
-        { icon: 'GraduationCap', title: 'Diploma by lateral entry', body: 'Admission to diploma courses in notified engineering branches.' },
-        { icon: 'BookOpen', title: '10+2 through NIOS', body: 'Higher secondary certificate through the National Institute of Open Schooling.' },
-        { icon: 'Users', title: 'Become an instructor', body: 'Crafts Instructor Training Scheme (CITS) to teach the trade in ITIs.' },
-        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'DGT advanced diploma courses, as applicable.' },
-        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'Start your own work in the related field.' },
+        { icon: 'Handshake', title: 'Apprenticeship', body: 'उद्योग में अप्रेंटिसशिप, जिसके बाद National Apprenticeship Certificate (NAC) मिलता है।' },
+        { icon: 'GraduationCap', title: 'Diploma by lateral entry', body: 'अधिसूचित इंजीनियरिंग शाखाओं के डिप्लोमा कोर्स में प्रवेश।' },
+        { icon: 'BookOpen', title: '10+2 through NIOS', body: 'National Institute of Open Schooling (NIOS) के माध्यम से हायर सेकेंडरी (12वीं) प्रमाणपत्र।' },
+        { icon: 'Users', title: 'Become an instructor', body: 'ITI में ट्रेड पढ़ाने के लिए Crafts Instructor Training Scheme (CITS)।' },
+        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'लागू होने पर DGT के एडवांस्ड डिप्लोमा कोर्स।' },
+        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'संबंधित क्षेत्र में अपना खुद का काम शुरू करें।' },
       ],
     },
     source: {
@@ -477,7 +477,7 @@ export const tradePages = [
     theme: 'engine',
     hero: {
       lede:
-        'One year of hands-on training on the diesel engines of light and heavy motor vehicles — dismantling, overhauling and testing engines, and servicing their cooling, lubrication, fuel and electrical systems.',
+        'हल्के और भारी मोटर वाहनों के डीज़ल इंजनों पर एक वर्ष का व्यावहारिक प्रशिक्षण — इंजन खोलना, ओवरहॉल करना और जाँचना, तथा उनके कूलिंग, लुब्रिकेशन, फ्यूल और इलेक्ट्रिकल सिस्टम की सर्विसिंग करना।',
     },
     facts: {
       duration: 'One year',
@@ -491,38 +491,38 @@ export const tradePages = [
     structure: [{ practical: 840, theory: 240, employability: 120, ojt: 150 }],
     overview: {
       intro:
-        'Mechanic Diesel trains you to repair, service and overhaul diesel engines so they perform efficiently as prime movers for vehicles and machinery. Workshop fundamentals come first — measuring, fitting, welding, electrics — and then the engine itself, system by system, on light and heavy motor vehicles.',
+        'Mechanic Diesel ट्रेड आपको डीज़ल इंजनों की मरम्मत, सर्विसिंग और ओवरहॉल करना सिखाता है, ताकि वे वाहनों और मशीनों को चलाने वाले मुख्य इंजन (प्राइम मूवर) के रूप में कुशलता से काम करें। पहले वर्कशॉप की बुनियादी बातें सिखाई जाती हैं — माप, फिटिंग, वेल्डिंग, इलेक्ट्रिकल — और फिर हल्के व भारी मोटर वाहनों पर इंजन का हर सिस्टम, एक-एक करके।',
       photo: null,
       areas: [
         {
           icon: 'Ruler',
           title: 'Measuring & marking',
-          body: 'Micrometers, telescope and dial bore gauges, dial indicators, feeler, thread pitch and vacuum gauges.',
+          body: 'माइक्रोमीटर, टेलीस्कोप और डायल बोर गेज, डायल इंडिकेटर, फीलर, थ्रेड पिच और वैक्यूम गेज।',
         },
         {
           icon: 'Wrench',
           title: 'Fitting & welding',
-          body: 'Fastening and fitting with hand and machine tools; joining with arc and gas welding.',
+          body: 'हैंड टूल्स और मशीन टूल्स से कसना और फिटिंग; आर्क व गैस वेल्डिंग से जोड़ना।',
         },
         {
           icon: 'BatteryCharging',
           title: 'Auto electrical',
-          body: 'Electrical and electronic circuits, vehicle batteries, starter motors and alternators.',
+          body: 'इलेक्ट्रिकल और इलेक्ट्रॉनिक सर्किट, वाहन की बैटरी, स्टार्टर मोटर और अल्टरनेटर।',
         },
         {
           icon: 'Cog',
           title: 'Engine overhaul',
-          body: 'Cylinder head, valve train, pistons, connecting rods, crankshaft, flywheel and camshaft.',
+          body: 'सिलेंडर हेड, वाल्व ट्रेन, पिस्टन, कनेक्टिंग रॉड, क्रैंकशाफ्ट, फ्लाईव्हील और कैमशाफ्ट।',
         },
         {
           icon: 'Fuel',
           title: 'Fuel & emission',
-          body: 'Diesel fuel system, fuel injection pump, injectors and governor; emission checks against norms.',
+          body: 'डीज़ल फ्यूल सिस्टम, फ्यूल इंजेक्शन पंप, इंजेक्टर और गवर्नर; मानकों के अनुसार उत्सर्जन (एमिशन) की जाँच।',
         },
         {
           icon: 'Activity',
           title: 'Diagnosis',
-          body: 'Tracing and rectifying defects in light and heavy motor vehicles.',
+          body: 'हल्के और भारी मोटर वाहनों की खराबी का पता लगाना और उसे ठीक करना।',
         },
       ],
     },
@@ -534,93 +534,93 @@ export const tradePages = [
             icon: 'Ruler',
             title: 'Workshop foundations',
             items: [
-              'Measure and mark with vernier, micrometer, bore gauges, dial indicator and feeler gauge',
-              'Fasten and fit with the correct hand and machine tools',
-              'Join components by arc and gas welding',
+              'वर्नियर, माइक्रोमीटर, बोर गेज, डायल इंडिकेटर और फीलर गेज से माप लेना और मार्किंग करना',
+              'सही हैंड टूल्स और मशीन टूल्स से कसना और फिट करना',
+              'आर्क और गैस वेल्डिंग से पुर्ज़े जोड़ना',
             ],
           },
           {
             icon: 'BatteryCharging',
             title: 'Electrics, hydraulics & the vehicle',
             items: [
-              'Trace and test electrical and electronic circuits; charge and test batteries',
-              'Trace and test hydraulic and pneumatic components',
-              'Read vehicle specification data and the VIN; use service-station equipment',
+              'इलेक्ट्रिकल और इलेक्ट्रॉनिक सर्किट ट्रेस करना और जाँचना; बैटरी चार्ज करना और जाँचना',
+              'हाइड्रोलिक और न्यूमेटिक पुर्ज़ों को ट्रेस करना और जाँचना',
+              'वाहन का स्पेसिफिकेशन डेटा और VIN पढ़ना; सर्विस स्टेशन के उपकरणों का उपयोग करना',
             ],
           },
           {
             icon: 'Cog',
             title: 'Engine overhaul',
             items: [
-              'Remove and refit a diesel engine from an LMV or HMV, using correct torqueing',
-              'Overhaul, service and test the engine and its parts',
-              'Overhaul a stationary engine and its governor',
+              'सही टॉर्क के साथ LMV या HMV से डीज़ल इंजन निकालना और फिर से लगाना',
+              'इंजन और उसके पुर्ज़ों का ओवरहॉल, सर्विसिंग और जाँच करना',
+              'स्टेशनरी इंजन और उसके गवर्नर का ओवरहॉल करना',
             ],
           },
           {
             icon: 'Thermometer',
             title: 'Engine systems',
             items: [
-              'Trace, test and repair the cooling and lubrication systems',
-              'Trace and test intake and exhaust, including cleaning EGR valves and manifolds',
-              'Service the fuel system — calibrate mechanical and electronic pumps, check injectors and filters',
-              'Overhaul the alternator and starter motor',
+              'कूलिंग और लुब्रिकेशन सिस्टम को ट्रेस करना, जाँचना और ठीक करना',
+              'इनटेक और एग्ज़ॉस्ट सिस्टम को ट्रेस करना और जाँचना, जिसमें EGR वाल्व और मैनिफोल्ड की सफ़ाई शामिल है',
+              'फ्यूल सिस्टम की सर्विसिंग — मैकेनिकल और इलेक्ट्रॉनिक पंप को कैलिब्रेट करना, इंजेक्टर और फ़िल्टर जाँचना',
+              'अल्टरनेटर और स्टार्टर मोटर का ओवरहॉल करना',
             ],
           },
           {
             icon: 'Activity',
             title: 'Emission & diagnosis',
             items: [
-              'Monitor vehicle emission and adjust to meet emission norms',
-              'Diagnose and rectify defects in light and heavy motor vehicles',
+              'वाहन के उत्सर्जन (एमिशन) की निगरानी करना और उसे मानकों के अनुरूप एडजस्ट करना',
+              'हल्के और भारी मोटर वाहनों की खराबी पहचानना और उसे ठीक करना',
             ],
           },
         ],
       },
     ],
-    core: 'Engineering Drawing and Workshop Calculation & Science are part of the year.',
+    core: 'Engineering Drawing और Workshop Calculation & Science भी इस वर्ष के पाठ्यक्रम का हिस्सा हैं।',
     practice: {
       signature: 'engine',
       title: 'Inside the engine, system by system.',
-      lede: 'Choose a system to see what the curriculum trains you to do on it, and the workshop equipment it lists for the job.',
+      lede: 'कोई सिस्टम चुनें और देखें कि पाठ्यक्रम उस पर आपको क्या करना सिखाता है, और उस काम के लिए कौन-से वर्कशॉप उपकरण बताए गए हैं।',
       systems: [
         {
           id: 'overhaul',
           label: 'Engine overhaul',
-          body: 'Dismantle and reassemble the engine in sequence — cylinder head, valve train, pistons, connecting rods, crankshaft and camshaft — then test it.',
+          body: 'इंजन को क्रम से खोलना और फिर से जोड़ना — सिलेंडर हेड, वाल्व ट्रेन, पिस्टन, कनेक्टिंग रॉड, क्रैंकशाफ्ट और कैमशाफ्ट — और फिर उसकी जाँच करना।',
           tools: ['Torque wrench', 'Valve spring compressor', 'Cylinder bore gauge', 'Compression testing gauge'],
         },
         {
           id: 'fuel',
           label: 'Fuel system',
-          body: 'Service the diesel fuel system: calibrate mechanical and electronic pumps, check injectors and filters, and overhaul the governor.',
+          body: 'डीज़ल फ्यूल सिस्टम की सर्विसिंग: मैकेनिकल और इलेक्ट्रॉनिक पंप कैलिब्रेट करना, इंजेक्टर और फ़िल्टर जाँचना, और गवर्नर का ओवरहॉल करना।',
           tools: ['Injector testing set', 'Injector cleaning unit', 'CRDI diesel engine'],
         },
         {
           id: 'cooling',
           label: 'Cooling & lubrication',
-          body: 'Trace, test and repair the cooling and lubrication systems, choosing the right coolants and oils for the engine.',
+          body: 'कूलिंग और लुब्रिकेशन सिस्टम को ट्रेस करना, जाँचना और ठीक करना, और इंजन के लिए सही कूलेंट व तेल चुनना।',
           tools: [],
         },
         {
           id: 'air',
           label: 'Intake & exhaust',
-          body: 'Trace and test the intake and exhaust system, clean EGR valves, ports and manifolds, and bring emission within norms.',
+          body: 'इनटेक और एग्ज़ॉस्ट सिस्टम को ट्रेस करना और जाँचना, EGR वाल्व, पोर्ट और मैनिफोल्ड साफ़ करना, और उत्सर्जन को मानकों के भीतर लाना।',
           tools: ['Automotive diesel smoke meter'],
         },
         {
           id: 'electrical',
           label: 'Starting & charging',
-          body: 'Overhaul the alternator and starter motor, and charge and test vehicle batteries.',
+          body: 'अल्टरनेटर और स्टार्टर मोटर का ओवरहॉल करना, और वाहन की बैटरी चार्ज करना व जाँचना।',
           tools: ['Battery charger', 'Glow plug tester', 'Digital multimeter'],
         },
       ],
       steps: [
-        { icon: 'Search', title: 'Examine', body: 'Locate defects using tools and instruments.' },
-        { icon: 'Wrench', title: 'Dismantle', body: 'Remove damaged or worn parts; repair or replace them.' },
-        { icon: 'Settings', title: 'Assemble', body: 'Grind valves and assemble parts to an accurate fit.' },
-        { icon: 'Gauge', title: 'Tune & observe', body: 'Start the engine and set it to standard by temperature, fuel and oil-pressure readings.' },
-        { icon: 'ShieldCheck', title: 'Maintain', body: 'Check, adjust and lubricate to keep the engine in good order.' },
+        { icon: 'Search', title: 'Examine', body: 'औज़ारों और यंत्रों की मदद से खराबी का पता लगाना।' },
+        { icon: 'Wrench', title: 'Dismantle', body: 'खराब या घिसे हुए पुर्ज़े निकालना; उनकी मरम्मत करना या उन्हें बदलना।' },
+        { icon: 'Settings', title: 'Assemble', body: 'वाल्व ग्राइंड करना और पुर्ज़ों को सटीक फिट के साथ जोड़ना।' },
+        { icon: 'Gauge', title: 'Tune & observe', body: 'इंजन चालू करना और तापमान, फ्यूल व ऑयल-प्रेशर की रीडिंग के आधार पर उसे मानक के अनुसार सेट करना।' },
+        { icon: 'ShieldCheck', title: 'Maintain', body: 'इंजन को अच्छी हालत में रखने के लिए जाँच, एडजस्टमेंट और लुब्रिकेशन करना।' },
       ],
       tools: [
         {
@@ -650,19 +650,19 @@ export const tradePages = [
         {
           title: 'Mechanic, Diesel Engine',
           nco: '7233.0400',
-          body: 'Repairs, services and overhauls diesel engines used as prime movers for vehicles, machinery and equipment; tunes engines and services fuel pumps and injectors.',
+          body: 'वाहनों, मशीनरी और उपकरणों को चलाने वाले डीज़ल इंजनों की मरम्मत, सर्विसिंग और ओवरहॉल करता है; इंजन ट्यून करता है और फ्यूल पंप व इंजेक्टर की सर्विसिंग करता है।',
         },
       ],
-      settings: ['Light motor vehicles', 'Heavy motor vehicles', 'Stationary engines', 'Diesel-driven machinery'],
-      settingsNote: 'Engines and vehicles the curriculum trains on.',
+      settings: ['हल्के मोटर वाहन', 'भारी मोटर वाहन', 'स्टेशनरी इंजन', 'डीज़ल से चलने वाली मशीनरी'],
+      settingsNote: 'वे इंजन और वाहन, जिन पर पाठ्यक्रम में प्रशिक्षण दिया जाता है।',
     },
     pathway: {
       ladder: TECHNICIAN_LADDER,
       routes: [
-        { icon: 'Handshake', title: 'Apprenticeship', body: 'Apprenticeship in industry, leading to the National Apprenticeship Certificate (NAC).' },
-        { icon: 'Users', title: 'Become an instructor', body: 'Crafts Instructor Training Scheme (CITS) to teach the trade in ITIs.' },
-        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'DGT advanced diploma courses, as applicable.' },
-        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'Start your own work in the related field.' },
+        { icon: 'Handshake', title: 'Apprenticeship', body: 'उद्योग में अप्रेंटिसशिप, जिसके बाद National Apprenticeship Certificate (NAC) मिलता है।' },
+        { icon: 'Users', title: 'Become an instructor', body: 'ITI में ट्रेड पढ़ाने के लिए Crafts Instructor Training Scheme (CITS)।' },
+        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'लागू होने पर DGT के एडवांस्ड डिप्लोमा कोर्स।' },
+        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'संबंधित क्षेत्र में अपना खुद का काम शुरू करें।' },
       ],
     },
     source: {
@@ -682,52 +682,52 @@ export const tradePages = [
     theme: 'digital',
     hero: {
       lede:
-        'One year of practical computer training — operating systems, office applications, databases, networking, web pages with HTML, CSS and JavaScript, cyber security, cloud and AI tools, and programming in Python.',
+        'एक वर्ष का व्यावहारिक कंप्यूटर प्रशिक्षण — ऑपरेटिंग सिस्टम, ऑफिस एप्लिकेशन, डेटाबेस, नेटवर्किंग, HTML, CSS और JavaScript से वेब पेज, साइबर सुरक्षा, क्लाउड और AI टूल्स, तथा Python में प्रोग्रामिंग।',
     },
     facts: {
       duration: 'One year',
       years: 1,
       hours: '1,200 hrs + 150 hrs OJT',
       nsqf: 3.5,
-      entry: 'Passed 10th class examination',
+      entry: '10वीं कक्षा की परीक्षा उत्तीर्ण',
       entryShort: '10th pass',
       minAge: 14,
     },
     structure: [{ practical: 840, theory: 240, employability: 120, ojt: 150 }],
     overview: {
       intro:
-        'COPA trains you to operate computers and their peripherals, work confidently with office software and data, set up and secure networks, and write programs and web pages. It is a non-engineering trade in the IT & ITeS sector, with project work and on-the-job training built into the year.',
+        'COPA आपको कंप्यूटर और उससे जुड़े उपकरण चलाना, ऑफिस सॉफ़्टवेयर और डेटा पर आत्मविश्वास से काम करना, नेटवर्क सेट करना व सुरक्षित रखना, और प्रोग्राम व वेब पेज लिखना सिखाता है। यह IT & ITeS सेक्टर का एक नॉन-इंजीनियरिंग ट्रेड है, जिसमें प्रोजेक्ट वर्क और ऑन-द-जॉब ट्रेनिंग भी शामिल हैं।',
       photo: null,
       areas: [
         {
           icon: 'Monitor',
           title: 'Computer systems',
-          body: 'Peripherals and internal components, DOS and PowerShell commands, installing operating systems and software.',
+          body: 'पेरिफेरल और अंदरूनी पुर्ज़े, DOS और PowerShell कमांड, ऑपरेटिंग सिस्टम और सॉफ़्टवेयर इंस्टॉल करना।',
         },
         {
           icon: 'FileSpreadsheet',
           title: 'Office applications',
-          body: 'Documents, presentations and spreadsheets — up to macros, charts and pivot tables.',
+          body: 'डॉक्यूमेंट, प्रेज़ेंटेशन और स्प्रेडशीट — मैक्रो, चार्ट और पिवट टेबल तक।',
         },
         {
           icon: 'Database',
           title: 'Databases',
-          body: 'Creating and managing database files with MySQL.',
+          body: 'MySQL से डेटाबेस फ़ाइलें बनाना और उनका प्रबंधन करना।',
         },
         {
           icon: 'Network',
           title: 'Networks & Internet',
-          body: 'Setting up, configuring, troubleshooting and securing networks; e-commerce and online communication.',
+          body: 'नेटवर्क सेट करना, कॉन्फ़िगर करना, उनकी खराबी दूर करना और उन्हें सुरक्षित रखना; ई-कॉमर्स और ऑनलाइन संचार।',
         },
         {
           icon: 'Code',
           title: 'Web & programming',
-          body: 'Algorithms and flowcharts, web pages in HTML, CSS and JavaScript, hosting on a domain, and Python.',
+          body: 'एल्गोरिदम और फ्लोचार्ट, HTML, CSS और JavaScript में वेब पेज, डोमेन पर होस्टिंग, और Python।',
         },
         {
           icon: 'Shield',
           title: 'Cloud, security & AI',
-          body: 'Cloud services, the application development life cycle, cyber security and using AI in everyday work.',
+          body: 'क्लाउड सेवाएँ, एप्लिकेशन डेवलपमेंट लाइफ़ साइकिल, साइबर सुरक्षा और रोज़मर्रा के काम में AI का उपयोग।',
         },
       ],
     },
@@ -739,16 +739,16 @@ export const tradePages = [
             icon: 'Monitor',
             title: 'Computer systems',
             hours: 120,
-            items: ['Install and set up an operating system and related software, following safety precautions'],
+            items: ['सुरक्षा सावधानियों का पालन करते हुए ऑपरेटिंग सिस्टम और संबंधित सॉफ़्टवेयर इंस्टॉल और सेट करना'],
           },
           {
             icon: 'FileSpreadsheet',
             title: 'Office applications',
             hours: 300,
             items: [
-              'Create, format and edit documents in a word processor',
-              'Create and customise presentation slides',
-              'Build spreadsheets, then advanced workbooks with formulae, macros, charts and pivot tables',
+              'वर्ड प्रोसेसर में डॉक्यूमेंट बनाना, फ़ॉर्मेट करना और एडिट करना',
+              'प्रेज़ेंटेशन स्लाइड बनाना और उन्हें ज़रूरत के अनुसार बदलना',
+              'स्प्रेडशीट बनाना, फिर फ़ॉर्मूला, मैक्रो, चार्ट और पिवट टेबल वाली एडवांस्ड वर्कबुक तैयार करना',
             ],
           },
           {
@@ -756,41 +756,41 @@ export const tradePages = [
             title: 'Data & networks',
             hours: 150,
             items: [
-              'Create and manage database files with MySQL',
-              'Install, configure, troubleshoot and secure a computer network, including the Internet',
+              'MySQL से डेटाबेस फ़ाइलें बनाना और उनका प्रबंधन करना',
+              'इंटरनेट सहित कंप्यूटर नेटवर्क इंस्टॉल और कॉन्फ़िगर करना, उसकी खराबी दूर करना और उसे सुरक्षित रखना',
             ],
           },
           {
             icon: 'Code',
             title: 'Web development',
             hours: 300,
-            items: ['Develop web pages with HTML and CSS', 'Develop dynamic web pages with JavaScript'],
+            items: ['HTML और CSS से वेब पेज बनाना', 'JavaScript से डायनामिक वेब पेज बनाना'],
           },
           {
             icon: 'Shield',
             title: 'Digital world',
             hours: 120,
             items: [
-              'Browse, select and transact on e-commerce websites',
-              'Explain cloud services and the application development life cycle',
-              'Secure information on the Internet with cyber security concepts',
-              'Integrate AI with different applications',
+              'ई-कॉमर्स वेबसाइटों पर ब्राउज़ करना, सामान चुनना और लेन-देन करना',
+              'क्लाउड सेवाओं और एप्लिकेशन डेवलपमेंट लाइफ़ साइकिल को समझाना',
+              'साइबर सुरक्षा की अवधारणाओं से इंटरनेट पर जानकारी सुरक्षित रखना',
+              'अलग-अलग एप्लिकेशन के साथ AI को जोड़ना',
             ],
           },
           {
             icon: 'Terminal',
             title: 'Programming',
             hours: 90,
-            items: ['Write programs in Python'],
+            items: ['Python में प्रोग्राम लिखना'],
           },
         ],
       },
     ],
-    core: 'Employability Skills run alongside the trade; project work and industrial visits are part of the year.',
+    core: 'ट्रेड के साथ-साथ Employability Skills भी पढ़ाई जाती है; प्रोजेक्ट वर्क और औद्योगिक भ्रमण भी इस वर्ष का हिस्सा हैं।',
     practice: {
       signature: 'stack',
       title: 'Where the year’s practical hours go.',
-      lede: 'Each module’s practical and theory hours, as the curriculum allots them — web development and office software take the largest share.',
+      lede: 'पाठ्यक्रम के अनुसार हर मॉड्यूल के प्रैक्टिकल और थ्योरी घंटे — सबसे बड़ा हिस्सा वेब डेवलपमेंट और ऑफिस सॉफ़्टवेयर का है।',
       modules: [
         { label: 'Operating system & software', practical: 90, theory: 30 },
         { label: 'Word processing', practical: 50, theory: 10 },
@@ -835,39 +835,39 @@ export const tradePages = [
         {
           title: 'Computer Operator',
           nco: '4131.0600',
-          body: 'Operates computers and peripheral equipment to process business, scientific, engineering or other data.',
+          body: 'व्यावसायिक, वैज्ञानिक, इंजीनियरिंग या अन्य डेटा प्रोसेस करने के लिए कंप्यूटर और उससे जुड़े उपकरण चलाता है।',
         },
         {
           title: 'Programming Assistant',
           nco: '3514.0300',
-          body: 'Installs, maintains and updates computer programs under the guidance of computing professionals.',
+          body: 'कंप्यूटिंग विशेषज्ञों के मार्गदर्शन में कंप्यूटर प्रोग्राम इंस्टॉल करता है, उनका रखरखाव करता है और उन्हें अपडेट करता है।',
         },
         {
           title: 'Web Developer',
           nco: '2513.0101',
-          body: 'Designs and maintains web applications with static and dynamic content — layout, design and coding.',
+          body: 'स्टैटिक और डायनामिक कंटेंट वाले वेब एप्लिकेशन डिज़ाइन करता है और उनका रखरखाव करता है — लेआउट, डिज़ाइन और कोडिंग।',
         },
         {
           title: 'User Interface Developer',
           nco: '2513.0201',
-          body: 'Builds user interfaces for applications, databases and websites.',
+          body: 'एप्लिकेशन, डेटाबेस और वेबसाइटों के लिए यूज़र इंटरफ़ेस बनाता है।',
         },
         {
           title: 'Network Administrator',
           nco: '2523.0100',
-          body: 'Tests, evaluates and supports data-communication hardware and software, and helps users solve network problems.',
+          body: 'डेटा-कम्युनिकेशन हार्डवेयर और सॉफ़्टवेयर की जाँच, मूल्यांकन और सपोर्ट करता है, और नेटवर्क की समस्याएँ सुलझाने में यूज़र्स की मदद करता है।',
         },
       ],
-      settings: ['Business data processing', 'Scientific & engineering data', 'Web & application teams', 'Network support'],
-      settingsNote: 'Work areas named in the DGT job descriptions.',
+      settings: ['व्यावसायिक डेटा प्रोसेसिंग', 'वैज्ञानिक और इंजीनियरिंग डेटा', 'वेब और एप्लिकेशन टीमें', 'नेटवर्क सपोर्ट'],
+      settingsNote: 'DGT के कार्य-विवरणों में बताए गए कार्य-क्षेत्र।',
     },
     pathway: {
       ladder: ['Computer Operator', 'Assistant Programmer', 'Programmer', 'Senior Programmer'],
       routes: [
-        { icon: 'Handshake', title: 'Apprenticeship', body: 'Apprenticeship in industry, leading to the National Apprenticeship Certificate (NAC).' },
-        { icon: 'Users', title: 'Become an instructor', body: 'Crafts Instructor Training Scheme (CITS) to teach the trade in ITIs.' },
-        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'DGT advanced diploma courses, as applicable.' },
-        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'Start your own work in the related field.' },
+        { icon: 'Handshake', title: 'Apprenticeship', body: 'उद्योग में अप्रेंटिसशिप, जिसके बाद National Apprenticeship Certificate (NAC) मिलता है।' },
+        { icon: 'Users', title: 'Become an instructor', body: 'ITI में ट्रेड पढ़ाने के लिए Crafts Instructor Training Scheme (CITS)।' },
+        { icon: 'Award', title: 'Advanced Diploma (Vocational)', body: 'लागू होने पर DGT के एडवांस्ड डिप्लोमा कोर्स।' },
+        { icon: 'Lightbulb', title: 'Entrepreneurship', body: 'संबंधित क्षेत्र में अपना खुद का काम शुरू करें।' },
       ],
     },
     source: {
@@ -898,42 +898,42 @@ function faqsFor(t) {
 
   return [
     {
-      q: `How long is the ${t.name} course?`,
-      a: `${t.facts.duration}: ${instruction.toLocaleString('en-IN')} hours of instruction plus ${ojt} hours of on-the-job training or group project${
-        t.structure.length > 1 ? `, ${perYear.ojt} hours in each year` : ''
-      }.`,
+      q: `${t.name} कोर्स कितने समय का है?`,
+      a: `${t.facts.years} वर्ष: ${instruction.toLocaleString('en-IN')} घंटे का प्रशिक्षण, साथ में ${ojt} घंटे की ऑन-द-जॉब ट्रेनिंग या ग्रुप प्रोजेक्ट${
+        t.structure.length > 1 ? ` (हर वर्ष ${perYear.ojt} घंटे)` : ''
+      }।`,
     },
     {
-      q: 'What qualification do I need?',
-      a: `${t.facts.entry}. The minimum age is ${t.facts.minAge} years on the first day of the academic session.`,
+      q: 'प्रवेश के लिए कौन-सी योग्यता चाहिए?',
+      a: `${t.facts.entry}। शैक्षणिक सत्र के पहले दिन न्यूनतम आयु ${t.facts.minAge} वर्ष होनी चाहिए।`,
     },
     {
-      q: 'Is the training mostly practical?',
-      a: `Yes. ${perYear.practical.toLocaleString('en-IN')} of every ${(perYear.practical + perYear.theory + perYear.employability).toLocaleString('en-IN')} training hours are trade practical. There is also ${perYear.ojt} hours of on-the-job training each year at nearby industry — or a group project where industry is not available.`,
+      q: 'क्या प्रशिक्षण ज़्यादातर प्रैक्टिकल होता है?',
+      a: `हाँ। हर ${(perYear.practical + perYear.theory + perYear.employability).toLocaleString('en-IN')} प्रशिक्षण घंटों में से ${perYear.practical.toLocaleString('en-IN')} घंटे ट्रेड प्रैक्टिकल के होते हैं। इसके अलावा हर वर्ष ${perYear.ojt} घंटे की ऑन-द-जॉब ट्रेनिंग पास के उद्योग में होती है — और जहाँ उद्योग उपलब्ध न हो, वहाँ ग्रुप प्रोजेक्ट कराया जाता है।`,
     },
     {
-      q: 'What certificate will I get?',
-      a: `After passing the All India Trade Test conducted by DGT you are awarded the National Trade Certificate (NTC). To pass you need ${PASS_RULE}.`,
+      q: 'कौन-सा प्रमाणपत्र मिलेगा?',
+      a: `DGT द्वारा आयोजित All India Trade Test पास करने पर National Trade Certificate (NTC) मिलता है। उत्तीर्ण होने के लिए ${PASS_RULE} ज़रूरी हैं।`,
     },
     {
-      q: 'What jobs can I apply for?',
-      a: `The curriculum's job roles are ${t.careers.roles.map((r) => r.title).join(', ')}.`,
+      q: 'किन नौकरियों के लिए आवेदन किया जा सकता है?',
+      a: `पाठ्यक्रम में बताई गई जॉब भूमिकाएँ हैं: ${t.careers.roles.map((r) => r.title).join(', ')}।`,
     },
     {
-      q: 'Can I do an apprenticeship after ITI?',
-      a: 'Yes. The curriculum lists apprenticeship in industry as a progression pathway, leading to the National Apprenticeship Certificate (NAC).',
+      q: 'क्या ITI के बाद अप्रेंटिसशिप की जा सकती है?',
+      a: 'हाँ। पाठ्यक्रम में उद्योग में अप्रेंटिसशिप को आगे बढ़ने के एक रास्ते के रूप में बताया गया है, जिसके बाद National Apprenticeship Certificate (NAC) मिलता है।',
     },
     {
-      q: 'Can I continue my education after this trade?',
+      q: 'क्या इस ट्रेड के बाद आगे पढ़ाई जारी रखी जा सकती है?',
       a: lateral
-        ? 'Yes. The curriculum lists diploma courses in notified engineering branches by lateral entry, the 10+2 examination through NIOS, the Crafts Instructor Training Scheme (CITS) and DGT Advanced Diploma (Vocational) courses.'
-        : 'Yes. The curriculum lists the Crafts Instructor Training Scheme (CITS) and DGT Advanced Diploma (Vocational) courses. During the course you can also take optional courses of up to 240 hours a year towards a 10th or 12th certificate through NIOS.',
+        ? 'हाँ। पाठ्यक्रम में अधिसूचित इंजीनियरिंग शाखाओं के डिप्लोमा कोर्स में लेटरल एंट्री, NIOS के माध्यम से 10+2 परीक्षा, Crafts Instructor Training Scheme (CITS) और DGT के Advanced Diploma (Vocational) कोर्स बताए गए हैं।'
+        : 'हाँ। पाठ्यक्रम में Crafts Instructor Training Scheme (CITS) और DGT के Advanced Diploma (Vocational) कोर्स बताए गए हैं। कोर्स के दौरान आप NIOS के माध्यम से 10वीं या 12वीं के प्रमाणपत्र के लिए हर वर्ष 240 घंटे तक के वैकल्पिक कोर्स भी कर सकते हैं।',
     },
     {
-      q: `Which Satpuda campuses offer ${t.name}?`,
+      q: `Satpuda के किन कैंपस में ${t.name} उपलब्ध है?`,
       a: campuses.length
-        ? `${t.name} is offered at ${campuses.map((c) => c.shortName).join(', ')}. Please call the campus for current seats and admission dates.`
-        : 'Please contact the head office for the campuses running this trade this session.',
+        ? `${t.name} ट्रेड ${campuses.map((c) => c.shortName).join(', ')} कैंपस में उपलब्ध है। मौजूदा सीटों और प्रवेश की तारीखों के लिए कृपया संबंधित कैंपस को कॉल करें।`
+        : 'इस सत्र में यह ट्रेड किन कैंपस में चल रहा है, यह जानने के लिए कृपया हेड ऑफिस से संपर्क करें।',
     },
   ];
 }

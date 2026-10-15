@@ -25,7 +25,7 @@ export function InstituteFilter({ query, onQuery, trade, onTrade, region, onRegi
             type="search"
             value={query}
             onChange={(e) => onQuery(e.target.value)}
-            placeholder="Search by name or town"
+            placeholder="नाम या शहर से खोजें"
             autoComplete="off"
             className="h-12 w-full rounded-edge border border-navy-100 bg-white pl-10 pr-10 text-[0.9375rem] text-navy-800 placeholder:text-ink-soft focus:border-royal focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tech [&::-webkit-search-cancel-button]:hidden"
           />

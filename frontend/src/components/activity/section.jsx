@@ -16,6 +16,6 @@ export const activitySection = {
         More than a trade — <span className="text-signal">a campus life.</span>
       </>
     ),
-    body: 'Train in an NCVT trade at a Satpuda ITI and take part in the activities, safety programmes and events that fill the year.',
+    body: 'किसी Satpuda ITI में NCVT ट्रेड का प्रशिक्षण लें और साल भर चलने वाली गतिविधियों, सुरक्षा कार्यक्रमों और आयोजनों में हिस्सा लें।',
   },
 };

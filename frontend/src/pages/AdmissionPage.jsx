@@ -16,6 +16,7 @@ import { contact, trades } from '../data/satpudaData';
 import { itiInstitutes } from '../data/itiInstitutes';
 import { submitAdmission } from '../services/contentService';
 import { telHref } from '../utils/format';
+import { inHindi } from '../utils/messagesHi';
 
 /**
  * Admission — /admission.
@@ -60,17 +61,17 @@ const INITIAL = {
 };
 
 const DOCUMENTS = [
-  '10th mark sheet (and 12th, if passed)',
-  'Aadhaar card',
-  'Transfer / school leaving certificate',
-  'Caste and domicile certificate, where applicable',
-  'Recent passport-size photographs',
+  '10वीं की अंकसूची (और 12वीं की भी, यदि उत्तीर्ण हैं)',
+  'आधार कार्ड',
+  'स्थानांतरण प्रमाणपत्र (TC) / स्कूल छोड़ने का प्रमाणपत्र',
+  'जाति और मूल निवास प्रमाणपत्र (जहाँ लागू हो)',
+  'हाल ही में खिंचवाई गई पासपोर्ट साइज़ फ़ोटो',
 ];
 
 const NEXT_STEPS = [
-  'The admission team calls you on the mobile number you give.',
-  'Visit the campus for counselling and document verification.',
-  'Seat confirmation as per NCVT / DTE Madhya Pradesh norms.',
+  'प्रवेश टीम आपके दिए गए मोबाइल नंबर पर आपको कॉल करेगी।',
+  'काउंसलिंग और दस्तावेज़ों के सत्यापन के लिए कैंपस आएँ।',
+  'NCVT / DTE मध्य प्रदेश के नियमों के अनुसार सीट की पुष्टि।',
 ];
 
 /** Latest date of birth that still makes an applicant 14 today. */
@@ -118,7 +119,7 @@ export function AdmissionPage() {
         crumb="Admission"
         eyebrow="Admission open · Apply online"
         lines={['Apply to', 'Satpuda ITI.']}
-        lede="Fill in your basic details below. It takes about two minutes — our admission team will call you back to guide you through counselling and documents."
+        lede="नीचे अपनी बुनियादी जानकारी भरें। इसमें लगभग दो मिनट लगते हैं — फिर हमारी प्रवेश टीम आपको कॉल करके काउंसलिंग और दस्तावेज़ों के बारे में मार्गदर्शन देगी।"
       />
 
       <section className="relative bg-canvas-soft">
@@ -132,7 +133,7 @@ export function AdmissionPage() {
                 <div role="status" aria-live="polite" className="py-6 text-center sm:py-10">
                   <CheckCircle2 aria-hidden="true" strokeWidth={1.5} className="mx-auto h-14 w-14 text-tech-600" />
                   <h2 className="mt-6 font-display text-display-sm font-bold text-navy-800">Application received.</h2>
-                  <p className="mx-auto mt-4 max-w-md text-[1rem] leading-[1.7] text-ink-muted">{message}</p>
+                  <p className="mx-auto mt-4 max-w-md text-[1rem] leading-[1.7] text-ink-muted">{inHindi(message)}</p>
                   {result?.data?.referenceNo && (
                     <p className="mx-auto mt-8 inline-flex flex-col items-center gap-1 rounded-edge border border-navy-100 bg-canvas-soft px-6 py-4">
                       <span className="eyebrow text-ink-soft">Reference number</span>
@@ -141,7 +142,7 @@ export function AdmissionPage() {
                       </span>
                     </p>
                   )}
-                  <p className="mt-6 text-[0.875rem] text-ink-soft">Keep this number for any follow-up.</p>
+                  <p className="mt-6 text-[0.875rem] text-ink-soft">आगे की किसी भी जानकारी के लिए यह नंबर संभालकर रखें।</p>
                   <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                     <Button variant="outline" onClick={reset}>
                       <RotateCcw aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
@@ -155,7 +156,7 @@ export function AdmissionPage() {
               ) : (
                 <form onSubmit={onSubmit} className="space-y-8">
                   <FormSection index={1} title="Personal details">
-                    <TextField label="Full name" required autoComplete="name" maxLength={100} placeholder="As on your 10th mark sheet" {...field('fullName')} />
+                    <TextField label="Full name" required autoComplete="name" maxLength={100} placeholder="जैसा 10वीं की अंकसूची में लिखा है" {...field('fullName')} />
                     <TextField label="Father's name" required maxLength={100} {...field('fatherName')} />
                     <TextField label="Date of birth" type="date" required max={maxDob()} {...field('dateOfBirth')} />
                     <RadioGroupField label="Gender" required options={GENDER_OPTIONS} {...field('gender')} />
@@ -168,8 +169,8 @@ export function AdmissionPage() {
                       inputMode="numeric"
                       required
                       autoComplete="tel-national"
-                      placeholder="10-digit mobile"
-                      hint="We will call you on this number."
+                      placeholder="10 अंकों का मोबाइल नंबर"
+                      hint="हम आपको इसी नंबर पर कॉल करेंगे।"
                       {...field('phone')}
                     />
                     <TextField label="Email" type="email" autoComplete="email" {...field('email')} />
@@ -179,11 +180,11 @@ export function AdmissionPage() {
                       rows={2}
                       maxLength={300}
                       autoComplete="street-address"
-                      placeholder="House / ward, village or town"
+                      placeholder="मकान / वार्ड, गाँव या शहर"
                       className="sm:col-span-2"
                       {...field('address')}
                     />
-                    <TextField label="District" required maxLength={60} placeholder="e.g. Balaghat" {...field('district')} />
+                    <TextField label="District" required maxLength={60} placeholder="जैसे: बालाघाट" {...field('district')} />
                   </FormSection>
 
                   <FormSection index={3} title="Education">
@@ -195,7 +196,7 @@ export function AdmissionPage() {
                       min={0}
                       max={100}
                       step="0.01"
-                      placeholder="e.g. 68.5"
+                      placeholder="जैसे: 68.5"
                       {...field('percentage')}
                     />
                   </FormSection>
@@ -206,14 +207,14 @@ export function AdmissionPage() {
                       label="Preferred campus"
                       required
                       options={campusOptions}
-                      hint={values.trade ? 'Showing campuses that offer this trade.' : 'Choose a trade first to narrow the list.'}
+                      hint={values.trade ? 'वे कैंपस दिखाए जा रहे हैं जहाँ यह ट्रेड उपलब्ध है।' : 'सूची छोटी करने के लिए पहले ट्रेड चुनें।'}
                       {...field('campus')}
                     />
                     <TextAreaField
                       label="Anything else?"
                       rows={3}
                       maxLength={1000}
-                      placeholder="Questions about fees, hostel, timing…"
+                      placeholder="फीस, हॉस्टल, समय आदि से जुड़े सवाल…"
                       className="sm:col-span-2"
                       {...field('message')}
                     />
@@ -221,13 +222,13 @@ export function AdmissionPage() {
 
                   {status === 'error' && message && (
                     <p role="alert" className="rounded-edge border border-signal-300 bg-signal-50 px-4 py-3 text-[0.875rem] text-signal-700">
-                      {message}
+                      {inHindi(message)}
                     </p>
                   )}
 
                   <div className="flex flex-col gap-4 border-t border-navy-100 pt-8 sm:flex-row sm:items-center sm:justify-between">
                     <p className="text-[0.8125rem] text-ink-soft">
-                      Fields marked <span className="text-signal">*</span> are required.
+                      <span className="text-signal">*</span> चिह्नित फ़ील्ड भरना ज़रूरी है।
                     </p>
                     <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto">
                       {submitting ? (
@@ -282,8 +283,8 @@ export function AdmissionPage() {
                 ))}
               </ul>
               <p className="mt-5 border-t border-navy-100 pt-4 text-[0.8125rem] leading-[1.6] text-ink-soft">
-                Electrician requires 10th pass with Science, as published by the institute. Confirm eligibility for
-                other trades with the admission team.
+                संस्थान के अनुसार Electrician ट्रेड के लिए विज्ञान विषय के साथ 10वीं पास होना ज़रूरी है। अन्य ट्रेडों की
+                पात्रता की पुष्टि प्रवेश टीम से कर लें।
               </p>
             </div>
 
@@ -291,7 +292,7 @@ export function AdmissionPage() {
               <div aria-hidden="true" className="pointer-events-none absolute inset-0 blueprint opacity-30" />
               <div className="relative">
                 <p className="eyebrow text-tech">Prefer to talk?</p>
-                <p className="mt-3 text-[0.9375rem] leading-[1.6] text-navy-100/80">Call the admission enquiry line.</p>
+                <p className="mt-3 text-[0.9375rem] leading-[1.6] text-navy-100/80">प्रवेश पूछताछ लाइन पर कॉल करें।</p>
                 <a
                   href={telHref(contact.enquiry.phone)}
                   className="mt-4 inline-flex items-center gap-2.5 font-mono text-lg tabular text-white transition-colors hover:text-tech"

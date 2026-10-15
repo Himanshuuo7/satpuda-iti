@@ -41,7 +41,7 @@ function NsqfMeter({ level, accent }) {
         })}
       </div>
       <p className="mt-2 text-[0.8125rem] leading-[1.6] text-ink-muted">
-        The National Skills Qualifications Framework places every qualification on ten levels of competence.
+        National Skills Qualifications Framework (NSQF) हर योग्यता को दक्षता के दस स्तरों में से किसी एक पर रखता है।
       </p>
     </div>
   );
@@ -112,8 +112,8 @@ export function CourseInfo({ trade }) {
   const specs = [
     { icon: Clock, label: 'Duration', value: f.duration, note: f.hours },
     { icon: GraduationCap, label: 'Entry qualification', value: f.entry },
-    { icon: CalendarCheck, label: 'Minimum age', value: `${f.minAge} years`, note: 'On the first day of the academic session' },
-    { icon: Award, label: 'Certificate', value: 'National Trade Certificate (NTC)', note: 'Awarded by DGT after the All India Trade Test' },
+    { icon: CalendarCheck, label: 'Minimum age', value: `${f.minAge} years`, note: 'शैक्षणिक सत्र के पहले दिन' },
+    { icon: Award, label: 'Certificate', value: 'National Trade Certificate (NTC)', note: 'All India Trade Test के बाद DGT द्वारा प्रदान किया जाता है' },
     { icon: BadgeCheck, label: 'To pass', value: trade.passRule },
     { icon: Layers, label: 'Scheme', value: `Craftsman Training Scheme · ${trade.kind}`, note: `Trade code ${trade.code} · Sector: ${trade.sector}` },
   ];
@@ -138,7 +138,7 @@ export function CourseInfo({ trade }) {
               <span className={accent.text}>at a glance.</span>
             </>
           }
-          lede="Every figure below is from the trade’s DGT curriculum."
+          lede="नीचे दिया गया हर आँकड़ा इस ट्रेड के DGT पाठ्यक्रम से लिया गया है।"
           className="max-w-2xl"
         />
 

@@ -76,7 +76,7 @@ export function Recruiters({ page }) {
           </>,
           <span className="text-royal">Satpuda ITIs.</span>,
         ]}
-        lede="Government departments, public sector undertakings and multinational companies recruit Satpuda trainees through campus drives."
+        lede="सरकारी विभाग, सार्वजनिक क्षेत्र के उपक्रम और बहुराष्ट्रीय कंपनियाँ कैंपस ड्राइव के माध्यम से Satpuda के प्रशिक्षुओं की भर्ती करती हैं।"
         aside={<HeadlineCard />}
       />
 
@@ -154,7 +154,7 @@ export function Recruiters({ page }) {
                   {content.names.length} <span className="text-royal">recruiters.</span>
                 </>
               }
-              lede="Every company on the Satpuda ITIs recruiters board, in alphabetical order."
+              lede="Satpuda ITIs के रिक्रूटर्स बोर्ड पर दर्ज हर कंपनी, वर्णानुक्रम में।"
             />
           </div>
           <ol className="grid gap-x-8 sm:grid-cols-2 lg:col-span-8 xl:grid-cols-3">

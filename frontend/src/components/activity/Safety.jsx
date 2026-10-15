@@ -58,7 +58,7 @@ export function Safety({ page }) {
             {content.focusHi}
           </span>,
         ]}
-        lede="The health, safety and security norms the institute’s administration maintains — and the safety programmes every trainee takes part in."
+        lede="संस्थान का प्रशासन जिन स्वास्थ्य, सुरक्षा और संरक्षा मानदंडों का पालन करता है — और वे सुरक्षा कार्यक्रम, जिनमें हर प्रशिक्षु भाग लेता है।"
         aside={<Badges />}
       />
 
@@ -126,7 +126,6 @@ export function Safety({ page }) {
                       <span lang="hi" className="block text-[1rem] font-semibold leading-snug text-navy-800">
                         {p.hi}
                       </span>
-                      <span className="mt-1 block text-[0.8438rem] leading-snug text-ink-muted">{p.en}</span>
                     </span>
                   </div>
                 </li>

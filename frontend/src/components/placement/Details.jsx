@@ -281,7 +281,7 @@ export function Details({ page }) {
             <Table hover={hover} onHover={setHover} />
           </div>
           <p className="reveal mt-5 text-[0.8125rem] text-ink-soft" style={{ '--reveal-delay': '160ms' }}>
-            Placement support is not a guarantee of employment.
+            प्लेसमेंट सहायता का अर्थ नौकरी की गारंटी नहीं है।
           </p>
         </div>
       </section>

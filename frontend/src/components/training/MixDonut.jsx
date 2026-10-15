@@ -2,7 +2,7 @@ import { competency } from '../../data/trainingContent';
 
 /**
  * Donut of how training time is divided, as published (sums to 100%), with
- * a legend in English and Hindi. `tone` matches the surface it sits on.
+ * a Hindi legend. `tone` matches the surface it sits on.
  */
 
 export const MIX_COLORS = ['#E01B24', '#0B16C9', '#16C7D9', '#3B67A8', '#6E95CB', '#A9C2E3', '#D6E2F2'];
@@ -43,7 +43,7 @@ export function MixDonut({ tone = 'dark' }) {
           <div className="absolute inset-0 grid place-items-center text-center">
             <div>
               <p className={`font-display text-[2.25rem] font-bold leading-none tabular ${dark ? 'text-white' : 'text-navy-800'}`}>{lead.value}%</p>
-              <p className={`mt-1 text-[0.75rem] ${dark ? 'text-navy-100/80' : 'text-ink-muted'}`}>{lead.en}</p>
+              <p lang="hi" className={`mt-1 text-[0.75rem] ${dark ? 'text-navy-100/80' : 'text-ink-muted'}`}>{lead.hi}</p>
             </div>
           </div>
         </div>
@@ -51,8 +51,8 @@ export function MixDonut({ tone = 'dark' }) {
           {segments.map((s) => (
             <li key={s.en} className={`flex items-center gap-2.5 text-[0.8125rem] ${dark ? 'text-navy-100/85' : 'text-navy-700'}`}>
               <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-sharp" style={{ background: s.color }} />
-              <span className="flex-1">
-                {s.en} <span lang="hi" className={dark ? 'text-navy-200/60' : 'text-ink-soft'}>· {s.hi}</span>
+              <span lang="hi" className="flex-1">
+                {s.hi}
               </span>
               <span className={`font-mono tabular ${dark ? 'text-white' : 'text-navy-800'}`}>{s.value}%</span>
             </li>

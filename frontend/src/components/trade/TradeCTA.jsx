@@ -55,7 +55,7 @@ export function TradeCTA({ trade }) {
               className="reveal mt-6 max-w-prose text-[1.0625rem] leading-[1.75] text-navy-100/80"
               style={{ '--reveal-delay': '120ms' }}
             >
-              For seats, admission dates and fees this session, call the enquiry line or your nearest Satpuda campus.
+              इस सत्र की सीटों, प्रवेश तिथियों और फीस की जानकारी के लिए पूछताछ लाइन या अपने नज़दीकी Satpuda कैंपस पर कॉल करें।
             </p>
 
             <div className="reveal mt-9 flex flex-col gap-3 xs:flex-row" style={{ '--reveal-delay': '180ms' }}>

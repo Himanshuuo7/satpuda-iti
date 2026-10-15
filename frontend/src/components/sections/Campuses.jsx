@@ -176,7 +176,7 @@ export function Campuses() {
                 <span className="text-ink-muted">{campusDistricts.length} districts.</span>
               </>
             }
-            lede="From the head office at Manjhapur, Balaghat, the network reaches west to Itarsi and north to Rewa and Mauganj. Pick a campus to see its trades, contacts and the way there."
+            lede="मांझापुर, बालाघाट स्थित हेड ऑफिस से यह नेटवर्क पश्चिम में इटारसी और उत्तर में रीवा व मऊगंज तक फैला है। किसी कैंपस को चुनें और उसके ट्रेड, संपर्क जानकारी और वहाँ पहुँचने का रास्ता देखें।"
             className="max-w-xl"
           />
           <Button to="/about#network" variant="outline" className="reveal self-start lg:self-auto">
@@ -376,7 +376,7 @@ export function Campuses() {
                           </ul>
                         ) : (
                           <p className="mt-2 text-[0.8125rem] text-navy-100/55">
-                            Contact the campus for trades.
+                            ट्रेड की जानकारी के लिए कैंपस से संपर्क करें।
                           </p>
                         )}
                       </div>
@@ -447,7 +447,7 @@ export function Campuses() {
 
                 {(active.affiliated || active.ref) && (
                   <p className="border-t border-white/12 pt-4 font-mono text-[0.625rem] uppercase leading-relaxed tracking-[0.1em] text-navy-100/45">
-                    {active.affiliated && 'Affiliated with NCVT, New Delhi · Recommended by Quality Council of India'}
+                    {active.affiliated && 'NCVT, नई दिल्ली से संबद्ध · Quality Council of India द्वारा अनुशंसित'}
                     {active.affiliated && active.ref && <br />}
                     {active.ref && `Ref. ${active.ref}`}
                   </p>

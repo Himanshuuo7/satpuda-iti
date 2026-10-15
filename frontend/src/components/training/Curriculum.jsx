@@ -30,7 +30,7 @@ export function Curriculum({ page }) {
             @ Satpuda ITIs<span className="text-signal">.</span>
           </span>,
         ]}
-        lede="SITI follow the curriculum and syllabus guidelines provided by NCVT — reviewed before every session, delivered week by week, and given to every student with any amendments."
+        lede="SITI, NCVT के पाठ्यक्रम और सिलेबस संबंधी दिशानिर्देशों का पालन करता है — हर सत्र से पहले इसकी समीक्षा होती है, इसे सप्ताह-दर-सप्ताह पढ़ाया जाता है, और संशोधनों सहित हर विद्यार्थी को दिया जाता है।"
       />
 
       {/* The cycle */}

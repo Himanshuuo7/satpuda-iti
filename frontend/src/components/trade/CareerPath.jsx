@@ -24,25 +24,25 @@ export function CareerPath({ trade }) {
       icon: GraduationCap,
       label: 'Admission',
       title: trade.facts.entryShort,
-      body: `Minimum age ${trade.facts.minAge} years on the first day of the session.`,
+      body: `सत्र के पहले दिन न्यूनतम आयु ${trade.facts.minAge} वर्ष।`,
     },
     {
       icon: Wrench,
       label: 'ITI training',
       title: `${trade.facts.duration} · ${trade.facts.hours}`,
-      body: 'Trade practical and theory, employability skills, and on-the-job training or a group project.',
+      body: 'ट्रेड प्रैक्टिकल और थ्योरी, एम्प्लॉयबिलिटी स्किल्स, और ऑन-द-जॉब ट्रेनिंग या ग्रुप प्रोजेक्ट।',
     },
     {
       icon: Award,
       label: 'Certification',
       title: 'National Trade Certificate',
-      body: 'Awarded by DGT after the All India Trade Test.',
+      body: 'All India Trade Test के बाद DGT द्वारा प्रदान किया जाता है।',
     },
     {
       icon: Handshake,
       label: 'First step',
       title: `Apprenticeship or ${first}`,
-      body: `An apprenticeship in industry leading to the NAC, or joining industry as a ${first.toLowerCase()}.`,
+      body: `उद्योग में अप्रेंटिसशिप, जिसके बाद NAC मिलता है, या ${first} के रूप में उद्योग से जुड़ना।`,
     },
     ...growth.map((role) => ({ icon: TrendingUp, label: 'Growth', title: role, small: true })),
   ];
@@ -67,7 +67,7 @@ export function CareerPath({ trade }) {
               <span className={accent.text}>to career growth.</span>
             </>
           }
-          lede="The route and progression pathways set out in the DGT curriculum for this trade."
+          lede="इस ट्रेड के लिए DGT पाठ्यक्रम में बताया गया रास्ता और आगे बढ़ने के विकल्प।"
           className="max-w-2xl"
         />
 

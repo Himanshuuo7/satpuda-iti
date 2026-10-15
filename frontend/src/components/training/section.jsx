@@ -5,7 +5,7 @@ export const trainingSection = {
   label: 'Training',
   base: TRAINING_BASE,
   pages: trainingPages,
-  overview: { label: 'Training overview', summary: 'How Satpuda trains, from the first class to placement.' },
+  overview: { label: 'Training overview', summary: 'Satpuda में प्रशिक्षण कैसे होता है — पहली कक्षा से प्लेसमेंट तक।' },
   cta: {
     eyebrow: 'NCVT · Craftsman Training Scheme',
     title: (
@@ -13,6 +13,6 @@ export const trainingSection = {
         Learn your trade <span className="text-signal">the Satpuda way.</span>
       </>
     ),
-    body: 'NCVT trades taught practical-first, with STEP training alongside and a placement cell at the end of the course.',
+    body: 'NCVT ट्रेड, जिनकी पढ़ाई प्रैक्टिकल से शुरू होती है — साथ में STEP प्रशिक्षण, और कोर्स के अंत में प्लेसमेंट सेल का सहयोग।',
   },
 };

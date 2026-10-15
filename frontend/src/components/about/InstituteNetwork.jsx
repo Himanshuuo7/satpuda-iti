@@ -54,7 +54,7 @@ export function InstituteNetwork({ onView }) {
               <span className="text-royal">One standard of training.</span>
             </>
           }
-          lede="Every Satpuda ITI with its address, phone and email. Search by name, or filter by trade and district to find the campus nearest you."
+          lede="हर Satpuda ITI का पता, फ़ोन और ईमेल। नाम से खोजें, या ट्रेड और ज़िले के अनुसार फ़िल्टर करके अपना सबसे नज़दीकी कैंपस ढूँढ़ें।"
           className="max-w-3xl"
         />
 
@@ -84,7 +84,7 @@ export function InstituteNetwork({ onView }) {
         ) : (
           <div className="mt-4 flex flex-col items-center rounded-panel border border-dashed border-navy-200 bg-white px-6 py-14 text-center">
             <SearchX aria-hidden="true" className="h-6 w-6 text-ink-soft" />
-            <p className="mt-3 font-medium text-navy-800">No institute matches these filters.</p>
+            <p className="mt-3 font-medium text-navy-800">इन फ़िल्टरों से मेल खाता कोई संस्थान नहीं मिला।</p>
             <button
               type="button"
               onClick={reset}

@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 import cn from '../../utils/cn';
+import { inHindi } from '../../utils/messagesHi';
 
 /**
  * Form primitives for the Admission and Contact pages.
@@ -33,7 +34,7 @@ function FieldShell({ id, label, required, hint, error, className, children }) {
       <div className="mt-1.5">{children}</div>
       {error ? (
         <p id={`${id}-error`} className="mt-1.5 text-[0.8125rem] text-signal-600">
-          {error}
+          {inHindi(error)}
         </p>
       ) : (
         hint && (
@@ -154,7 +155,7 @@ export function RadioGroupField({ label, name, value, onChange, options, error, 
       </div>
       {error && (
         <p id={`${id}-error`} className="mt-1.5 text-[0.8125rem] text-signal-600">
-          {error}
+          {inHindi(error)}
         </p>
       )}
     </fieldset>

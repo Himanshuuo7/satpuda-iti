@@ -237,7 +237,7 @@ export function Trades() {
               className="reveal mt-4 text-[1.0625rem] font-medium leading-[1.5] text-navy-700"
               style={{ '--reveal-delay': '110ms' }}
             >
-              Hands-on training. Real industry exposure. A better tomorrow.
+              व्यावहारिक प्रशिक्षण। उद्योगों का वास्तविक अनुभव। एक बेहतर कल।
             </p>
           </div>
 
@@ -246,8 +246,8 @@ export function Trades() {
               className="reveal text-[0.9375rem] leading-[1.7] text-ink-muted"
               style={{ '--reveal-delay': '150ms' }}
             >
-              Each trade runs under the Craftsman Training Scheme and is affiliated to
-              the National Council for Vocational Training, New Delhi.
+              हर ट्रेड Craftsman Training Scheme के अंतर्गत चलता है और National Council for
+              Vocational Training (NCVT), नई दिल्ली से संबद्ध है।
             </p>
 
             <ul

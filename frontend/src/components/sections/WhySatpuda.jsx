@@ -26,7 +26,7 @@ export function WhySatpuda() {
         <SectionHeading
           eyebrow="Why Satpuda"
           title={differentiators.heading}
-          lede="How training at Satpuda compares with a typical ITI, point by point."
+          lede="Satpuda का प्रशिक्षण एक सामान्य ITI से कैसे अलग है — एक-एक बिंदु की तुलना।"
           className="max-w-2xl"
         />
 
@@ -92,7 +92,7 @@ export function WhySatpuda() {
             <div className="lg:w-56 lg:shrink-0">
               <h3 className="font-mono text-label uppercase text-tech">Quality Policy</h3>
               <p className="mt-2.5 text-[0.8125rem] leading-[1.6] text-navy-100/60">
-                Targets the institute holds itself to.
+                वे लक्ष्य, जो संस्थान ने अपने लिए तय किए हैं।
               </p>
             </div>
             <ul className="flex flex-1 flex-wrap gap-x-3 gap-y-2.5">

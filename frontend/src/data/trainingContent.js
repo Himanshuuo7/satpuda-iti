@@ -14,8 +14,8 @@
 // ---------------------------------------------------------------------------
 
 export const trainingOverview = {
-  lede: 'Satpuda Industrial Training Institute provides appropriate support and resources as per NCVT guidelines to impart training learning process with requisite number of hours and suitable methods.',
-  emphasis: 'More number of practical sessions is given to the students to enrich their learning experience.',
+  lede: 'Satpuda Industrial Training Institute, NCVT के दिशानिर्देशों के अनुसार आवश्यक घंटों और उपयुक्त विधियों के साथ प्रशिक्षण और सीखने की प्रक्रिया चलाने के लिए पूरा सहयोग और संसाधन उपलब्ध कराता है।',
+  emphasis: 'विद्यार्थियों के सीखने के अनुभव को और समृद्ध बनाने के लिए उन्हें अधिक से अधिक प्रैक्टिकल सत्र दिए जाते हैं।',
 };
 
 // ---------------------------------------------------------------------------
@@ -24,11 +24,11 @@ export const trainingOverview = {
 
 export const learningProcess = {
   intro: [
-    'Satpuda Industrial Training Institute provides appropriate support and resources as per NCVT guidelines to impart training learning process with requisite number of hours and suitable methods.',
-    'The teaching staff implements the course curriculum through a range of approaches and teaching strategies that recognize diverse learning style relevant to the learning needs.',
+    'Satpuda Industrial Training Institute, NCVT के दिशानिर्देशों के अनुसार आवश्यक घंटों और उपयुक्त विधियों के साथ प्रशिक्षण और सीखने की प्रक्रिया चलाने के लिए पूरा सहयोग और संसाधन उपलब्ध कराता है।',
+    'शिक्षक अलग-अलग तरीकों और शिक्षण रणनीतियों से पाठ्यक्रम पढ़ाते हैं, ताकि हर विद्यार्थी अपनी सीखने की शैली और ज़रूरत के अनुसार सीख सके।',
   ],
-  emphasis: 'More number of practical sessions is given to the students to enrich their learning experience.',
-  methodsLead: 'Following methods are used in Teaching Learning Process',
+  emphasis: 'विद्यार्थियों के सीखने के अनुभव को और समृद्ध बनाने के लिए उन्हें अधिक से अधिक प्रैक्टिकल सत्र दिए जाते हैं।',
+  methodsLead: 'शिक्षण और सीखने की प्रक्रिया में नीचे दी गई विधियाँ अपनाई जाती हैं',
   methods: [
     { icon: 'Presentation', label: 'Classroom Lecture & Presentations' },
     { icon: 'MonitorPlay', label: 'Video Sessions' },
@@ -40,9 +40,9 @@ export const learningProcess = {
     { icon: 'Cog', label: 'Industrial Projects' },
     { icon: 'Lightbulb', label: 'Problem Solving case studies' },
   ],
-  nimi: 'SITI follows the complete Learning Process based on National Instructional Media Institute (NIMI) instructional materials.',
+  nimi: 'SITI में सीखने की पूरी प्रक्रिया National Instructional Media Institute (NIMI) की शिक्षण सामग्री पर आधारित है।',
   methodologyLead:
-    'Advance teaching methodology is followed to provide best training in the Institute for that we will utilize all measures relating to the Industrial Training.',
+    'संस्थान में सर्वश्रेष्ठ प्रशिक्षण देने के लिए उन्नत शिक्षण पद्धति अपनाई जाती है, और इसके लिए औद्योगिक प्रशिक्षण से जुड़े सभी उपायों का उपयोग किया जाता है।',
   /** The eleven published measures, grouped by what they concern. */
   measures: [
     {
@@ -50,10 +50,10 @@ export const learningProcess = {
       icon: 'GraduationCap',
       title: 'Faculty',
       items: [
-        'Best qualified faculties rankers is to be appointed for training.',
-        'To develop teaching skill of the faculty members, they are being provided facility to attend the quality improvements programmes (QIP’s) and staff development programmes (SDP’s) sponsored or organized by NCVT/SCVT/HRD time to time.',
-        'Other than attending programmes, SITI itself organizing camp/ seminars & programmes to develop/ improve their teaching methodology.',
-        'Eminent personalities are invited regularly in the Institute to provide their brain storming lectures to students as well as faculty members, so that they can be in touch with recent advance knowledge in the field of industrial training.',
+        'प्रशिक्षण के लिए सर्वश्रेष्ठ योग्यता वाले और मेरिट में आगे रहे शिक्षकों की नियुक्ति की जाती है।',
+        'शिक्षकों का शिक्षण कौशल बढ़ाने के लिए उन्हें NCVT/SCVT/HRD द्वारा समय-समय पर प्रायोजित या आयोजित गुणवत्ता सुधार कार्यक्रमों (QIP) और स्टाफ विकास कार्यक्रमों (SDP) में भाग लेने की सुविधा दी जाती है।',
+        'इन कार्यक्रमों के अलावा SITI स्वयं भी शिक्षकों की शिक्षण पद्धति को बेहतर बनाने के लिए शिविर, सेमिनार और कार्यक्रम आयोजित करता है।',
+        'प्रतिष्ठित व्यक्तियों को नियमित रूप से संस्थान में आमंत्रित किया जाता है, जो विद्यार्थियों और शिक्षकों के लिए विचारोत्तेजक व्याख्यान देते हैं, ताकि वे औद्योगिक प्रशिक्षण के क्षेत्र के नवीनतम ज्ञान से जुड़े रहें।',
       ],
     },
     {
@@ -61,9 +61,9 @@ export const learningProcess = {
       icon: 'Projector',
       title: 'Classrooms & teaching aids',
       items: [
-        'Advance teaching aids/ tools utilized in the lecture with LCD Projectors, computers and with advanced programmes.',
-        'Conducive Classrooms are also developed.',
-        'The HOD/ teaching staff also provided the use and purpose of instruments and equipment guidelines through demonstration as per syllabus of NCVT in force and amended time to time.',
+        'व्याख्यानों में LCD प्रोजेक्टर, कंप्यूटर और उन्नत सॉफ़्टवेयर जैसे आधुनिक शिक्षण साधनों का उपयोग किया जाता है।',
+        'पढ़ाई के लिए अनुकूल कक्षाएँ भी तैयार की गई हैं।',
+        'HOD और शिक्षक, NCVT के लागू और समय-समय पर संशोधित सिलेबस के अनुसार, प्रदर्शन (डेमो) के माध्यम से यंत्रों और उपकरणों के उपयोग व उद्देश्य की जानकारी भी देते हैं।',
       ],
     },
     {
@@ -71,10 +71,10 @@ export const learningProcess = {
       icon: 'Library',
       title: 'Internet, digital library & e-library',
       items: [
-        'The utilization of Internet facilities are also helpful for modernization of the Industrial training. All the computers of the computer lab are attached with internet facility.',
-        'Digital library is developed consisting of computers and internet facility. Students are provided pass word to work on computers and for the utilization of Internet facility.',
-        'The e-library is fully utilized in the library so that students can get maximum benefits out of that.',
-        'The library contains all the required text books & reference books as per the norms of NCVT/ SCVT.',
+        'इंटरनेट सुविधाओं का उपयोग औद्योगिक प्रशिक्षण को आधुनिक बनाने में भी मदद करता है। कंप्यूटर लैब के सभी कंप्यूटरों में इंटरनेट सुविधा उपलब्ध है।',
+        'कंप्यूटर और इंटरनेट सुविधा वाली डिजिटल लाइब्रेरी विकसित की गई है। कंप्यूटर पर काम करने और इंटरनेट सुविधा का उपयोग करने के लिए विद्यार्थियों को पासवर्ड दिया जाता है।',
+        'लाइब्रेरी में ई-लाइब्रेरी का पूरा उपयोग किया जाता है, ताकि विद्यार्थियों को इसका अधिकतम लाभ मिल सके।',
+        'लाइब्रेरी में NCVT/SCVT के मानदंडों के अनुसार सभी ज़रूरी पाठ्यपुस्तकें और संदर्भ पुस्तकें उपलब्ध हैं।',
       ],
     },
   ],
@@ -165,32 +165,32 @@ export const admissionToPlacement = {
 export const curriculum = {
   title: 'Curriculum @ Satpuda ITIs',
   paragraphs: [
-    'SITI follow the curriculum and syllabus guidelines provided by NCVT. All HOD’s are responsible for keeping up to date on the changes/ guidelines suggested by the NCVT from time to time. The changes as advised are recorded and the additional resources like faculty, equipment, tools, etc is recorded and forwarded to the Institute Management Committee for its approval.',
-    'In case of an urgency which requires immediate action to meet NCVT guidelines, the head of the institution is authorized to make purchases with information to all members of IMC.',
-    'The curriculum of the trades for which the institute is affiliated is assessed every time before the start of the session by the IMC and any amendments required are carried out prior to the start of the session.',
-    'The curriculum of each trade is published in the brochure for admission and put up on Institute website.',
-    'Each HOD is responsible for ensuring the adherence to the course curriculum. The plan for delivery of the course curriculum is prepared on week basis and given to each Tutor.',
-    'The Satpuda Industrial Training Institute strictly follow the syllabus prescribed by NCVT for the purpose and a copy of the same be provided to the student with amended syllabus, if any.',
+    'SITI, NCVT द्वारा दिए गए पाठ्यक्रम और सिलेबस संबंधी दिशानिर्देशों का पालन करता है। NCVT द्वारा समय-समय पर सुझाए गए बदलावों और दिशानिर्देशों की अद्यतन जानकारी रखने की ज़िम्मेदारी सभी HOD की है। सुझाए गए बदलाव दर्ज किए जाते हैं, और उनके लिए ज़रूरी अतिरिक्त संसाधन — जैसे शिक्षक, उपकरण, औज़ार आदि — भी दर्ज करके स्वीकृति के लिए संस्थान प्रबंधन समिति (Institute Management Committee) को भेजे जाते हैं।',
+    'यदि NCVT दिशानिर्देशों का पालन करने के लिए तुरंत कार्रवाई ज़रूरी हो, तो संस्थान प्रमुख IMC के सभी सदस्यों को सूचित करते हुए खरीदारी करने के लिए अधिकृत हैं।',
+    'संस्थान जिन ट्रेडों के लिए संबद्ध है, उनके पाठ्यक्रम की समीक्षा IMC हर सत्र शुरू होने से पहले करती है, और ज़रूरी संशोधन सत्र शुरू होने से पहले ही कर दिए जाते हैं।',
+    'हर ट्रेड का पाठ्यक्रम प्रवेश ब्रोशर में प्रकाशित किया जाता है और संस्थान की वेबसाइट पर भी उपलब्ध कराया जाता है।',
+    'पाठ्यक्रम का पालन सुनिश्चित करने की ज़िम्मेदारी हर HOD की है। पाठ्यक्रम पढ़ाने की योजना सप्ताह-वार तैयार की जाती है और हर ट्यूटर को दी जाती है।',
+    'Satpuda Industrial Training Institute, NCVT द्वारा निर्धारित सिलेबस का सख़्ती से पालन करता है, और इसकी एक प्रति — संशोधन होने पर संशोधित सिलेबस सहित — हर विद्यार्थी को दी जाती है।',
   ],
   /** The yearly cycle the paragraphs describe, in order. */
   cycle: [
-    { icon: 'BookMarked', title: 'NCVT guidelines', body: 'HODs keep up to date on changes suggested by NCVT; changes and the resources they need are recorded.' },
-    { icon: 'Landmark', title: 'IMC approval', body: 'Forwarded to the Institute Management Committee for approval; in urgency the head of the institution may purchase with information to all IMC members.' },
-    { icon: 'CalendarDays', title: 'Before each session', body: 'The IMC assesses each trade’s curriculum and carries out amendments prior to the start of the session.' },
-    { icon: 'ClipboardList', title: 'Weekly delivery plan', body: 'Each HOD ensures adherence; a week-wise delivery plan is given to each tutor.' },
+    { icon: 'BookMarked', title: 'NCVT guidelines', body: 'HOD, NCVT के सुझाए बदलावों की अद्यतन जानकारी रखते हैं; बदलाव और उनके लिए ज़रूरी संसाधन दर्ज किए जाते हैं।' },
+    { icon: 'Landmark', title: 'IMC approval', body: 'स्वीकृति के लिए संस्थान प्रबंधन समिति (IMC) को भेजा जाता है; ज़रूरत पड़ने पर संस्थान प्रमुख सभी IMC सदस्यों को सूचित करके खरीदारी कर सकते हैं।' },
+    { icon: 'CalendarDays', title: 'Before each session', body: 'IMC हर ट्रेड के पाठ्यक्रम की समीक्षा करती है और सत्र शुरू होने से पहले ज़रूरी संशोधन करती है।' },
+    { icon: 'ClipboardList', title: 'Weekly delivery plan', body: 'हर HOD पाठ्यक्रम का पालन सुनिश्चित करते हैं; हर ट्यूटर को सप्ताह-वार शिक्षण योजना दी जाती है।' },
   ],
   cellLead:
-    'The Institute has its own academic cell under the control of Principal of the Institute having all the HOD as member of the cell to provide feedback information to the students.',
+    'संस्थान का अपना अकादमिक सेल है, जो प्राचार्य के नियंत्रण में काम करता है और सभी HOD इसके सदस्य हैं; यह सेल विद्यार्थियों को फीडबैक और ज़रूरी जानकारी देता है।',
   cell: [
-    { icon: 'Newspaper', text: 'To have the latest information from NCVT' },
-    { icon: 'CalendarDays', text: 'To prepare academic calendar.' },
-    { icon: 'Users', text: 'To form admission committee.' },
-    { icon: 'FileBadge', text: 'To arrange all the examination conducted by NCVT.' },
-    { icon: 'Globe', text: 'To upload latest information of the Institute on the Institutes websites.' },
-    { icon: 'Ban', text: 'To appoint anti-ragging Committee.' },
-    { icon: 'Scale', text: 'To maintain discipline in the Institute.' },
-    { icon: 'Clock', text: 'To prepare batch wise time table for trainee.' },
-    { icon: 'BookOpen', text: 'To prepare admission brochure for each year for each trade.' },
+    { icon: 'Newspaper', text: 'NCVT से नवीनतम जानकारी प्राप्त करना।' },
+    { icon: 'CalendarDays', text: 'अकादमिक कैलेंडर तैयार करना।' },
+    { icon: 'Users', text: 'प्रवेश समिति का गठन करना।' },
+    { icon: 'FileBadge', text: 'NCVT द्वारा आयोजित सभी परीक्षाओं की व्यवस्था करना।' },
+    { icon: 'Globe', text: 'संस्थान की नवीनतम जानकारी संस्थानों की वेबसाइटों पर अपलोड करना।' },
+    { icon: 'Ban', text: 'एंटी-रैगिंग समिति नियुक्त करना।' },
+    { icon: 'Scale', text: 'संस्थान में अनुशासन बनाए रखना।' },
+    { icon: 'Clock', text: 'प्रशिक्षुओं के लिए बैच-वार समय सारणी तैयार करना।' },
+    { icon: 'BookOpen', text: 'हर वर्ष हर ट्रेड के लिए प्रवेश ब्रोशर तैयार करना।' },
   ],
 };
 
@@ -282,25 +282,25 @@ export const hrDevelopment = {
   title: 'Human Resource Development Satpuda ITI',
   kicker: 'Faculty',
   statement:
-    'SITI consider that our human resources are the most valuable assets. In line with the Policy to do best to help them achieve their full potential through continuous education and training.',
-  norms: 'The Institute follows the requirements of NCVT related to the qualifications and competencies of Principals, Instructors and other administrative staff.',
+    'SITI मानता है कि हमारे मानव संसाधन हमारी सबसे मूल्यवान संपत्ति हैं। इसी नीति के अनुरूप हम निरंतर शिक्षा और प्रशिक्षण के माध्यम से उन्हें अपनी पूरी क्षमता तक पहुँचने में हर संभव मदद करते हैं।',
+  norms: 'संस्थान प्राचार्यों, इंस्ट्रक्टरों और अन्य प्रशासनिक कर्मचारियों की योग्यता और दक्षता से जुड़ी NCVT की सभी आवश्यकताओं का पालन करता है।',
   roles: ['Principals', 'Instructors', 'Administrative staff'],
-  cellLead: 'Satpuda Industrial Training Institute(s) has its own HR cell for recruitment of faculty and other staff:',
+  cellLead: 'Satpuda Industrial Training Institute(s) में शिक्षकों और अन्य कर्मचारियों की भर्ती के लिए अपना HR सेल है:',
   cell: [
     {
       icon: 'Users',
       title: 'Selection committee',
-      text: 'The selection committee of some eminent personalities has been constituted for the appointment of teaching Staff/ Instructor/ other supporting staff.',
+      text: 'शिक्षण स्टाफ, इंस्ट्रक्टर और अन्य सहायक कर्मचारियों की नियुक्ति के लिए प्रतिष्ठित व्यक्तियों की एक चयन समिति गठित की गई है।',
     },
     {
       icon: 'BadgeCheck',
       title: 'Selection on merit',
-      text: 'The selection of faculty members will be based on their qualification, experience and other achievement obtained during the service and norms and standards prescribed by NCVT for the appointment.',
+      text: 'शिक्षकों का चयन उनकी योग्यता, अनुभव, सेवा के दौरान की गई अन्य उपलब्धियों और नियुक्ति के लिए NCVT द्वारा निर्धारित मानदंडों व मानकों के आधार पर किया जाता है।',
     },
     {
       icon: 'GraduationCap',
       title: 'Advance training for staff',
-      text: 'The advance training camp/programme for the staff will be organized by the Institute to develop technical skills. The seminar and conference will also be organized for the Staff and the Instructor to have the advance knowledge, so that our trainee will get maximum benefit of technical knowledge.',
+      text: 'तकनीकी कौशल बढ़ाने के लिए संस्थान स्टाफ के लिए उन्नत प्रशिक्षण शिविर और कार्यक्रम आयोजित करता है। स्टाफ और इंस्ट्रक्टरों को उन्नत ज्ञान देने के लिए सेमिनार और सम्मेलन भी आयोजित किए जाते हैं, ताकि हमारे प्रशिक्षुओं को तकनीकी ज्ञान का अधिकतम लाभ मिल सके।',
     },
   ],
 };

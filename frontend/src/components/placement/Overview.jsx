@@ -76,7 +76,7 @@ export function Overview() {
             <span className="text-signal">.</span>
           </>,
         ]}
-        lede="Campus interviews, industry exposure, career guidance and entrepreneurship development — everything the Satpuda Placement & Guidance Cell does to take a trainee from the workshop to a job."
+        lede="कैंपस इंटरव्यू, उद्योगों का अनुभव, करियर मार्गदर्शन और उद्यमिता विकास — प्रशिक्षु को वर्कशॉप से नौकरी तक पहुँचाने के लिए Satpuda का प्लेसमेंट एवं मार्गदर्शन सेल जो कुछ करता है, वह सब यहाँ है।"
         aside={<HeadlineInstrument />}
       >
         <a
@@ -116,7 +116,7 @@ export function Overview() {
               <span aria-hidden="true" className="about-shutter absolute inset-0 bg-navy-800" style={{ '--reveal-delay': '200ms' }} />
             </Figure>
             <figcaption className="mt-3 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
-              Hands-on practical training · Satpuda ITI
+              व्यावहारिक प्रशिक्षण · Satpuda ITI
             </figcaption>
           </figure>
         </div>

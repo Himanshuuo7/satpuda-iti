@@ -61,7 +61,7 @@ export function TradeOverview({ trade }) {
               <span className={accent.text}>%</span>
             </p>
             <p className="mt-2 text-[0.9375rem] font-medium text-navy-700">
-              of each year’s training hours are trade practical
+              हर वर्ष के प्रशिक्षण घंटों में ट्रेड प्रैक्टिकल का हिस्सा
             </p>
             <p className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-soft">
               {year.practical.toLocaleString('en-IN')} of {total.toLocaleString('en-IN')} hours · DGT curriculum

@@ -46,7 +46,6 @@ export function Holistic({ page }) {
             Holistic Development<span className="text-signal">.</span>
           </span>,
         ]}
-        lede={content.subtitleEn + '.'}
       >
         <p lang="hi" className="max-w-2xl font-display text-[1.25rem] font-medium leading-snug text-navy-800 sm:text-[1.5rem]">
           {content.subtitleHi}
@@ -69,7 +68,6 @@ export function Holistic({ page }) {
                     <p lang="hi" className="font-display text-[1.125rem] font-semibold leading-snug text-white lg:text-[1.25rem]">
                       {content.core.hi}
                     </p>
-                    <p className="mt-2 text-[0.75rem] leading-snug text-navy-100/75">{content.core.en}</p>
                   </div>
                 </div>
               </div>
@@ -99,7 +97,6 @@ export function Holistic({ page }) {
                       <p lang="hi" className="mt-6 font-display text-[1.375rem] font-semibold leading-snug text-navy-800 sm:text-[1.5rem]">
                         {p.hi}
                       </p>
-                      <p className="mt-2 text-[0.9375rem] text-ink-muted">{p.en}</p>
                     </div>
                   </li>
                 );

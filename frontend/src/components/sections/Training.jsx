@@ -93,7 +93,7 @@ export function Training() {
                   className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/45 to-transparent"
                 />
                 <span className="absolute bottom-4 left-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-white/85">
-                  Practical session
+                  प्रैक्टिकल सत्र
                 </span>
               </Figure>
             </div>

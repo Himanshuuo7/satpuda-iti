@@ -66,7 +66,6 @@ export function SafetySection() {
           <p lang="hi" className="mt-5 max-w-4xl font-display text-[clamp(1.375rem,1rem+1.6vw,2.25rem)] font-semibold leading-[1.35] text-white">
             {missionVision.commitmentHi}
           </p>
-          <p className="mt-4 max-w-3xl text-[1.0625rem] leading-[1.7] text-navy-100/80">{missionVision.commitmentEn}</p>
         </div>
 
         {/* Four principles */}
@@ -80,8 +79,7 @@ export function SafetySection() {
               <div className="flex items-center justify-between">
                 <span className="font-mono text-label uppercase text-tech">{c.label}</span>
               </div>
-              <p className="mt-4 text-[0.9688rem] leading-[1.65] text-white">{c.en}</p>
-              <p lang="hi" className="mt-3 text-[0.8125rem] leading-[1.7] text-navy-100/60">
+              <p lang="hi" className="mt-4 text-[0.9688rem] leading-[1.65] text-white">
                 {c.hi}
               </p>
               <span
@@ -146,8 +144,8 @@ export function SafetySection() {
               ))}
             </ul>
             <p className="reveal mt-6 text-[0.75rem] leading-relaxed text-navy-200/70">
-              Affiliated with NCVT, New Delhi · Recommended by the Quality Council of India · Administered by the
-              Directorate of Technical Education, Govt. of MP.
+              NCVT, नई दिल्ली से संबद्ध · Quality Council of India द्वारा अनुशंसित · तकनीकी शिक्षा संचालनालय,
+              मध्य प्रदेश शासन द्वारा प्रशासित।
             </p>
           </div>
         </div>

@@ -17,7 +17,7 @@ export const features = [
   {
     id: 'curriculum',
     title: 'Planned Structured Curriculum',
-    detail: 'Delivered with NIMI instructional materials and the requisite hours set by NCVT guidelines.',
+    detail: 'NIMI की शिक्षण सामग्री और NCVT दिशानिर्देशों में तय आवश्यक घंटों के साथ पढ़ाया जाता है।',
     icon: 'ClipboardList',
     group: 'training',
     sourceUrls: [ABOUT, TRAINING],
@@ -25,7 +25,7 @@ export const features = [
   {
     id: 'regular-training',
     title: 'Rigorous Regular Training',
-    detail: 'More practical sessions are built in to enrich each trainee’s learning experience.',
+    detail: 'हर प्रशिक्षु के सीखने के अनुभव को समृद्ध बनाने के लिए अधिक प्रैक्टिकल सत्र रखे जाते हैं।',
     icon: 'Timer',
     group: 'training',
     sourceUrls: [ABOUT, TRAINING],
@@ -33,7 +33,7 @@ export const features = [
   {
     id: 'trade-testing',
     title: 'Skill & Trade Testing',
-    detail: 'Skill and trade testing is part of the Satpuda training model.',
+    detail: 'कौशल और ट्रेड परीक्षण Satpuda के प्रशिक्षण मॉडल का हिस्सा है।',
     icon: 'Gauge',
     group: 'training',
     sourceUrls: [ABOUT],
@@ -41,7 +41,7 @@ export const features = [
   {
     id: 'nsdc',
     title: 'NSDC Courses',
-    detail: 'NSDC courses are offered alongside the NCVT trade programme.',
+    detail: 'NCVT ट्रेड कार्यक्रम के साथ-साथ NSDC कोर्स भी कराए जाते हैं।',
     icon: 'BadgeCheck',
     group: 'training',
     sourceUrls: [ABOUT],
@@ -49,7 +49,7 @@ export const features = [
   {
     id: 'industry-exposure',
     title: 'Industry Exposure',
-    detail: 'Periodic industry visits, and faculty with students take up real problems from industry.',
+    detail: 'समय-समय पर उद्योग भ्रमण होते हैं, और शिक्षक विद्यार्थियों के साथ मिलकर उद्योगों की वास्तविक समस्याओं पर काम करते हैं।',
     icon: 'Factory',
     group: 'industry',
     sourceUrls: [ABOUT, PLACEMENT],
@@ -57,7 +57,7 @@ export const features = [
   {
     id: 'skill-connect',
     title: 'Skill Connect',
-    detail: 'Connecting trained skills with employers through the placement cell.',
+    detail: 'प्लेसमेंट सेल के माध्यम से प्रशिक्षित कौशल को नियोक्ताओं से जोड़ना।',
     icon: 'Link2',
     group: 'industry',
     sourceUrls: [ABOUT],
@@ -65,7 +65,7 @@ export const features = [
   {
     id: 'ojt',
     title: 'On-the-Job Training',
-    detail: 'Hands-on practice, field exposure and industrial projects are part of the learning process.',
+    detail: 'हाथों से व्यावहारिक अभ्यास, फील्ड का अनुभव और औद्योगिक प्रोजेक्ट सीखने की प्रक्रिया का हिस्सा हैं।',
     icon: 'HardHat',
     group: 'industry',
     sourceUrls: [ABOUT, TRAINING],
@@ -73,7 +73,7 @@ export const features = [
   {
     id: 'step',
     title: 'Skill Enhancement (STEP)',
-    detail: 'The Skill Enhancement Training Programme adds value beyond the core syllabus.',
+    detail: 'कौशल संवर्धन प्रशिक्षण कार्यक्रम (STEP) मुख्य सिलेबस से आगे बढ़कर अतिरिक्त कौशल जोड़ता है।',
     icon: 'TrendingUp',
     group: 'industry',
     sourceUrls: [ABOUT],
@@ -81,7 +81,7 @@ export const features = [
   {
     id: 'placements',
     title: 'Placement Support',
-    detail: 'The placement cell arranges campus interviews and contacts local industries for their manpower needs.',
+    detail: 'प्लेसमेंट सेल कैंपस इंटरव्यू आयोजित करता है और स्थानीय उद्योगों से उनकी कार्यबल संबंधी ज़रूरतों के लिए संपर्क करता है।',
     icon: 'Briefcase',
     group: 'career',
     sourceUrls: [ABOUT, PLACEMENT],
@@ -89,7 +89,7 @@ export const features = [
   {
     id: 'entrepreneurship',
     title: 'Entrepreneurship Focus',
-    detail: 'Self-employment camps share information on government self-employment schemes.',
+    detail: 'स्वरोज़गार शिविरों में सरकारी स्वरोज़गार योजनाओं की जानकारी दी जाती है।',
     icon: 'Lightbulb',
     group: 'career',
     sourceUrls: [ABOUT, PLACEMENT],
@@ -97,7 +97,7 @@ export const features = [
   {
     id: 'alumni',
     title: 'Alumni Support',
-    detail: 'Every passed-out trainee is followed up — one of our quality-policy targets.',
+    detail: 'हर उत्तीर्ण प्रशिक्षु का फॉलो-अप किया जाता है — यह हमारी गुणवत्ता नीति का एक लक्ष्य है।',
     icon: 'Users',
     group: 'career',
     sourceUrls: [ABOUT],
@@ -105,7 +105,7 @@ export const features = [
   {
     id: 'career-updates',
     title: 'Career Updates',
-    detail: 'Newspapers, employment news, and computer access for job search and online registration.',
+    detail: 'समाचार पत्र, रोज़गार समाचार, और नौकरी खोजने व ऑनलाइन रजिस्ट्रेशन के लिए कंप्यूटर की सुविधा।',
     icon: 'Newspaper',
     group: 'career',
     sourceUrls: [ABOUT, PLACEMENT],
@@ -113,7 +113,7 @@ export const features = [
   {
     id: 'trainers',
     title: 'Experienced Trainers',
-    detail: 'Faculty attend quality-improvement and staff-development programmes every year.',
+    detail: 'शिक्षक हर वर्ष गुणवत्ता सुधार और स्टाफ विकास कार्यक्रमों में भाग लेते हैं।',
     icon: 'GraduationCap',
     group: 'mindset',
     sourceUrls: [ABOUT, TRAINING],
@@ -121,7 +121,7 @@ export const features = [
   {
     id: 'lifelong',
     title: 'Lifelong Learning',
-    detail: 'Free online knowledge content and a digital library with internet access.',
+    detail: 'मुफ़्त ऑनलाइन ज्ञान सामग्री और इंटरनेट सुविधा वाली डिजिटल लाइब्रेरी।',
     icon: 'BookOpen',
     group: 'mindset',
     sourceUrls: [ABOUT, TRAINING],
@@ -129,7 +129,7 @@ export const features = [
   {
     id: 'technical-mindset',
     title: 'Technical Mindset',
-    detail: 'Problem-solving case studies prepare trainees to think like technicians.',
+    detail: 'समस्या-समाधान केस स्टडी प्रशिक्षुओं को एक तकनीशियन की तरह सोचना सिखाती हैं।',
     icon: 'Cpu',
     group: 'mindset',
     sourceUrls: [ABOUT, TRAINING],
@@ -145,11 +145,11 @@ export const featureGroups = [
 
 /** The published baseline ("Other ITIs") column, for the comparison strip. */
 export const baseline = [
-  'NCVT curriculum',
-  'NCVT infrastructure',
-  'Some have placements',
-  'Some have activities',
-  'No guarantee on regular training',
+  'NCVT पाठ्यक्रम',
+  'NCVT के अनुसार बुनियादी ढाँचा',
+  'कुछ में प्लेसमेंट की सुविधा',
+  'कुछ में अन्य गतिविधियाँ',
+  'नियमित प्रशिक्षण की कोई गारंटी नहीं',
 ];
 
 /**
@@ -191,11 +191,11 @@ export const rightFour = [
  * measure it applies to. The wording of each measure is the published text.
  */
 export const qualityTargets = [
-  { value: '100%', measure: 'Utilisation of sanctioned intake capacity' },
-  { value: '> 85%', measure: 'Trainee retention rate' },
-  { value: '> 80%', measure: 'Passed-out rate' },
-  { value: '100%', measure: 'Follow-up of passed-out trainees' },
-  { value: '0%', measure: 'Complaint rate — minimised toward zero' },
-  { value: '≥ 1', measure: 'Industry every trainee is exposed to' },
-  { value: '6 days', measure: 'Training programme for trainers each year' },
+  { value: '100%', measure: 'स्वीकृत प्रवेश क्षमता का उपयोग' },
+  { value: '> 85%', measure: 'प्रशिक्षुओं की निरंतरता (रिटेंशन) दर' },
+  { value: '> 80%', measure: 'उत्तीर्ण होने की दर' },
+  { value: '100%', measure: 'उत्तीर्ण प्रशिक्षुओं का फॉलो-अप' },
+  { value: '0%', measure: 'शिकायत दर — शून्य की ओर घटाई गई' },
+  { value: '≥ 1', measure: 'उद्योग, जिनका प्रत्यक्ष अनुभव हर प्रशिक्षु को मिलता है' },
+  { value: '6 दिन', measure: 'हर वर्ष प्रशिक्षकों के लिए प्रशिक्षण कार्यक्रम' },
 ];

@@ -10,6 +10,7 @@ import { contact } from '../data/satpudaData';
 import { headOffice, itiInstitutes, itiRegions, mapsDirectionsFor, mapsEmbedFor } from '../data/itiInstitutes';
 import { submitContact } from '../services/contentService';
 import { telHref } from '../utils/format';
+import { inHindi } from '../utils/messagesHi';
 import cn from '../utils/cn';
 
 /**
@@ -95,7 +96,7 @@ function ContactForm() {
       <div role="status" aria-live="polite" className="py-10 text-center">
         <CheckCircle2 aria-hidden="true" strokeWidth={1.5} className="mx-auto h-14 w-14 text-tech-600" />
         <h2 className="mt-6 font-display text-display-sm font-bold text-navy-800">Message sent.</h2>
-        <p className="mx-auto mt-4 max-w-md text-[1rem] leading-[1.7] text-ink-muted">{message}</p>
+        <p className="mx-auto mt-4 max-w-md text-[1rem] leading-[1.7] text-ink-muted">{inHindi(message)}</p>
         <Button variant="outline" onClick={reset} className="mt-8">
           <RotateCcw aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
           Send another message
@@ -113,7 +114,7 @@ function ContactForm() {
         inputMode="numeric"
         required
         autoComplete="tel-national"
-        placeholder="10-digit mobile"
+        placeholder="10 अंकों का मोबाइल नंबर"
         {...field('phone')}
       />
       <TextField label="Email" type="email" autoComplete="email" {...field('email')} />
@@ -124,14 +125,14 @@ function ContactForm() {
         rows={5}
         minLength={10}
         maxLength={2000}
-        placeholder="How can we help?"
+        placeholder="हम आपकी क्या मदद कर सकते हैं?"
         className="sm:col-span-2"
         {...field('message')}
       />
 
       {status === 'error' && message && (
         <p role="alert" className="rounded-edge border border-signal-300 bg-signal-50 px-4 py-3 text-[0.875rem] text-signal-700 sm:col-span-2">
-          {message}
+          {inHindi(message)}
         </p>
       )}
 
@@ -245,7 +246,7 @@ export function ContactPage() {
         crumb="Contact"
         eyebrow="Get in touch"
         lines={['We are here', 'to help.']}
-        lede="Questions about admission, trades, fees or placement? Call the enquiry line, send us a message, or reach any campus directly."
+        lede="प्रवेश, ट्रेड, फीस या प्लेसमेंट से जुड़े सवाल हैं? पूछताछ लाइन पर कॉल करें, हमें संदेश भेजें, या सीधे किसी भी कैंपस से संपर्क करें।"
       />
 
       <section className="relative bg-canvas-soft">
@@ -260,7 +261,7 @@ export function ContactPage() {
           <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="rounded-panel border border-navy-100 bg-white p-6 shadow-card sm:p-8 lg:col-span-7 lg:p-10">
               <h2 className="font-display text-display-sm font-bold text-navy-800">Send us a message</h2>
-              <p className="mt-3 text-[0.9375rem] text-ink-muted">Leave your number and the right team will get back to you.</p>
+              <p className="mt-3 text-[0.9375rem] text-ink-muted">अपना नंबर छोड़ें — सही टीम आपसे संपर्क करेगी।</p>
               <div className="mt-8">
                 <ContactForm />
               </div>

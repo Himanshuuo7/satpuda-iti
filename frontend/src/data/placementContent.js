@@ -32,7 +32,7 @@ export const overview = {
   headline: { value: 2456, label: 'Campus placements in last 3 Years' },
   // Homepage wording, verbatim.
   campusNote:
-    'Campus Recruitment Programme conducted by the Institute(s) is a very vital activity for the young Technicians aspiring for appropriate placement. Almost all the trainees have secured firm jobs in Government Departments, Multinational Private/ Public Sector Undertakings. A high percentage of our eligible trainees have been offered jobs by reputed firms.',
+    'संस्थानों द्वारा आयोजित कैंपस भर्ती कार्यक्रम (Campus Recruitment Programme) उपयुक्त नौकरी की तलाश कर रहे युवा तकनीशियनों के लिए बेहद अहम गतिविधि है। लगभग सभी प्रशिक्षुओं को सरकारी विभागों और बहुराष्ट्रीय निजी/सार्वजनिक क्षेत्र के उपक्रमों में स्थायी नौकरियाँ मिली हैं। हमारे योग्य प्रशिक्षुओं में से बड़ी संख्या को प्रतिष्ठित कंपनियों ने नौकरी के प्रस्ताव दिए हैं।',
 };
 
 // ---------------------------------------------------------------------------
@@ -44,55 +44,55 @@ export const overview = {
  * card below with the paragraph's wording intact.
  */
 export const industrialInterface = {
-  lede: 'How SITI brings industry into the classroom, takes trainees out into industry, and guides every trainee towards a suitable placement.',
+  lede: 'SITI किस तरह उद्योग को कक्षा तक लाता है, प्रशिक्षुओं को उद्योगों तक ले जाता है, और हर प्रशिक्षु को उपयुक्त प्लेसमेंट की ओर मार्गदर्शन देता है।',
   arrangements: [
     {
       icon: 'Presentation',
       title: 'Experts from industry',
-      body: 'SITI has made necessary arrangements for class room sessions taken up by suitable faculty/ experts from industries.',
+      body: 'SITI ने उद्योगों के योग्य विशेषज्ञों द्वारा कक्षा सत्र लेने की आवश्यक व्यवस्था की है।',
     },
     {
       icon: 'Factory',
       title: 'Periodic industry visits',
-      body: 'SITI arranges periodic industry visits.',
+      body: 'SITI समय-समय पर उद्योग भ्रमण आयोजित करता है।',
     },
     {
       icon: 'Wrench',
       title: 'Real-life problems',
-      body: 'Faculty members along with students take up real life problems from industries for problem solving and application of principles taught as a part of course work to enhance the skills of the students.',
+      body: 'विद्यार्थियों का कौशल बढ़ाने के लिए शिक्षक और विद्यार्थी मिलकर उद्योगों की वास्तविक समस्याओं पर काम करते हैं, ताकि कोर्स में पढ़ाए गए सिद्धांतों को व्यवहार में लागू किया जा सके।',
     },
     {
       icon: 'Users',
       title: 'Soft skills & attitudes',
-      body: 'Students are encouraged to develop necessary soft skills and attitudes so as to enable them getting suitable placements in the industry.',
+      body: 'विद्यार्थियों को ज़रूरी सॉफ्ट स्किल्स और सही दृष्टिकोण विकसित करने के लिए प्रोत्साहित किया जाता है, ताकि उन्हें उद्योग में उपयुक्त प्लेसमेंट मिल सके।',
     },
     {
       icon: 'Compass',
       title: 'Guidance for placement',
-      body: 'Necessary guidance is provided to trainees for getting placements through Placement & Guidance Cell.',
+      body: 'प्लेसमेंट एवं मार्गदर्शन सेल के माध्यम से प्रशिक्षुओं को प्लेसमेंट पाने के लिए ज़रूरी मार्गदर्शन दिया जाता है।',
     },
   ],
   activities: [
-    { icon: 'Handshake', text: 'To arrange Campus Interviews.' },
-    { icon: 'UserCheck', text: 'To improve student personality by counseling from Private and Government Sectors.' },
-    { icon: 'GraduationCap', text: 'To provide Awareness and knowledge by Guest faculty.' },
+    { icon: 'Handshake', text: 'कैंपस इंटरव्यू आयोजित करना।' },
+    { icon: 'UserCheck', text: 'निजी और सरकारी क्षेत्र के विशेषज्ञों की काउंसलिंग से विद्यार्थियों के व्यक्तित्व का विकास करना।' },
+    { icon: 'GraduationCap', text: 'अतिथि शिक्षकों के माध्यम से जागरूकता और ज्ञान देना।' },
     {
       icon: 'Mic',
-      text: 'To Arrange seminars on different subjects like “Employment Opportunities in the local Industries” to provide useful career related guidance, knowledge for trainees.',
+      text: 'प्रशिक्षुओं को करियर से जुड़ा उपयोगी मार्गदर्शन और ज्ञान देने के लिए “स्थानीय उद्योगों में रोज़गार के अवसर” जैसे विषयों पर सेमिनार आयोजित करना।',
     },
-    { icon: 'Building2', text: 'To contact personally various local industries for their man power requirements.' },
+    { icon: 'Building2', text: 'स्थानीय उद्योगों से उनकी कार्यबल संबंधी ज़रूरतों के लिए व्यक्तिगत रूप से संपर्क करना।' },
     {
       icon: 'Lightbulb',
-      text: 'To arrange “Self Employment Camps” to provide information of different self employment schemes of government to trainees.',
+      text: 'प्रशिक्षुओं को सरकार की विभिन्न स्वरोज़गार योजनाओं की जानकारी देने के लिए “स्वरोज़गार शिविर” आयोजित करना।',
     },
     {
       icon: 'Newspaper',
-      text: 'To provide newspapers, magazines (career guidance, general knowledge, motivation), employment news to trainees.',
+      text: 'प्रशिक्षुओं को समाचार पत्र, पत्रिकाएँ (करियर मार्गदर्शन, सामान्य ज्ञान, प्रेरणा) और रोज़गार समाचार उपलब्ध कराना।',
     },
-    { icon: 'Monitor', text: 'To provide computer facilities to trainees for career related information.' },
+    { icon: 'Monitor', text: 'करियर से जुड़ी जानकारी के लिए प्रशिक्षुओं को कंप्यूटर सुविधा देना।' },
     {
       icon: 'Wifi',
-      text: 'To provide internet facilities for job searching, on-line job registration, surfing for industrial information.',
+      text: 'नौकरी खोजने, ऑनलाइन जॉब रजिस्ट्रेशन और उद्योगों की जानकारी खोजने के लिए इंटरनेट सुविधा देना।',
     },
   ],
 };
@@ -103,7 +103,7 @@ export const industrialInterface = {
 
 /** Each step is one rung; a rung with two entries shows them side by side. */
 export const careerPath = {
-  lede: 'An NCVT ITI certificate opens three directions — a career in industry, further qualifications, or a business of your own — and every one of them can lead to working as a freelancer.',
+  lede: 'NCVT ITI प्रमाणपत्र तीन रास्ते खोलता है — उद्योग में करियर, आगे की पढ़ाई, या अपना खुद का व्यवसाय — और इनमें से हर रास्ता आपको फ्रीलांसर के रूप में काम करने तक ले जा सकता है।',
   tracks: [
     {
       id: 'industry',
@@ -158,7 +158,7 @@ export const careerPath = {
  */
 export const entrepreneurship = {
   titleHi: 'उद्यमिता विकास',
-  lede: 'The route SITI maps for a trainee who wants to build a business — from the first change in mind set to growth, sustainability and franchisee development.',
+  lede: 'अपना व्यवसाय शुरू करना चाहने वाले प्रशिक्षु के लिए SITI द्वारा तैयार किया गया रास्ता — सोच में पहले बदलाव से लेकर विकास, स्थिरता और फ्रेंचाइज़ी विकास तक।',
   steps: [
     { title: 'Become Entrepreneur', kind: 'start' },
     { title: 'Business Mind Set Development', hi: 'उद्यमिता संस्कृति का विकास' },
@@ -172,7 +172,7 @@ export const entrepreneurship = {
     { title: 'Enjoy the Success', kind: 'end' },
   ],
   camps:
-    'To arrange “Self Employment Camps” to provide information of different self employment schemes of government to trainees.',
+    'प्रशिक्षुओं को सरकार की विभिन्न स्वरोज़गार योजनाओं की जानकारी देने के लिए “स्वरोज़गार शिविर” आयोजित करना।',
 };
 
 // ---------------------------------------------------------------------------
@@ -228,7 +228,7 @@ export const recruiters = {
 export const skillConnect = {
   title: 'Skill – Connect',
   tagline: 'Skill – Industry – Manpower',
-  lede: 'Around every Satpuda trainee sits a network of industries, training centres, programmes and partners — connecting skill to industry, and industry to manpower.',
+  lede: 'हर Satpuda प्रशिक्षु के आसपास उद्योगों, प्रशिक्षण केंद्रों, कार्यक्रमों और साझेदारों का एक नेटवर्क है — जो कौशल को उद्योग से, और उद्योग को कार्यबल से जोड़ता है।',
   words: ['Learning', 'Knowledge', 'Experience', 'Competence', 'Skills', 'Ability', 'Training', 'Growth'],
   clusters: [
     {
@@ -277,7 +277,7 @@ export const skillConnect = {
 // ---------------------------------------------------------------------------
 
 export const placementDetails = {
-  lede: 'The placement drives held each year, the trainees placed through them, the placement percentage and the salary package offered.',
+  lede: 'हर वर्ष आयोजित प्लेसमेंट ड्राइव, उनके माध्यम से चयनित प्रशिक्षु, प्लेसमेंट प्रतिशत और दिया गया सैलरी पैकेज।',
   record,
   columns: {
     year: 'Year of Placement Drive',

@@ -28,23 +28,15 @@ function Principle() {
         <div className="relative grid aspect-square place-items-center">
           <GearOutline spin strokeWidth={2.5} className="absolute inset-0 h-full w-full text-signal/80" />
           <div className="relative grid aspect-square w-[74%] place-items-center rounded-full bg-navy-800 p-3 text-center">
-            <p className="text-[0.75rem] font-medium leading-snug text-white sm:text-[0.8125rem]">{principle.demand.en}</p>
+            <p lang="hi" className="text-[0.75rem] font-medium leading-snug text-white sm:text-[0.8125rem]">{principle.demand.hi}</p>
           </div>
         </div>
         <ArrowLeftRight aria-hidden="true" className="h-6 w-6 animate-pulse-marker text-navy-400" strokeWidth={1.75} />
         <div className="grid aspect-square place-items-center rounded-full border-[6px] border-signal p-1">
           <div className="grid h-full w-full place-items-center rounded-full bg-navy-800 p-3 text-center">
-            <p className="text-[0.75rem] font-medium leading-snug text-white sm:text-[0.8125rem]">{principle.prepare.en}</p>
+            <p lang="hi" className="text-[0.75rem] font-medium leading-snug text-white sm:text-[0.8125rem]">{principle.prepare.hi}</p>
           </div>
         </div>
-      </div>
-      <div className="mt-5 grid grid-cols-2 gap-3 border-t border-navy-50 pt-4 text-center">
-        <p lang="hi" className="text-[0.8125rem] leading-snug text-ink-muted">
-          {principle.demand.hi}
-        </p>
-        <p lang="hi" className="text-[0.8125rem] leading-snug text-ink-muted">
-          {principle.prepare.hi}
-        </p>
       </div>
     </figure>
   );
@@ -66,7 +58,7 @@ export function Competency({ page }) {
             Based Learning<span className="text-signal">.</span>
           </span>,
         ]}
-        lede={content.subtitleEn + ': what a trainee must be able to do, as industry demands — and how the training prepares them for it.'}
+        lede="योग्यता पर आधारित सीखना: उद्योग की मांग के अनुसार प्रशिक्षु को क्या करना आना चाहिए — और प्रशिक्षण उसे इसके लिए कैसे तैयार करता है।"
         aside={<Principle />}
       >
         <p lang="hi" className="font-display text-[1.25rem] font-medium text-navy-800 sm:text-[1.5rem]">
@@ -86,7 +78,7 @@ export function Competency({ page }) {
                   More than a third <span className="text-ink-muted">is practical.</span>
                 </>
               }
-              lede={`Practicals take ${content.mix[0].value}% of training time — followed by classroom sessions, technical presentations, audio-visual sessions, technical activities, group discussions and projects.`}
+              lede={`प्रशिक्षण समय का ${content.mix[0].value}% हिस्सा प्रैक्टिकल का है — इसके बाद क्लासरूम सत्र, तकनीकी प्रस्तुतियाँ, ऑडियो-विज़ुअल सत्र, तकनीकी गतिविधियाँ, सामूहिक चर्चा और प्रोजेक्ट आते हैं।`}
             />
           </div>
           <div className="reveal lg:col-span-7" style={{ '--reveal-delay': '140ms' }}>

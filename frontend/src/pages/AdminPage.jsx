@@ -43,7 +43,7 @@ export function AdminPage() {
 
   useEffect(() => {
     const onExpired = () => {
-      setNotice('Your session has expired. Please sign in again.');
+      setNotice('आपका सत्र समाप्त हो गया है। कृपया फिर से साइन इन करें।');
       setState('out');
     };
     window.addEventListener(SESSION_EXPIRED, onExpired);

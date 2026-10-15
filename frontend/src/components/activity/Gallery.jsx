@@ -66,7 +66,7 @@ export function Gallery({ page }) {
           </>,
           <span className="text-royal">Life at Satpuda ITIs.</span>,
         ]}
-        lede="Workshops and practicals, classrooms and sessions, industrial visits and campus life — photographs from Satpuda ITI campuses."
+        lede="वर्कशॉप और प्रैक्टिकल, कक्षाएँ और सत्र, औद्योगिक भ्रमण और कैंपस जीवन — Satpuda ITI कैंपसों की तस्वीरें।"
         aside={<Fan />}
       />
 

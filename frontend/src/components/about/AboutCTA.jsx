@@ -69,8 +69,8 @@ export function AboutCTA() {
           </h2>
 
           <p className="reveal mt-7 max-w-prose text-[1.0625rem] leading-[1.75] text-navy-100/80" style={{ '--reveal-delay': '120ms' }}>
-            Choose a campus near you, pick an NCVT trade, and talk to the admissions team — online, or on the enquiry line
-            below.
+            अपना नज़दीकी कैंपस और NCVT ट्रेड चुनें, और प्रवेश टीम से बात करें — ऑनलाइन, या नीचे दी गई
+            पूछताछ लाइन पर।
           </p>
 
           <div className="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap" style={{ '--reveal-delay': '180ms' }}>

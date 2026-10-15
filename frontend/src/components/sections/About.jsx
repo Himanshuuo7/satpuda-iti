@@ -49,7 +49,7 @@ export function About() {
                 className="rounded-panel"
               />
               <p className="mt-3 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
-                Classroom session · Satpuda ITI
+                कक्षा सत्र · Satpuda ITI
               </p>
             </div>
           </div>

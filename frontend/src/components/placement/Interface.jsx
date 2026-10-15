@@ -35,7 +35,7 @@ function HeroPhoto() {
       <figcaption className="absolute -bottom-5 left-5 right-5 flex items-center gap-3 rounded-edge border border-navy-100 bg-white px-4 py-3 shadow-card sm:left-auto sm:right-6 sm:max-w-[17rem]">
         <span aria-hidden="true" className="h-2 w-2 shrink-0 animate-pulse-marker rounded-full bg-signal" />
         <span className="text-[0.8125rem] font-medium leading-snug text-navy-800">
-          Real-life problems from industry, taken up for problem solving.
+          उद्योगों की वास्तविक समस्याएँ, जिन्हें सुलझाने पर मिलकर काम किया जाता है।
         </span>
       </figcaption>
     </figure>
@@ -133,7 +133,7 @@ export function Interface({ page }) {
                     Activities of the <span className="text-tech">cell.</span>
                   </>
                 }
-                lede="Nine things the cell does for every trainee — from campus interviews to job searching online."
+                lede="सेल हर प्रशिक्षु के लिए ये नौ काम करता है — कैंपस इंटरव्यू से लेकर ऑनलाइन नौकरी खोजने तक।"
               />
               <p className="reveal mt-8 font-display text-[4rem] font-bold leading-none tabular text-white/10" aria-hidden="true">
                 0{content.activities.length}

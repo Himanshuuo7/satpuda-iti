@@ -90,7 +90,7 @@ export function TradeFAQ({ trade }) {
             <CircleHelp aria-hidden="true" strokeWidth={1.75} className={cn('h-5 w-5', accent.text)} />
             <p className="mt-3 font-display text-[1.125rem] font-semibold text-navy-800">Still have a question?</p>
             <p className="mt-1.5 text-[0.875rem] leading-[1.6] text-ink-muted">
-              Seats, dates and fees change each session — the enquiry desk has the current answer.
+              सीटें, तारीखें और फीस हर सत्र में बदलती हैं — सही और ताज़ा जानकारी पूछताछ डेस्क से मिलेगी।
             </p>
             <div className="mt-4 flex flex-col gap-2">
               <a

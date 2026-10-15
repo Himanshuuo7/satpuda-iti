@@ -34,9 +34,9 @@ function StepBadge() {
           {hours}
         </p>
         <p className="pb-1 text-[0.875rem] leading-snug text-navy-100/80">
-          hours of special training,
+          घंटे का विशेष प्रशिक्षण,
           <br />
-          alongside regular training
+          नियमित प्रशिक्षण के साथ
         </p>
       </div>
     </div>
@@ -50,11 +50,8 @@ function Modules({ modules }) {
     <ul ref={ref} className="mt-5 grid gap-3">
       {modules.map((m, i) => (
         <li key={m.en} className="grid gap-1.5 sm:grid-cols-[minmax(0,13rem)_1fr] sm:items-center sm:gap-3">
-          <span className="text-[0.8438rem] leading-snug text-navy-700">
-            {m.en}
-            <span lang="hi" className="block text-[0.75rem] text-ink-soft">
-              {m.hi}
-            </span>
+          <span lang="hi" className="text-[0.8438rem] leading-snug text-navy-700">
+            {m.hi}
           </span>
           <span className="flex items-center gap-3">
             <span className="h-2.5 flex-1 overflow-hidden rounded-full bg-navy-50">
@@ -104,14 +101,7 @@ function Stage({ stage, index, last }) {
             {stage.hi}
           </h3>
         )}
-        <p
-          className={cn(
-            stage.hi ? 'mt-1.5 text-[0.9375rem]' : 'font-display text-[1.25rem] font-semibold',
-            stage.step ? 'text-navy-100/80' : stage.hi ? 'text-ink-muted' : 'text-navy-800'
-          )}
-        >
-          {stage.en}
-        </p>
+        {!stage.hi && <p className="font-display text-[1.25rem] font-semibold text-navy-800">{stage.en}</p>}
 
         {stage.step && (
           <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-tech">
@@ -131,14 +121,7 @@ function Stage({ stage, index, last }) {
                     : 'border-navy-100 bg-canvas-soft text-navy-700 hover:border-royal hover:text-royal'
                 )}
               >
-                {it.hi ? (
-                  <>
-                    <span lang="hi">{it.hi}</span>
-                    <span className="ml-1.5 text-ink-soft">· {it.en}</span>
-                  </>
-                ) : (
-                  it.en
-                )}
+                {it.hi ? <span lang="hi">{it.hi}</span> : it.en}
               </li>
             ))}
           </ul>
@@ -165,7 +148,7 @@ export function AdmissionToPlacement({ page }) {
             to Placement<span className="text-signal">.</span>
           </span>,
         ]}
-        lede={`${content.titleEn}: counselling, assessment, a personal career plan, the ${content.step.hours}-hour STEP programme, value addition and job placement.`}
+        lede={`प्रवेश से प्लेसमेंट तक की प्रशिक्षण प्रक्रिया: काउंसलिंग, मूल्यांकन, व्यक्तिगत करियर योजना, ${content.step.hours} घंटे का STEP कार्यक्रम, वैल्यू एडिशन और जॉब प्लेसमेंट।`}
         aside={<StepBadge />}
       >
         <p lang="hi" className="font-display text-[1.25rem] font-medium text-navy-800 sm:text-[1.5rem]">
@@ -186,7 +169,7 @@ export function AdmissionToPlacement({ page }) {
                 प्रवेश से <span className="text-royal">प्लेसमेंट</span> तक
               </h2>
               <p className="reveal mt-4 max-w-sm text-[1rem] leading-[1.7] text-ink-muted" style={{ '--reveal-delay': '120ms' }}>
-                From the first counselling session to job placement and alumni registration, in the order the training process runs.
+                पहले काउंसलिंग सत्र से लेकर जॉब प्लेसमेंट और पूर्व छात्र पंजीकरण तक — उसी क्रम में, जिसमें प्रशिक्षण प्रक्रिया चलती है।
               </p>
             </div>
           </div>

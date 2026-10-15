@@ -36,7 +36,7 @@ export function FeatureGrid() {
                 <span className="text-royal">Satpuda ITIs.</span>
               </>
             }
-            lede="What a Satpuda trainee gets, set against a typical ITI — from how trades are taught to the support that continues after the course."
+            lede="एक सामान्य ITI की तुलना में Satpuda के प्रशिक्षु को क्या मिलता है — ट्रेड पढ़ाने के तरीके से लेकर कोर्स के बाद भी जारी रहने वाले सहयोग तक।"
             className="lg:col-span-7"
           />
 

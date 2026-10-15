@@ -94,7 +94,7 @@ export function MPMap({ onView }) {
               {clusters.length} locations. <span className="text-tech">{new Set(itiInstitutes.map((i) => i.district)).size} districts.</span>
             </>
           }
-          lede="From the head office at Manjhapur, Balaghat, the network runs west to Itarsi and north to Rewa and Mauganj. Select a location to see the institutes there."
+          lede="मांझापुर, बालाघाट स्थित हेड ऑफिस से यह नेटवर्क पश्चिम में इटारसी और उत्तर में रीवा व मऊगंज तक फैला है। वहाँ के संस्थान देखने के लिए कोई स्थान चुनें।"
           className="max-w-3xl"
         />
 
@@ -191,7 +191,7 @@ export function MPMap({ onView }) {
               })}
             </div>
             <p className="mt-3 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-navy-200/70">
-              Simplified state outline · pins placed at town level, not exact campus locations
+              राज्य का सरल नक्शा · पिन शहर के स्तर पर लगाए गए हैं, कैंपस की सटीक जगह पर नहीं
             </p>
           </div>
 
@@ -210,7 +210,7 @@ export function MPMap({ onView }) {
                     <p className="mt-1 text-[0.8125rem] text-navy-100/70">
                       {inst.trades.length
                         ? inst.trades.map((t) => tradeById[t.id]?.name).join(', ')
-                        : 'Contact the campus for trades'}
+                        : 'ट्रेड की जानकारी के लिए कैंपस से संपर्क करें'}
                     </p>
                     <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
                       <a href={telHref(inst.phone)} className="inline-flex min-h-[2.25rem] items-center gap-1.5 font-mono text-[0.8125rem] tabular text-navy-100 hover:text-tech">

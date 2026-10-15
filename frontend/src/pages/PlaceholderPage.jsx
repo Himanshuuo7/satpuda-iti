@@ -58,7 +58,7 @@ export function PlaceholderPage({ title, eyebrow, description }) {
 
           <p className="mt-7 max-w-prose text-[1.0625rem] leading-[1.75] text-navy-100/75">
             {description ??
-              'This section is being prepared. In the meantime the homepage carries the institute’s trades, training approach, placement record and campus network.'}
+              'यह सेक्शन अभी तैयार किया जा रहा है। तब तक होमपेज पर संस्थान के ट्रेड, प्रशिक्षण का तरीका, प्लेसमेंट रिकॉर्ड और कैंपस नेटवर्क की जानकारी उपलब्ध है।'}
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -82,21 +82,21 @@ export function PlaceholderPage({ title, eyebrow, description }) {
 
           <div className="mt-12 border-t border-white/10 pt-6">
             <p className="text-[0.875rem] text-navy-100/60">
-              For admission enquiries, call{' '}
+              प्रवेश संबंधी पूछताछ के लिए{' '}
               <a
                 href={telHref(contact.enquiry.phone)}
                 className="font-mono tabular text-white underline decoration-tech/50 transition-colors hover:text-tech"
               >
                 {contact.enquiry.phone}
               </a>{' '}
-              or email{' '}
+              पर कॉल करें या{' '}
               <a
                 href={`mailto:${contact.enquiry.email}`}
                 className="break-all text-white underline decoration-tech/50 transition-colors hover:text-tech"
               >
                 {contact.enquiry.email}
-              </a>
-              .
+              </a>{' '}
+              पर ईमेल करें।
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@ export function NotFoundPage() {
     <PlaceholderPage
       eyebrow="Error 404"
       title="Page not found."
-      description="The page you were looking for does not exist or has moved. Use the navigation above, or head back to the homepage."
+      description="आप जो पेज ढूँढ़ रहे हैं, वह मौजूद नहीं है या कहीं और ले जाया गया है। ऊपर दिए गए मेन्यू का उपयोग करें, या होमपेज पर वापस जाएँ।"
     />
   );
 }

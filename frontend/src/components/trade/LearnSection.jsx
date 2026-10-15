@@ -147,7 +147,7 @@ export function LearnSection({ trade }) {
                 </>
               )
             }
-            lede="The learning outcomes of the DGT curriculum, grouped by skill area. Assessment in the All India Trade Test is set against these outcomes."
+            lede="DGT पाठ्यक्रम में तय सीखने के परिणाम (लर्निंग आउटकम), कौशल क्षेत्रों के अनुसार। All India Trade Test में मूल्यांकन इन्हीं के आधार पर होता है।"
             className="max-w-2xl"
           />
 

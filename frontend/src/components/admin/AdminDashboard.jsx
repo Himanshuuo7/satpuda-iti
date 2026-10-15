@@ -53,7 +53,7 @@ function Breakdown({ title, rows, labels, total }) {
           })}
         </ul>
       ) : (
-        <p className="mt-4 text-[0.8125rem] text-ink-soft">No data yet.</p>
+        <p className="mt-4 text-[0.8125rem] text-ink-soft">अभी कोई डेटा नहीं है।</p>
       )}
     </div>
   );
@@ -148,7 +148,7 @@ export function AdminDashboard({ onLogout }) {
       <main className="mx-auto max-w-shell px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div>
           <h1 className="font-display text-display-sm font-bold text-navy-800">Overview</h1>
-          <p className="mt-1 text-[0.9375rem] text-ink-muted">Applications and enquiries submitted through the website.</p>
+          <p className="mt-1 text-[0.9375rem] text-ink-muted">वेबसाइट के माध्यम से भेजे गए आवेदन और पूछताछ।</p>
         </div>
 
         {/* Stats */}

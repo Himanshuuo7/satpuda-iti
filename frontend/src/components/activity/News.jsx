@@ -33,7 +33,6 @@ function Masthead() {
       <p lang="hi" className="mt-5 font-display text-[1.5rem] font-bold leading-snug text-navy-800 sm:text-[1.75rem]">
         {content.press[0].hi}
       </p>
-      <p className="mt-2 text-[0.875rem] text-ink-muted">{content.press[0].en}</p>
       <div aria-hidden="true" className="mt-6 grid grid-cols-3 gap-3">
         {[0, 1, 2].map((c) => (
           <div key={c} className="space-y-1.5">
@@ -68,7 +67,7 @@ export function News({ page }) {
           </>,
           <span className="text-royal">Events & headlines.</span>,
         ]}
-        lede="What is on the institute’s notice board, and what the newspapers have written about Satpuda ITI."
+        lede="संस्थान के नोटिस बोर्ड पर क्या है, और अख़बारों ने Satpuda ITI के बारे में क्या लिखा है।"
         aside={<Masthead />}
       />
 
@@ -83,7 +82,7 @@ export function News({ page }) {
                 On the notice board<span className="text-signal">.</span>
               </>
             }
-            lede="Each notice is shown with the year it was published for."
+            lede="हर सूचना उसी वर्ष के साथ दिखाई गई है, जिसके लिए वह जारी की गई थी।"
             className="max-w-3xl"
           />
           <ul className="mt-12 grid gap-5 md:grid-cols-3">
@@ -122,7 +121,7 @@ export function News({ page }) {
                     Satpuda ITI <span className="text-royal">in the newspapers.</span>
                   </>
                 }
-                lede="Headlines of the coverage pinned on the institute’s activities board."
+                lede="संस्थान के गतिविधि बोर्ड पर लगी ख़बरों की सुर्खियाँ।"
               />
               <figure className="reveal mt-8" style={{ '--reveal-delay': '160ms' }}>
                 <button
@@ -158,7 +157,6 @@ export function News({ page }) {
                     <h3 lang="hi" className="font-display text-[1.25rem] font-semibold leading-snug text-navy-800 transition-colors duration-300 group-hover:text-royal sm:text-[1.4375rem]">
                       {p.hi}
                     </h3>
-                    <p className="mt-1.5 text-[0.9375rem] text-ink-muted">{p.en}</p>
                   </div>
                 </article>
               </li>
@@ -184,7 +182,7 @@ export function News({ page }) {
                   </span>
                   <span>
                     <span className="block font-display text-[1.5rem] font-semibold text-navy-800">Follow Satpuda ITI on Facebook</span>
-                    <span className="mt-1 block text-[0.9375rem] text-ink-muted">Placement drives, admissions and campus events as they happen.</span>
+                    <span className="mt-1 block text-[0.9375rem] text-ink-muted">प्लेसमेंट ड्राइव, प्रवेश और कैंपस के कार्यक्रमों की ताज़ा जानकारी।</span>
                   </span>
                 </span>
                 <span className="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-navy-800 group-hover:text-signal">

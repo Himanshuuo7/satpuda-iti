@@ -227,10 +227,10 @@ export function RecordsPanel({ resource, onChanged, refreshKey }) {
             <Inbox className="h-6 w-6" strokeWidth={1.5} />
           </span>
           <p className="mt-4 font-medium text-navy-800">
-            {filtered ? `No ${resource.label.toLowerCase()} match these filters.` : `No ${resource.label.toLowerCase()} yet.`}
+            {filtered ? 'इन फ़िल्टरों से मेल खाता कोई रिकॉर्ड नहीं मिला।' : 'अभी तक कोई रिकॉर्ड नहीं आया है।'}
           </p>
           <p className="mt-1 text-[0.875rem] text-ink-soft">
-            {filtered ? 'Try clearing the search or filters.' : 'New submissions from the website will appear here.'}
+            {filtered ? 'सर्च या फ़िल्टर हटाकर देखें।' : 'वेबसाइट से आने वाले नए आवेदन और पूछताछ यहाँ दिखाई देंगी।'}
           </p>
         </div>
       ) : (

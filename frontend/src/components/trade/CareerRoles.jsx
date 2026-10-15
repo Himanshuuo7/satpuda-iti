@@ -33,7 +33,7 @@ export function CareerRoles({ trade }) {
               <span className={accent.text}>can take you.</span>
             </>
           }
-          lede="The job roles the DGT curriculum names for this trade, with their National Classification of Occupations (NCO-2015) codes."
+          lede="इस ट्रेड के लिए DGT पाठ्यक्रम में बताई गई जॉब भूमिकाएँ, उनके National Classification of Occupations (NCO-2015) कोड के साथ।"
           className="max-w-2xl"
         />
 

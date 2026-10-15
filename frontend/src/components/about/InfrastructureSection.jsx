@@ -69,23 +69,23 @@ export function InfrastructureSection() {
               16:9 ≈ 5/12 at 5:4). */}
           <Plate
             photo={{ ...photos.garraWorkshop, ratio: '16/9' }}
-            caption="Fitter workshop · Satpuda ITI"
+            caption="Fitter वर्कशॉप · Satpuda ITI"
             className="lg:col-span-7"
           />
           <Plate
             photo={{ ...photos.practicalTraining, ratio: '5/4' }}
-            caption="Hands-on practical instruction"
+            caption="हाथों से प्रैक्टिकल प्रशिक्षण"
             className="lg:col-span-5"
             delay={120}
           />
           <Plate
             photo={{ ...photos.classroom, ratio: '5/4' }}
-            caption="Classroom session"
+            caption="कक्षा सत्र"
             className="lg:col-span-5"
           />
           <Plate
             photo={{ ...photos.campusPanorama, ratio: '16/9' }}
-            caption="Examination hall"
+            caption="परीक्षा हॉल"
             className="lg:col-span-7"
             delay={120}
           />

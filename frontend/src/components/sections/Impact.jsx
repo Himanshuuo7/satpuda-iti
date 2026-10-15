@@ -315,8 +315,8 @@ export function Impact() {
             className="reveal mt-5 max-w-[42rem] text-[1rem] leading-[1.6] text-ink-muted sm:text-[1.0625rem]"
             style={{ '--reveal-delay': '140ms' }}
           >
-            Transforming young minds with skill-based training and placement support to build a
-            stronger, brighter and self-reliant Madhya Pradesh.
+            कौशल-आधारित प्रशिक्षण और प्लेसमेंट सहायता से युवाओं को सशक्त बनाकर एक मज़बूत,
+            उज्ज्वल और आत्मनिर्भर मध्य प्रदेश का निर्माण।
           </p>
         </div>
 
@@ -354,15 +354,15 @@ export function Impact() {
                   Our placement record
                 </p>
                 <p className="mt-2.5 font-display text-[1.25rem] font-medium leading-snug text-white sm:text-[1.6rem]">
-                  In {latest.year}, we achieved a{' '}
+                  वर्ष {latest.year} में हमने{' '}
                   <span className="font-bold text-yellow-300">{latest.percentage}%</span>{' '}
-                  <span className="font-bold">placement rate,</span>
+                  <span className="font-bold">प्लेसमेंट दर</span> हासिल की,
                 </p>
                 <p className="mt-1.5 text-[0.9375rem] text-navy-100 sm:text-[1.0625rem]">
-                  with <span className="font-semibold tabular text-yellow-300">{latest.placed}</span>{' '}
-                  trainees placed across{' '}
-                  <span className="font-semibold tabular text-white">{latest.drives}</span> campus
-                  drives.
+                  जिसमें <span className="font-semibold tabular text-yellow-300">{latest.placed}</span>{' '}
+                  प्रशिक्षुओं का चयन{' '}
+                  <span className="font-semibold tabular text-white">{latest.drives}</span> कैंपस
+                  ड्राइव के माध्यम से हुआ।
                 </p>
               </div>
 

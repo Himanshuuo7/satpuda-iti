@@ -319,18 +319,18 @@ function TerminalVisual() {
 export const tradeVisuals = {
   electric: {
     Visual: CircuitVisual,
-    caption: 'Single-line diagram — supply, energy meter, MCB, distribution board, loads and earth.',
+    caption: 'सिंगल-लाइन डायग्राम — सप्लाई, एनर्जी मीटर, MCB, डिस्ट्रीब्यूशन बोर्ड, लोड और अर्थ।',
   },
   blueprint: {
     Visual: BlueprintVisual,
-    caption: 'A square fit, dimensioned to the first-year fitting tolerance of ±0.04 mm.',
+    caption: 'पहले वर्ष की फिटिंग टॉलरेंस ±0.04 mm के अनुसार माप वाला एक स्क्वायर फिट।',
   },
   engine: {
     Visual: EngineVisual,
-    caption: 'Four-stroke diesel cycle — two crank turns, fuel injected at the start of the power stroke.',
+    caption: 'फोर-स्ट्रोक डीज़ल चक्र — क्रैंक के दो चक्कर, और पावर स्ट्रोक की शुरुआत में फ्यूल इंजेक्शन।',
   },
   digital: {
     Visual: TerminalVisual,
-    caption: 'The modules of the COPA year, from operating systems to Python.',
+    caption: 'COPA वर्ष के मॉड्यूल — ऑपरेटिंग सिस्टम से लेकर Python तक।',
   },
 };

@@ -31,27 +31,27 @@ export const institute = {
   tagline: 'Best ITIs in Central India',
   // Verbatim from the homepage "About SATPUDA ITI" block.
   intro:
-    'Satpuda Industrial Training Institute under Maharana Pratap Shikhsan Samiti, Balaghat was established in 1999 by the team of professional entrepreneurs, which includes sound technical background & qualified Engineers with a mission to promote quality vocational/ Technical training to the students of rural and urban areas.',
+    'Maharana Pratap Shikshan Samiti, बालाघाट के अंतर्गत Satpuda Industrial Training Institute की स्थापना वर्ष 1999 में पेशेवर उद्यमियों की एक टीम ने की थी, जिसमें मज़बूत तकनीकी पृष्ठभूमि वाले योग्य इंजीनियर शामिल थे। इसका उद्देश्य ग्रामीण और शहरी क्षेत्रों के विद्यार्थियों तक गुणवत्तापूर्ण व्यावसायिक और तकनीकी प्रशिक्षण पहुँचाना है।',
   purpose:
-    'The institute has a mission of imparting technical education to create a new technical knowledge based craftsmen who will be capable of facing the challenges of the severe competition in the Liberalized, Privatized and Globalised era. The institute also focuses on self-employment by teaching hard skills training to the students.',
+    'संस्थान का लक्ष्य तकनीकी शिक्षा के माध्यम से तकनीकी ज्ञान से लैस ऐसे नए कारीगर तैयार करना है, जो उदारीकरण, निजीकरण और वैश्वीकरण के इस दौर की कड़ी प्रतिस्पर्धा की चुनौतियों का सामना कर सकें। संस्थान विद्यार्थियों को ठोस व्यावहारिक कौशल सिखाकर स्वरोज़गार पर भी विशेष ध्यान देता है।',
   management:
-    'The management has taken care of the institution in providing job-oriented Vocational, Certificate level courses which are not only relevant for the changing needs of the time with regard to human resources and man power but also prepare students for self-employment.',
+    'प्रबंधन ने संस्थान में रोज़गारोन्मुखी व्यावसायिक और सर्टिफिकेट स्तर के ऐसे कोर्स उपलब्ध कराए हैं, जो मानव संसाधन और कार्यबल की बदलती ज़रूरतों के अनुरूप हैं और साथ ही विद्यार्थियों को स्वरोज़गार के लिए भी तैयार करते हैं।',
   affiliationStatement:
-    'The institutes run Electrician, Fitter, Mechanic Diesel & COPA courses of CTS Scheme affiliated to NCVT (National Council of Vocational Training), which is the serving organization at National level for the programmes relating to Craftsman Training Scheme under DGET (Directorate General of Employment and Training), Ministry of Labour, Government of India, New Delhi. The ITI is administered by Directorate Technical Education, Govt. of MP.',
+    'ये संस्थान CTS योजना के अंतर्गत NCVT (National Council of Vocational Training) से संबद्ध Electrician, Fitter, Mechanic Diesel और COPA कोर्स चलाते हैं। NCVT, श्रम मंत्रालय, भारत सरकार, नई दिल्ली के DGET (Directorate General of Employment and Training) के अधीन Craftsman Training Scheme से जुड़े कार्यक्रमों के लिए राष्ट्रीय स्तर की संस्था है। ITI का प्रशासन तकनीकी शिक्षा संचालनालय, मध्य प्रदेश शासन द्वारा किया जाता है।',
   standing:
-    'Satpuda Private Industrial Training Institute(s) (SITI) are one of the premier institutions in central India. It is well known and well recognized for its Technical & vocational training standards. SITI also have associative relations with leading industries in and around the area.',
+    'Satpuda Private Industrial Training Institute(s) (SITI) मध्य भारत के प्रमुख संस्थानों में से एक हैं। ये अपने तकनीकी और व्यावसायिक प्रशिक्षण के ऊँचे मानकों के लिए जाने और पहचाने जाते हैं। आसपास के क्षेत्र के प्रमुख उद्योगों के साथ भी SITI के घनिष्ठ संबंध हैं।',
   groupNote:
-    'Saptuda (Pvt) I.T.I. is the biggest ITI group in central India with 20+ Institutes. Maharana Pratap Shikshan Samiti is in Education & Training since 1999 & established the following Institutions in Central India (MP).',
+    'Satpuda (Pvt) I.T.I. 20 से अधिक संस्थानों के साथ मध्य भारत का सबसे बड़ा ITI समूह है। Maharana Pratap Shikshan Samiti वर्ष 1999 से शिक्षा और प्रशिक्षण के क्षेत्र में कार्यरत है और इसने मध्य भारत (मध्य प्रदेश) में निम्नलिखित संस्थानों की स्थापना की है।',
   excellenceNote:
-    'Satpuda ITI is a best-in-class and rapidly growing ITI group in Madhya Pradesh. There’s always something amazing happening at Satpuda ITIs. Whether it’s on-campus or around the world, our students, faculty, staff, and alumni are out seizing the day.',
+    'Satpuda ITI मध्य प्रदेश का एक उत्कृष्ट और तेज़ी से बढ़ता ITI समूह है। Satpuda ITIs में हमेशा कुछ न कुछ खास होता रहता है। कैंपस में हों या दुनिया में कहीं भी, हमारे विद्यार्थी, शिक्षक, कर्मचारी और पूर्व छात्र हर दिन का भरपूर लाभ उठा रहे हैं।',
   source: 'https://satpudaiti.com/',
 };
 
 export const missionVision = {
   mission:
-    'At Satpuda Private Industrial Training Institute, we are committed to develop the youth by equipping them with employable and entrepreneurial skill sets suitable to the industry.',
+    'Satpuda Private Industrial Training Institute में हम युवाओं को उद्योग की ज़रूरतों के अनुरूप रोज़गार योग्य और उद्यमशील कौशल देकर उनका विकास करने के लिए प्रतिबद्ध हैं।',
   vision:
-    'To upgrade the Institute as World Class Premium Vocational Training Institute with excellent infrastructure and environment, high training standards and constructive partnership with industries, developing globally competitive skilled workforce and entrepreneur society.',
+    'उत्कृष्ट बुनियादी ढाँचे और वातावरण, प्रशिक्षण के ऊँचे मानकों तथा उद्योगों के साथ रचनात्मक साझेदारी के बल पर संस्थान को विश्वस्तरीय प्रीमियम व्यावसायिक प्रशिक्षण संस्थान बनाना, और विश्व स्तर पर प्रतिस्पर्धी कुशल कार्यबल व उद्यमी समाज तैयार करना।',
   commitmentHi:
     'हम अंतर्राष्ट्रीय गुणवत्ता आश्वासन प्रणाली अपनाकर आधुनिक तरीकों से सतत उत्कृष्ट प्रशिक्षण प्रदान करने के लिए प्रतिबद्ध हैं।',
   commitmentEn:
@@ -60,13 +60,13 @@ export const missionVision = {
 
 /** Quality Policy — verbatim list from /about-us/. */
 export const qualityPolicy = [
-  '100% utilization of sanctioned intake capacity',
-  'Maintaining retention rate more than 85%',
-  'Passed out rate more than 80%',
-  '100% follow up of passed out trainees',
-  'Minimizing complaint rate to 0%',
-  'To expose trainee to at least one industry',
-  'Six days training programme for trainers in a year',
+  'स्वीकृत प्रवेश क्षमता का 100% उपयोग',
+  'प्रशिक्षुओं की निरंतरता (रिटेंशन) दर 85% से अधिक बनाए रखना',
+  'उत्तीर्ण होने की दर 80% से अधिक',
+  'उत्तीर्ण प्रशिक्षुओं का 100% फॉलो-अप',
+  'शिकायत दर को घटाकर 0% तक लाना',
+  'हर प्रशिक्षु को कम से कम एक उद्योग का प्रत्यक्ष अनुभव दिलाना',
+  'प्रशिक्षकों के लिए वर्ष में छह दिन का प्रशिक्षण कार्यक्रम',
 ];
 
 // ---------------------------------------------------------------------------
@@ -123,7 +123,7 @@ export const trades = [
     icon: 'Zap',
     scheme: 'CTS · NCVT',
     // Factual scope of the NCVT trade itself — not an institute claim.
-    scope: 'Wiring, electrical machines, power distribution and control systems.',
+    scope: 'वायरिंग, विद्युत मशीनें, बिजली वितरण और कंट्रोल सिस्टम।',
   },
   {
     id: 'fitter',
@@ -131,7 +131,7 @@ export const trades = [
     slug: '/trades/fitter',
     icon: 'Wrench',
     scheme: 'CTS · NCVT',
-    scope: 'Bench work, fitting, assembly, measurement and machine maintenance.',
+    scope: 'बेंच वर्क, फिटिंग, असेंबली, माप और मशीनों का रखरखाव।',
   },
   {
     id: 'diesel-mechanic',
@@ -139,14 +139,14 @@ export const trades = [
     slug: '/trades/mechanic-diesel',
     icon: 'Cog',
     scheme: 'CTS · NCVT',
-    scope: 'Diesel engines, fuel systems, overhaul and preventive maintenance.',
+    scope: 'डीज़ल इंजन, फ्यूल सिस्टम, ओवरहॉल और निवारक रखरखाव।',
   },
   {
     id: 'copa',
     name: 'COPA',
     slug: '/trades/copa',
     icon: 'MonitorCog',
-    scope: 'Computer operator and programming assistant.',
+    scope: 'कंप्यूटर ऑपरेटर और प्रोग्रामिंग असिस्टेंट।',
     scheme: 'CTS · NCVT',
   },
 ];
@@ -160,29 +160,29 @@ export const differentiators = {
   otherLabel: 'Other ITIs',
   satpudaLabel: 'Satpuda ITIs',
   other: [
-    'NCVT Curriculum',
-    'NCVT Infrastructure',
-    'Some have placements',
-    'Some have activities',
-    'No guarantee on regular training',
+    'NCVT पाठ्यक्रम',
+    'NCVT के अनुसार बुनियादी ढाँचा',
+    'कुछ में प्लेसमेंट की सुविधा',
+    'कुछ में अन्य गतिविधियाँ',
+    'नियमित प्रशिक्षण की कोई गारंटी नहीं',
   ],
   satpuda: [
-    'Planned structured curriculum',
-    'Rigorous regular authentic training',
-    'Skill & trade testing',
-    'NSDC courses',
-    'Industry exposure',
-    'On-the-job training',
-    'STEP (Skill Enhancement Training Programme)',
-    'Strong placements',
-    'Focus on entrepreneurship',
-    'Placement abroad programme',
-    'Free online knowledge contents',
-    'Strong alumni support',
-    'Regular career updates / forecast',
-    'Trained, experienced, dedicated trainers',
-    'Focus on life long learning',
-    'Preparing for technical mind sets',
+    'सुनियोजित और व्यवस्थित पाठ्यक्रम',
+    'कठोर, नियमित और प्रामाणिक प्रशिक्षण',
+    'कौशल और ट्रेड परीक्षण',
+    'NSDC कोर्स',
+    'उद्योगों का प्रत्यक्ष अनुभव',
+    'ऑन-द-जॉब ट्रेनिंग',
+    'STEP (कौशल संवर्धन प्रशिक्षण कार्यक्रम)',
+    'मज़बूत प्लेसमेंट',
+    'उद्यमिता पर विशेष ध्यान',
+    'विदेश में प्लेसमेंट कार्यक्रम',
+    'मुफ़्त ऑनलाइन ज्ञान सामग्री',
+    'पूर्व छात्रों का मज़बूत सहयोग',
+    'करियर से जुड़ी नियमित जानकारी और पूर्वानुमान',
+    'प्रशिक्षित, अनुभवी और समर्पित प्रशिक्षक',
+    'जीवन भर सीखते रहने पर ज़ोर',
+    'तकनीकी सोच विकसित करने की तैयारी',
   ],
 };
 
@@ -192,31 +192,31 @@ export const differentiators = {
 
 export const training = {
   intro:
-    'Satpuda Industrial Training Institute provides appropriate support and resources as per NCVT guidelines to impart the training learning process with the requisite number of hours and suitable methods. The teaching staff implements the course curriculum through a range of approaches and teaching strategies that recognize diverse learning styles relevant to the learning needs.',
+    'Satpuda Industrial Training Institute, NCVT के दिशानिर्देशों के अनुसार आवश्यक घंटों और उपयुक्त विधियों के साथ प्रशिक्षण और सीखने की प्रक्रिया चलाने के लिए पूरा सहयोग और संसाधन उपलब्ध कराता है। शिक्षक अलग-अलग तरीकों और शिक्षण रणनीतियों से पाठ्यक्रम पढ़ाते हैं, ताकि हर विद्यार्थी अपनी सीखने की शैली और ज़रूरत के अनुसार सीख सके।',
   emphasis:
-    'More number of practical sessions is given to the students to enrich their learning experience.',
+    'विद्यार्थियों के सीखने के अनुभव को और समृद्ध बनाने के लिए उन्हें अधिक से अधिक प्रैक्टिकल सत्र दिए जाते हैं।',
   nimiNote:
-    'SITI follows the complete learning process based on National Instructional Media Institute (NIMI) instructional materials.',
+    'SITI में सीखने की पूरी प्रक्रिया National Instructional Media Institute (NIMI) की शिक्षण सामग्री पर आधारित है।',
   methods: [
-    'Classroom lecture & presentations',
-    'Video sessions',
-    'Demonstration',
-    'Exercises',
-    'Field exposure',
-    'Industry visit',
-    'Hand on practices',
-    'Industrial projects',
-    'Problem solving case studies',
+    'कक्षा व्याख्यान और प्रेज़ेंटेशन',
+    'वीडियो सत्र',
+    'प्रदर्शन (डेमो)',
+    'अभ्यास',
+    'फील्ड का अनुभव',
+    'उद्योग भ्रमण',
+    'हाथों से व्यावहारिक अभ्यास',
+    'औद्योगिक प्रोजेक्ट',
+    'समस्या-समाधान केस स्टडी',
   ],
   facilities: [
-    'Advanced teaching aids and tools — LCD projectors, computers and advanced programmes.',
-    'Digital library with computers and internet facility; students are provided a password to work on computers.',
-    'The library contains all required text books & reference books as per the norms of NCVT / SCVT.',
-    'Faculty attend Quality Improvement Programmes (QIPs) and Staff Development Programmes (SDPs) sponsored or organised by NCVT / SCVT / HRD.',
-    'Eminent personalities are invited regularly to give lectures to students and faculty members.',
+    'आधुनिक शिक्षण साधन और उपकरण — LCD प्रोजेक्टर, कंप्यूटर और उन्नत सॉफ़्टवेयर प्रोग्राम।',
+    'कंप्यूटर और इंटरनेट सुविधा वाली डिजिटल लाइब्रेरी; कंप्यूटर पर काम करने के लिए विद्यार्थियों को पासवर्ड दिया जाता है।',
+    'लाइब्रेरी में NCVT / SCVT के मानदंडों के अनुसार सभी ज़रूरी पाठ्यपुस्तकें और संदर्भ पुस्तकें उपलब्ध हैं।',
+    'शिक्षक NCVT / SCVT / HRD द्वारा प्रायोजित या आयोजित गुणवत्ता सुधार कार्यक्रमों (QIP) और स्टाफ विकास कार्यक्रमों (SDP) में भाग लेते हैं।',
+    'विद्यार्थियों और शिक्षकों को व्याख्यान देने के लिए प्रतिष्ठित व्यक्तियों को नियमित रूप से आमंत्रित किया जाता है।',
   ],
   hrNote:
-    'SITI considers that our human resources are the most valuable assets. In line with the policy to do best to help them achieve their full potential through continuous education and training.',
+    'SITI मानता है कि हमारे मानव संसाधन हमारी सबसे मूल्यवान संपत्ति हैं। इसी नीति के अनुरूप हम निरंतर शिक्षा और प्रशिक्षण के माध्यम से उन्हें अपनी पूरी क्षमता तक पहुँचने में हर संभव मदद करते हैं।',
 };
 
 // ---------------------------------------------------------------------------
@@ -224,11 +224,11 @@ export const training = {
 // ---------------------------------------------------------------------------
 
 export const placement = {
-  headline: '2456 Campus placements in last 3 Years',
+  headline: 'पिछले 3 वर्षों में 2456 कैंपस प्लेसमेंट',
   campusNote:
-    'Campus Recruitment Programme conducted by the Institutes is a very vital activity for the young technicians aspiring for appropriate placement. Almost all the trainees have secured firm jobs in Government Departments, Multinational Private/Public Sector Undertakings. A high percentage of our eligible trainees have been offered jobs by reputed firms.',
+    'संस्थानों द्वारा आयोजित कैंपस भर्ती कार्यक्रम (Campus Recruitment Programme) उपयुक्त नौकरी की तलाश कर रहे युवा तकनीशियनों के लिए बेहद अहम गतिविधि है। लगभग सभी प्रशिक्षुओं को सरकारी विभागों और बहुराष्ट्रीय निजी/सार्वजनिक क्षेत्र के उपक्रमों में स्थायी नौकरियाँ मिली हैं। हमारे योग्य प्रशिक्षुओं में से बड़ी संख्या को प्रतिष्ठित कंपनियों ने नौकरी के प्रस्ताव दिए हैं।',
   interface:
-    'SITI has made necessary arrangements for classroom sessions taken up by suitable faculty/experts from industries, arranges periodic industry visits, and ensures faculty members along with students take up real life problems from industries for problem solving and application of principles taught as part of course work.',
+    'SITI ने उद्योगों के योग्य विशेषज्ञों द्वारा कक्षा सत्र लेने की आवश्यक व्यवस्था की है, समय-समय पर उद्योग भ्रमण कराता है, और यह सुनिश्चित करता है कि शिक्षक व विद्यार्थी मिलकर उद्योगों की वास्तविक समस्याओं पर काम करें, ताकि कोर्स में पढ़ाए गए सिद्धांत व्यवहार में लागू हो सकें।',
   // Verbatim table from /placement/
   record: [
     { year: 2016, drives: 2, placed: 103, percentage: 83, salary: 240000 },
@@ -239,14 +239,14 @@ export const placement = {
     { year: 2021, drives: 10, placed: 632, percentage: 94, salary: 240000 },
   ],
   cellActivities: [
-    'To arrange campus interviews.',
-    'To improve student personality by counselling from private and government sectors.',
-    'To provide awareness and knowledge by guest faculty.',
-    'To arrange seminars on subjects such as “Employment Opportunities in the local Industries”.',
-    'To contact various local industries personally for their manpower requirements.',
-    'To arrange “Self Employment Camps” giving information on government self-employment schemes.',
-    'To provide newspapers, magazines and employment news to trainees.',
-    'To provide computer and internet facilities for job searching and on-line job registration.',
+    'कैंपस इंटरव्यू आयोजित करना।',
+    'निजी और सरकारी क्षेत्र के विशेषज्ञों की काउंसलिंग से विद्यार्थियों के व्यक्तित्व का विकास करना।',
+    'अतिथि शिक्षकों के माध्यम से जागरूकता और ज्ञान देना।',
+    '“स्थानीय उद्योगों में रोज़गार के अवसर” जैसे विषयों पर सेमिनार आयोजित करना।',
+    'स्थानीय उद्योगों से उनकी कार्यबल संबंधी ज़रूरतों के लिए व्यक्तिगत रूप से संपर्क करना।',
+    'सरकारी स्वरोज़गार योजनाओं की जानकारी देने के लिए “स्वरोज़गार शिविर” आयोजित करना।',
+    'प्रशिक्षुओं को समाचार पत्र, पत्रिकाएँ और रोज़गार समाचार उपलब्ध कराना।',
+    'नौकरी खोजने और ऑनलाइन जॉब रजिस्ट्रेशन के लिए कंप्यूटर और इंटरनेट की सुविधा देना।',
   ],
 };
 

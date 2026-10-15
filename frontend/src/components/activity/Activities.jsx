@@ -148,7 +148,6 @@ export function Activities({ page }) {
                             <span lang="hi" className="block text-[0.9688rem] font-medium leading-snug text-navy-800">
                               {it.hi}
                             </span>
-                            <span className="block text-[0.8125rem] text-ink-muted">{it.en}</span>
                           </span>
                         </li>
                       ))}
@@ -188,7 +187,7 @@ export function Activities({ page }) {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading id="visits-title" tone="dark" eyebrow="Industrial visits" title={<span lang="hi">{content.visitsHi}</span>} />
             <p className="reveal max-w-sm text-[0.9375rem] leading-relaxed text-navy-100/75" style={{ '--reveal-delay': '120ms' }}>
-              Industry Visit is one of the nine teaching methods — from the MOIL site at Tirodi to a power house.
+              उद्योग भ्रमण नौ शिक्षण विधियों में से एक है — तिरोड़ी की MOIL साइट से लेकर पावर हाउस तक।
             </p>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -214,7 +213,7 @@ export function Activities({ page }) {
               id="board-title"
               eyebrow="The activities board"
               title="In the news, on the board."
-              lede="Newspaper coverage of institute events and photographs from industrial visits, as pinned on the Satpuda ITI activities board."
+              lede="संस्थान के कार्यक्रमों की अख़बारी कवरेज और औद्योगिक भ्रमण की तस्वीरें, जैसी Satpuda ITI के गतिविधि बोर्ड पर लगी हैं।"
             />
             <Link
               to={news.to}

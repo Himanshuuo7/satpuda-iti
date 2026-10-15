@@ -45,7 +45,7 @@ export function HrDevelopment({ page }) {
             Development<span className="text-signal">.</span>
           </span>,
         ]}
-        lede="Our human resources are the most valuable assets — so faculty are chosen to NCVT norms, selected by an eminent committee, and trained continuously."
+        lede="हमारे मानव संसाधन हमारी सबसे मूल्यवान संपत्ति हैं — इसलिए शिक्षकों को NCVT मानदंडों के अनुसार, प्रतिष्ठित व्यक्तियों की समिति द्वारा चुना जाता है और लगातार प्रशिक्षित किया जाता है।"
         aside={<Statement />}
       />
 

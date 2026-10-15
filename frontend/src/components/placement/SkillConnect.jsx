@@ -157,7 +157,7 @@ export function SkillConnect({ page }) {
                 Everyone around <span className="text-royal">a Satpuda trainee.</span>
               </>
             }
-            lede={`${content.tagline} — four circles of partners and programmes, all connected through the institute.`}
+            lede={`${content.tagline} — साझेदारों और कार्यक्रमों के चार दायरे, जो सभी संस्थान के माध्यम से आपस में जुड़े हैं।`}
             align="center"
             className="mx-auto max-w-3xl"
           />

@@ -25,7 +25,7 @@ export const RESOURCES = {
     api: 'admissions',
     label: 'Admissions',
     singular: 'application',
-    searchPlaceholder: 'Search name, phone, reference, district…',
+    searchPlaceholder: 'नाम, फ़ोन, रेफ़रेंस नंबर या ज़िला खोजें…',
     filters: [
       { name: 'trade', label: 'All trades', options: TRADE_OPTIONS },
       { name: 'campus', label: 'All campuses', options: CAMPUS_OPTIONS },
@@ -95,7 +95,7 @@ export const RESOURCES = {
     api: 'contact',
     label: 'Contact enquiries',
     singular: 'enquiry',
-    searchPlaceholder: 'Search name, phone, email, message…',
+    searchPlaceholder: 'नाम, फ़ोन, ईमेल या संदेश खोजें…',
     filters: [{ name: 'subject', label: 'All subjects', options: SUBJECT_OPTIONS }],
     title: (r) => r.name,
     subtitle: (r) => SUBJECT_LABELS[r.subject] ?? r.subject,

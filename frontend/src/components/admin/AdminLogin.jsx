@@ -47,7 +47,7 @@ export function AdminLogin({ onSuccess, notice }) {
             </span>
             <div>
               <h1 className="font-display text-xl font-bold text-navy-800">Admin dashboard</h1>
-              <p className="text-[0.8125rem] text-ink-soft">Admissions &amp; contact enquiries</p>
+              <p className="text-[0.8125rem] text-ink-soft">प्रवेश आवेदन और संपर्क पूछताछ</p>
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export function AdminLogin({ onSuccess, notice }) {
           </form>
         </div>
 
-        <p className="mt-6 text-center text-[0.75rem] text-navy-200/60">Authorised staff only.</p>
+        <p className="mt-6 text-center text-[0.75rem] text-navy-200/60">केवल अधिकृत कर्मचारियों के लिए।</p>
       </div>
     </main>
   );

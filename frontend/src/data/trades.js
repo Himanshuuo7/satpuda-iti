@@ -22,7 +22,7 @@ export const tradeDetails = [
     duration: '2 years',
     eligibility: '10th pass with Science',
     summary:
-      'A job-oriented vocational course; successful candidates are awarded vocational training certificates.',
+      'रोज़गारोन्मुखी व्यावसायिक कोर्स; सफल उम्मीदवारों को व्यावसायिक प्रशिक्षण प्रमाणपत्र दिए जाते हैं।',
     scheme: 'CTS · NCVT',
     slug: '/trades/electrician',
     icon: 'Zap',
@@ -35,7 +35,7 @@ export const tradeDetails = [
     duration: '2 years',
     eligibility: null,
     summary:
-      'Opens routes into shipbuilding and repair, infrastructure and defence organisations, and public-sector industry.',
+      'जहाज़ निर्माण और मरम्मत, बुनियादी ढाँचा व रक्षा संगठनों तथा सार्वजनिक क्षेत्र के उद्योगों में करियर के रास्ते खोलता है।',
     scheme: 'CTS · NCVT',
     slug: '/trades/fitter',
     icon: 'Wrench',
@@ -48,7 +48,7 @@ export const tradeDetails = [
     duration: '1 year',
     eligibility: null,
     summary:
-      'Automobile engineering with a specialisation in the mechanics of diesel engines.',
+      'ऑटोमोबाइल इंजीनियरिंग, जिसमें डीज़ल इंजनों की मैकेनिक्स में विशेषज्ञता दी जाती है।',
     scheme: 'CTS · NCVT',
     slug: '/trades/mechanic-diesel',
     icon: 'Cog',
@@ -62,7 +62,7 @@ export const tradeDetails = [
     duration: '1 year',
     eligibility: null,
     summary:
-      'Operates computers and peripheral equipment to process business, scientific and engineering data.',
+      'व्यावसायिक, वैज्ञानिक और इंजीनियरिंग डेटा प्रोसेस करने के लिए कंप्यूटर और उससे जुड़े उपकरण चलाना सिखाता है।',
     scheme: 'CTS · NCVT',
     slug: '/trades/copa',
     icon: 'MonitorCog',

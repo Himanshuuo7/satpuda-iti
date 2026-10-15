@@ -28,7 +28,7 @@ function Row({ label, children, note }) {
 
 const Missing = ({ verify }) => (
   <span className={verify ? 'font-medium text-signal-600' : 'text-ink-soft'}>
-    {verify ? 'To be verified' : 'Contact the campus'}
+    {verify ? 'सत्यापन होना बाकी है' : 'कैंपस से संपर्क करें'}
   </span>
 );
 

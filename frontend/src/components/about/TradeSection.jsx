@@ -55,7 +55,7 @@ function TradePanel({ trade, index }) {
           <div className="flex justify-between gap-3 py-2.5">
             <dt className="shrink-0 text-ink-soft">Eligibility</dt>
             <dd className="text-right font-medium text-navy-800">
-              {trade.eligibility ?? <span className="font-normal text-ink-soft">See current DGT admission notice</span>}
+              {trade.eligibility ?? <span className="font-normal text-ink-soft">वर्तमान DGT प्रवेश सूचना देखें</span>}
             </dd>
           </div>
         </dl>
@@ -110,7 +110,7 @@ export function TradeSection() {
               Four NCVT trades. <span className="text-ink-muted">Not every trade at every campus.</span>
             </>
           }
-          lede="Trades run under the Craftsman Training Scheme (CTS), affiliated to NCVT, New Delhi. The matrix below shows which trades each campus offers."
+          lede="सभी ट्रेड Craftsman Training Scheme (CTS) के अंतर्गत चलते हैं और NCVT, नई दिल्ली से संबद्ध हैं। नीचे दी गई तालिका बताती है कि किस कैंपस में कौन-से ट्रेड उपलब्ध हैं।"
           className="max-w-3xl"
         />
 
@@ -175,7 +175,7 @@ export function TradeSection() {
             </table>
           </div>
           <p className="border-t border-navy-100 px-5 py-3 text-[0.75rem] text-ink-soft">
-            {UNPUBLISHED.join(', ')} — contact the campus for its trade list.
+            {UNPUBLISHED.join(', ')} — ट्रेड सूची के लिए संबंधित कैंपस से संपर्क करें।
           </p>
         </div>
       </div>

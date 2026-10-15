@@ -226,7 +226,7 @@ function ToolWall({ tools }) {
       <div className="reveal flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
         <h3 className="font-display text-[1.5rem] font-semibold text-white sm:text-[1.75rem]">Tools & equipment</h3>
         <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-navy-200/60">
-          From the curriculum’s list of trade tools & equipment
+          पाठ्यक्रम में दी गई ट्रेड टूल्स और उपकरणों की सूची से
         </p>
       </div>
       <ul className="mt-6 grid gap-px overflow-hidden rounded-panel border border-white/12 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">

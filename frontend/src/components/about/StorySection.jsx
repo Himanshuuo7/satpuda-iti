@@ -61,7 +61,7 @@ export function StorySection() {
                 {story.foundedYear}
               </p>
               <p className="relative mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-ink-muted">
-                {story.operator} begins its work in education and training.
+                {story.operator} ने शिक्षा और प्रशिक्षण के क्षेत्र में अपना काम शुरू किया।
               </p>
             </div>
 
@@ -76,7 +76,7 @@ export function StorySection() {
                 <span className="absolute inset-y-0 left-0 w-full origin-left animate-rule-draw rounded-full bg-gradient-to-r from-royal to-signal" />
               </div>
               <p className="mt-3 text-[0.8125rem] text-ink-soft">
-                “23 years of excellent technical education” — Satpuda Group, 2022.
+                “उत्कृष्ट तकनीकी शिक्षा के 23 वर्ष” — Satpuda Group, 2022.
               </p>
             </div>
           </div>
@@ -137,7 +137,6 @@ export function StorySection() {
                 <p lang="hi" className="font-display text-[1.375rem] font-semibold text-navy-800">
                   {story.taglineHi}
                 </p>
-                <p className="mt-1 text-[1rem] text-ink-muted">{story.taglineEn}</p>
               </blockquote>
               <figcaption className="mt-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
                 Satpuda ITIs

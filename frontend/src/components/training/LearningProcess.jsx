@@ -147,7 +147,7 @@ export function LearningProcess({ page }) {
                   Nine methods, <span className="text-ink-muted">one learning process.</span>
                 </>
               }
-              lede={`${content.methodsLead}.`}
+              lede={`${content.methodsLead}।`}
             />
             <p className="reveal mt-6 max-w-prose text-[1.0625rem] leading-[1.75] text-ink-muted" style={{ '--reveal-delay': '140ms' }}>
               {content.intro[1]}

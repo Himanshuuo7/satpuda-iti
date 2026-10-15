@@ -269,13 +269,13 @@ export function AboutHero() {
               data-a="fade"
               className="mt-8 max-w-[36rem] text-[1.0625rem] leading-[1.75] text-ink-muted sm:text-lg"
             >
-              Since {story.foundedYear}, Satpuda Private Industrial Training Institutes have trained
-              young people from rural and urban Madhya Pradesh in NCVT trades — a network run by{' '}
-              {story.operator}, built on one idea:{' '}
+              {story.foundedYear} से Satpuda Private Industrial Training Institutes मध्य प्रदेश के ग्रामीण
+              और शहरी क्षेत्रों के युवाओं को NCVT ट्रेडों में प्रशिक्षित कर रहे हैं — {story.operator}{' '}
+              द्वारा संचालित यह नेटवर्क एक ही सोच पर आधारित है:{' '}
               <span lang="hi" className="font-semibold text-navy-800">
                 {story.mottoHi}
-              </span>{' '}
-              <span className="text-ink-soft">({story.mottoEn.toLowerCase()}).</span>
+              </span>
+              <span className="text-ink-soft">।</span>
             </p>
 
             <div data-a="fade" className="mt-9 flex flex-col gap-3 xs:flex-row xs:items-center">

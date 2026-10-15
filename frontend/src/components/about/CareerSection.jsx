@@ -19,32 +19,32 @@ const PILLARS = [
   {
     icon: Factory,
     title: 'Industry exposure',
-    body: 'Periodic industry visits, with faculty and students taking up real-life problems from industry for problem solving.',
+    body: 'समय-समय पर उद्योग भ्रमण, जिनमें शिक्षक और विद्यार्थी मिलकर उद्योगों की वास्तविक समस्याएँ सुलझाते हैं।',
   },
   {
     icon: HardHat,
     title: 'On-the-job training',
-    body: 'Field exposure, hands-on practice and industrial projects are part of the learning process.',
+    body: 'फील्ड का अनुभव, हाथों से व्यावहारिक अभ्यास और औद्योगिक प्रोजेक्ट सीखने की प्रक्रिया का हिस्सा हैं।',
   },
   {
     icon: TrendingUp,
     title: 'Skill development',
-    body: 'STEP (Skill Enhancement Training Programme) and NSDC courses alongside the NCVT trade.',
+    body: 'NCVT ट्रेड के साथ-साथ STEP (कौशल संवर्धन प्रशिक्षण कार्यक्रम) और NSDC कोर्स।',
   },
   {
     icon: Briefcase,
     title: 'Placement support',
-    body: 'The placement cell arranges campus interviews and contacts local industries for their manpower requirements.',
+    body: 'प्लेसमेंट सेल कैंपस इंटरव्यू आयोजित करता है और स्थानीय उद्योगों से उनकी कार्यबल संबंधी ज़रूरतों के लिए संपर्क करता है।',
   },
   {
     icon: Lightbulb,
     title: 'Entrepreneurship',
-    body: 'Self-employment camps share information on government self-employment schemes.',
+    body: 'स्वरोज़गार शिविरों में सरकारी स्वरोज़गार योजनाओं की जानकारी दी जाती है।',
   },
   {
     icon: Compass,
     title: 'Career development',
-    body: 'Counselling from private and government sectors, guest faculty, and seminars on local employment opportunities.',
+    body: 'निजी और सरकारी क्षेत्र के विशेषज्ञों से काउंसलिंग, अतिथि शिक्षक, और स्थानीय रोज़गार के अवसरों पर सेमिनार।',
   },
 ];
 
@@ -152,7 +152,7 @@ function PlacementChart() {
       </details>
 
       <p className="mt-4 text-[0.75rem] leading-relaxed text-ink-soft">
-        Placement support is not a guarantee of employment.
+        प्लेसमेंट सहायता का अर्थ नौकरी की गारंटी नहीं है।
       </p>
     </figure>
   );
