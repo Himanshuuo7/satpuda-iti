@@ -12,6 +12,7 @@ import {
   AdmissionPage,
   ContactPage,
   Home,
+  ItiPage,
   PlaceholderPage,
   PlacementPage,
   TradePage,
@@ -61,6 +62,7 @@ export function App() {
 
           <Route path="/about" element={<About />} />
           <Route path="/trades/:tradeId" element={<TradePage />} />
+          <Route path="/iti/:slug" element={<ItiPage />} />
           <Route path="/placements/:slug?" element={<PlacementPage />} />
           <Route path="/training/:slug?" element={<TrainingPage />} />
           <Route path="/activity/:slug?" element={<ActivityPage />} />

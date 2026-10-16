@@ -1213,10 +1213,634 @@
   }
 }
 
+/* ---------------------------------------------------------------------------
+ * Home — "Our ITI Institutes" marquee, and the /iti/:slug pages
+ * ------------------------------------------------------------------------- */
+
+/* The viewport clips the moving track. `overflow: clip`, where supported,
+   also refuses programmatic scrolling, so keyboard focus landing on a card
+   can never scroll the strip out of step with its animation. The block
+   padding leaves room for the hover lift and the focus ring. */
+.iti-marquee {
+  --iti-gap: 1rem;
+  overflow: hidden;
+  overflow: clip;
+  padding-block: 1.25rem 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .iti-marquee {
+    --iti-gap: 1.25rem;
+  }
+}
+
+/* Two identical groups, each carrying its own trailing gap — so -50% is
+   exactly one group wide and the loop has no seam. Constant motion is
+   linear; only `transform` moves, so it runs on the compositor. */
+.iti-marquee-track {
+  position: relative;
+  display: flex;
+  width: max-content;
+  animation: iti-marquee var(--iti-marquee-duration, 110s) linear infinite;
+}
+
+.iti-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--iti-gap);
+  padding-inline-end: var(--iti-gap);
+}
+
+@keyframes iti-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Paused while a card holds keyboard focus and while the strip is
+   off-screen; hover pausing (fine pointers only) follows below. */
+.iti-marquee[data-inview='false'] .iti-marquee-track,
+.iti-marquee:focus-within .iti-marquee-track {
+  animation-play-state: paused;
+}
+
+/* With a card focused the edge fade lifts, so it never sits under the mask. */
+.iti-marquee:focus-within {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iti-marquee:hover .iti-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Institute card. The lifted shadow is a pre-rendered layer that fades in —
+   animating box-shadow itself would repaint the card on every frame. */
+.iti-card {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.iti-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 2px 4px rgba(7, 27, 51, 0.06), 0 22px 44px -20px rgba(7, 27, 51, 0.32);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.iti-card:focus-visible {
+  border-radius: theme('borderRadius.panel');
+}
+
+.iti-media-img,
+.iti-card-rule,
+.iti-card-arrow {
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.iti-card-rule {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.iti-card:active {
+  transform: scale(0.98);
+  transition-duration: 140ms;
+}
+
+.iti-card:focus-visible::after {
+  opacity: 1;
+}
+
+.iti-card:focus-visible .iti-card-rule {
+  transform: scaleX(1);
+}
+
+.iti-card:focus-visible .iti-card-arrow {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iti-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .iti-card:hover:active {
+    transform: translateY(-6px) scale(0.98);
+  }
+
+  .iti-card:hover::after {
+    opacity: 1;
+  }
+
+  .iti-card:hover .iti-media-img {
+    transform: scale(1.05);
+  }
+
+  .iti-card:hover .iti-card-rule {
+    transform: scaleX(1);
+  }
+
+  .iti-card:hover .iti-card-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Detail-page tiles (trade cards, gallery, other institutes). */
+  .iti-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .iti-lift:hover .iti-media-img {
+    transform: scale(1.04);
+  }
+}
+
+.iti-lift {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.iti-lift:active {
+  transform: scale(0.98);
+  transition-duration: 140ms;
+}
+
+/* --- /iti/:slug micro-interactions -------------------------------------
+   Every effect animates transform, opacity or clip-path; pointer effects
+   only run for a fine pointer; each settles to its final state under
+   reduced motion (see the block at the end of this file). */
+
+.iti-page {
+  --iti-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --iti-ease-io: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Section eyebrow rules draw in as each heading reveals. */
+.iti-page .reveal .tick-rule {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms var(--iti-ease) 150ms;
+}
+
+.iti-page .reveal.is-visible .tick-rule {
+  transform: none;
+}
+
+/* Reading progress under the chapter rail — a scroll-driven animation, so
+   no script runs per frame. Browsers without scroll timelines show none. */
+.iti-progress {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@supports (animation-timeline: scroll()) {
+  .iti-progress {
+    animation: iti-progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes iti-progress {
+  to { transform: scaleX(1); }
+}
+
+/* Hero picture: a wipe uncovers it as the page opens, the photograph settles
+   from a slight push-in, then the corner brackets draw in. */
+.iti-unveil {
+  animation: iti-unveil 1100ms var(--iti-ease-io) 220ms both;
+}
+
+.iti-unveil .iti-media-img {
+  animation: iti-settle 1700ms var(--iti-ease) 220ms both;
+}
+
+@keyframes iti-unveil {
+  from { clip-path: inset(100% 0 0 0 round 6px); }
+  to { clip-path: inset(0 0 0 0 round 6px); }
+}
+
+@keyframes iti-settle {
+  from { transform: scale(1.12); }
+  to { transform: none; }
+}
+
+.iti-bracket {
+  animation: iti-bracket 700ms var(--iti-ease) var(--d, 1000ms) both;
+}
+
+@keyframes iti-bracket {
+  from { opacity: 0; transform: scale(0.3); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Pointer tilt (useTilt writes the transform); the glare follows. */
+.iti-tilt {
+  transition: transform 500ms var(--iti-ease);
+}
+
+.iti-glare {
+  opacity: 0;
+  transition: opacity 400ms ease;
+  mix-blend-mode: soft-light;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iti-tilt:hover .iti-glare {
+    opacity: 1;
+  }
+}
+
+/* Breadcrumb links: an underline grows from the left. */
+.iti-crumb {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 300ms var(--iti-ease), color 200ms ease;
+}
+
+.iti-crumb:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Hairline that draws across the top of a fact or panel on hover. */
+.iti-hairline {
+  position: relative;
+}
+
+.iti-hairline::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--tech);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms var(--iti-ease);
+  pointer-events: none;
+}
+
+/* Children of a revealed group settle in one after another. */
+.iti-stagger > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms ease,
+    transform 650ms var(--iti-ease);
+  transition-delay: calc(var(--i, 0) * 55ms + 120ms);
+}
+
+.is-visible .iti-stagger > *,
+.is-visible.iti-stagger > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Objectives: a red bar and a tinted row follow the reader's pointer. */
+.iti-objective {
+  position: relative;
+  transition: background-color 200ms ease;
+}
+
+.iti-objective::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--signal);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 400ms var(--iti-ease);
+}
+
+.iti-objective-num {
+  transition: color 200ms ease;
+}
+
+/* Trade cards: a soft royal glow under the cursor, and each trade's own
+   icon answers — the bolt flickers, the wrench twists, the cog turns, the
+   monitor blips. */
+.iti-glow {
+  background: radial-gradient(380px circle at var(--sx, 50%) var(--sy, 0%), rgba(11, 22, 201, 0.07), transparent 65%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.iti-trade-icon {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+.iti-icon-cog {
+  transition: transform 700ms var(--iti-ease);
+}
+
+.iti-trade:focus-within .iti-icon-zap { animation: iti-flicker 700ms steps(1, end); }
+.iti-trade:focus-within .iti-icon-wrench { animation: iti-twist 650ms var(--iti-ease); }
+.iti-trade:focus-within .iti-icon-cog { transform: rotate(90deg); }
+.iti-trade:focus-within .iti-icon-monitor { animation: iti-blip 500ms var(--iti-ease); }
+
+@keyframes iti-flicker {
+  0%, 100% { opacity: 1; }
+  15% { opacity: 0.25; }
+  30% { opacity: 1; }
+  45% { opacity: 0.4; }
+  60% { opacity: 1; }
+}
+
+@keyframes iti-twist {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(-24deg); }
+  70% { transform: rotate(9deg); }
+}
+
+@keyframes iti-blip {
+  0%, 100% { transform: none; }
+  40% { transform: translateY(-3px) scale(1.08); }
+}
+
+/* Facilities: one measurement sweep along each panel header as it appears. */
+.iti-scan {
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.iti-scan::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, var(--tech), transparent);
+  transform: translateX(-100%);
+}
+
+.is-visible .iti-scan::after {
+  animation: iti-scan 1500ms var(--iti-ease-io) var(--d, 300ms) both;
+}
+
+@keyframes iti-scan {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(340%); }
+}
+
+/* Principal: the portrait settles behind the lifting shutter, the quote mark
+   pops in, the name is underlined. */
+.iti-portrait-img {
+  transform: scale(1.1);
+  transition: transform 1600ms var(--iti-ease) 200ms;
+}
+
+.is-visible .iti-portrait-img {
+  transform: none;
+}
+
+.iti-quote {
+  opacity: 0;
+  transform: scale(0.6) rotate(-14deg);
+  transition:
+    opacity 400ms ease 350ms,
+    transform 700ms var(--iti-ease) 350ms;
+}
+
+.is-visible .iti-quote {
+  opacity: 1;
+  transform: none;
+}
+
+.iti-underline {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms var(--iti-ease) 700ms;
+}
+
+.is-visible .iti-underline {
+  transform: none;
+}
+
+/* Gallery: tiles wipe open in turn; the caption rises on hover or focus. */
+.iti-wipe {
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path 950ms var(--iti-ease-io),
+    transform 300ms var(--iti-ease);
+  transition-delay: var(--reveal-delay, 0ms), 0ms;
+}
+
+.is-visible .iti-wipe {
+  clip-path: inset(0 0 0 0);
+}
+
+.iti-caption {
+  transform: translateY(101%);
+  transition: transform 350ms var(--iti-ease);
+}
+
+.iti-expand {
+  transition: transform 300ms var(--iti-ease);
+}
+
+.group:focus-visible .iti-caption {
+  transform: none;
+}
+
+/* Copy buttons: the confirmation pill rises from the button. */
+.iti-copied {
+  opacity: 0;
+  transform: translate(-50%, 4px) scale(0.96);
+  transition:
+    opacity 180ms ease,
+    transform 250ms var(--iti-ease);
+}
+
+.iti-copied[data-show='true'] {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* Envelope lifts on hover. */
+.iti-mail {
+  transition: transform 300ms var(--iti-ease);
+}
+
+.iti-panel-icon {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    transform 300ms var(--iti-ease);
+}
+
+/* Explore tiles: the name leans in, the arrow slides and reddens. */
+.iti-nudge,
+.iti-arrow {
+  transition:
+    transform 300ms var(--iti-ease),
+    color 200ms ease;
+}
+
+.group:focus-visible .iti-nudge {
+  transform: translateX(3px);
+}
+
+.group:focus-visible .iti-arrow {
+  transform: translateX(4px);
+  color: var(--signal);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iti-crumb:hover {
+    background-size: 100% 1px;
+  }
+
+  .iti-hairline:hover::before {
+    transform: scaleX(1);
+  }
+
+  .iti-objective:hover {
+    background-color: theme('colors.canvas.soft');
+  }
+
+  .iti-objective:hover::before {
+    transform: scaleY(1);
+  }
+
+  .iti-objective:hover .iti-objective-num {
+    color: var(--signal);
+  }
+
+  .spotlight-host:hover .iti-glow {
+    opacity: 1;
+  }
+
+  .iti-trade:hover .iti-trade-icon {
+    background-color: var(--signal);
+    color: #fff;
+  }
+
+  .iti-trade:hover .iti-icon-zap { animation: iti-flicker 700ms steps(1, end); }
+  .iti-trade:hover .iti-icon-wrench { animation: iti-twist 650ms var(--iti-ease); }
+  .iti-trade:hover .iti-icon-cog { transform: rotate(90deg); }
+  .iti-trade:hover .iti-icon-monitor { animation: iti-blip 500ms var(--iti-ease); }
+
+  .group:hover .iti-caption {
+    transform: none;
+  }
+
+  .group:hover .iti-expand {
+    transform: scale(1.12) rotate(90deg);
+  }
+
+  .group:hover .iti-mail {
+    transform: translateY(-2px) rotate(-8deg);
+  }
+
+  .group:hover .iti-panel-icon {
+    transform: translateY(-2px);
+    background-color: theme('colors.royal.DEFAULT');
+    color: #fff;
+  }
+
+  .group:hover .iti-nudge {
+    transform: translateX(3px);
+  }
+
+  .group:hover .iti-arrow {
+    transform: translateX(4px);
+    color: var(--signal);
+  }
+}
+
+.iti-trade:focus-within .iti-trade-icon {
+  background-color: var(--signal);
+  color: #fff;
+}
+
 /* Respect the user's motion preference across every animated surface. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  /* ITI marquee: no motion — the strip becomes a row the visitor scrolls,
+     with the duplicate group (only there for the loop) removed. */
+  .iti-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--shell-pad);
+    overscroll-behavior-x: contain;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .iti-marquee-track {
+    animation: none;
+    padding-inline-start: var(--shell-pad);
+  }
+
+  .iti-marquee-group[aria-hidden='true'] {
+    display: none;
+  }
+
+  .iti-marquee-group > li {
+    scroll-snap-align: start;
+  }
+
+  .iti-card,
+  .iti-card:hover,
+  .iti-card:active,
+  .iti-lift,
+  .iti-lift:hover,
+  .iti-lift:active,
+  .iti-media-img {
+    transform: none !important;
+  }
+
+  /* ITI pages: every reveal lands in place; nothing tilts, twists or sweeps.
+     The reading-progress bar is scroll-linked, not autonomous motion, so it
+     keeps its scroll timeline. */
+  .iti-page .reveal .tick-rule,
+  .iti-stagger > *,
+  .iti-portrait-img,
+  .iti-quote,
+  .iti-underline,
+  .iti-icon-cog {
+    opacity: 1 !important;
+    transform: none !important;
+    transition-delay: 0ms !important;
+  }
+
+  .iti-unveil,
+  .iti-wipe {
+    clip-path: none !important;
+  }
+
+  .iti-bracket {
+    opacity: 1;
+    transform: none;
+  }
+
+  .iti-scan,
+  .iti-glare,
+  .iti-glow {
+    display: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .iti-progress {
+      animation-duration: auto !important;
+      animation-iteration-count: 1 !important;
+    }
   }
 
   *,

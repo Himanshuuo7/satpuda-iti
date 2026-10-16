@@ -11,6 +11,7 @@ import PlaceholderPage from '../pages/PlaceholderPage';
 const Home = lazy(() => import('../pages/Home'));
 const About = lazy(() => import('../pages/About'));
 const TradePage = lazy(() => import('../pages/TradePage'));
+const ItiPage = lazy(() => import('../pages/ItiPage'));
 const PlacementPage = lazy(() => import('../pages/PlacementPage'));
 const TrainingPage = lazy(() => import('../pages/TrainingPage'));
 const ActivityPage = lazy(() => import('../pages/ActivityPage'));
@@ -29,6 +30,8 @@ export const placeholderRoutes = [];
 export const redirects = [
   { from: '/trades', to: { pathname: '/', hash: '#trades' } },
   { from: '/courses', to: { pathname: '/', hash: '#trades' } },
+  // The institute list lives on the homepage; each institute is /iti/:slug.
+  { from: '/iti', to: { pathname: '/', hash: '#iti-institutes' } },
   { from: '/courses/electrician', to: '/trades/electrician' },
   { from: '/courses/fitter', to: '/trades/fitter' },
   { from: '/courses/diesel-mechanic', to: '/trades/mechanic-diesel' },
@@ -51,6 +54,7 @@ export {
   Home,
   About,
   TradePage,
+  ItiPage,
   PlacementPage,
   TrainingPage,
   ActivityPage,
