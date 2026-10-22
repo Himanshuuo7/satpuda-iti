@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, FileText, Loader2, Phone, RotateCcw } from 'lucide-react';
 
 import Button from '../components/ui/Button';
@@ -60,6 +61,19 @@ const INITIAL = {
   message: '',
 };
 
+/**
+ * `?trade=…&campus=…` (from a campus page's "Apply" card) pre-selects the
+ * trade and campus. Unknown values are ignored, and a campus that does not
+ * run the chosen trade is left for the applicant to pick.
+ */
+function prefilled(params) {
+  const wanted = params.get('trade');
+  const trade = TRADE_OPTIONS.some((t) => t.value === wanted) ? wanted : '';
+  const inst = itiInstitutes.find((i) => i.id === params.get('campus'));
+  const campus = inst && (!trade || inst.trades.some((t) => t.id === trade)) ? inst.id : '';
+  return { ...INITIAL, trade, campus };
+}
+
 const DOCUMENTS = [
   '10वीं की अंकसूची (और 12वीं की भी, यदि उत्तीर्ण हैं)',
   'आधार कार्ड',
@@ -88,7 +102,9 @@ export function AdmissionPage() {
       'Apply online for admission to Satpuda Private ITI — Electrician, Fitter, Mechanic Diesel and COPA trades. Fill in your basic details and our admission team will call you.',
   });
 
-  const form = useForm(INITIAL, submitAdmission);
+  const [params] = useSearchParams();
+  const [initial] = useState(() => prefilled(params));
+  const form = useForm(initial, submitAdmission);
   const { values, field, status, message, result, onSubmit, reset } = form;
 
   // Only the campuses that publish the chosen trade.

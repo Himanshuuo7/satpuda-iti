@@ -449,15 +449,6 @@ export const campuses = [
     email: 'satpudasarni@gmail.com',
     address: 'Satpuda ITI, Salaiya, Near Geeta Mandir, Salaiya, 460449',
   },
-  {
-    id: 'shiksha-rewa',
-    name: 'Shiksha Private I.T.I. Rewa',
-    city: 'Rewa',
-    district: 'Rewa',
-    phone: '+91 6262604134',
-    email: 'shikshaiti@gmail.com',
-    address: 'Ward No. 8, Plot No. 849/1/1, Anand Nagar, Boda Bagh (MP) 486001',
-  },
 ];
 
 /** Districts represented, derived from the campus records above. */

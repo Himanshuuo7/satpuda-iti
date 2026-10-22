@@ -3,9 +3,7 @@
  *
  * Which institutes appear is the official site's own "ITI Locations" menu
  * (https://satpudaiti.com/, About Us → ITI Locations): fifteen entries, of
- * which Garra is deliberately excluded, leaving the fourteen below. Shiksha
- * Private ITI, Rewa is in `itiInstitutes` (it is on the contact page) but not
- * in that menu and has no campus page, so it is not part of this set.
+ * which Garra is deliberately excluded, leaving the fourteen below.
  *
  * They are listed oldest first, by the year each was established, so the
  * homepage marquee reads as the network growing; institutes founded in the
@@ -14,8 +12,8 @@
  * Each profile is joined to its `itiInstitutes` record at the bottom of this
  * file, so name, address, phone, email, principal, year and trades live in one
  * place only. A profile adds what only the institute's own campus page
- * publishes: its photographs, the principal's message, the objectives list,
- * shifts, and the trade-wise building and workshop table.
+ * publishes: its photographs, the principal's message, the objectives list
+ * and shifts.
  *
  * Every value was read from the campus page in `sourceUrl` on 2026-10-16.
  * English source text is translated into Hindi faithfully, never extended;
@@ -83,41 +81,6 @@ const readerMessage = [
   'हम हर विद्यार्थी को समझने और उसके साथ काम करने की पूरी कोशिश करते हैं, और अपनी देखरेख में हर व्यक्ति का सर्वांगीण विकास करना हमारी ज़िम्मेदारी है। “बढ़ो और दूसरों को बढ़ने दो।” मैं सभी के लिए एक अद्भुत वातावरण की कामना करता हूँ। यदि मैं किसी भी तरह सहायता कर सकूँ, तो बेझिझक संपर्क करें — मेरा द्वार हमेशा खुला है। आपके प्राचार्य के रूप में सेवा करना मेरे लिए सम्मान की बात है।',
 ];
 
-/**
- * Trade-wise building and workshop tables, as published (areas in square
- * metres). Several campus pages carry the same table, so these are shared
- * by reference rather than repeated. `null` marks a cell the page leaves
- * blank ("…").
- */
-const row = (trade, units, classroomPerUnit, classroomTotal, workshopPerUnit, workshopTotal, note = null) => ({
-  trade,
-  units,
-  classroomPerUnit,
-  classroomTotal,
-  workshopPerUnit,
-  workshopTotal,
-  note,
-});
-
-const WITH_PARKING = 'पार्किंग सहित';
-
-/** Manjhapur, Rewa and Mauganj. */
-const INFRA_THREE_TRADE_LARGE = [
-  row('electrician', '26', '30', '2400', '98.00', '1450'),
-  row('fitter', '03', '30', '300', '88.00', '88'),
-  row('mechanic-diesel', '03', '30', '300', '84.00', '84 + 52', WITH_PARKING),
-];
-
-/** Kundipura, Mandla and Betul. */
-const INFRA_THREE_TRADE = [
-  row('electrician', '06', '30', '85.51', '196.00', '215.08'),
-  row('fitter', '3', '30', '30.32', '88.00', '93.24'),
-  row('mechanic-diesel', '3', '30', '30.32', '84.00', '125.65'),
-];
-
-/** Budhi, Katangi and Baihar publish the Electrician row only. */
-const INFRA_ELECTRICIAN = [row('electrician', '06', '30', '85.51', '196.00', '215.08')];
-
 const SATPUDA_SITE = 'https://satpudaiti.com';
 
 // ---------------------------------------------------------------------------
@@ -147,7 +110,6 @@ const PROFILES = [
       'प्रशिक्षुओं को विभिन्न क्षेत्रों में रोज़गार के व्यापक अवसर उपलब्ध कराना।',
       'योग्य उम्मीदवारों को छात्रवृत्ति प्रदान करना।',
     ],
-    infrastructure: INFRA_THREE_TRADE_LARGE,
     message: {
       paragraphs: [
         'औद्योगिक प्रशिक्षण संस्थान (ITI) भारत में DGET के अंतर्गत गठित माध्यमिक-पश्चात शिक्षण संस्थान है। Satpuda ITI लगातार वर्तमान रुझानों का पालन करता है, ताकि हम सबसे अद्यतन रहें, सर्वोत्तम पद्धतियाँ अपनाएँ, सभी नियमों का पालन करें और अपने विद्यार्थियों की भविष्य की ज़रूरतों को पूरा करें।',
@@ -180,7 +142,6 @@ const PROFILES = [
       'सॉफ्ट स्किल्स के माध्यम से प्रशिक्षुओं के समग्र व्यक्तित्व का विकास करना।',
       'उत्कृष्ट प्रशिक्षण, प्रभावी प्लेसमेंट और इनक्यूबेशन सेंटर के माध्यम से एक श्रेष्ठ संस्थान के रूप में पहचान बनाना।',
     ],
-    infrastructure: INFRA_ELECTRICIAN,
     message: {
       // Published in Hindi on the campus page; kept verbatim.
       paragraphs: [
@@ -199,7 +160,6 @@ const PROFILES = [
     },
     intro:
       'New Satpuda Private ITI, Katangi बालाघाट ज़िले के कटंगी में, बालाघाट रोड पर स्टेट बैंक के पास स्थित है। वर्ष 2015 में स्थापित यह संस्थान बालाघाट क्षेत्र में Satpuda समूह के कैंपसों में से एक है।',
-    infrastructure: INFRA_ELECTRICIAN,
     messageFor: standardMessage,
     principalPhoto: principalKatangi,
   },
@@ -208,7 +168,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/iti-baihar/`,
     intro:
       'Maharana Pratap Private ITI, Baihar बालाघाट ज़िले के बैहर में कंपाउंडर टोला, सोमानी मिल के पास स्थित है और अगस्त 2014 से Satpuda समूह के आईटीआई के रूप में संचालित है।',
-    infrastructure: INFRA_ELECTRICIAN,
     messageFor: standardMessage,
     principalPhoto: principalBaihar,
   },
@@ -217,7 +176,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/chhindwara/`,
     intro:
       'Satpuda Private ITI, Kundipura छिंदवाड़ा में कुंडीपुरा थाने के पास स्थित है और अगस्त 2003 से Satpuda समूह के आईटीआई के रूप में संचालित है। यह छिंदवाड़ा ज़िले में समूह के दो आईटीआई में से एक है।',
-    infrastructure: INFRA_THREE_TRADE,
     messageFor: standardMessage,
   },
   {
@@ -225,10 +183,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/satpuda-pvt-iti-chhindwara-warehouse/`,
     intro:
       'Satpuda Private ITI, Warehouse छिंदवाड़ा में फटाका गोदाम के पीछे स्थित है। कुंडीपुरा के साथ यह छिंदवाड़ा ज़िले में Satpuda समूह के दो आईटीआई में से एक है।',
-    infrastructure: [
-      row('electrician', '24', '30', '240', '98.00', '850'),
-      row('fitter', '9', '30', '90', '88', '275.92'),
-    ],
     messageFor: standardMessage,
   },
   {
@@ -236,7 +190,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/iti-rewa/`,
     intro:
       'Satpuda Private ITI, Rewa रीवा के चोरहटा क्षेत्र में स्थित है। यहाँ Electrician, Fitter और Mechanic Diesel — तीनों ट्रेड में प्रशिक्षण दिया जाता है।',
-    infrastructure: INFRA_THREE_TRADE_LARGE,
     message: { paragraphs: readerMessage, photo: principalRewa },
   },
   {
@@ -244,11 +197,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/seoni/`,
     intro:
       'Satpuda Private ITI, Seoni सिवनी में नागपुर रोड पर सेलादेही (शिलादेही) में स्थित है और अगस्त 2007 से Satpuda समूह के आईटीआई के रूप में संचालित है।',
-    infrastructure: [
-      row('electrician', '06', null, null, '195.20', '200.00'),
-      row('fitter', '03', null, null, '88', '123.50'),
-      row('mechanic-diesel', '03', null, null, '136', '181.50', WITH_PARKING),
-    ],
     messageFor: standardMessage,
     principalPhoto: principalSeoni,
   },
@@ -257,7 +205,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/multai/`,
     intro:
       'Satpuda Private ITI, Multai बैतूल ज़िले के मुलताई में, छिंदवाड़ा रोड पर चिखली खुर्द में स्थित है। अगस्त 2015 से संचालित इस संस्थान में Electrician ट्रेड का प्रशिक्षण दिया जाता है।',
-    infrastructure: null,
     messageFor: standardMessage,
     principalPhoto: principalMultai,
   },
@@ -266,7 +213,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/mandla/`,
     intro:
       'Satpuda Private ITI, Mandla मंडला ज़िले में नैनपुर रोड पर महाराजपुर पौंडी में स्थित है। यहाँ Electrician, Fitter और Mechanic Diesel ट्रेड में प्रशिक्षण दिया जाता है।',
-    infrastructure: INFRA_THREE_TRADE,
     messageFor: standardMessage,
     principalPhoto: principalMandla,
   },
@@ -275,7 +221,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/itarsi/`,
     intro:
       'Satpuda Private ITI, Itarsi नर्मदापुरम ज़िले के इटारसी में, जमानी रोड पर FCI के पास स्थित है। यहाँ Electrician और Fitter के साथ COPA (Computer Operator & Programming Assistant) ट्रेड भी संचालित होता है।',
-    infrastructure: null,
     message: { paragraphs: readerMessage, photo: null },
   },
   {
@@ -283,7 +228,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/betul/`,
     intro:
       'Satpuda Private ITI, Betul बैतूल ज़िले में मुलताई के पास चिखली खुर्द में स्थित है और अगस्त 2015 से Satpuda समूह के आईटीआई के रूप में संचालित है।',
-    infrastructure: INFRA_THREE_TRADE,
     messageFor: standardMessage,
     principalPhoto: principalBetul,
   },
@@ -292,7 +236,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/iti-sarni/`,
     intro:
       'Satpuda Private ITI, Sarni बैतूल ज़िले के सारनी में, सलैया क्षेत्र में गीता मंदिर के पास स्थित है। यहाँ Electrician और Fitter ट्रेड में प्रशिक्षण दिया जाता है।',
-    infrastructure: null,
     messageFor: standardMessage,
   },
   {
@@ -300,7 +243,6 @@ const PROFILES = [
     sourceUrl: `${SATPUDA_SITE}/mauganj/`,
     intro:
       'Satpuda Private ITI, Mauganj मऊगंज में मऊगंज–रीवा–सीधी रोड पर स्थित है। संस्थान के आधिकारिक पेज के अनुसार यह Satpuda समूह के सबसे बड़े आईटीआई में से एक है।',
-    infrastructure: INFRA_THREE_TRADE_LARGE,
     message: {
       paragraphs: [
         'Satpuda Private ITI, Mauganj में हम उन चुनौतियों को समझते हैं जो विद्यार्थियों के सामने आती हैं। हमारा मिशन है कि विद्यार्थियों को इन चुनौतियों का सामना करने में सहयोग दें और तकनीकी क्षेत्र में उनके लक्ष्यों तक पहुँचने में उनकी मदद करें।',
@@ -358,7 +300,6 @@ export const itiProfiles = [...PROFILES].sort(byFounding).map((profile, index) =
         return trade && { ...trade, intake: t.intake, shifts: SHIFTS, eligibilityHi: eligibilityHi[t.id] ?? null };
       })
       .filter(Boolean),
-    infrastructure: profile.infrastructure?.length ? profile.infrastructure : null,
     message:
       message && leader
         ? { ...message, photo: message.photo ?? profile.principalPhoto ?? null, ...leader }

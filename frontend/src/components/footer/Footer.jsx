@@ -194,7 +194,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-3 border-t border-white/10 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[0.8125rem] text-navy-100/50">
-            © {year} Satpuda Group. All rights reserved.
+            © {year} Satpuda ITI Group. All rights reserved.
           </p>
           <p className="text-[0.75rem] text-navy-100/40">
             {institute.trust} · Since {institute.establishedYear}

@@ -2022,33 +2022,6 @@
   40% { transform: translateY(-3px) scale(1.08); }
 }
 
-/* Facilities: one measurement sweep along each panel header as it appears. */
-.iti-scan {
-  position: absolute;
-  inset: auto 0 -1px 0;
-  height: 1px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.iti-scan::after {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 30%;
-  background: linear-gradient(90deg, transparent, var(--tech), transparent);
-  transform: translateX(-100%);
-}
-
-.is-visible .iti-scan::after {
-  animation: iti-scan 1500ms var(--iti-ease-io) var(--d, 300ms) both;
-}
-
-@keyframes iti-scan {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(340%); }
-}
-
 /* Principal: the portrait settles behind the lifting shutter, the quote mark
    pops in, the name is underlined. */
 .iti-portrait-img {
@@ -2128,13 +2101,6 @@
   transition: transform 300ms var(--iti-ease);
 }
 
-.iti-panel-icon {
-  transition:
-    background-color 250ms ease,
-    color 250ms ease,
-    transform 300ms var(--iti-ease);
-}
-
 /* Explore tiles: the name leans in, the arrow slides and reddens. */
 .iti-nudge,
 .iti-arrow {
@@ -2199,12 +2165,6 @@
     transform: translateY(-2px) rotate(-8deg);
   }
 
-  .group:hover .iti-panel-icon {
-    transform: translateY(-2px);
-    background-color: theme('colors.royal.DEFAULT');
-    color: #fff;
-  }
-
   .group:hover .iti-nudge {
     transform: translateX(3px);
   }
@@ -2218,6 +2178,21 @@
 .iti-trade:focus-within .iti-trade-icon {
   background-color: var(--signal);
   color: #fff;
+}
+
+/* Nearby-campus chips (short trade lists): the map pin hops. */
+.iti-chip-pin {
+  transition: transform 300ms var(--iti-ease);
+}
+
+.iti-chip:focus-visible .iti-chip-pin {
+  transform: translateY(-2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iti-chip:hover .iti-chip-pin {
+    transform: translateY(-2px);
+  }
 }
 
 /* Respect the user's motion preference across every animated surface. */
@@ -2360,7 +2335,6 @@
     transform: none;
   }
 
-  .iti-scan,
   .iti-glare,
   .iti-glow {
     display: none;

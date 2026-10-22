@@ -119,7 +119,7 @@ export function TrainingPlacementPartnerships() {
               {TITLE_LEAD} <span className="text-royal">{TITLE_LAST}</span>
             </>
           }
-          lede={partnerships.description}
+          lede={<span lang="hi">{partnerships.description}</span>}
           className="max-w-3xl"
         />
 
@@ -178,7 +178,9 @@ export function TrainingPlacementPartnerships() {
                 </div>
               </div>
 
-              <p className="mt-6 text-[0.9688rem] leading-[1.7] text-ink-muted">{tpo.summary}</p>
+              <p lang="hi" className="mt-6 text-[0.9688rem] leading-[1.7] text-ink-muted">
+                {tpo.summary}
+              </p>
 
               <dl className="mt-6 flex items-center justify-between gap-4 border-y border-navy-100 py-2.5">
                 <dt className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">Mobile</dt>
@@ -257,7 +259,9 @@ export function TrainingPlacementPartnerships() {
                       <span className="mt-5 block font-display text-[1.125rem] font-semibold leading-snug tracking-tight text-navy-800">
                         {o.title}
                       </span>
-                      <span className="mt-2 block text-[0.9375rem] leading-relaxed text-ink-muted">{o.description}</span>
+                      <span lang="hi" className="mt-2 block text-[0.9375rem] leading-relaxed text-ink-muted">
+                        {o.description}
+                      </span>
                       <span className="tpp-way-cta mt-auto inline-flex items-center gap-1.5 pt-5 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
                         Discuss on WhatsApp
                         <ArrowUpRight aria-hidden="true" strokeWidth={2} className="tpp-way-arrow h-3.5 w-3.5" />
@@ -271,7 +275,10 @@ export function TrainingPlacementPartnerships() {
 
             <p className="mt-6 flex items-start gap-3 lg:mt-auto lg:pt-6">
               <span aria-hidden="true" className="mt-[0.7em] h-[2px] w-5 shrink-0 rounded-full bg-signal" />
-              <span className="font-display text-[1.0625rem] font-medium leading-snug tracking-tight text-navy-800 sm:text-[1.1875rem]">
+              <span
+                lang="hi"
+                className="font-display text-[1.0625rem] font-medium leading-snug tracking-tight text-navy-800 sm:text-[1.1875rem]"
+              >
                 {partnerships.closing}
               </span>
             </p>

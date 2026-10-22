@@ -4,7 +4,6 @@ import ItiHero from '../components/iti/ItiHero';
 import ItiChapterNav from '../components/iti/ItiChapterNav';
 import ItiOverview from '../components/iti/ItiOverview';
 import ItiCourses from '../components/iti/ItiCourses';
-import ItiFacilities from '../components/iti/ItiFacilities';
 import ItiPrincipal from '../components/iti/ItiPrincipal';
 import ItiGallery from '../components/iti/ItiGallery';
 import ItiContact from '../components/iti/ItiContact';
@@ -83,7 +82,6 @@ function ItiView({ inst }) {
   const sections = [
     { id: 'overview', label: 'Overview', Component: ItiOverview, show: true },
     { id: 'trades', label: 'Trades', Component: ItiCourses, show: inst.courses.length > 0 },
-    { id: 'facilities', label: 'Facilities', Component: ItiFacilities, show: Boolean(inst.infrastructure) },
     { id: 'principal', label: 'Principal', Component: ItiPrincipal, show: Boolean(inst.message) },
     { id: 'gallery', label: 'Gallery', Component: ItiGallery, show: Boolean(inst.gallery) },
     { id: 'contact', label: 'Contact', Component: ItiContact, show: true },

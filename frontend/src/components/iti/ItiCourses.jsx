@@ -1,8 +1,10 @@
-import { ArrowUpRight, Cog, MonitorCog, Wrench, Zap } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import SectionHeading from '../ui/SectionHeading';
 import CountUp from './CountUp';
+import { ItiApplyCard, ItiNearbyTrades } from './ItiCourseExtras';
+import { tradeIcon } from './tradeIcons';
 import useRevealEach from '../../hooks/useRevealEach';
 import useSpotlight from '../../hooks/useSpotlight';
 
@@ -13,14 +15,11 @@ import useSpotlight from '../../hooks/useSpotlight';
  * Motion: cards lift under a soft glow that follows the cursor; the icon tile
  * turns red and the trade's own icon answers (the bolt flickers, the wrench
  * twists, the cog turns, the monitor blips); the intake counts up once.
+ *
+ * A campus running only one or two trades would leave the row short, so the
+ * grid is completed with the trades its neighbours teach and, where a single
+ * trade leaves two places free, a card to apply for it (ItiCourseExtras).
  */
-
-const ICONS = {
-  Zap: [Zap, 'iti-icon-zap'],
-  Wrench: [Wrench, 'iti-icon-wrench'],
-  Cog: [Cog, 'iti-icon-cog'],
-  MonitorCog: [MonitorCog, 'iti-icon-monitor'],
-};
 
 /** "2 years" → "2 वर्ष". */
 const years = (duration) => `${parseInt(duration, 10)} वर्ष`;
@@ -28,6 +27,7 @@ const years = (duration) => `${parseInt(duration, 10)} वर्ष`;
 export function ItiCourses({ inst, id }) {
   const ref = useRevealEach();
   const trackSpotlight = useSpotlight();
+  const count = inst.courses.length;
 
   return (
     <section
@@ -51,7 +51,7 @@ export function ItiCourses({ inst, id }) {
 
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {inst.courses.map((course, i) => {
-            const [Icon, iconClass] = ICONS[course.icon] ?? ICONS.Cog;
+            const [Icon, iconClass] = tradeIcon(course.icon);
             const specs = [
               { label: 'Duration', value: years(course.duration) },
               { label: 'Shifts', value: String(course.shifts), count: true },
@@ -116,6 +116,17 @@ export function ItiCourses({ inst, id }) {
               </li>
             );
           })}
+
+          {/* Completing a short row: 2 trades + nearby (full width on
+              tablets); 1 trade + nearby + apply (apply full width there). */}
+          {count <= 2 && (
+            <ItiNearbyTrades
+              inst={inst}
+              delay={80 + count * 70}
+              className={count === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}
+            />
+          )}
+          {count === 1 && <ItiApplyCard inst={inst} delay={220} className="sm:col-span-2 lg:col-span-1" />}
         </ul>
 
         <p lang="hi" className="reveal mt-8 max-w-prose border-l border-tech/50 pl-5 text-[0.875rem] leading-[1.7] text-ink-muted">

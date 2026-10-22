@@ -18,7 +18,6 @@ export const CAMPUSES = [
   'seoni',
   'mandla',
   'rewa',
-  'shiksha-rewa',
   'mauganj',
 ];
 
