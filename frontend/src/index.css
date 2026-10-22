@@ -584,14 +584,8 @@
 }
 
 /* ---------------------------------------------------------------------------
- * Home — campus network
+ * Campus motion shared by the ITI, trade and contact surfaces
  * ------------------------------------------------------------------------- */
-
-/* Register rows settle in with the section, and again after a filter change. */
-.is-visible .campus-enter {
-  animation: about-enter 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--i, 0) * 35ms);
-}
 
 /* Detail content swaps in line by line. */
 .campus-swap > * {
@@ -601,16 +595,6 @@
 
 @keyframes campus-swap {
   from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* Position counter rolls up. */
-.campus-tick {
-  animation: campus-tick 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes campus-tick {
-  from { opacity: 0; transform: translateY(70%); }
   to { opacity: 1; transform: none; }
 }
 
@@ -1214,18 +1198,198 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * Home — Placements: the record bento and the recruiter wall
+ * ------------------------------------------------------------------------- */
+
+/* Cards lift a little under a mouse. */
+.pb2-card {
+  transition:
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb2-card:hover {
+    transform: translateY(-3px);
+    border-color: theme('colors.navy.200');
+    box-shadow: theme('boxShadow.lift');
+  }
+}
+
+/* Trend chart: once its card is revealed the line draws itself, the area
+   fills in behind it and the year points land one after another. */
+.pb2-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1400ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
+}
+
+.is-visible .pb2-line {
+  stroke-dashoffset: 0;
+}
+
+.pb2-area {
+  opacity: 0;
+  transition: opacity 900ms ease 1100ms;
+}
+
+.is-visible .pb2-area {
+  opacity: 1;
+}
+
+.pb2-dot,
+.pb2-peak {
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(350ms + var(--i, 5) * 210ms);
+}
+
+.is-visible .pb2-dot,
+.is-visible .pb2-peak {
+  transform: scale(1);
+}
+
+/* The chosen year's marker, guide and package pin glide between years. */
+.pb2-glide {
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* A ring spreads from the marker each time a year is chosen. */
+.pb2-halo {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pb2-halo 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pb2-halo {
+  from { opacity: 0.35; transform: scale(0.5); }
+  to { opacity: 0; transform: scale(1.9); }
+}
+
+/* A changed comparison rises in. */
+.pb2-rise {
+  animation: pb2-rise 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pb2-rise {
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Year buttons: quiet until chosen; the chosen one is navy with a red mark. */
+.pb2-year {
+  color: theme('colors.ink.soft');
+  transition: color 200ms ease, background-color 200ms ease;
+}
+
+.pb2-year[aria-pressed='true'] {
+  color: theme('colors.navy.800');
+  font-weight: 600;
+}
+
+.pb2-year-mark {
+  transform: scaleX(0);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pb2-year[aria-pressed='true'] .pb2-year-mark {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb2-year:hover {
+    color: theme('colors.navy.800');
+    background-color: theme('colors.navy.50');
+  }
+}
+
+/* Every year's placed count as small columns; the chosen year turns red. */
+.pb2-mini {
+  background-color: theme('colors.navy.100');
+  transition: background-color 300ms ease;
+}
+
+.pb2-mini[data-on] {
+  background-color: var(--signal);
+}
+
+/* One dot per campus drive; they light in turn when the count changes. */
+.pb2-drive {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: theme('colors.navy.100');
+  transition: background-color 220ms ease, transform 220ms ease;
+  transition-delay: calc(var(--i) * 16ms);
+}
+
+.pb2-drive[data-on] {
+  background-color: theme('colors.navy.600');
+}
+
+/* Recruiter tiles: on a fine pointer they wait in grey and come to colour,
+   lift and draw a red rule when the pointer finds them; on touch they are
+   simply in colour. */
+.pl-logo {
+  transition:
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 400ms ease,
+    border-color 300ms ease;
+}
+
+.pl-logo-img {
+  transition: filter 400ms ease, opacity 400ms ease, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pl-logo-rule {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pl-logo-img {
+    filter: grayscale(1);
+    opacity: 0.6;
+  }
+
+  .pl-logo:hover {
+    transform: translateY(-4px);
+    border-color: theme('colors.navy.200');
+    box-shadow: theme('boxShadow.lift');
+  }
+
+  .pl-logo:hover .pl-logo-img {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.06);
+  }
+
+  .pl-logo:hover .pl-logo-rule {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------------------------------------------------------------------------
  * Home — "Our ITI Institutes" marquee, and the /iti/:slug pages
  * ------------------------------------------------------------------------- */
 
 /* The viewport clips the moving track. `overflow: clip`, where supported,
    also refuses programmatic scrolling, so keyboard focus landing on a card
    can never scroll the strip out of step with its animation. The block
-   padding leaves room for the hover lift and the focus ring. */
+   padding leaves room for the hover lift and the focus ring. Sideways touch
+   travel is left to script, which drags the strip; vertical travel still
+   scrolls the page. */
 .iti-marquee {
   --iti-gap: 1rem;
   overflow: hidden;
   overflow: clip;
   padding-block: 1.25rem 1.75rem;
+  touch-action: pan-y pinch-zoom;
 }
 
 @media (min-width: 768px) {
@@ -1241,7 +1405,7 @@
   position: relative;
   display: flex;
   width: max-content;
-  animation: iti-marquee var(--iti-marquee-duration, 110s) linear infinite;
+  animation: iti-marquee var(--iti-marquee-duration, 80s) linear infinite;
 }
 
 .iti-marquee-group {
@@ -1256,11 +1420,18 @@
   to { transform: translate3d(-50%, 0, 0); }
 }
 
-/* Paused while a card holds keyboard focus and while the strip is
-   off-screen; hover pausing (fine pointers only) follows below. */
+/* Paused while a card holds keyboard focus, while a finger holds or swipes
+   the strip (script seeks it meanwhile) and while the strip is off-screen;
+   hover pausing (fine pointers only) follows below. */
 .iti-marquee[data-inview='false'] .iti-marquee-track,
+.iti-marquee[data-held] .iti-marquee-track,
 .iti-marquee:focus-within .iti-marquee-track {
   animation-play-state: paused;
+}
+
+/* A swiping finger is not a press on the card beneath it. */
+.iti-marquee[data-swiping] .iti-card {
+  transform: none;
 }
 
 /* With a card focused the edge fade lifts, so it never sits under the mask. */
@@ -1273,6 +1444,86 @@
   .iti-marquee:hover .iti-marquee-track {
     animation-play-state: paused;
   }
+}
+
+/* Odometer figures (ui/Odometer), used by the index line under the strip
+   and the homepage placement record. Each digit is a drum of 0–9 clipped to
+   one figure: it rolls through the numbers between. `clip-path` clips
+   without making the drum its own baseline, so the figures still sit on the
+   text's baseline. */
+.odometer-wheel {
+  position: relative;
+  display: inline-block;
+  clip-path: inset(0);
+}
+
+.odometer-strip {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, calc(var(--digit) * -10%), 0);
+  transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1) var(--wheel-delay, 0ms);
+}
+
+.iti-ticker-in {
+  animation: iti-ticker-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes iti-ticker-in {
+  from { transform: translate3d(0, 105%, 0); }
+  to { transform: none; }
+}
+
+/* Segments: those already passed stay filled, the front one fills as its
+   card travels (`--iti-seg`, written by script) and settles to navy once
+   passed. When the loop comes round they drain in a wave that runs the same
+   way as the strip. */
+.iti-seg-bar {
+  position: relative;
+  display: block;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: theme('colors.navy.100');
+}
+
+.iti-seg-fill {
+  position: absolute;
+  inset: 0;
+  background-color: theme('colors.navy.700');
+  transform: scaleX(0);
+  transform-origin: right;
+  transition:
+    transform 600ms cubic-bezier(0.65, 0, 0.35, 1) calc(var(--seg) * 28ms),
+    background-color 500ms ease;
+}
+
+.iti-seg[data-state='done'] .iti-seg-fill {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.iti-seg[data-state='front'] .iti-seg-fill {
+  background-color: var(--signal);
+  transform: scaleX(var(--iti-seg, 0));
+  transform-origin: left;
+  transition: none;
+}
+
+.iti-seg-num {
+  margin-top: 0.625rem;
+  color: theme('colors.navy.300');
+  transition: color 400ms ease;
+}
+
+.iti-seg[data-state='done'] .iti-seg-num {
+  color: theme('colors.navy.600');
+}
+
+.iti-seg[data-state='front'] .iti-seg-num {
+  color: var(--signal);
+  font-weight: 600;
 }
 
 /* Institute card. The lifted shadow is a pre-rendered layer that fades in —
@@ -1779,8 +2030,66 @@
     scroll-snap-type: x proximity;
     scroll-padding-inline: var(--shell-pad);
     overscroll-behavior-x: contain;
+    touch-action: auto;
     -webkit-mask-image: none;
     mask-image: none;
+  }
+
+  /* Its index line follows the scroll without rolling or sliding. */
+  .odometer-strip,
+  .iti-seg-fill,
+  .iti-seg-num {
+    transition: none !important;
+  }
+
+  /* Placement bento: the chart is drawn, every figure and marker in place. */
+  .pb2-line {
+    stroke-dashoffset: 0;
+  }
+
+  .pb2-area {
+    opacity: 1;
+  }
+
+  .pb2-dot,
+  .pb2-peak {
+    transform: none;
+  }
+
+  .pb2-card,
+  .pb2-line,
+  .pb2-area,
+  .pb2-dot,
+  .pb2-peak,
+  .pb2-glide,
+  .pb2-year-mark,
+  .pb2-mini,
+  .pb2-drive {
+    transition: none !important;
+  }
+
+  .pb2-halo,
+  .pb2-rise {
+    animation: none;
+  }
+
+  .pb2-card:hover {
+    transform: none;
+  }
+
+  .pl-logo,
+  .pl-logo-img,
+  .pl-logo-rule {
+    transition: none !important;
+  }
+
+  .pl-logo:hover,
+  .pl-logo:hover .pl-logo-img {
+    transform: none;
+  }
+
+  .iti-ticker-in {
+    animation: none;
   }
 
   .iti-marquee-track {
@@ -1871,8 +2180,7 @@
     transform: scale(1.12);
   }
 
-  /* Home campus network: no staggers, no drift. */
-  .campus-enter,
+  /* Campus detail swaps: no staggers, no drift. */
   .campus-swap > * {
     transition-delay: 0ms !important;
     animation-delay: 0ms !important;

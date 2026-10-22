@@ -1,12 +1,15 @@
 /**
  * "Our ITI Institutes" — the homepage marquee and the /iti/:slug pages.
  *
- * Which institutes appear, and in what order, is the official site's own
- * "ITI Locations" menu (https://satpudaiti.com/, About Us → ITI Locations):
- * fifteen entries, of which Garra is deliberately excluded, leaving the
- * fourteen below. Shiksha Private ITI, Rewa is in `itiInstitutes` (it is on
- * the contact page) but not in that menu and has no campus page, so it is not
- * part of this set.
+ * Which institutes appear is the official site's own "ITI Locations" menu
+ * (https://satpudaiti.com/, About Us → ITI Locations): fifteen entries, of
+ * which Garra is deliberately excluded, leaving the fourteen below. Shiksha
+ * Private ITI, Rewa is in `itiInstitutes` (it is on the contact page) but not
+ * in that menu and has no campus page, so it is not part of this set.
+ *
+ * They are listed oldest first, by the year each was established, so the
+ * homepage marquee reads as the network growing; institutes founded in the
+ * same year keep their menu order.
  *
  * Each profile is joined to its `itiInstitutes` record at the bottom of this
  * file, so name, address, phone, email, principal, year and trades live in one
@@ -320,7 +323,11 @@ const splitName = (name) => {
   return at < 0 ? ['', name] : [name.slice(0, at), name.slice(at + 2)];
 };
 
-export const itiProfiles = PROFILES.map((profile, index) => {
+/** Oldest first. The sort is stable, so a tie keeps the menu order. */
+const byFounding = (a, b) =>
+  Number(recordById[a.id]?.established) - Number(recordById[b.id]?.established);
+
+export const itiProfiles = [...PROFILES].sort(byFounding).map((profile, index) => {
   const record = recordById[profile.id];
   if (!record) throw new Error(`itiProfiles: no itiInstitutes record for "${profile.id}"`);
 
@@ -367,5 +374,5 @@ export const itiProfiles = PROFILES.map((profile, index) => {
 const bySlug = new Map(itiProfiles.map((p) => [p.slug, p]));
 export const getItiProfile = (slug) => bySlug.get(slug) ?? null;
 
-/** Districts the fourteen institutes cover, in menu order. */
+/** Districts the fourteen institutes cover, in the order they were reached. */
 export const itiDistricts = [...new Set(itiProfiles.map((p) => p.district))];

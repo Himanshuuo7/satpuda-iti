@@ -1,38 +1,107 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
+import CountUp from '../iti/CountUp';
+import PlacementBento from '../placement/PlacementBento';
 import { placement } from '../../data/satpudaData';
 import { recruiterLogos } from '../../data/media';
-import { toLakh } from '../../utils/format';
+import { recruiters } from '../../data/placementContent';
+import { PLACEMENT_BASE } from '../../data/placementPages';
 import useReveal from '../../hooks/useReveal';
 
 /**
  * Placements.
  *
- * The institute publishes a precise year-by-year record, so that table is the
- * section — presented as a real data table with tabular figures and a bar for
- * each year's rate, not as a set of hero statistics. A semantic <table> keeps it
- * navigable; on phones each row reflows into a labelled block.
+ * The institute publishes a precise year-by-year record, so that record is
+ * the section: a bento of white cards (`PlacementBento`) — the rate trend
+ * with a year picker, and the chosen year's placements, drives and package —
+ * beside the totals of that same record and the published headline, whose
+ * figure counts up. Recruiters follow as two rows of logo tiles drifting in
+ * opposite directions.
  *
- * The published headline ("2456 Campus placements in last 3 Years") is quoted
- * as written, and the language stays "assistance"/"record" — never "guaranteed".
+ * Totals are sums of the published rows, nothing more. The published
+ * headline ("2456 Campus placements in last 3 Years") is quoted as written,
+ * and the language stays "assistance"/"record" — never "guaranteed".
  */
+
+const RECORD = placement.record;
+const FIRST = RECORD[0].year;
+const LAST = RECORD[RECORD.length - 1].year;
+const BEST = RECORD.reduce((a, b) => (b.percentage > a.percentage ? b : a));
+
+const TOTALS = [
+  { value: String(RECORD.reduce((n, r) => n + r.drives, 0)), label: 'Campus drives' },
+  { value: String(RECORD.reduce((n, r) => n + r.placed, 0)), label: 'Trainees placed' },
+  { value: String(BEST.percentage), suffix: '%', label: `Best rate · ${BEST.year}` },
+];
+
+/** "पिछले 3 वर्षों में 2456 …" → the figure counts up inside the quote. */
+const HEADLINE = placement.headline.split(/(\d{4,})/);
+
+/** Second row starts part-way through, so the two rows never line up. */
+const ROW_B = [...recruiterLogos.slice(5), ...recruiterLogos.slice(0, 5)];
+
+function LogoRow({ logos, reverse = false, decorative = false }) {
+  return (
+    <div
+      aria-hidden={decorative || undefined}
+      className={`flex w-max animate-marquee ${reverse ? 'sec-marquee-rev' : ''}`}
+    >
+      {[0, 1].map((copy) => {
+        const named = !decorative && copy === 0;
+        return (
+          <ul
+            key={copy}
+            aria-label={named ? 'Recruiters' : undefined}
+            aria-hidden={!decorative && copy === 1 ? true : undefined}
+            className="flex shrink-0 gap-3 pr-3 sm:gap-4 sm:pr-4"
+          >
+            {logos.map((logo) => (
+              <li
+                key={logo.src}
+                className="pl-logo relative flex h-[4.5rem] w-36 shrink-0 items-center justify-center overflow-hidden rounded-panel border border-navy-100 bg-white px-3 shadow-card sm:h-24 sm:w-48 sm:px-4"
+              >
+                <span aria-hidden="true" className="pl-logo-rule absolute inset-x-0 top-0 h-[2px] bg-signal" />
+                <img
+                  src={logo.src}
+                  alt={named ? logo.alt : ''}
+                  loading="lazy"
+                  decoding="async"
+                  width="100"
+                  height="50"
+                  className="pl-logo-img h-14 w-auto max-w-full bg-transparent object-contain sm:h-20"
+                />
+              </li>
+            ))}
+          </ul>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Placements() {
   const ref = useReveal();
-  const peak = Math.max(...placement.record.map((r) => r.percentage));
 
   return (
     <section
       id="placements"
       ref={ref}
       aria-labelledby="placements-title"
-      className="relative bg-canvas-soft py-20 sm:py-26 lg:py-30"
+      className="relative overflow-hidden bg-canvas-soft py-20 sm:py-26 lg:py-30"
     >
-      <div className="shell">
-        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12 lg:gap-x-16">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 blueprint-light [mask-image:radial-gradient(60%_55%_at_0%_0%,#000_15%,transparent_75%)]"
+      />
+
+      <div className="shell relative">
+        <div className="grid gap-x-12 gap-y-12 lg:grid-cols-12 lg:items-center lg:gap-x-16">
           <div className="lg:col-span-5">
             <SectionHeading
+              id="placements-title"
               eyebrow="Placements"
               title={
                 <>
@@ -49,15 +118,45 @@ export function Placements() {
               {placement.campusNote}
             </p>
 
-            <p
-              className="reveal mt-7 font-display text-xl font-medium tracking-tight text-navy-800"
-              style={{ '--reveal-delay': '180ms' }}
-            >
-              “{placement.headline}”
-            </p>
+            {/* Totals of the published record */}
+            <div className="reveal mt-8" style={{ '--reveal-delay': '180ms' }}>
+              <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
+                Record · {FIRST}–{LAST}
+              </p>
+              <dl className="mt-3 grid grid-cols-3 divide-x divide-navy-100 border-y border-navy-100">
+                {TOTALS.map((t) => (
+                  <div key={t.label} className="group flex flex-col px-3 py-4 first:pl-0 sm:px-5">
+                    <dt className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">{t.label}</dt>
+                    <dd className="mt-auto pt-2 font-display text-[1.75rem] font-semibold leading-none tracking-tight text-navy-800 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:text-[2rem]">
+                      <CountUp value={t.value} />
+                      {t.suffix && <span className="text-signal">{t.suffix}</span>}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
 
-            <div className="reveal mt-9" style={{ '--reveal-delay': '220ms' }}>
-              <Button to="/placements/details" variant="outline">
+            {/* Published headline, quoted as written */}
+            <blockquote className="reveal relative mt-8 pl-5" style={{ '--reveal-delay': '220ms' }}>
+              <span
+                aria-hidden="true"
+                className="absolute inset-y-1 left-0 w-[2px] origin-top scale-y-0 rounded-full bg-signal transition-transform delay-300 duration-700 ease-out [.is-visible_&]:scale-y-100"
+              />
+              <p lang="hi" className="font-display text-xl font-medium tracking-tight text-navy-800">
+                “
+                {HEADLINE.map((part, i) =>
+                  /^\d{4,}$/.test(part) ? (
+                    <CountUp key={i} value={part} duration={1600} className="text-signal" />
+                  ) : (
+                    part
+                  )
+                )}
+                ”
+              </p>
+            </blockquote>
+
+            <div className="reveal mt-9" style={{ '--reveal-delay': '260ms' }}>
+              <Button to={`${PLACEMENT_BASE}/details`} variant="outline">
                 Placement details
                 <ArrowRight
                   aria-hidden="true"
@@ -68,103 +167,36 @@ export function Placements() {
             </div>
           </div>
 
-          {/* Record table */}
-          <div className="reveal lg:col-span-7" style={{ '--reveal-delay': '100ms' }}>
-            <div className="overflow-hidden rounded-panel border border-navy-100 bg-white shadow-card">
-              <table className="w-full border-collapse text-left">
-                <caption className="sr-only">
-                  Satpuda ITI placement record by year
-                </caption>
-                <thead>
-                  <tr className="border-b border-navy-100 bg-canvas-soft">
-                    <th scope="col" className="px-4 py-3.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-muted sm:px-5">
-                      Year
-                    </th>
-                    <th scope="col" className="px-4 py-3.5 text-right font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-muted sm:px-5">
-                      Drives
-                    </th>
-                    <th scope="col" className="px-4 py-3.5 text-right font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-muted sm:px-5">
-                      Placed
-                    </th>
-                    <th scope="col" className="hidden px-4 py-3.5 text-right font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-muted sm:table-cell sm:px-5">
-                      Package
-                    </th>
-                    <th scope="col" className="px-4 py-3.5 text-right font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-muted sm:px-5">
-                      Rate
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {placement.record.map((row) => (
-                    <tr
-                      key={row.year}
-                      className="group border-b border-navy-100 last:border-b-0 transition-colors duration-200 hover:bg-navy-50/60"
-                    >
-                      <th
-                        scope="row"
-                        className="px-4 py-4 font-mono text-[0.875rem] font-medium tabular text-navy-800 sm:px-5"
-                      >
-                        {row.year}
-                      </th>
-                      <td className="px-4 py-4 text-right font-mono text-[0.8125rem] tabular text-ink-muted sm:px-5">
-                        {row.drives}
-                      </td>
-                      <td className="px-4 py-4 text-right font-mono text-[0.8125rem] tabular text-navy-700 sm:px-5">
-                        {row.placed}
-                      </td>
-                      <td className="hidden px-4 py-4 text-right font-mono text-[0.8125rem] tabular text-ink-muted sm:table-cell sm:px-5">
-                        ₹{toLakh(row.salary)}
-                      </td>
-                      <td className="px-4 py-4 sm:px-5">
-                        <div className="flex items-center justify-end gap-3">
-                          {/* Rate bar — the comparison the table is actually for. */}
-                          <span
-                            aria-hidden="true"
-                            className="hidden h-1 w-20 overflow-hidden rounded-full bg-navy-100 sm:block"
-                          >
-                            <span
-                              className="block h-full rounded-full bg-tech transition-colors duration-200 group-hover:bg-signal"
-                              style={{ width: `${(row.percentage / peak) * 100}%` }}
-                            />
-                          </span>
-                          <span className="font-mono text-[0.875rem] font-medium tabular text-navy-800">
-                            {row.percentage}%
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          <div className="lg:col-span-7">
+            <PlacementBento />
           </div>
         </div>
 
         {/* Recruiter marks */}
-        <div className="reveal mt-16">
+        <div className="reveal mt-20 lg:mt-24">
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="h-px w-6 bg-signal" />
-            <h3 className="eyebrow text-ink-muted">Our esteemed recruiters</h3>
+            <h3 className="eyebrow shrink-0 text-ink-muted">Our esteemed recruiters</h3>
             <span aria-hidden="true" className="h-px flex-1 tick-rule text-navy-200" />
+            <Link
+              to={`${PLACEMENT_BASE}/recruiters`}
+              className="group inline-flex shrink-0 items-center gap-1.5 text-[0.8125rem] font-medium text-navy-800 transition-colors duration-200 hover:text-signal"
+            >
+              All {recruiters.names.length} recruiters
+              <ArrowRight
+                aria-hidden="true"
+                strokeWidth={2}
+                className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1"
+              />
+            </Link>
           </div>
+        </div>
+      </div>
 
-          <div className="mask-fade-x mt-8 overflow-hidden">
-            <ul className="flex w-max animate-marquee items-center gap-12 sm:gap-16 lg:gap-20">
-              {[...recruiterLogos, ...recruiterLogos].map((logo, i) => (
-                <li key={i} className="shrink-0">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    loading="lazy"
-                    decoding="async"
-                    width="100"
-                    height="50"
-                    className="h-14 w-auto max-w-[11rem] object-contain opacity-55 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:h-16 sm:max-w-[13rem] lg:h-20 lg:max-w-[15rem]"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="reveal sec-marquee mask-fade-x relative mt-6 overflow-hidden py-4" style={{ '--reveal-delay': '120ms' }}>
+        <LogoRow logos={recruiterLogos} />
+        <div className="mt-3 sm:mt-4">
+          <LogoRow logos={ROW_B} reverse decorative />
         </div>
       </div>
     </section>

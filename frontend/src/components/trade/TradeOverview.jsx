@@ -84,7 +84,7 @@ export function TradeOverview({ trade }) {
                 ))}
               </ul>
               <Link
-                to={{ pathname: '/', hash: '#campuses' }}
+                to={{ pathname: '/contact', hash: '#campuses' }}
                 className="group mt-4 inline-flex min-h-[2.75rem] items-center gap-2 text-[0.875rem] font-semibold text-navy-800 hover:text-royal"
               >
                 Campus addresses & phone numbers

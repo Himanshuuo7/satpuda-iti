@@ -7,8 +7,9 @@ import { itiProfiles } from '../../data/itiProfiles';
 import useRevealEach from '../../hooks/useRevealEach';
 
 /**
- * Explore Other Institutes — the rest of the network, in the official menu's
- * order starting after this one, plus the routes back to the homepage list.
+ * Explore Other Institutes — the rest of the network, oldest first (the
+ * homepage marquee's order) starting after this one, plus the routes back to
+ * the homepage list.
  *
  * Motion: tiles settle in turn; on hover or focus red hairlines draw along
  * the top and left edge, the place name leans in and the arrow slides.

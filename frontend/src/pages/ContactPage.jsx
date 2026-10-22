@@ -167,7 +167,11 @@ function CampusDirectory() {
   );
 
   return (
-    <section aria-labelledby="campus-directory" className="bg-white">
+    <section
+      id="campuses"
+      aria-labelledby="campus-directory"
+      className="scroll-mt-[var(--navbar-h-scrolled)] bg-white"
+    >
       <div className="shell py-14 sm:py-16 lg:py-20">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="h-px w-10 bg-signal" />

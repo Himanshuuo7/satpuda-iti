@@ -7,7 +7,7 @@ import WhySatpuda from '../components/sections/WhySatpuda';
 import Training from '../components/sections/Training';
 import Impact from '../components/sections/Impact';
 import Placements from '../components/sections/Placements';
-import Campuses from '../components/sections/Campuses';
+import TrainingPlacementPartnerships from '../components/sections/TrainingPlacementPartnerships';
 import GalleryPreview from '../components/sections/GalleryPreview';
 import FinalCTA from '../components/sections/FinalCTA';
 import useSeo from '../hooks/useSeo';
@@ -38,8 +38,8 @@ export function Home() {
       <WhySatpuda />
       <Training />
       <Placements />
+      <TrainingPlacementPartnerships />
       <Impact />
-      <Campuses />
       <GalleryPreview />
       <FinalCTA />
     </>
