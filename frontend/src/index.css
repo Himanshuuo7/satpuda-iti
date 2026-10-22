@@ -1375,6 +1375,210 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * Home — Training & placement partnerships
+ * ------------------------------------------------------------------------- */
+
+.tpp {
+  --tpp-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  /* The copy button's "Copied" pill eases on the same curve as on /iti pages. */
+  --iti-ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Portrait: cyan corner marks close in on it once the shutter has lifted;
+   under a mouse the photograph eases closer and the marks open out. */
+.tpp-photo {
+  transition: transform 700ms var(--tpp-ease);
+}
+
+.tpp-corners {
+  opacity: 0;
+  transform: scale(1.18);
+  transition:
+    opacity 500ms ease 650ms,
+    transform 700ms var(--tpp-ease) 650ms;
+}
+
+.is-visible .tpp-corners {
+  opacity: 1;
+  transform: none;
+}
+
+.tpp-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--tech);
+  transition: transform 400ms var(--tpp-ease);
+}
+
+/* The chat icon hops when its button is hovered or focused; the call icon
+   beside it rings (.campus-ring). */
+.group:hover .tpp-hop,
+.group:focus-visible .tpp-hop {
+  animation: tpp-hop 600ms var(--tpp-ease);
+}
+
+@keyframes tpp-hop {
+  0%, 100% { transform: none; }
+  35% { transform: translateY(-3px) rotate(-10deg); }
+  65% { transform: rotate(6deg); }
+}
+
+/* Ways to partner: each is a link. Hover or keyboard focus draws a red
+   hairline, darkens the icon tile, reddens the index and slides the arrow;
+   a press darkens the tile for touch. */
+.tpp-way {
+  transition: background-color 250ms ease;
+}
+
+.tpp-way:focus-visible {
+  outline-offset: -3px;
+}
+
+.tpp-way:active {
+  background-color: theme('colors.canvas.soft');
+}
+
+.tpp-way-rule {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms var(--tpp-ease);
+}
+
+.tpp-way-icon {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    transform 400ms var(--tpp-ease);
+}
+
+.tpp-way-num,
+.tpp-way-cta {
+  transition: color 250ms ease;
+}
+
+.tpp-way-arrow {
+  transition: transform 350ms var(--tpp-ease);
+}
+
+.tpp-way:focus-visible .tpp-way-rule {
+  transform: scaleX(1);
+}
+
+.tpp-way:focus-visible .tpp-way-icon {
+  background-color: theme('colors.navy.800');
+  color: #fff;
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.tpp-way:focus-visible .tpp-way-num {
+  color: var(--signal);
+}
+
+.tpp-way:focus-visible .tpp-way-cta {
+  color: theme('colors.navy.800');
+}
+
+.tpp-way:focus-visible .tpp-way-arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tpp-card:hover .tpp-photo {
+    transform: scale(1.05);
+  }
+
+  .tpp-card:hover .tpp-corner[data-c='tl'] { transform: translate(-3px, -3px); }
+  .tpp-card:hover .tpp-corner[data-c='tr'] { transform: translate(3px, -3px); }
+  .tpp-card:hover .tpp-corner[data-c='bl'] { transform: translate(-3px, 3px); }
+  .tpp-card:hover .tpp-corner[data-c='br'] { transform: translate(3px, 3px); }
+
+  .tpp-way:hover .tpp-way-rule {
+    transform: scaleX(1);
+  }
+
+  .tpp-way:hover .tpp-way-icon {
+    background-color: theme('colors.navy.800');
+    color: #fff;
+    transform: rotate(-6deg) scale(1.06);
+  }
+
+  .tpp-way:hover .tpp-way-num {
+    color: var(--signal);
+  }
+
+  .tpp-way:hover .tpp-way-cta {
+    color: theme('colors.navy.800');
+  }
+
+  .tpp-way:hover .tpp-way-arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* Bridge: the handshake pops in, then a red pulse runs out from the
+   institute and a cyan one comes back from industry, meeting at the hub —
+   twice, then it rests. Hovering the card keeps it running. */
+.tpp-hub {
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 500ms var(--tpp-ease) 900ms;
+}
+
+.is-visible .tpp-hub {
+  transform: translate(-50%, -50%);
+}
+
+.tpp-hub::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--signal);
+  border-radius: 9999px;
+  opacity: 0;
+}
+
+.tpp-pulse-track {
+  opacity: 0;
+}
+
+.is-visible .tpp-pulse-out {
+  animation: tpp-flow-out 2200ms cubic-bezier(0.65, 0, 0.35, 1) 1300ms 2;
+}
+
+.is-visible .tpp-pulse-in {
+  animation: tpp-flow-in 2200ms cubic-bezier(0.65, 0, 0.35, 1) 1300ms 2;
+}
+
+.is-visible .tpp-hub::after {
+  animation: tpp-meet 2200ms ease-out 1300ms 2;
+}
+
+@keyframes tpp-flow-out {
+  0% { opacity: 0; transform: translateX(0); }
+  12%, 88% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes tpp-flow-in {
+  0% { opacity: 0; transform: translateX(100%); }
+  12%, 88% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes tpp-meet {
+  0%, 44% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1); }
+  80%, 100% { opacity: 0; transform: scale(1.7); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tpp-card:hover .tpp-pulse-track,
+  .tpp-card:hover .tpp-hub::after {
+    animation-iteration-count: infinite;
+  }
+}
+
+/* ---------------------------------------------------------------------------
  * Home — "Our ITI Institutes" marquee, and the /iti/:slug pages
  * ------------------------------------------------------------------------- */
 
@@ -2040,6 +2244,23 @@
   .iti-seg-fill,
   .iti-seg-num {
     transition: none !important;
+  }
+
+  /* Partnerships: the portrait frame and handshake in place, the bridge at
+     rest, nothing waiting on a delay. */
+  .tpp-corners,
+  .tpp-hub {
+    transition-delay: 0ms !important;
+  }
+
+  .tpp-pulse-track,
+  .tpp-hub::after {
+    display: none;
+  }
+
+  .tpp-card:hover .tpp-photo,
+  .tpp-card:hover .tpp-corner {
+    transform: none;
   }
 
   /* Placement bento: the chart is drawn, every figure and marker in place. */
