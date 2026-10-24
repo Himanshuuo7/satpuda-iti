@@ -2,6 +2,7 @@ import Hero from '../components/hero/Hero';
 import TrustStrip from '../components/sections/TrustStrip';
 import About from '../components/sections/About';
 import ItiInstitutes from '../components/sections/ItiInstitutes';
+import JobSahi from '../components/sections/JobSahi';
 import Trades from '../components/sections/Trades';
 import WhySatpuda from '../components/sections/WhySatpuda';
 import Training from '../components/sections/Training';
@@ -34,6 +35,7 @@ export function Home() {
       <TrustStrip />
       <About />
       <ItiInstitutes />
+      <JobSahi />
       <Trades />
       <WhySatpuda />
       <Training />

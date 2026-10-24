@@ -79,6 +79,22 @@ export default {
           700: '#0A12A3',
           800: '#080F75',
         },
+        // JobSahi — a Satpuda Group product with its own identity. Values are
+        // taken from jobsahi.com's theme tokens and its official logo (blue
+        // "JOB", green "SAHI"). Used only inside the JobSahi showcase.
+        jobsahi: {
+          blue: '#0B537D', // --color-primary
+          'blue-light': '#0C5A8D',
+          navy: '#00395B', // favicon / deep surface
+          ink: '#002840',
+          green: '#5C9A24', // --color-secondary
+          'green-dark': '#4A7D1A',
+          'green-light': '#6BA829',
+          lime: '#8CD63E', // favicon mark
+          mist: '#F6FAFF', // --color-bg-primary
+          leaf: '#F4FCEF',
+          sprout: '#E4F2D5',
+        },
         // Text weights, all verified at >=4.5:1 against canvas and canvas-soft
         // so secondary and metadata copy stays readable at small sizes.
         ink: {

@@ -2433,3 +2433,55 @@
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * JobSahi showcase (components/sections/JobSahi.jsx)
+ * The two audience panels enter from their own side, the preview bars grow in
+ * once revealed, and the floating chips drift gently. Reduced motion is
+ * already handled by the global override above.
+ * ------------------------------------------------------------------------- */
+/* The logo and mark are transparent; drop the global image placeholder. */
+#jobsahi img {
+  background-color: transparent;
+}
+
+.jobsahi-panel-l.reveal:not(.is-visible) {
+  transform: translateX(-28px);
+}
+
+.jobsahi-panel-r.reveal:not(.is-visible) {
+  transform: translateX(28px);
+}
+
+.jobsahi-bar {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(500ms + var(--bar-delay, 0ms));
+}
+
+.is-visible .jobsahi-bar {
+  transform: none;
+}
+
+.jobsahi-float {
+  animation: jobsahi-float 6s ease-in-out infinite;
+}
+
+@keyframes jobsahi-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jobsahi-panel-l.reveal:not(.is-visible),
+  .jobsahi-panel-r.reveal:not(.is-visible),
+  .jobsahi-bar {
+    transform: none;
+  }
+}
