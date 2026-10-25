@@ -7,7 +7,7 @@ import useReveal from '../../hooks/useReveal';
 /**
  * Our ITI Institutes — the fourteen Satpuda ITIs, oldest first, as one
  * continuous strip with an index line counting through them. The strip, its
- * touch swiping and the index line live in `ItiMarquee`.
+ * swiping and dragging, and the index line live in `ItiMarquee`.
  */
 
 const STATS = [

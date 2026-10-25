@@ -1,4 +1,4 @@
-import { placement } from './satpudaData';
+import { placementTotals } from './placementRecord';
 
 /**
  * Placement section — the content of /placements and its six pages.
@@ -14,22 +14,12 @@ import { placement } from './satpudaData';
 // Overview
 // ---------------------------------------------------------------------------
 
-const record = placement.record;
-const sum = (key) => record.reduce((n, r) => n + r[key], 0);
-const best = record.reduce((a, b) => (b.percentage > a.percentage ? b : a));
-
-export const placementTotals = {
-  first: record[0].year,
-  last: record[record.length - 1].year,
-  placed: sum('placed'),
-  drives: sum('drives'),
-  bestRate: best.percentage,
-  bestRateYear: best.year,
-  topPackage: Math.max(...record.map((r) => r.salary)),
-};
-
 export const overview = {
-  headline: { value: 2456, label: 'Campus placements in last 3 Years' },
+  // The group record's headline figure; its years come with it.
+  headline: {
+    value: placementTotals.selected,
+    label: `Candidates selected at campus drives, ${placementTotals.first}–${placementTotals.last}`,
+  },
   // Homepage wording, verbatim.
   campusNote:
     'संस्थानों द्वारा आयोजित कैंपस भर्ती कार्यक्रम (Campus Recruitment Programme) उपयुक्त नौकरी की तलाश कर रहे युवा तकनीशियनों के लिए बेहद अहम गतिविधि है। लगभग सभी प्रशिक्षुओं को सरकारी विभागों और बहुराष्ट्रीय निजी/सार्वजनिक क्षेत्र के उपक्रमों में स्थायी नौकरियाँ मिली हैं। हमारे योग्य प्रशिक्षुओं में से बड़ी संख्या को प्रतिष्ठित कंपनियों ने नौकरी के प्रस्ताव दिए हैं।',
@@ -276,14 +266,14 @@ export const skillConnect = {
 // Placement Details
 // ---------------------------------------------------------------------------
 
+/** The figures themselves come from placementRecord.js. */
 export const placementDetails = {
-  lede: 'हर वर्ष आयोजित प्लेसमेंट ड्राइव, उनके माध्यम से चयनित प्रशिक्षु, प्लेसमेंट प्रतिशत और दिया गया सैलरी पैकेज।',
-  record,
+  lede: 'सतपुड़ा समूह के हर ITI में हर वर्ष आयोजित कैंपस ड्राइव, उनमें शामिल हुए उम्मीदवार और चयनित उम्मीदवार — साल-दर-साल और ITI-वार।',
   columns: {
-    year: 'Year of Placement Drive',
-    drives: 'Placement Count',
-    placed: 'No. of Trainees Placed',
-    percentage: 'Placement Percentage',
-    salary: 'Salary Package',
+    year: 'Year of Campus Drive',
+    drives: 'Campus Drives',
+    attended: 'Candidates Attended',
+    selected: 'Candidates Selected',
+    itis: 'ITIs',
   },
 };

@@ -61,7 +61,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2010',
     address: 'Satpuda Campus, Manjhapur, Lalburra Road, Garra, Madhya Pradesh 481001',
-    principal: null,
+    principal: 'Sanjay Panchbudhey',
     contactPerson: 'Kamal Bramhe',
     phone: '+91 6262604120',
     email: 'satpudamanjhapur@gmail.com',
@@ -76,7 +76,7 @@ export const itiInstitutes = [
     sourceUrls: [SRC.contact, SRC.balaghat, SRC.manjhapur, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes:
-      'Campus page names Kamal Bramhe as contact person, not principal. Coordinates from the official contact-page map embed (shared Satpuda campus).',
+      'Campus page names Kamal Bramhe as contact person, not principal. Principal as named by the institute\'s Drive folder on 2026-10-25 (FORMATE.xlsx names Sanjay Bhoyarkar). Coordinates from the official contact-page map embed (shared Satpuda campus).',
   },
   {
     id: 'budhi',
@@ -157,7 +157,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2003',
     address: 'Near Kundipura Thana, Chhindwara, Madhya Pradesh 480001',
-    principal: 'Vijay Khapre',
+    principal: 'Saket Agnihotri',
     phone: '+91 6262604123',
     email: 'satpudachindwara@gmail.com',
     trades: [t('electrician', 120), t('fitter', 60), t('mechanic-diesel', 72)],
@@ -169,7 +169,8 @@ export const itiInstitutes = [
     mapsQuery: 'Kundipura Thana, Chhindwara',
     sourceUrls: [SRC.contact, SRC.chhindwara],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Aug 2003". Two candidate ITI codes in the Govt. list — unresolved.',
+    notes:
+      'Campus page: "started from Aug 2003". Two candidate ITI codes in the Govt. list — unresolved. Principal as supplied by the institute on 2026-10-25 (the official site named Vijay Khapre).',
   },
   {
     id: 'chhindwara-warehouse',

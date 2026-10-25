@@ -11,9 +11,3 @@ export function formatINR(amount) {
 export function telHref(phone) {
   return `tel:${phone.replace(/[^\d+]/g, '')}`;
 }
-
-/** Compact lakh form for salary figures, e.g. 240000 -> "2.4 L". */
-export function toLakh(amount) {
-  const lakh = amount / 100000;
-  return `${Number.isInteger(lakh) ? lakh : lakh.toFixed(2).replace(/0$/, '')} L`;
-}

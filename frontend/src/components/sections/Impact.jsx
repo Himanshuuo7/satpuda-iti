@@ -2,8 +2,9 @@ import { useRef } from 'react';
 import { BookOpenText, GraduationCap, Landmark, Users } from 'lucide-react';
 
 import GearOutline from '../ui/GearOutline';
-import { homeCounters, placement } from '../../data/satpudaData';
+import { homeCounters } from '../../data/satpudaData';
 import { photos } from '../../data/media';
+import { placementLatest as latest, placementUpTo } from '../../data/placementRecord';
 import useCountUp from '../../hooks/useCountUp';
 import useReveal from '../../hooks/useReveal';
 import cn from '../../utils/cn';
@@ -13,8 +14,9 @@ import cn from '../../utils/cn';
  *
  * A light editorial panel: the exam-hall photograph bleeds in from the left and
  * dissolves into the canvas, the headline sits to its right, and the four
- * published counters float over the seam as raised cards. The latest dated
- * placement year closes the section on a navy award banner.
+ * published counters float over the seam as raised cards. The latest year of
+ * the group's placement record, up to its last drive, closes the section on
+ * a navy award banner.
  *
  * Motion is layered but quiet — staggered reveal, count-up figures, cards that
  * tilt toward the pointer with a moving highlight, a medal that floats, a
@@ -245,7 +247,6 @@ function Swooshes() {
 
 export function Impact() {
   const ref = useReveal();
-  const latest = placement.record[placement.record.length - 1];
 
   return (
     <section
@@ -353,16 +354,14 @@ export function Impact() {
                 <p className="font-display text-label-lg font-bold uppercase text-signal-400">
                   Our placement record
                 </p>
-                <p className="mt-2.5 font-display text-[1.25rem] font-medium leading-snug text-white sm:text-[1.6rem]">
-                  वर्ष {latest.year} में हमने{' '}
-                  <span className="font-bold text-yellow-300">{latest.percentage}%</span>{' '}
-                  <span className="font-bold">प्लेसमेंट दर</span> हासिल की,
+                <p lang="hi" className="mt-2.5 font-display text-[1.25rem] font-medium leading-snug text-white sm:text-[1.6rem]">
+                  वर्ष {latest.year} में {placementUpTo.hiDayMonth} तक हमारे {latest.itis} ITI में{' '}
+                  <span className="font-bold text-yellow-300">{latest.drives}</span>{' '}
+                  <span className="font-bold">कैंपस ड्राइव</span> हुईं,
                 </p>
-                <p className="mt-1.5 text-[0.9375rem] text-navy-100 sm:text-[1.0625rem]">
-                  जिसमें <span className="font-semibold tabular text-yellow-300">{latest.placed}</span>{' '}
-                  प्रशिक्षुओं का चयन{' '}
-                  <span className="font-semibold tabular text-white">{latest.drives}</span> कैंपस
-                  ड्राइव के माध्यम से हुआ।
+                <p lang="hi" className="mt-1.5 text-[0.9375rem] text-navy-100 sm:text-[1.0625rem]">
+                  जिनमें <span className="font-semibold tabular text-yellow-300">{latest.selected.toLocaleString('en-IN')}</span>{' '}
+                  उम्मीदवारों का चयन हुआ।
                 </p>
               </div>
 

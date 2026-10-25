@@ -1,11 +1,15 @@
 import { useLayoutEffect, useRef } from 'react';
 
+/** A whole number in Indian grouping: "3,844", "18,782", "1,23,456". */
+const GROUPED = /^\d{1,3}(,\d{2})*,\d{3}$/;
+
 /**
  * A published figure that counts up once, the first time it is mostly in
  * view. Each frame writes the node's text directly, so React never renders
- * per frame. The figure keeps its published form — "06" counts 00 → 06 — and
- * assistive technology only ever reads the final value. With reduced motion,
- * or a value that is not a whole number, it simply shows the value.
+ * per frame. The figure keeps its published form — "06" counts 00 → 06, and
+ * a grouped "18,782" stays grouped as it counts — and assistive technology
+ * only ever reads the final value. With reduced motion, or a value that is
+ * not a whole number, it simply shows the value.
  */
 export function CountUp({ value, duration = 1300, className }) {
   const ref = useRef(null);
@@ -16,14 +20,15 @@ export function CountUp({ value, duration = 1300, className }) {
     if (!node) return undefined;
     node.textContent = raw;
 
-    const target = /^\d+$/.test(raw) ? Number(raw) : NaN;
+    const grouped = GROUPED.test(raw);
+    const target = /^\d+$/.test(raw) || grouped ? Number(raw.replace(/,/g, '')) : NaN;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!Number.isFinite(target) || target === 0 || reduced || typeof IntersectionObserver === 'undefined') {
       return undefined;
     }
 
     const width = raw.startsWith('0') ? raw.length : 0;
-    const format = (n) => String(n).padStart(width, '0');
+    const format = grouped ? (n) => n.toLocaleString('en-IN') : (n) => String(n).padStart(width, '0');
     node.textContent = format(0);
 
     let frame = 0;

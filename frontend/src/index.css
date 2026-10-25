@@ -1217,57 +1217,39 @@
   }
 }
 
-/* Trend chart: once its card is revealed the line draws itself, the area
-   fills in behind it and the year points land one after another. */
-.pb2-line {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 1400ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
+/* Year columns: once their card is revealed they rise one after another.
+   With every year chosen they are all navy; with one year chosen, that
+   column turns red and the rest step back. */
+.pb2-bar {
+  background-color: theme('colors.navy.200');
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition:
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1) calc(300ms + var(--i, 0) * 70ms),
+    background-color 250ms ease;
 }
 
-.is-visible .pb2-line {
-  stroke-dashoffset: 0;
+.is-visible .pb2-bar {
+  transform: scaleY(1);
 }
 
-.pb2-area {
-  opacity: 0;
-  transition: opacity 900ms ease 1100ms;
+.pb2-chart[data-all] .pb2-bar {
+  background-color: theme('colors.navy.600');
 }
 
-.is-visible .pb2-area {
-  opacity: 1;
+.pb2-col[aria-pressed='true'] .pb2-bar {
+  background-color: var(--signal);
 }
 
-.pb2-dot,
-.pb2-peak {
-  transform: scale(0);
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(350ms + var(--i, 5) * 210ms);
+@media (hover: hover) and (pointer: fine) {
+  .pb2-chart:not([data-all]) .pb2-col:not([aria-pressed='true']):hover .pb2-bar {
+    background-color: theme('colors.navy.400');
+  }
 }
 
-.is-visible .pb2-dot,
-.is-visible .pb2-peak {
-  transform: scale(1);
-}
-
-/* The chosen year's marker, guide and package pin glide between years. */
-.pb2-glide {
-  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* A ring spreads from the marker each time a year is chosen. */
-.pb2-halo {
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: pb2-halo 900ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes pb2-halo {
-  from { opacity: 0.35; transform: scale(0.5); }
-  to { opacity: 0; transform: scale(1.9); }
+/* An ITI's share of the chosen period slides to its new length. */
+.pb2-iti-bar {
+  transition: width 520ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* A changed comparison rises in. */
@@ -1307,7 +1289,7 @@
   }
 }
 
-/* Every year's placed count as small columns; the chosen year turns red. */
+/* Every year's count as small columns; the chosen year (or all) turns red. */
 .pb2-mini {
   background-color: theme('colors.navy.100');
   transition: background-color 300ms ease;
@@ -1315,20 +1297,6 @@
 
 .pb2-mini[data-on] {
   background-color: var(--signal);
-}
-
-/* One dot per campus drive; they light in turn when the count changes. */
-.pb2-drive {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background-color: theme('colors.navy.100');
-  transition: background-color 220ms ease, transform 220ms ease;
-  transition-delay: calc(var(--i) * 16ms);
-}
-
-.pb2-drive[data-on] {
-  background-color: theme('colors.navy.600');
 }
 
 /* Recruiter tiles: on a fine pointer they wait in grey and come to colour,
@@ -1586,8 +1554,8 @@
    also refuses programmatic scrolling, so keyboard focus landing on a card
    can never scroll the strip out of step with its animation. The block
    padding leaves room for the hover lift and the focus ring. Sideways touch
-   travel is left to script, which drags the strip; vertical travel still
-   scrolls the page. */
+   travel and mouse drags are left to script, which moves the strip;
+   vertical travel still scrolls the page. */
 .iti-marquee {
   --iti-gap: 1rem;
   overflow: hidden;
@@ -1624,16 +1592,16 @@
   to { transform: translate3d(-50%, 0, 0); }
 }
 
-/* Paused while a card holds keyboard focus, while a finger holds or swipes
-   the strip (script seeks it meanwhile) and while the strip is off-screen;
-   hover pausing (fine pointers only) follows below. */
+/* Paused while a card holds keyboard focus, while a finger or the mouse
+   button holds or drags the strip (script seeks it meanwhile) and while the
+   strip is off-screen. A resting mouse does not pause it. */
 .iti-marquee[data-inview='false'] .iti-marquee-track,
 .iti-marquee[data-held] .iti-marquee-track,
 .iti-marquee:focus-within .iti-marquee-track {
   animation-play-state: paused;
 }
 
-/* A swiping finger is not a press on the card beneath it. */
+/* A swipe or drag is not a press on the card beneath it. */
 .iti-marquee[data-swiping] .iti-card {
   transform: none;
 }
@@ -1644,14 +1612,21 @@
   mask-image: none;
 }
 
+/* A mouse can grab the strip; the cards keep their link pointer until a
+   drag begins. */
 @media (hover: hover) and (pointer: fine) {
-  .iti-marquee:hover .iti-marquee-track {
-    animation-play-state: paused;
+  .iti-marquee {
+    cursor: grab;
   }
 }
 
-/* Odometer figures (ui/Odometer), used by the index line under the strip
-   and the homepage placement record. Each digit is a drum of 0–9 clipped to
+.iti-marquee[data-swiping],
+.iti-marquee[data-swiping] .iti-card {
+  cursor: grabbing;
+}
+
+/* Odometer figures (ui/Odometer), used by the index line under the strip.
+   Each digit is a drum of 0–9 clipped to
    one figure: it rolls through the numbers between. `clip-path` clips
    without making the drum its own baseline, so the figures still sit on the
    text's baseline. */
@@ -2056,6 +2031,143 @@
   transform: none;
 }
 
+/* Placements: as an award tile reveals, its laurel stem draws up both sides
+   and the leaves open pair by pair from the tie; the plaque catches a slow
+   sheen. Leaves scale from their own base (an SVG element's default origin). */
+.itp-stem {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 900ms var(--iti-ease) 200ms;
+}
+
+.itp-leaf {
+  transform: scale(0);
+  transition: transform 520ms var(--iti-ease);
+  transition-delay: calc(260ms + var(--i, 0) * 90ms);
+}
+
+.itp-tie {
+  opacity: 0;
+  transition: opacity 400ms ease 150ms;
+}
+
+.is-visible .itp-stem {
+  stroke-dashoffset: 0;
+}
+
+.is-visible .itp-leaf {
+  transform: none;
+}
+
+.is-visible .itp-tie {
+  opacity: 1;
+}
+
+.itp-sheen {
+  animation: impact-sheen 6s ease-in-out infinite;
+}
+
+/* Year tabs: a newly chosen year's drive tickets rise into place in turn. */
+.itp-panel > li {
+  animation: itp-ticket-in 520ms var(--iti-ease) both;
+  animation-delay: calc(min(var(--i, 0), 12) * 35ms);
+}
+
+@keyframes itp-ticket-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Gallery tiles: the photograph rests slightly cool and pushes in, warming,
+   under a fine pointer; corner brackets close on the frame and the index and
+   album chips drop in (always shown where there is no hover). The red "View"
+   disc follows the mouse across the grid — script moves it, CSS scales it in
+   over a tile. */
+.itg-img {
+  transform: scale(1.02);
+  filter: saturate(0.88) brightness(0.96);
+  transition:
+    transform 900ms var(--iti-ease),
+    filter 500ms ease;
+}
+
+.itg-corner {
+  opacity: 0;
+  transform: scale(1.35);
+  transition:
+    opacity 300ms ease,
+    transform 500ms var(--iti-ease);
+}
+
+.itg-chip {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 300ms ease,
+    transform 450ms var(--iti-ease);
+}
+
+.itg-tile:focus-visible .itg-img {
+  transform: scale(1.06);
+  filter: none;
+}
+
+.itg-tile:focus-visible .itg-corner,
+.itg-tile:focus-visible .itg-chip {
+  opacity: 1;
+  transform: none;
+}
+
+.itg-cursor {
+  opacity: 0;
+  scale: 0.3;
+  transition:
+    opacity 250ms ease,
+    scale 450ms var(--iti-ease);
+}
+
+.itg-cursor[data-on] {
+  opacity: 1;
+  scale: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .itg-tile:hover .itg-img {
+    transform: scale(1.08);
+    filter: none;
+  }
+
+  .itg-tile:hover .itg-corner,
+  .itg-tile:hover .itg-chip {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media not all and (hover: hover) and (pointer: fine) {
+  .itg-chip {
+    opacity: 1;
+    transform: none;
+  }
+
+  .itg-cursor {
+    display: none;
+  }
+}
+
+/* The gallery filter is the site's only view transition: tiles glide to
+   their new places while the rest of the page stays live, unsnapshotted. */
+:root {
+  view-transition-name: none;
+}
+
+::view-transition-group(*) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 /* Gallery: tiles wipe open in turn; the caption rises on hover or focus. */
 .iti-wipe {
   clip-path: inset(0 0 100% 0);
@@ -2210,6 +2322,7 @@
     scroll-padding-inline: var(--shell-pad);
     overscroll-behavior-x: contain;
     touch-action: auto;
+    cursor: auto;
     -webkit-mask-image: none;
     mask-image: none;
   }
@@ -2238,33 +2351,19 @@
     transform: none;
   }
 
-  /* Placement bento: the chart is drawn, every figure and marker in place. */
-  .pb2-line {
-    stroke-dashoffset: 0;
-  }
-
-  .pb2-area {
-    opacity: 1;
-  }
-
-  .pb2-dot,
-  .pb2-peak {
+  /* Placement bento: every column at its height, every figure in place. */
+  .pb2-bar {
     transform: none;
   }
 
   .pb2-card,
-  .pb2-line,
-  .pb2-area,
-  .pb2-dot,
-  .pb2-peak,
-  .pb2-glide,
+  .pb2-bar,
+  .pb2-iti-bar,
   .pb2-year-mark,
-  .pb2-mini,
-  .pb2-drive {
+  .pb2-mini {
     transition: none !important;
   }
 
-  .pb2-halo,
   .pb2-rise {
     animation: none;
   }
@@ -2319,10 +2418,33 @@
   .iti-portrait-img,
   .iti-quote,
   .iti-underline,
-  .iti-icon-cog {
+  .iti-icon-cog,
+  .itp-leaf,
+  .itp-tie {
     opacity: 1 !important;
     transform: none !important;
     transition-delay: 0ms !important;
+  }
+
+  .itp-stem {
+    stroke-dashoffset: 0 !important;
+  }
+
+  .itg-img,
+  .itg-tile:hover .itg-img {
+    transform: none !important;
+  }
+
+  .itg-cursor {
+    display: none;
+  }
+
+  .itp-sheen {
+    display: none;
+  }
+
+  .itp-panel > li {
+    animation: none;
   }
 
   .iti-unveil,

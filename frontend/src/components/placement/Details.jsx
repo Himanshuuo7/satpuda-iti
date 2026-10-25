@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import PlacementHero from './PlacementHero';
 import PlacementNext from './PlacementNext';
@@ -6,34 +7,57 @@ import SegmentedControl from '../ui/SegmentedControl';
 import StatCounter from '../ui/StatCounter';
 import SectionHeading from '../ui/SectionHeading';
 import useReveal from '../../hooks/useReveal';
-import { placementDetails as content, placementTotals as T } from '../../data/placementContent';
-import { toLakh } from '../../utils/format';
+import { placementDetails as content } from '../../data/placementContent';
+import { getItiProfile } from '../../data/itiProfiles';
+import {
+  placementByIti,
+  placementByYear,
+  placementPeak,
+  placementSourceHi,
+  placementTotals as T,
+  placementUpTo,
+} from '../../data/placementRecord';
 import cn from '../../utils/cn';
 
 /**
- * Placement Details — the institute's year-by-year table.
+ * Placement Details — the group's record, year by year and ITI by ITI.
  *
- * A metric switch re-draws one bar chart for trainees placed, placement
- * percentage, placement drives or salary package; bars ease between metrics
- * rather than jumping. Hovering (or focusing) a year highlights it in the chart
- * and the table together. The table keeps the published column names.
+ * A metric switch re-draws one bar chart for candidates selected, candidates
+ * attended or campus drives; bars ease between metrics rather than jumping.
+ * Hovering (or focusing) a year highlights it in the chart and the year table
+ * together. The same record follows ITI by ITI, each linking to its page.
  */
 
-const rupees = (v) => `₹${v.toLocaleString('en-IN')}/-`;
+const n = (v) => v.toLocaleString('en-IN');
+
+/** The chart's top line: the peak rounded up to its leading digit (3,844 → 4,000). */
+const niceCeil = (v) => {
+  const step = 10 ** Math.floor(Math.log10(v));
+  return Math.ceil(v / step) * step;
+};
 
 const METRICS = [
-  { id: 'placed', label: 'Trainees placed', format: (v) => v.toLocaleString('en-IN') },
-  { id: 'percentage', label: 'Placement %', format: (v) => `${v}%`, ceiling: 100 },
-  { id: 'drives', label: 'Placement drives', format: (v) => String(v) },
-  { id: 'salary', label: 'Salary package', format: (v) => `₹${toLakh(v)}` },
+  { id: 'selected', label: 'Candidates selected', format: n },
+  { id: 'attended', label: 'Candidates attended', format: n },
+  { id: 'drives', label: 'Campus drives', format: (v) => String(v) },
 ];
 
+/** A figure an ITI never reported. */
+function NotReported() {
+  return (
+    <>
+      <span aria-hidden="true" className="text-ink-soft">—</span>
+      <span className="sr-only">not reported</span>
+    </>
+  );
+}
+
 function Chart({ metric, hover, onHover }) {
-  const rows = content.record;
+  const rows = placementByYear;
   const m = METRICS.find((x) => x.id === metric);
   const values = rows.map((r) => r[metric]);
-  const max = m.ceiling ?? Math.max(...values);
   const peak = Math.max(...values);
+  const max = niceCeil(peak);
   const grid = [0, 0.25, 0.5, 0.75, 1];
 
   return (
@@ -62,13 +86,13 @@ function Chart({ metric, hover, onHover }) {
           </div>
         ))}
 
-        <ul className="relative flex h-full items-end gap-2 sm:gap-5">
+        <ul className="relative flex h-full items-end gap-1.5 sm:gap-3 lg:gap-5">
           {rows.map((r, i) => {
             const v = r[metric];
             const isPeak = v === peak;
             const isHover = hover === r.year;
             return (
-              <li key={r.year} className="relative flex h-full flex-1 flex-col justify-end">
+              <li key={r.year} className="relative flex h-full min-w-0 flex-1 flex-col justify-end">
                 <div
                   tabIndex={0}
                   role="img"
@@ -81,48 +105,60 @@ function Chart({ metric, hover, onHover }) {
                     'sec-bar relative mx-auto w-full max-w-[3.5rem] cursor-default rounded-t-[4px] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tech',
                     isHover ? 'bg-tech-500' : isPeak ? 'bg-signal' : 'bg-royal'
                   )}
-                  style={{ height: `${(v / max) * 100}%`, '--i': i }}
+                  style={{ height: `${Math.max((v / max) * 100, 1)}%`, '--i': i }}
                 >
                   <span
                     className={cn(
                       'absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[0.625rem] font-semibold tabular transition-[color,transform] duration-300 sm:text-[0.6875rem]',
-                      isHover ? '-translate-y-0.5 text-navy-800' : 'text-ink-muted'
+                      isHover ? '-translate-y-0.5 text-navy-800' : 'text-ink-muted',
+                      // On a phone the columns are too narrow for every label.
+                      !isHover && !isPeak && 'hidden md:block'
                     )}
                   >
                     {m.format(v)}
                   </span>
                 </div>
-                <span
-                  className={cn(
-                    'mt-2 text-center font-mono text-[0.6875rem] tabular transition-colors duration-300',
-                    isHover ? 'text-navy-800' : 'text-ink-muted'
-                  )}
-                >
-                  {r.year}
-                </span>
               </li>
             );
           })}
         </ul>
       </div>
+
+      {/* Years sit below the plot, so every column is measured from the zero line. */}
+      <div aria-hidden="true" className="mt-2 flex gap-1.5 pl-12 sm:gap-3 sm:pl-16 lg:gap-5">
+        {rows.map((r) => (
+          <span
+            key={r.year}
+            className={cn(
+              'min-w-0 flex-1 text-center font-mono text-[0.6875rem] tabular transition-colors duration-300',
+              hover === r.year ? 'text-navy-800' : 'text-ink-muted'
+            )}
+          >
+            <span className="sm:hidden">’{String(r.year).slice(2)}</span>
+            <span className="hidden sm:inline">{r.year}</span>
+          </span>
+        ))}
+      </div>
     </figure>
   );
 }
 
-function Table({ hover, onHover }) {
+function YearTable({ hover, onHover }) {
   const c = content.columns;
-  const rows = content.record;
+  const rows = placementByYear;
 
   return (
     <>
-      {/* Tablet and up: the published table */}
+      {/* Tablet and up */}
       <div className="hidden overflow-hidden rounded-panel border border-navy-100 bg-white sm:block">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[40rem] border-collapse text-left">
-            <caption className="sr-only">Satpuda ITI placement details, {T.first} to {T.last}</caption>
+            <caption className="sr-only">
+              Satpuda group placement details by year, {T.first} to {placementUpTo.en}
+            </caption>
             <thead>
               <tr className="border-b border-navy-100 bg-canvas-soft">
-                {['Sl.No.', c.year, c.drives, c.placed, c.percentage, c.salary].map((h, i) => (
+                {['Sl.No.', c.year, c.drives, c.attended, c.selected, c.itis].map((h, i) => (
                   <th
                     key={h}
                     scope="col"
@@ -160,18 +196,19 @@ function Table({ hover, onHover }) {
                   <td className="px-4 py-4 text-right font-mono text-[0.875rem] tabular text-navy-700 lg:px-6">
                     {String(r.drives).padStart(2, '0')}
                   </td>
-                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] font-semibold tabular text-navy-800 lg:px-6">
-                    {r.placed.toLocaleString('en-IN')}
-                  </td>
+                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] tabular text-navy-700 lg:px-6">{n(r.attended)}</td>
                   <td className="px-4 py-4 lg:px-6">
                     <span className="flex items-center justify-end gap-3">
                       <span aria-hidden="true" className="hidden h-1 w-16 overflow-hidden rounded-full bg-navy-100 md:block">
-                        <span className="block h-full rounded-full bg-tech-500" style={{ width: `${r.percentage}%` }} />
+                        <span
+                          className="block h-full rounded-full bg-tech-500"
+                          style={{ width: `${(r.selected / placementPeak.selected) * 100}%` }}
+                        />
                       </span>
-                      <span className="font-mono text-[0.875rem] tabular text-navy-800">{r.percentage}%</span>
+                      <span className="font-mono text-[0.875rem] font-semibold tabular text-navy-800">{n(r.selected)}</span>
                     </span>
                   </td>
-                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] tabular text-navy-700 lg:px-6">{rupees(r.salary)}</td>
+                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] tabular text-navy-700 lg:px-6">{r.itis}</td>
                 </tr>
               ))}
             </tbody>
@@ -185,15 +222,101 @@ function Table({ hover, onHover }) {
           <li key={r.year} className="reveal rounded-panel border border-navy-100 bg-white p-5">
             <p className="flex items-baseline justify-between">
               <span className="font-display text-[1.5rem] font-semibold tabular text-navy-800">{r.year}</span>
-              <span className="font-mono text-[0.875rem] font-semibold tabular text-royal">{r.percentage}%</span>
+              <span className="font-mono text-[0.875rem] font-semibold tabular text-royal">{n(r.selected)} selected</span>
             </p>
-            <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-4 border-t border-navy-50 pt-4">
+            <dl className="mt-4 grid grid-cols-3 gap-x-3 gap-y-4 border-t border-navy-50 pt-4">
               {[
                 [c.drives, String(r.drives).padStart(2, '0')],
-                [c.placed, r.placed.toLocaleString('en-IN')],
-                [c.salary, rupees(r.salary)],
-              ].map(([k, v], i) => (
-                <div key={k} className={i === 2 ? 'col-span-2' : undefined}>
+                [c.attended, n(r.attended)],
+                [c.itis, String(r.itis)],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <dt className="font-mono text-[0.5625rem] uppercase leading-snug tracking-[0.1em] text-ink-soft">{k}</dt>
+                  <dd className="mt-1 font-mono text-[0.8125rem] font-semibold tabular text-navy-800">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+function ItiTable() {
+  const c = content.columns;
+  const rows = placementByIti.map((t) => ({ ...t, inst: getItiProfile(t.iti) }));
+  const years = (t) => (t.first === t.last ? String(t.first) : `${t.first}–${t.last}`);
+
+  return (
+    <>
+      {/* Tablet and up */}
+      <div className="hidden overflow-hidden rounded-panel border border-navy-100 bg-white sm:block">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[40rem] border-collapse text-left">
+            <caption className="sr-only">Satpuda group placement details by ITI, up to {placementUpTo.en}</caption>
+            <thead>
+              <tr className="border-b border-navy-100 bg-canvas-soft">
+                {['ITI', 'Years', c.drives, c.attended, c.selected].map((h, i) => (
+                  <th
+                    key={h}
+                    scope="col"
+                    className={cn(
+                      'px-4 py-4 font-mono text-[0.625rem] font-medium uppercase leading-snug tracking-[0.12em] text-ink-muted lg:px-6',
+                      i > 1 && 'text-right'
+                    )}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((t) => (
+                <tr key={t.iti} className="border-b border-navy-50 transition-colors duration-200 last:border-b-0 hover:bg-navy-50/60">
+                  <th scope="row" className="px-4 py-4 lg:px-6">
+                    <Link
+                      to={t.inst.path}
+                      className="font-display text-[1.0625rem] font-semibold text-navy-800 transition-colors duration-200 hover:text-signal"
+                    >
+                      {t.inst.namePlace}
+                    </Link>
+                    <span className="block font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-soft">{t.inst.district}</span>
+                  </th>
+                  <td className="px-4 py-4 font-mono text-[0.8125rem] tabular text-ink-muted lg:px-6">{years(t)}</td>
+                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] tabular text-navy-700 lg:px-6">
+                    {String(t.drives).padStart(2, '0')}
+                  </td>
+                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] tabular text-navy-700 lg:px-6">
+                    {t.attended == null ? <NotReported /> : n(t.attended)}
+                  </td>
+                  <td className="px-4 py-4 text-right font-mono text-[0.875rem] font-semibold tabular text-navy-800 lg:px-6">
+                    {t.selected == null ? <NotReported /> : n(t.selected)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Phones: one card per ITI */}
+      <ul className="grid gap-3 sm:hidden">
+        {rows.map((t) => (
+          <li key={t.iti} className="reveal rounded-panel border border-navy-100 bg-white p-5">
+            <p className="flex items-baseline justify-between gap-3">
+              <Link to={t.inst.path} className="font-display text-[1.25rem] font-semibold text-navy-800 hover:text-signal">
+                {t.inst.namePlace}
+              </Link>
+              <span className="font-mono text-[0.75rem] tabular text-ink-muted">{years(t)}</span>
+            </p>
+            <dl className="mt-4 grid grid-cols-3 gap-x-3 gap-y-4 border-t border-navy-50 pt-4">
+              {[
+                [c.drives, String(t.drives).padStart(2, '0')],
+                [c.attended, t.attended == null ? <NotReported /> : n(t.attended)],
+                [c.selected, t.selected == null ? <NotReported /> : n(t.selected)],
+              ].map(([k, v]) => (
+                <div key={k}>
                   <dt className="font-mono text-[0.5625rem] uppercase leading-snug tracking-[0.1em] text-ink-soft">{k}</dt>
                   <dd className="mt-1 font-mono text-[0.8125rem] font-semibold tabular text-navy-800">{v}</dd>
                 </div>
@@ -212,28 +335,21 @@ function SummaryCard() {
     <div ref={ref} className="relative overflow-hidden rounded-panel bg-navy-800 p-6 shadow-deep sm:p-8">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 blueprint opacity-40" />
       <div className="relative grid grid-cols-2 gap-x-5 gap-y-8">
-        <StatCounter tone="dark" value={T.placed} label="Trainees placed" note={`${T.first}–${T.last}`} />
-        <StatCounter tone="dark" value={T.drives} label="Placement drives" note={`${T.first}–${T.last}`} />
-        <StatCounter tone="dark" value={T.bestRate} suffix="%" label="Best placement %" note={String(T.bestRateYear)} />
-        <StatCounter
-          tone="dark"
-          value={T.topPackage / 100000}
-          decimals={1}
-          prefix="₹"
-          suffix=" L"
-          label="Top salary package"
-          note={rupees(T.topPackage)}
-        />
+        <StatCounter tone="dark" value={T.selected} label="Candidates selected" note={`${T.first}–${T.last}`} />
+        <StatCounter tone="dark" value={T.drives} label="Campus drives" note={`${T.first}–${T.last}`} />
+        <StatCounter tone="dark" value={placementPeak.selected} label="Most in a year" note={String(placementPeak.year)} />
+        <StatCounter tone="dark" value={T.itis} label="ITIs on record" note={`Up to ${placementUpTo.en}`} />
       </div>
     </div>
   );
 }
 
 export function Details({ page }) {
-  const [metric, setMetric] = useState('placed');
+  const [metric, setMetric] = useState('selected');
   const [hover, setHover] = useState(null);
   const chart = useReveal({ threshold: 0.12 });
   const table = useReveal({ threshold: 0.05 });
+  const byIti = useReveal({ threshold: 0.05 });
 
   return (
     <>
@@ -278,10 +394,27 @@ export function Details({ page }) {
         <div className="shell">
           <SectionHeading id="table-title" eyebrow="The full table" title="Placement Details" />
           <div className="reveal mt-10" style={{ '--reveal-delay': '120ms' }}>
-            <Table hover={hover} onHover={setHover} />
+            <YearTable hover={hover} onHover={setHover} />
           </div>
-          <p className="reveal mt-5 text-[0.8125rem] text-ink-soft" style={{ '--reveal-delay': '160ms' }}>
-            प्लेसमेंट सहायता का अर्थ नौकरी की गारंटी नहीं है।
+        </div>
+      </section>
+
+      <section ref={byIti} aria-labelledby="iti-table-title" className="bg-white py-20 sm:py-26">
+        <div className="shell">
+          <SectionHeading
+            id="iti-table-title"
+            eyebrow="ITI by ITI"
+            title={
+              <>
+                Every campus, <span className="text-ink-muted">its own record.</span>
+              </>
+            }
+          />
+          <div className="reveal mt-10" style={{ '--reveal-delay': '120ms' }}>
+            <ItiTable />
+          </div>
+          <p lang="hi" className="reveal mt-5 max-w-4xl text-[0.8125rem] leading-relaxed text-ink-soft" style={{ '--reveal-delay': '160ms' }}>
+            {placementSourceHi} प्लेसमेंट सहायता का अर्थ नौकरी की गारंटी नहीं है।
           </p>
         </div>
       </section>

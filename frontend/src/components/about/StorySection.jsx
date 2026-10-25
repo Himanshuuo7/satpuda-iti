@@ -5,8 +5,9 @@ import GearOutline from '../ui/GearOutline';
 import useRevealEach from '../../hooks/useRevealEach';
 import useCountUp from '../../hooks/useCountUp';
 import { story } from '../../data/satpudaHistory';
-import { missionVision, placement } from '../../data/satpudaData';
+import { missionVision } from '../../data/satpudaData';
 import { itiInstitutes } from '../../data/itiInstitutes';
+import { placementTotals } from '../../data/placementRecord';
 
 /**
  * Satpuda story — split editorial layout.
@@ -16,9 +17,7 @@ import { itiInstitutes } from '../../data/itiInstitutes';
  * wording. The three counters are derived from the data files.
  */
 
-const PLACED_TOTAL = placement.record.reduce((n, r) => n + r.placed, 0);
-const FIRST = placement.record[0].year;
-const LAST = placement.record[placement.record.length - 1].year;
+const { selected: SELECTED_TOTAL, first: FIRST, last: LAST } = placementTotals;
 
 function Counter({ value, suffix = '', label, note }) {
   const [ref, current] = useCountUp(value, { duration: 1400 });
@@ -109,7 +108,7 @@ export function StorySection() {
           <div className="reveal mt-12 grid gap-8 sm:grid-cols-3" style={{ '--reveal-delay': '160ms' }}>
             <Counter value={23} suffix=" yrs" label="Of technical education" note="1999–2022" />
             <Counter value={itiInstitutes.length} label="ITI campuses" note="Across Madhya Pradesh" />
-            <Counter value={PLACED_TOTAL} label={`Trainees placed, ${FIRST}–${LAST}`} note="Through campus drives" />
+            <Counter value={SELECTED_TOTAL} label={`Candidates selected, ${FIRST}–${LAST}`} note="Through campus drives" />
           </div>
 
           {/* Mission & vision */}

@@ -4,6 +4,7 @@ import ItiHero from '../components/iti/ItiHero';
 import ItiChapterNav from '../components/iti/ItiChapterNav';
 import ItiOverview from '../components/iti/ItiOverview';
 import ItiCourses from '../components/iti/ItiCourses';
+import ItiPlacements from '../components/iti/ItiPlacements';
 import ItiPrincipal from '../components/iti/ItiPrincipal';
 import ItiGallery from '../components/iti/ItiGallery';
 import ItiContact from '../components/iti/ItiContact';
@@ -18,8 +19,9 @@ import { getItiProfile } from '../data/itiProfiles';
  *
  * All fourteen institutes share this layout and read everything from
  * `data/itiProfiles.js`. A section appears only when the institute's own
- * campus page publishes something for it, so pages differ in shape as well
- * as content — no empty or placeholder sections.
+ * campus page (or, for placements, its drive record) has something for it,
+ * so pages differ in shape as well as content — no empty or placeholder
+ * sections.
  */
 
 function ItiView({ inst }) {
@@ -82,6 +84,7 @@ function ItiView({ inst }) {
   const sections = [
     { id: 'overview', label: 'Overview', Component: ItiOverview, show: true },
     { id: 'trades', label: 'Trades', Component: ItiCourses, show: inst.courses.length > 0 },
+    { id: 'placements', label: 'Placements', Component: ItiPlacements, show: Boolean(inst.drives?.length) },
     { id: 'principal', label: 'Principal', Component: ItiPrincipal, show: Boolean(inst.message) },
     { id: 'gallery', label: 'Gallery', Component: ItiGallery, show: Boolean(inst.gallery) },
     { id: 'contact', label: 'Contact', Component: ItiContact, show: true },

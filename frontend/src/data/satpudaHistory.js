@@ -1,9 +1,15 @@
+import { placementByYear, placementPeak } from './placementRecord';
+
 /**
  * Satpuda ITI — story and milestones.
  *
  * Institution years come from the Samiti's "Our Institutions" board
- * (src/assets/iti detail.webp); placement years from the placement table.
+ * (src/assets/iti detail.webp); placement years, and every figure in them,
+ * from the group's campus-drive record (placementRecord.js).
  */
+
+const grouped = (v) => v.toLocaleString('en-IN');
+const recordYear = (year) => placementByYear.find((r) => r.year === year);
 
 export const story = {
   foundedYear: 1999,
@@ -27,6 +33,9 @@ export const story = {
  */
 const NCVT = 'NCVT & QCI, New Delhi';
 const iti = (place) => ({ name: 'Satpuda Private ITI', place, affiliation: NCVT });
+
+const Y2018 = recordYear(2018);
+const Y2023 = recordYear(2023);
 
 export const milestones = [
   {
@@ -114,23 +123,9 @@ export const milestones = [
     institutions: [iti('Itarsi'), iti('Bagdona, Sarni'), iti('Mauganj, Rewa')],
   },
   {
-    year: '2017',
-    title: '587 trainees placed',
-    body: '11 कैंपस ड्राइव में 587 प्रशिक्षुओं का प्लेसमेंट हुआ।',
-    kind: 'record',
-    institutions: [],
-  },
-  {
     year: '2018',
-    title: 'Peak placement year',
-    body: '23 कैंपस ड्राइव के ज़रिए 1,044 प्रशिक्षुओं का प्लेसमेंट — समूह का अब तक का सबसे सफल वर्ष।',
-    kind: 'record',
-    institutions: [],
-  },
-  {
-    year: '2021',
-    title: '94% placement rate',
-    body: '10 कैंपस ड्राइव में 632 प्रशिक्षुओं का प्लेसमेंट हुआ।',
+    title: `${grouped(Y2018.selected)} candidates selected`,
+    body: `${Y2018.drives} कैंपस ड्राइव में ${grouped(Y2018.selected)} उम्मीदवारों का चयन हुआ।`,
     kind: 'record',
     institutions: [],
   },
@@ -139,6 +134,20 @@ export const milestones = [
     title: '23 years of technical education',
     body: 'Satpuda Group ने ITI, स्कूल, पॉलिटेक्निक और शिक्षा महाविद्यालयों के साथ 23 वर्ष (1999–2022) पूरे किए।',
     kind: 'legacy',
+    institutions: [],
+  },
+  {
+    year: '2023',
+    title: `Campus drives at ${Y2023.itis} ITIs`,
+    body: `${Y2023.itis} ITI में ${Y2023.drives} कैंपस ड्राइव, जिनमें ${grouped(Y2023.selected)} उम्मीदवारों का चयन हुआ।`,
+    kind: 'record',
+    institutions: [],
+  },
+  {
+    year: String(placementPeak.year),
+    title: 'Peak placement year',
+    body: `${placementPeak.drives} कैंपस ड्राइव के ज़रिए ${grouped(placementPeak.selected)} उम्मीदवारों का चयन — रिकॉर्ड में अब तक का सबसे सफल वर्ष।`,
+    kind: 'record',
     institutions: [],
   },
 ];

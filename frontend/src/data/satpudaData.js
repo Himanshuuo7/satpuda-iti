@@ -220,24 +220,15 @@ export const training = {
 };
 
 // ---------------------------------------------------------------------------
-// Placement — verified figures published on /placement/
+// Placement — the institute's wording from /placement/. The figures (the
+// group's campus-drive record) live in placementRecord.js.
 // ---------------------------------------------------------------------------
 
 export const placement = {
-  headline: 'पिछले 3 वर्षों में 2456 कैंपस प्लेसमेंट',
   campusNote:
     'संस्थानों द्वारा आयोजित कैंपस भर्ती कार्यक्रम (Campus Recruitment Programme) उपयुक्त नौकरी की तलाश कर रहे युवा तकनीशियनों के लिए बेहद अहम गतिविधि है। लगभग सभी प्रशिक्षुओं को सरकारी विभागों और बहुराष्ट्रीय निजी/सार्वजनिक क्षेत्र के उपक्रमों में स्थायी नौकरियाँ मिली हैं। हमारे योग्य प्रशिक्षुओं में से बड़ी संख्या को प्रतिष्ठित कंपनियों ने नौकरी के प्रस्ताव दिए हैं।',
   interface:
     'SITI ने उद्योगों के योग्य विशेषज्ञों द्वारा कक्षा सत्र लेने की आवश्यक व्यवस्था की है, समय-समय पर उद्योग भ्रमण कराता है, और यह सुनिश्चित करता है कि शिक्षक व विद्यार्थी मिलकर उद्योगों की वास्तविक समस्याओं पर काम करें, ताकि कोर्स में पढ़ाए गए सिद्धांत व्यवहार में लागू हो सकें।',
-  // Verbatim table from /placement/
-  record: [
-    { year: 2016, drives: 2, placed: 103, percentage: 83, salary: 240000 },
-    { year: 2017, drives: 11, placed: 587, percentage: 91, salary: 150000 },
-    { year: 2018, drives: 23, placed: 1044, percentage: 97, salary: 222000 },
-    { year: 2019, drives: 15, placed: 533, percentage: 85, salary: 210000 },
-    { year: 2020, drives: 9, placed: 368, percentage: 89, salary: 174000 },
-    { year: 2021, drives: 10, placed: 632, percentage: 94, salary: 240000 },
-  ],
   cellActivities: [
     'कैंपस इंटरव्यू आयोजित करना।',
     'निजी और सरकारी क्षेत्र के विशेषज्ञों की काउंसलिंग से विद्यार्थियों के व्यक्तित्व का विकास करना।',

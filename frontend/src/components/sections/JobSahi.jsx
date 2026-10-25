@@ -25,6 +25,9 @@ import { cn } from '../../utils/cn';
  * (institute/recruiter registration, the candidate "how it works" steps and the
  * recruiter policy). The two audiences share one split frame.
  *
+ * As across the site, headings, labels and buttons are in English and every
+ * paragraph is in Hindi (rendered with lang="hi").
+ *
  * The dashboard and phone are illustrative previews, so they carry labels from
  * the real product but no figures.
  */
@@ -48,25 +51,25 @@ const PARTNER_FEATURES = [
   {
     icon: CalendarDays,
     title: 'Mega campus drives',
-    text: 'Track student applications and organise campus drives from one institute dashboard.',
+    text: 'एक ही इंस्टीट्यूट डैशबोर्ड से विद्यार्थियों के आवेदन ट्रैक करें और कैंपस ड्राइव आयोजित करें।',
   },
   {
     icon: ClipboardList,
     title: 'Placement visibility',
-    text: 'View placement stats, student progress and employer requests as they come in.',
+    text: 'प्लेसमेंट के आँकड़े, विद्यार्थियों की प्रगति और नियोक्ताओं के अनुरोध — जैसे ही आएँ, तुरंत देखें।',
   },
   {
     icon: ShieldCheck,
     title: 'A verified network',
-    text: 'Recruiters represent real organisations — fake or misleading job posts are not allowed.',
+    text: 'रिक्रूटर वास्तविक संगठनों का प्रतिनिधित्व करते हैं — फ़र्ज़ी या भ्रामक जॉब पोस्ट की अनुमति नहीं है।',
   },
 ];
 
 const CANDIDATE_STEPS = [
-  { title: 'Create profile', text: 'Sign up and build your profile in just a few minutes.' },
-  { title: 'Match skills', text: 'Your skills are matched with the best opportunities.' },
-  { title: 'Join campus drive', text: 'Register for drives and apply to verified jobs.' },
-  { title: 'Get hired', text: 'Clear the interview and start your career journey.' },
+  { title: 'Create profile', text: 'साइन अप करें और कुछ ही मिनटों में अपनी प्रोफ़ाइल बनाएँ।' },
+  { title: 'Match skills', text: 'आपके कौशल को सबसे उपयुक्त अवसरों से मिलाया जाता है।' },
+  { title: 'Join campus drive', text: 'ड्राइव के लिए रजिस्टर करें और सत्यापित नौकरियों पर आवेदन करें।' },
+  { title: 'Get hired', text: 'इंटरव्यू पास करें और अपनी करियर यात्रा शुरू करें।' },
 ];
 
 function ExternalCta({ href, children, variant, className }) {
@@ -346,10 +349,10 @@ export function JobSahi() {
           </div>
 
           <div className="reveal" style={{ '--reveal-delay': '140ms' }}>
-            <p className="max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-              Verified jobs, campus drives and career opportunities — all in one trusted platform.
-              JobSahi empowers youth, strengthens institutions and is built for Bharat&rsquo;s workforce
-              of tomorrow.
+            <p lang="hi" className="max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
+              सत्यापित नौकरियाँ, कैंपस ड्राइव और करियर के अवसर — सब एक भरोसेमंद प्लेटफ़ॉर्म पर।
+              JobSahi युवाओं को सशक्त बनाता है, संस्थानों को मज़बूत करता है और भारत के आने वाले
+              कल के कार्यबल के लिए बनाया गया है।
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {PILLARS.map(({ icon: Icon, label }) => (
@@ -393,10 +396,10 @@ export function JobSahi() {
                 >
                   Bring the right recruiters to your campus.
                 </h3>
-                <p className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-white/75">
-                  Institutes streamline campus placements and connect students with top employers.
-                  Recruiters join a verified network of companies and institutes to discover
-                  job-ready technical talent.
+                <p lang="hi" className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-white/75">
+                  संस्थान कैंपस प्लेसमेंट को आसान बनाते हैं और विद्यार्थियों को शीर्ष नियोक्ताओं से
+                  जोड़ते हैं। रिक्रूटर कंपनियों और संस्थानों के सत्यापित नेटवर्क से जुड़कर नौकरी के
+                  लिए तैयार तकनीकी प्रतिभा खोजते हैं।
                 </p>
 
                 <ul className="mt-8 grid gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-1 lg:gap-4 xl:grid-cols-3 xl:gap-5">
@@ -405,7 +408,7 @@ export function JobSahi() {
                       <Icon aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-jobsahi-lime" />
                       <div>
                         <p className="text-sm font-semibold text-white sm:mt-3 lg:mt-0 xl:mt-3">{title}</p>
-                        <p className="mt-1 text-[0.8125rem] leading-relaxed text-white/70">{text}</p>
+                        <p lang="hi" className="mt-1 text-[0.8125rem] leading-relaxed text-white/70">{text}</p>
                       </div>
                     </li>
                   ))}
@@ -446,9 +449,9 @@ export function JobSahi() {
                   Find verified jobs. Join campus drives.{' '}
                   <span className="text-jobsahi-green">Get hired.</span>
                 </h3>
-                <p className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-ink-muted">
-                  Explore thousands of verified jobs, take part in mega campus drives and move from
-                  profile to first offer — in English or हिंदी.
+                <p lang="hi" className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-ink-muted">
+                  हज़ारों सत्यापित नौकरियाँ खोजें, मेगा कैंपस ड्राइव में हिस्सा लें और प्रोफ़ाइल से
+                  पहले ऑफ़र तक का सफ़र तय करें — अंग्रेज़ी या हिंदी में।
                 </p>
 
                 <ol className="mt-8 grid gap-x-6 gap-y-5 sm:grid-cols-2">
@@ -459,7 +462,7 @@ export function JobSahi() {
                       </span>
                       <div>
                         <p className="text-sm font-semibold text-jobsahi-ink">{s.title}</p>
-                        <p className="mt-0.5 text-[0.8125rem] leading-relaxed text-ink-muted">{s.text}</p>
+                        <p lang="hi" className="mt-0.5 text-[0.8125rem] leading-relaxed text-ink-muted">{s.text}</p>
                       </div>
                     </li>
                   ))}

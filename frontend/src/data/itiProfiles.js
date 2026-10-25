@@ -23,26 +23,30 @@
  * the page leaves the section out.
  *
  * Images: only photographs that the official site publishes for that specific
- * campus are used. The five-photo "Our Gallery" strip that appears identically
- * on all fourteen campus pages is template content, so it is not attributed
- * to any one campus. Campuses without a photograph of their own fall back to
- * the official Satpuda ITI mark.
+ * campus, or that the institute supplies for it (marked with a `credit`), are
+ * used. The five-photo "Our Gallery" strip that appears identically on all
+ * fourteen campus pages is template content, so it is not attributed to any
+ * one campus. Campuses without a photograph of their own fall back to the
+ * official Satpuda ITI mark.
  */
 
+import { itiDrives } from './itiDrives';
+import { itiGalleries } from './itiGalleries';
 import { itiInstitutes } from './itiInstitutes';
 import { tradeById } from './trades';
 
 import manjhapurBuilding from '../assets/images/institutes/campus/manjhapur-building.webp';
 import manjhapurTrainees from '../assets/images/institutes/campus/manjhapur-campus-trainees.webp';
-import manjhapurWorkshop from '../assets/images/institutes/campus/manjhapur-workshop.webp';
-import manjhapurWiring from '../assets/images/institutes/campus/manjhapur-wiring-project.webp';
-import manjhapurStaff from '../assets/images/institutes/campus/manjhapur-staff.webp';
 import budhiBuilding from '../assets/images/institutes/campus/budhi-building.webp';
 import katangiBuilding from '../assets/images/institutes/campus/katangi-building.webp';
+import kundipuraBuilding from '../assets/images/institutes/campus/kundipura-building.webp';
+import seoniBuilding from '../assets/images/institutes/campus/seoni-building.webp';
+import mandlaBuilding from '../assets/images/institutes/campus/mandla-building.webp';
 
 import principalManjhapur from '../assets/images/institutes/principals/manjhapur.webp';
 import principalBudhi from '../assets/images/institutes/principals/budhi.webp';
 import principalKatangi from '../assets/images/institutes/principals/katangi.webp';
+import principalKundipura from '../assets/images/institutes/principals/kundipura.webp';
 import principalBaihar from '../assets/images/institutes/principals/baihar.webp';
 import principalBetul from '../assets/images/institutes/principals/betul.webp';
 import principalMandla from '../assets/images/institutes/principals/mandla.webp';
@@ -115,14 +119,12 @@ const PROFILES = [
         'औद्योगिक प्रशिक्षण संस्थान (ITI) भारत में DGET के अंतर्गत गठित माध्यमिक-पश्चात शिक्षण संस्थान है। Satpuda ITI लगातार वर्तमान रुझानों का पालन करता है, ताकि हम सबसे अद्यतन रहें, सर्वोत्तम पद्धतियाँ अपनाएँ, सभी नियमों का पालन करें और अपने विद्यार्थियों की भविष्य की ज़रूरतों को पूरा करें।',
         'सही ITI चुनना एक महत्वपूर्ण निर्णय है। हमारा ITI हर प्रशिक्षु के कौशल विकास पर ध्यान देता है। कुछ समय निकालकर हमारे ITI आइए, और किसी भी प्रश्न या चिंता के लिए बेझिझक मुझसे संपर्क कीजिए।',
       ],
+      // The principal's photograph as the institute supplied it (Drive, 2026-10-25).
       photo: principalManjhapur,
     },
-    gallery: [
-      { src: manjhapurBuilding, alt: 'Satpuda (Pvt) I.T.I. Manjhapur का भवन' },
-      { src: manjhapurWorkshop, alt: 'मांझापुर कैंपस की वर्कशॉप में मशीनों के साथ प्रशिक्षु और प्रशिक्षक' },
-      { src: manjhapurWiring, alt: 'Domestic House Wiring प्रोजेक्ट के साथ मांझापुर कैंपस के प्रशिक्षु' },
-      { src: manjhapurStaff, alt: 'Satpuda Group of Institutions के विश्वकर्मा जयंती कार्यक्रम में स्टाफ़ का समूह फ़ोटो' },
-    ],
+    // Its gallery (itiGalleries.js) adds the institute's Drive photographs and the homepage gallery to these four.
+    galleryIntro:
+      'Manjhapur कैंपस की झलक — वर्कशॉप और प्रैक्टिकल प्रशिक्षण, औद्योगिक भ्रमण, सेमिनार और कक्षाएँ, और स्कूली विद्यार्थियों का कैंपस भ्रमण।',
   },
   {
     id: 'budhi',
@@ -174,9 +176,16 @@ const PROFILES = [
   {
     id: 'chhindwara-kundipura',
     sourceUrl: `${SATPUDA_SITE}/chhindwara/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: kundipuraBuilding,
+      alt: 'Satpuda Private I.T.I. Kundipura, छिंदवाड़ा का भवन, जिसके सामने पेड़ और परिसर में खड़ी मोटरसाइकिलें हैं',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Kundipura छिंदवाड़ा में कुंडीपुरा थाने के पास स्थित है और अगस्त 2003 से Satpuda समूह के आईटीआई के रूप में संचालित है। यह छिंदवाड़ा ज़िले में समूह के दो आईटीआई में से एक है।',
     messageFor: standardMessage,
+    principalPhoto: principalKundipura,
   },
   {
     id: 'chhindwara-warehouse',
@@ -195,10 +204,18 @@ const PROFILES = [
   {
     id: 'seoni',
     sourceUrl: `${SATPUDA_SITE}/seoni/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: seoniBuilding,
+      alt: 'Satpuda Private I.T.I. सिवनी का भवन — गुलाबी खंभों वाली सफ़ेद इमारत, जिसके सामने पेड़-पौधे और खड़ी मोटरसाइकिलें हैं',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Seoni सिवनी में नागपुर रोड पर सेलादेही (शिलादेही) में स्थित है और अगस्त 2007 से Satpuda समूह के आईटीआई के रूप में संचालित है।',
     messageFor: standardMessage,
     principalPhoto: principalSeoni,
+    // What its gallery (itiGalleries.js) holds, in place of the default line.
+    galleryIntro: 'Seoni कैंपस के जीवन की झलक — कक्षाएँ, औद्योगिक भ्रमण, योग, उत्सव और अख़बारों में छपी संस्थान की ख़बरें।',
   },
   {
     id: 'multai',
@@ -211,10 +228,18 @@ const PROFILES = [
   {
     id: 'mandla',
     sourceUrl: `${SATPUDA_SITE}/mandla/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: mandlaBuilding,
+      alt: 'Satpuda Private I.T.I. मंडला का भवन — "सतपुड़ा प्राइवेट औद्योगिक प्रशिक्षण केन्द्र" के बोर्ड वाली इमारत और सामने खुला मैदान',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Mandla मंडला ज़िले में नैनपुर रोड पर महाराजपुर पौंडी में स्थित है। यहाँ Electrician, Fitter और Mechanic Diesel ट्रेड में प्रशिक्षण दिया जाता है।',
     messageFor: standardMessage,
     principalPhoto: principalMandla,
+    galleryIntro:
+      'Mandla कैंपस की झलक — वर्कशॉप में हुआ Maruti Suzuki का ओपन कैंपस ट्रेनिंग एंड जॉब कार्यक्रम और संस्थान का भवन।',
   },
   {
     id: 'itarsi',
@@ -304,7 +329,9 @@ export const itiProfiles = [...PROFILES].sort(byFounding).map((profile, index) =
       message && leader
         ? { ...message, photo: message.photo ?? profile.principalPhoto ?? null, ...leader }
         : null,
-    gallery: profile.gallery ?? null,
+    gallery: profile.gallery ?? itiGalleries[profile.id] ?? null,
+    galleryIntro: profile.galleryIntro ?? null,
+    drives: itiDrives[profile.id] ?? null,
   };
 });
 

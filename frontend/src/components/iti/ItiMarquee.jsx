@@ -11,14 +11,17 @@ import { itiProfiles } from '../../data/itiProfiles';
  * The motion is a single CSS keyframe on the track's `transform`, so it runs
  * on the compositor and React never renders per frame. The cards are
  * rendered twice; the second, aria-hidden copy exists only so the loop has no
- * seam. It runs continuously and pauses only while the mouse rests on it
- * (resuming the moment it leaves), while a finger is on it, while a card
- * holds keyboard focus, and while it is off-screen.
+ * seam. It runs continuously — a resting mouse does not stop it — and pauses
+ * only while the strip is pressed (a finger or the mouse button), while a
+ * card holds keyboard focus, and while it is off-screen.
  *
- * Touch: a sideways swipe drags the strip and a flick coasts on, by seeking
- * that same animation, so the loop never falls out of step. Once the finger
- * lifts and the strip has slowed to its own pace, the animation carries on
- * from wherever it was left. Vertical swipes still scroll the page.
+ * Dragging: a sideways swipe, or a mouse drag on desktop, moves the strip and
+ * a flick coasts on, by seeking that same animation, so the loop never falls
+ * out of step. Once the pointer lifts and the strip has slowed to its own
+ * pace, the animation carries on from wherever it was left; a tap or click
+ * that did not travel still opens the card. A sideways wheel — a touchpad's
+ * two-finger swipe, or Shift + wheel — moves it too. Vertical swipes and
+ * wheel turns still scroll the page.
  *
  * The front institute is the card under the index line's left edge, which
  * lines up with the page's content column; on first load the strip is set so
@@ -44,6 +47,8 @@ const REST = 0.02;
 const FLICK_WINDOW = 80;
 /** A click this soon (ms) after a swipe ends is the swipe's own, not a tap. */
 const CLICK_WINDOW = 500;
+/** Pixels per line, for a wheel that reports its turn in lines. */
+const LINE = 40;
 
 const mod = (n, m) => ((n % m) + m) % m;
 
@@ -249,6 +254,34 @@ export function ItiMarquee() {
 
   useEffect(() => () => cancelAnimationFrame(coastRef.current), []);
 
+  /**
+   * A sideways wheel moves the strip and the animation carries on from
+   * there; an upright one is left to the page. A native listener, since
+   * React's is passive and the browser's own sideways gesture (history back)
+   * must be stopped.
+   */
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return undefined;
+
+    const onWheel = (e) => {
+      let dx = e.deltaX;
+      let dy = e.deltaY;
+      // Shift + wheel, on a mouse whose browser does not turn it sideways.
+      if (e.shiftKey && !dx) [dx, dy] = [dy, 0];
+      if (Math.abs(dx) <= Math.abs(dy) || prefersReducedMotion()) return;
+      const loop = getLoop();
+      if (!loop) return;
+
+      e.preventDefault();
+      const unit = e.deltaMode === 1 ? LINE : e.deltaMode === 2 ? viewport.clientWidth : 1;
+      seek(loop, shiftOf(loop) + dx * unit);
+    };
+
+    viewport.addEventListener('wheel', onWheel, { passive: false });
+    return () => viewport.removeEventListener('wheel', onWheel);
+  }, [getLoop]);
+
   /** Lets the CSS animation run again. */
   const release = useCallback(() => {
     const viewport = viewportRef.current;
@@ -284,10 +317,13 @@ export function ItiMarquee() {
     [release]
   );
 
-  /** A finger on the strip holds it still; it may become a tap or a swipe. */
+  /**
+   * A finger or the mouse button on the strip holds it still; it may become
+   * a tap or a swipe.
+   */
   const onPointerDown = useCallback(
     (e) => {
-      if (e.pointerType === 'mouse' || !e.isPrimary || prefersReducedMotion()) return;
+      if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0) || prefersReducedMotion()) return;
       const viewport = viewportRef.current;
       const loop = getLoop();
       if (!viewport || !loop) return;
@@ -309,7 +345,9 @@ export function ItiMarquee() {
 
   /**
    * Sideways travel drags the strip. `touch-action: pan-y` leaves vertical
-   * travel to the browser, which then cancels the pointer instead.
+   * travel to the browser, which then cancels the pointer instead. Once it
+   * is a swipe the strip captures the pointer, so a mouse dragged past its
+   * edges keeps dragging it.
    */
   const onPointerMove = useCallback(
     (e) => {
@@ -325,6 +363,7 @@ export function ItiMarquee() {
         g.x = e.clientX;
         g.start = shiftOf(loop);
         viewportRef.current.dataset.swiping = 'true';
+        viewportRef.current.setPointerCapture?.(e.pointerId);
       }
 
       const dt = e.timeStamp - g.lastT;
@@ -336,6 +375,11 @@ export function ItiMarquee() {
     [getLoop]
   );
 
+  /**
+   * Ends a press on lift or cancel — or when a mouse wanders off the strip
+   * before it has travelled far enough to swipe (a swipe holds the capture,
+   * so it never leaves).
+   */
   const onPointerEnd = useCallback(
     (e) => {
       const g = gestureRef.current;
@@ -350,6 +394,15 @@ export function ItiMarquee() {
     },
     [coast, getLoop, release]
   );
+
+  /**
+   * A mouse press may become a drag: no native drag of the link or its
+   * image, no text selection, and no focus — which would pause the strip and
+   * seek it to fit the card. Keyboard focus is unaffected.
+   */
+  const onMouseDown = useCallback((e) => {
+    if (e.button === 0 && !prefersReducedMotion()) e.preventDefault();
+  }, []);
 
   /** A swipe that ends over a card must not open it. */
   const onClickCapture = useCallback((e) => {
@@ -396,6 +449,8 @@ export function ItiMarquee() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerEnd}
         onPointerCancel={onPointerEnd}
+        onPointerLeave={onPointerEnd}
+        onMouseDown={onMouseDown}
         onClickCapture={onClickCapture}
         className="iti-marquee mask-fade-x relative mt-10 lg:mt-12"
       >

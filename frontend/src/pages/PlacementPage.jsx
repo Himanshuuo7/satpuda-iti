@@ -11,6 +11,7 @@ import Details from '../components/placement/Details';
 import { NotFoundPage } from './PlaceholderPage';
 import useSeo from '../hooks/useSeo';
 import { placementPageBySlug } from '../data/placementPages';
+import { placementTotals as T } from '../data/placementRecord';
 import { placementSection } from '../components/placement/section';
 
 /**
@@ -33,7 +34,7 @@ const VIEWS = {
 const OVERVIEW_SEO = {
   title: 'Placement | Satpuda ITI — Placement Cell, Recruiters & Placement Record',
   description:
-    'The Satpuda ITI Placement & Guidance Cell: industrial interface, career path, entrepreneurship development, recruiters, Skill Connect and year-by-year placement details. 2456 campus placements in last 3 years.',
+    `The Satpuda ITI Placement & Guidance Cell: industrial interface, career path, entrepreneurship development, recruiters, Skill Connect and year-by-year placement details. ${T.selected.toLocaleString('en-IN')} candidates selected in ${T.drives} campus drives across ${T.itis} Satpuda ITIs, ${T.first}–${T.last}.`,
 };
 
 function PlacementView({ page }) {

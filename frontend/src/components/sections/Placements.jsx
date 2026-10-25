@@ -6,6 +6,7 @@ import Button from '../ui/Button';
 import CountUp from '../iti/CountUp';
 import PlacementBento from '../placement/PlacementBento';
 import { placement } from '../../data/satpudaData';
+import { placementSourceHi, placementTotals } from '../../data/placementRecord';
 import { recruiterLogos } from '../../data/media';
 import { recruiters } from '../../data/placementContent';
 import { PLACEMENT_BASE } from '../../data/placementPages';
@@ -14,31 +15,24 @@ import useReveal from '../../hooks/useReveal';
 /**
  * Placements.
  *
- * The institute publishes a precise year-by-year record, so that record is
- * the section: a bento of white cards (`PlacementBento`) — the rate trend
- * with a year picker, and the chosen year's placements, drives and package —
- * beside the totals of that same record and the published headline, whose
- * figure counts up. Recruiters follow as two rows of logo tiles drifting in
- * opposite directions.
+ * The campus-drive record of every Satpuda ITI that sent one in is the
+ * section: a bento of white cards (`PlacementBento`) — candidates selected
+ * year by year with a year picker, that period's drives and turnout, and the
+ * same period ITI by ITI — beside the totals of that record and a note on
+ * where the figures come from. Recruiters follow as two rows of logo tiles
+ * drifting in opposite directions.
  *
- * Totals are sums of the published rows, nothing more. The published
- * headline ("2456 Campus placements in last 3 Years") is quoted as written,
- * and the language stays "assistance"/"record" — never "guaranteed".
+ * Totals are sums of the records' rows, nothing more, and the language stays
+ * "selected"/"record" — never "guaranteed".
  */
 
-const RECORD = placement.record;
-const FIRST = RECORD[0].year;
-const LAST = RECORD[RECORD.length - 1].year;
-const BEST = RECORD.reduce((a, b) => (b.percentage > a.percentage ? b : a));
+const { first: FIRST, last: LAST } = placementTotals;
 
 const TOTALS = [
-  { value: String(RECORD.reduce((n, r) => n + r.drives, 0)), label: 'Campus drives' },
-  { value: String(RECORD.reduce((n, r) => n + r.placed, 0)), label: 'Trainees placed' },
-  { value: String(BEST.percentage), suffix: '%', label: `Best rate · ${BEST.year}` },
+  { value: placementTotals.drives.toLocaleString('en-IN'), label: 'Campus drives' },
+  { value: placementTotals.selected.toLocaleString('en-IN'), label: 'Selected' },
+  { value: String(placementTotals.itis), label: 'ITIs' },
 ];
-
-/** "पिछले 3 वर्षों में 2456 …" → the figure counts up inside the quote. */
-const HEADLINE = placement.headline.split(/(\d{4,})/);
 
 /** Second row starts part-way through, so the two rows never line up. */
 const ROW_B = [...recruiterLogos.slice(5), ...recruiterLogos.slice(0, 5)];
@@ -129,31 +123,22 @@ export function Placements() {
                     <dt className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">{t.label}</dt>
                     <dd className="mt-auto pt-2 font-display text-[1.75rem] font-semibold leading-none tracking-tight text-navy-800 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:text-[2rem]">
                       <CountUp value={t.value} />
-                      {t.suffix && <span className="text-signal">{t.suffix}</span>}
                     </dd>
                   </div>
                 ))}
               </dl>
             </div>
 
-            {/* Published headline, quoted as written */}
-            <blockquote className="reveal relative mt-8 pl-5" style={{ '--reveal-delay': '220ms' }}>
+            {/* Where the figures come from */}
+            <div className="reveal relative mt-8 pl-5" style={{ '--reveal-delay': '220ms' }}>
               <span
                 aria-hidden="true"
                 className="absolute inset-y-1 left-0 w-[2px] origin-top scale-y-0 rounded-full bg-signal transition-transform delay-300 duration-700 ease-out [.is-visible_&]:scale-y-100"
               />
-              <p lang="hi" className="font-display text-xl font-medium tracking-tight text-navy-800">
-                “
-                {HEADLINE.map((part, i) =>
-                  /^\d{4,}$/.test(part) ? (
-                    <CountUp key={i} value={part} duration={1600} className="text-signal" />
-                  ) : (
-                    part
-                  )
-                )}
-                ”
+              <p lang="hi" className="text-[0.9375rem] leading-[1.75] text-ink-muted">
+                {placementSourceHi}
               </p>
-            </blockquote>
+            </div>
 
             <div className="reveal mt-9" style={{ '--reveal-delay': '260ms' }}>
               <Button to={`${PLACEMENT_BASE}/details`} variant="outline">

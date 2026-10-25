@@ -11,15 +11,16 @@ import useCountUp from '../../hooks/useCountUp';
 import { iconFor } from './icons';
 import { photos } from '../../data/media';
 import { placementPages } from '../../data/placementPages';
-import { overview, placementDetails, placementTotals as T } from '../../data/placementContent';
+import { overview } from '../../data/placementContent';
+import { placementByYear, placementPeak, placementTotals as T, placementUpTo } from '../../data/placementRecord';
 
 /**
  * /placements — the placement cell at a glance: the headline figure, the
- * institute's own description of campus recruitment, the record in four
- * numbers, and a door into each of the six pages.
+ * institute's own description of campus recruitment, the group's record in
+ * four numbers, and a door into each of the six pages.
  */
 
-const PEAK = Math.max(...placementDetails.record.map((r) => r.placed));
+const PEAK = placementPeak.selected;
 
 /** Hero instrument: the headline figure over a small bar record of each year. */
 function HeadlineInstrument() {
@@ -28,32 +29,32 @@ function HeadlineInstrument() {
 
   return (
     <div ref={reveal} className="relative rounded-panel border border-white/12 bg-navy-900/60 p-6 backdrop-blur-sm sm:p-8">
-      <p className="font-mono text-label uppercase text-tech">Campus placements</p>
+      <p className="font-mono text-label uppercase text-tech">Candidates selected</p>
       <p ref={ref} className="mt-4 font-display text-[4.5rem] font-bold leading-none tabular text-white sm:text-[5.5rem]">
         {value.toLocaleString('en-IN')}
       </p>
       <p className="mt-3 text-[0.9375rem] text-navy-100/80">{overview.headline.label}</p>
 
-      <div aria-hidden="true" className="mt-8 flex h-24 items-end gap-2 border-b border-white/15">
-        {placementDetails.record.map((r, i) => (
+      <div aria-hidden="true" className="mt-8 flex h-24 items-end gap-1.5 border-b border-white/15 sm:gap-2">
+        {placementByYear.map((r, i) => (
           <div key={r.year} className="flex h-full flex-1 flex-col justify-end">
             <span
               className="sec-bar block rounded-t-[3px] bg-gradient-to-t from-royal-400 to-tech"
-              style={{ height: `${(r.placed / PEAK) * 100}%`, '--i': i }}
+              style={{ height: `${Math.max((r.selected / PEAK) * 100, 2)}%`, '--i': i }}
             />
           </div>
         ))}
       </div>
-      <div aria-hidden="true" className="mt-2 flex gap-2">
-        {placementDetails.record.map((r) => (
+      <div aria-hidden="true" className="mt-2 flex gap-1.5 sm:gap-2">
+        {placementByYear.map((r) => (
           <span key={r.year} className="flex-1 text-center font-mono text-[0.625rem] tabular text-navy-200/60">
             {String(r.year).slice(2)}
           </span>
         ))}
       </div>
       <p className="sr-only">
-        Trainees placed each year:{' '}
-        {placementDetails.record.map((r) => `${r.year}: ${r.placed}`).join(', ')}.
+        Candidates selected each year:{' '}
+        {placementByYear.map((r) => `${r.year}: ${r.selected}`).join(', ')}.
       </p>
     </div>
   );
@@ -126,17 +127,10 @@ export function Overview() {
       <section ref={stats} aria-label="Placement record" className="border-y border-navy-100 bg-canvas-soft py-14 sm:py-16">
         <div className="shell">
           <div className="reveal grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
-            <StatCounter value={T.placed} label="Trainees placed" note={`${T.first}–${T.last}`} />
-            <StatCounter value={T.drives} label="Placement drives" note={`${T.first}–${T.last}`} />
-            <StatCounter value={T.bestRate} suffix="%" label="Best placement percentage" note={String(T.bestRateYear)} />
-            <StatCounter
-              value={T.topPackage / 100000}
-              decimals={1}
-              prefix="₹"
-              suffix=" L"
-              label="Highest salary package"
-              note={`₹${T.topPackage.toLocaleString('en-IN')}/-`}
-            />
+            <StatCounter value={T.selected} label="Candidates selected" note={`${T.first}–${T.last}`} />
+            <StatCounter value={T.drives} label="Campus drives" note={`${T.first}–${T.last}`} />
+            <StatCounter value={placementPeak.selected} label="Most selected in a year" note={String(placementPeak.year)} />
+            <StatCounter value={T.itis} label="ITIs on record" note={`Up to ${placementUpTo.en}`} />
           </div>
         </div>
       </section>

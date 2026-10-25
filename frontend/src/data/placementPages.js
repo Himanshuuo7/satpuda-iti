@@ -1,9 +1,12 @@
+import { placementTotals as T } from './placementRecord';
+
 /**
  * Placement section — the six pages under /placements.
  *
  * They mirror the Placement menu of the institute's website, in the same order
- * and under the same names. Kept free of imports so the site navigation
- * (satpudaData.js) can build the Placement dropdown from it.
+ * and under the same names. The only import is the placement record (which
+ * imports nothing from here or satpudaData.js), so the site navigation
+ * (satpudaData.js) can build the Placement dropdown from it without a cycle.
  */
 
 export const PLACEMENT_BASE = '/placements';
@@ -34,7 +37,7 @@ export const placementPages = [
     slug: 'recruiters',
     label: 'Recruiters',
     short: 'Recruiters',
-    summary: 'पिछले तीन वर्षों में 2456 कैंपस प्लेसमेंट — विभिन्न उद्योगों की भर्ती करने वाली कंपनियों के साथ।',
+    summary: `${T.first} से अब तक ${T.drives} कैंपस ड्राइव में ${T.selected.toLocaleString('en-IN')} उम्मीदवारों का चयन — विभिन्न उद्योगों की भर्ती करने वाली कंपनियों के साथ।`,
     icon: 'Building2',
   },
   {
@@ -48,7 +51,7 @@ export const placementPages = [
     slug: 'details',
     label: 'Placement Details',
     short: 'Placement Details',
-    summary: 'साल-दर-साल: प्लेसमेंट ड्राइव, चयनित प्रशिक्षु, प्लेसमेंट प्रतिशत और सैलरी पैकेज।',
+    summary: 'साल-दर-साल और ITI-वार: कैंपस ड्राइव, उनमें शामिल हुए उम्मीदवार और चयनित उम्मीदवार।',
     icon: 'BarChart3',
   },
 ].map((p, i) => ({ ...p, index: i + 1, to: `${PLACEMENT_BASE}/${p.slug}` }));

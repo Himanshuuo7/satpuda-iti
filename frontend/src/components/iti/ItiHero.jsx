@@ -160,7 +160,7 @@ export function ItiHero({ inst }) {
             </div>
             {inst.heroImage && (
               <p className="mx-auto mt-4 max-w-md font-mono text-[0.625rem] uppercase tracking-[0.14em] text-navy-200/60 lg:ml-auto lg:mr-0">
-                <span lang="hi">कैंपस फ़ोटो</span> · satpudaiti.com
+                <span lang="hi">कैंपस फ़ोटो</span> · {inst.heroImage.credit ?? 'satpudaiti.com'}
               </p>
             )}
           </div>
