@@ -17,6 +17,10 @@ import useRevealEach from '../../hooks/useRevealEach';
  * Kundipura's lists turnout alone, Mandla's dates alone), so a record without
  * them never speaks of trainees placed.
  *
+ * A page may show another campus's record (`inst.drivesHost`); the heading,
+ * lede and footnote then name that campus, so its drives never read as this
+ * institute's own.
+ *
  * Motion: as each tile reveals its laurel grows leaf by leaf up both
  * branches and the figure counts up; plaques and drive tickets settle in
  * turn and lift under a fine pointer.
@@ -27,6 +31,7 @@ const STATE_HI = {
   Chhattisgarh: 'छत्तीसगढ़',
   Gujarat: 'गुजरात',
   Haryana: 'हरियाणा',
+  'Himachal Pradesh': 'हिमाचल प्रदेश',
   'Jammu and Kashmir': 'जम्मू और कश्मीर',
   Karnataka: 'कर्नाटक',
   Maharashtra: 'महाराष्ट्र',
@@ -40,6 +45,7 @@ const STATE_HI = {
 const STATE_SHORT = {
   'Andhra Pradesh': 'AP',
   Chhattisgarh: 'CG',
+  'Himachal Pradesh': 'HP',
   'Jammu and Kashmir': 'J&K',
   'Madhya Pradesh': 'MP',
   'Tamil Nadu': 'TN',
@@ -47,8 +53,6 @@ const STATE_SHORT = {
 };
 /** The states note on the award tile names this many, then counts the rest. */
 const STATES_NAMED = 3;
-/** A record with this many drives is read a year at a time, in tabs. */
-const YEAR_TABS_FROM = 40;
 
 const asDate = (iso) => new Date(`${iso}T00:00:00`);
 const fullDate = (iso) => asDate(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -262,7 +266,7 @@ function DriveTicket({ d, top }) {
 }
 
 /**
- * A long record read a year at a time: a row of year tabs (latest first
+ * Every record is read a year at a time: a row of year tabs (latest first
  * selected) over that year's drives. Arrow keys, Home and End move between
  * tabs. The tab panel is re-keyed per year so its tickets settle in afresh.
  */
@@ -340,6 +344,8 @@ function YearTabs({ byYear, top }) {
 export function ItiPlacements({ inst, id }) {
   const ref = useRevealEach();
   const s = summarise(inst.drives);
+  // Set when the record shown is another campus's (Manjhapur's, on the Balaghat pages without one).
+  const host = inst.drivesHost;
   // The drive the record's top plaque names, marked with a trophy on its ticket.
   const top = s.mostSelected ?? s.largest;
   const span = s.years.length > 1 ? `${s.years[0]}–${s.years.at(-1)}` : String(s.years[0]);
@@ -455,11 +461,12 @@ export function ItiPlacements({ inst, id }) {
       <div className="shell relative">
         <SectionHeading
           id="iti-placements-title"
-          eyebrow="Placements"
-          title="Campus Placement Record"
+          eyebrow={host ? `Placements · ${host.place} campus` : 'Placements'}
+          title={host ? `${host.place} Placement Record` : 'Campus Placement Record'}
           lede={
             <span lang="hi">
-              {inst.name} में {s.years[0]} से अब तक {s.sorted.length} कैंपस ड्राइव हुई हैं, जिनमें {statesHi} की{' '}
+              {host && <>यह Satpuda समूह के प्रमुख कैंपस, {host.name} का प्लेसमेंट रिकॉर्ड है — </>}
+              {host ? 'वहाँ' : `${inst.name} में`} {s.years[0]} से अब तक {s.sorted.length} कैंपस ड्राइव हुई हैं, जिनमें {statesHi} की{' '}
               {s.recruiters} कंपनियाँ प्रशिक्षुओं की भर्ती के लिए कैंपस आईं
               {s.selectedReported
                 ? ` और ${grouped(s.selected)} प्रशिक्षुओं का चयन हुआ।`
@@ -513,36 +520,13 @@ export function ItiPlacements({ inst, id }) {
             Drive by drive
           </h3>
 
-          {s.sorted.length >= YEAR_TABS_FROM ? (
-            <YearTabs byYear={s.byYear} top={top} />
-          ) : (
-            <ol className="mt-8 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-              {s.byYear.map(({ year, drives }, col) => (
-                <li key={year} className="reveal relative border-t-2 border-navy-100 pt-6" style={{ '--reveal-delay': `${60 + col * 90}ms` }}>
-                  <span aria-hidden="true" className="absolute -top-[5px] left-0 h-2 w-2 rounded-full bg-signal" />
-                  <p className="flex items-baseline justify-between gap-3">
-                    <span className="font-display text-[2rem] font-bold leading-none tracking-[-0.03em] tabular text-navy-800">{year}</span>
-                    <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">
-                      {drives.length} {drives.length === 1 ? 'drive' : 'drives'}
-                    </span>
-                  </p>
-
-                  <ul className="iti-stagger mt-5 space-y-3">
-                    {drives.map((d, i) => (
-                      <li key={`${d.date}-${d.company}`} style={{ '--i': i + 1 }}>
-                        <DriveTicket d={d} top={d === top} />
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ol>
-          )}
+          <YearTabs byYear={s.byYear} top={top} />
         </div>
 
         <div className="reveal mt-12 flex flex-col gap-5 border-t border-navy-100 pt-8 lg:flex-row lg:items-center lg:justify-between">
           <p lang="hi" className="max-w-3xl border-l border-tech/50 pl-5 text-[0.875rem] leading-[1.7] text-ink-muted">
-            यह सूची संस्थान के अपने प्लेसमेंट रिकॉर्ड से है ({fullDateHi(s.first.date)} से {fullDateHi(s.latest.date)} तक)।{' '}
+            यह सूची {host ? `${host.name} के` : 'संस्थान के अपने'} प्लेसमेंट रिकॉर्ड से है ({fullDateHi(s.first.date)} से{' '}
+            {fullDateHi(s.latest.date)} तक)।{' '}
             {s.selectedReported ? (
               <>
                 {s.selectedReported === s.sorted.length ? 'हर' : s.selectedReported} ड्राइव में उपस्थित और चयनित प्रशिक्षुओं की
@@ -556,17 +540,24 @@ export function ItiPlacements({ inst, id }) {
             )}{' '}
             प्लेसमेंट सहायता का अर्थ नौकरी की गारंटी नहीं है।
           </p>
-          <Link
-            to={`${PLACEMENT_BASE}/details`}
-            className="group inline-flex min-h-[2.75rem] shrink-0 items-center gap-2 text-[0.875rem] font-semibold text-navy-800 transition-colors hover:text-signal"
-          >
-            Group placement record
-            <ArrowUpRight
-              aria-hidden="true"
-              strokeWidth={2}
-              className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </Link>
+          <div className="flex shrink-0 flex-wrap gap-x-8">
+            {[host && { to: host.path, label: `${host.place} campus` }, { to: `${PLACEMENT_BASE}/details`, label: 'Group placement record' }]
+              .filter(Boolean)
+              .map((l) => (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className="group inline-flex min-h-[2.75rem] items-center gap-2 text-[0.875rem] font-semibold text-navy-800 transition-colors hover:text-signal"
+                >
+                  {l.label}
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    strokeWidth={2}
+                    className="h-4 w-4 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </Link>
+              ))}
+          </div>
         </div>
       </div>
     </section>

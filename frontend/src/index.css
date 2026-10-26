@@ -1172,6 +1172,17 @@
   animation: sec-fade 280ms ease-out;
 }
 
+/* While the viewer is open nothing behind it scrolls (useLockBodyScroll
+   pauses the smooth scroller; this holds the root still on iOS too). */
+html:has(.sec-lightbox[open]) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.sec-lightbox {
+  overscroll-behavior: contain;
+}
+
 .sec-lightbox-figure {
   animation: sec-lightbox-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -2605,5 +2616,212 @@
   .jobsahi-panel-r.reveal:not(.is-visible),
   .jobsahi-bar {
     transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Activity — Gallery (the photo archive)
+ * ------------------------------------------------------------------------- */
+
+/* The archive borrows the /iti gallery tiles (itg-*, iti-*), so it carries
+   their easing curves. */
+.pa-gallery {
+  --iti-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --iti-ease-io: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Hero deck: the top print flies off to the right and the stack steps up;
+   the newest print fans in at the back. Under a fine pointer the deck
+   spreads. */
+.pa-card {
+  transform-origin: 50% 90%;
+  transition:
+    transform 1000ms var(--iti-ease),
+    opacity 700ms ease,
+    filter 700ms ease;
+}
+
+.pa-card[data-pos='0'] {
+  z-index: 3;
+  transform: rotate(-2deg);
+}
+
+.pa-card[data-pos='1'] {
+  z-index: 2;
+  transform: translate(7%, -6%) rotate(5deg) scale(0.94);
+  filter: brightness(0.9) saturate(0.9);
+}
+
+.pa-card[data-pos='2'] {
+  z-index: 1;
+  transform: translate(-7%, -10%) rotate(-8deg) scale(0.88);
+  filter: brightness(0.8) saturate(0.8);
+  animation: pa-card-in 1000ms var(--iti-ease) backwards;
+}
+
+.pa-card[data-pos='-1'] {
+  z-index: 4;
+  transform: translate(85%, 12%) rotate(18deg) scale(0.96);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pa-card-in {
+  from {
+    opacity: 0;
+    transform: translate(-4%, -2%) rotate(-14deg) scale(0.78);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pa-deck:hover .pa-card[data-pos='0'] {
+    transform: rotate(0deg) translateY(-2%);
+  }
+
+  .pa-deck:hover .pa-card[data-pos='1'] {
+    transform: translate(15%, -7%) rotate(9deg) scale(0.94);
+  }
+
+  .pa-deck:hover .pa-card[data-pos='2'] {
+    transform: translate(-15%, -11%) rotate(-12deg) scale(0.88);
+  }
+}
+
+.pa-deck-label {
+  animation: about-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* The hairline under the deck runs down to the next deal. */
+.pa-timer {
+  transform-origin: left;
+  animation: pa-timer var(--pa-shuffle, 3600ms) linear both;
+}
+
+.pa-deck[data-paused] .pa-timer {
+  animation-play-state: paused;
+}
+
+@keyframes pa-timer {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Campus rail: the chip's photograph leans in under the pointer. */
+.pa-avatar {
+  transition: transform 450ms var(--iti-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pa-chip:hover .pa-avatar {
+    transform: scale(1.12) rotate(-8deg);
+  }
+
+  .pa-chip:hover .pa-avatar + .pa-avatar {
+    transform: scale(1.12) rotate(6deg) translateX(4px);
+  }
+}
+
+/* Tiles rise into place in turn along each row as they reach the viewport,
+   and a navy curtain lifts off the photograph. A photograph fades in once
+   it has loaded. */
+.pa-tile {
+  opacity: 0;
+  transform: translateY(32px) scale(0.965);
+  transition:
+    opacity 700ms ease var(--d, 0ms),
+    transform 1000ms var(--iti-ease) var(--d, 0ms);
+}
+
+.pa-tile.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.pa-curtain {
+  transform-origin: 50% 0%;
+  transition: transform 1000ms var(--iti-ease-io);
+  transition-delay: calc(var(--d, 0ms) + 160ms);
+}
+
+.is-in .pa-curtain {
+  transform: scaleY(0);
+}
+
+.pa-img {
+  opacity: 0;
+  transition:
+    opacity 600ms ease,
+    transform 900ms var(--iti-ease),
+    filter 500ms ease;
+}
+
+.pa-img[data-loaded] {
+  opacity: 1;
+}
+
+/* "Load more": the bar fills, the next photographs fan out of the button and
+   its arrow bobs. "Surprise me": the dice roll. */
+.pa-progress {
+  transition: width 900ms var(--iti-ease);
+}
+
+.pa-peek > * {
+  transition: transform 450ms var(--iti-ease);
+}
+
+.pa-peek > :nth-child(1) { transform: rotate(-6deg); }
+.pa-peek > :nth-child(2) { position: relative; z-index: 1; }
+.pa-peek > :nth-child(3) { transform: rotate(6deg); }
+
+@media (hover: hover) and (pointer: fine) {
+  .pa-more:hover .pa-peek > :nth-child(1) { transform: translateX(-6px) rotate(-12deg); }
+  .pa-more:hover .pa-peek > :nth-child(2) { transform: translateY(-3px); }
+  .pa-more:hover .pa-peek > :nth-child(3) { transform: translateX(6px) rotate(12deg); }
+
+  .pa-more:hover .pa-bounce {
+    animation: pa-bounce 900ms var(--iti-ease) infinite;
+  }
+}
+
+@keyframes pa-bounce {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(3px); }
+}
+
+.pa-dice-spin {
+  animation: pa-dice 700ms var(--iti-ease);
+}
+
+@keyframes pa-dice {
+  50% { transform: rotate(200deg) scale(1.2); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pa-card,
+  .pa-tile,
+  .pa-curtain,
+  .pa-img,
+  .pa-progress,
+  .pa-avatar,
+  .pa-peek > * {
+    transition: none;
+  }
+
+  .pa-card,
+  .pa-deck-label,
+  .pa-timer,
+  .pa-bounce,
+  .pa-dice-spin {
+    animation: none !important;
+  }
+
+  .pa-tile {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pa-curtain {
+    display: none;
   }
 }

@@ -22,6 +22,10 @@
  * search that pins that listing; otherwise the landmark or locality from the
  * official address (Kundipura: its thana; Betul, Sarni: their localities, which
  * Google outlines rather than pins). It is null where `coordinates` are used.
+ *
+ * `social` lists the campus's own social-media pages (`network` is facebook or
+ * instagram), only where the institute has supplied them; the /iti/:slug page
+ * shows its Social Media section only for a record that has one.
  */
 
 const VERIFIED_AT = '2026-09-26';
@@ -73,6 +77,11 @@ export const itiInstitutes = [
     coordinates: { lat: 21.8254, lng: 80.1492 },
     mapPoint: { lat: 21.8254, lng: 80.1492, precision: 'exact' },
     mapsQuery: null,
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/satpudagroup' },
+      { network: 'instagram', href: 'https://www.instagram.com/satpudaitigroup/' },
+    ],
     sourceUrls: [SRC.contact, SRC.balaghat, SRC.manjhapur, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes:
@@ -87,7 +96,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2015',
     address: 'Ward No. 13, Budhi, Balaghat, Madhya Pradesh 481001',
-    principal: 'Mukesh Bahekar',
+    principal: 'Vinod Rawte',
     phone: '+91 6262604122',
     email: 'newsatpudaitibudi@gmail.com',
     trades: [t('electrician', 120)],
@@ -97,10 +106,15 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 21.81, lng: 80.19, precision: 'town' },
     mapsQuery: 'New Satpuda ITI Budhi',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/newsatpudaiti.budhi.3' },
+      { network: 'instagram', href: 'https://www.instagram.com/newsatpudaitibalaghat/' },
+    ],
     sourceUrls: [SRC.contact, SRC.balaghat, SRC.budhi],
     verifiedAt: VERIFIED_AT,
     notes:
-      'Campus page lists +91 8839548717 and newsatpudaitibudhi@gmail.com; contact page values are used.',
+      'Campus page lists +91 8839548717 and newsatpudaitibudhi@gmail.com; contact page values are used. Principal as named by the institute\'s Drive folder and FORMATE.xlsx on 2026-10-25 (the campus page named Mukesh Bahekar).',
   },
   {
     id: 'katangi',
@@ -111,7 +125,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2015',
     address: 'Balaghat Road, Near State Bank, Katangi, Balaghat, Madhya Pradesh 481445',
-    principal: 'Pradeep Tiwari',
+    principal: 'Suresh Bisen',
     phone: '+91 6262604117',
     email: 'newsatpudakatangi@gmail.com',
     trades: [t('electrician', 120)],
@@ -121,9 +135,15 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 21.77, lng: 79.8, precision: 'town' },
     mapsQuery: 'New Satpuda ITI Katangi',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/SatpudaITIKatangi' },
+      { network: 'instagram', href: 'https://www.instagram.com/newsatpudakatangi/' },
+    ],
     sourceUrls: [SRC.contact, SRC.balaghat, SRC.katangi],
     verifiedAt: '2026-10-16',
-    notes: 'Campus page (live by 2026-10-16) publishes the Electrician trade and the principal; it says "started from Aug 2015".',
+    notes:
+      'Campus page (live by 2026-10-16) publishes the Electrician trade; it says "started from Aug 2015". Principal as named by the institute\'s Drive folder and FORMATE.xlsx on 2026-10-25 (the campus page named Pradeep Tiwari).',
   },
   {
     id: 'baihar',
@@ -134,7 +154,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2014',
     address: 'Compounder Tola, Somani Mill, Baihar, Madhya Pradesh 481111',
-    principal: 'Santosh Sihore',
+    principal: 'Raju Patle',
     phone: '+91 6262604125',
     email: 'maharanapratap.itibaihar@gmail.com',
     trades: [t('electrician', 120), t('fitter', 60)],
@@ -144,9 +164,14 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.1, lng: 80.55, precision: 'town' },
     mapsQuery: 'Maharana Pratap ITI Baihar',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/mahranapratap.itibaihar.1' },
+      { network: 'instagram', href: 'https://www.instagram.com/maharanapratap_iti_baihar/' },
+    ],
     sourceUrls: [SRC.contact, SRC.baihar, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Aug 2014".',
+    notes: 'Campus page: "started from Aug 2014". Principal as named by the institute\'s Drive folder and FORMATE.xlsx on 2026-10-25 (the campus page named Santosh Sihore).',
   },
   {
     id: 'chhindwara-kundipura',
@@ -167,6 +192,11 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.07, lng: 78.95, precision: 'town' },
     mapsQuery: 'Kundipura Thana, Chhindwara',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/satpudaiti01' },
+      { network: 'instagram', href: 'https://www.instagram.com/satpuda_iti_kundipura_cwa/' },
+    ],
     sourceUrls: [SRC.contact, SRC.chhindwara],
     verifiedAt: VERIFIED_AT,
     notes:
@@ -191,10 +221,12 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.05, lng: 78.93, precision: 'town' },
     mapsQuery: 'Satpuda ITI Chhindwara Warehouse',
+    // Supplied by the institute on 2026-10-26.
+    social: [{ network: 'facebook', href: 'https://www.facebook.com/satpudaiti01' }],
     sourceUrls: [SRC.contact, SRC.warehouse, SRC.pmjdy],
     verifiedAt: '2026-10-16',
     notes:
-      'Campus page (live by 2026-10-16) publishes the trades and the principal; it says "started from Aug 2015", the institutions board ("Near Warehouse") 2012 — the board year is kept.',
+      'Campus page (live by 2026-10-16) publishes the trades and the principal; it says "started from Aug 2015", the institutions board ("Near Warehouse") 2012 — the board year is kept. The institute\'s Drive folder and FORMATE.xlsx (2026-10-25) name the same principal.',
   },
   {
     id: 'betul',
@@ -205,7 +237,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2015',
     address: 'Chikhali Khurd, Multai, Betul, Madhya Pradesh 460557',
-    principal: 'Niranjan More',
+    principal: 'Vedram Panchbudhey',
     phone: '+91 6262604128',
     email: 'satpudabetul@gmail.com',
     trades: [t('electrician', 120), t('fitter', 60), t('mechanic-diesel', 72)],
@@ -215,10 +247,15 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 21.78, lng: 78.23, precision: 'town' },
     mapsQuery: 'Chikhli Khurd, Multai, Madhya Pradesh',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/SatpudaITIBetul' },
+      { network: 'instagram', href: 'https://www.instagram.com/satpudaiti_betul/' },
+    ],
     sourceUrls: [SRC.contact, SRC.betul],
     verifiedAt: VERIFIED_AT,
     notes:
-      'Campus page: "started from Aug 2015". Govt. list code PR23000117 matches the email but gives a different address — not shown.',
+      'Campus page: "started from Aug 2015". Govt. list code PR23000117 matches the email but gives a different address — not shown. Principal as named by the institute\'s Drive folder and FORMATE.xlsx on 2026-10-25 (the campus page named Niranjan More).',
   },
   {
     id: 'multai',
@@ -229,7 +266,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2015',
     address: 'Chikhali Khurd, Chhindwara Road, Multai, Madhya Pradesh 460661',
-    principal: 'Saket Agnihotri',
+    principal: 'Vikram Raghuwanshi',
     phone: '+91 6262604130',
     email: 'satpudamultai@gmail.com',
     trades: [t('electrician', 240)],
@@ -239,9 +276,14 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 21.77, lng: 78.26, precision: 'town' },
     mapsQuery: 'Satpuda ITI Multai',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/SatpudaITIMultai' },
+      { network: 'instagram', href: 'https://www.instagram.com/satpudaitimultai/' },
+    ],
     sourceUrls: [SRC.contact, SRC.multai],
     verifiedAt: VERIFIED_AT,
-    notes: 'Campus page: "started from Aug 2015".',
+    notes: 'Campus page: "started from Aug 2015". Principal as named by the institute\'s Drive folder and FORMATE.xlsx on 2026-10-25 (the campus page named Saket Agnihotri).',
   },
   {
     id: 'sarni',
@@ -262,9 +304,15 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.1, lng: 78.17, precision: 'town' },
     mapsQuery: 'Salaiya, Sarni, Madhya Pradesh 460449',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/profile.php?id=61555525749646' },
+      { network: 'instagram', href: 'https://www.instagram.com/satpudaitisarni/' },
+    ],
     sourceUrls: [SRC.contact, SRC.sarni],
     verifiedAt: VERIFIED_AT,
-    notes: 'Institutions board: 2016 ("Bagdona, Sarni"); the campus page said Dec 2017.',
+    notes:
+      'Institutions board: 2016 ("Bagdona, Sarni"); the campus page said Dec 2017. The institute\'s Drive folder and FORMATE.xlsx (2026-10-25) name the same principal.',
   },
   {
     id: 'itarsi',
@@ -275,7 +323,7 @@ export const itiInstitutes = [
     state: 'Madhya Pradesh',
     established: '2016',
     address: 'Near FCI, Jamani Road, Itarsi, Madhya Pradesh 461114',
-    principal: 'Raju Patle',
+    principal: 'Vijay Khapre',
     phone: '+91 6262604126',
     email: 'satpudaitarsi@gmail.com',
     trades: [t('electrician', 120), t('fitter', 63), t('copa', 63)],
@@ -285,9 +333,14 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.61, lng: 77.76, precision: 'town' },
     mapsQuery: 'Satpuda ITI Itarsi',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/SatpuraITIItarsi' },
+      { network: 'instagram', href: 'https://www.instagram.com/itarsisatpuda/' },
+    ],
     sourceUrls: [SRC.contact, SRC.itarsi],
     verifiedAt: VERIFIED_AT,
-    notes: 'Institutions board: 2016; the campus page said Aug 2007. Only campus publishing COPA.',
+    notes: 'Institutions board: 2016; the campus page said Aug 2007. Only campus publishing COPA. Principal as named by the institute\'s Drive folder and FORMATE.xlsx on 2026-10-25 (the campus page named Raju Patle).',
   },
   {
     id: 'seoni',
@@ -308,6 +361,8 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.09, lng: 79.54, precision: 'town' },
     mapsQuery: 'Satpuda ITI Seoni',
+    // Supplied by the institute on 2026-10-26.
+    social: [{ network: 'facebook', href: 'https://www.facebook.com/SatpudaITISeoni' }],
     sourceUrls: [SRC.contact, SRC.seoni, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes: 'Campus page: "started from Aug 2007".',
@@ -331,6 +386,11 @@ export const itiInstitutes = [
     coordinates: null,
     mapPoint: { lat: 22.6, lng: 80.37, precision: 'town' },
     mapsQuery: 'Satpuda ITI Mandla',
+    // Supplied by the institute on 2026-10-26.
+    social: [
+      { network: 'facebook', href: 'https://www.facebook.com/satpuda.mandla' },
+      { network: 'instagram', href: 'https://www.instagram.com/satpudamandla/' },
+    ],
     sourceUrls: [SRC.contact, SRC.mandla, SRC.pmjdy],
     verifiedAt: VERIFIED_AT,
     notes:

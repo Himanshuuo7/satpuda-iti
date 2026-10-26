@@ -8,6 +8,7 @@ import ItiPlacements from '../components/iti/ItiPlacements';
 import ItiPrincipal from '../components/iti/ItiPrincipal';
 import ItiGallery from '../components/iti/ItiGallery';
 import ItiContact from '../components/iti/ItiContact';
+import ItiSocial from '../components/iti/ItiSocial';
 import ItiExplore from '../components/iti/ItiExplore';
 import { NotFoundPage } from './PlaceholderPage';
 import useSeo from '../hooks/useSeo';
@@ -62,7 +63,7 @@ function ItiView({ inst }) {
           name: 'Satpuda (Pvt.) Industrial Training Institutes',
           sameAs: 'https://satpudaiti.com/',
         },
-        sameAs: inst.sourceUrl,
+        sameAs: inst.social?.length ? [inst.sourceUrl, ...inst.social.map((p) => p.href)] : inst.sourceUrl,
         hasCourse: inst.courses.map((c) => ({
           '@type': 'Course',
           name: `${c.name}${c.fullName ? ` (${c.fullName})` : ''}`,
@@ -88,6 +89,7 @@ function ItiView({ inst }) {
     { id: 'principal', label: 'Principal', Component: ItiPrincipal, show: Boolean(inst.message) },
     { id: 'gallery', label: 'Gallery', Component: ItiGallery, show: Boolean(inst.gallery) },
     { id: 'contact', label: 'Contact', Component: ItiContact, show: true },
+    { id: 'social', label: 'Social', Component: ItiSocial, show: Boolean(inst.social?.length) },
   ].filter((s) => s.show);
 
   return (

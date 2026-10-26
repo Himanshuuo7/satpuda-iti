@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
+import useLockBodyScroll from '../../hooks/useLockBodyScroll';
 import cn from '../../utils/cn';
 
 /**
@@ -9,20 +10,34 @@ import cn from '../../utils/cn';
  * `showModal()` gives focus trapping, Escape-to-close and an inert page;
  * focus returns to whatever opened it. Arrow keys and a horizontal swipe step
  * through `items`; a tap on the backdrop closes. `index` is controlled —
- * null means closed.
+ * null means closed. An item's optional `meta` (e.g. "Seoni · Celebrations")
+ * labels its caption.
+ *
+ * While a photograph is open the page behind it stays exactly where it was:
+ * page scrolling is locked (wheel, trackpad, touch and the smooth scroller)
+ * until the viewer closes, and handing focus back never scrolls either.
  */
 export function Lightbox({ items, index, onIndex, onClose, label = 'Photo viewer' }) {
   const ref = useRef(null);
   const returnFocus = useRef(null);
+  const scrollAtOpen = useRef(0);
   const touch = useRef(null);
   const open = index !== null && index !== undefined;
   const many = items.length > 1;
+
+  // Before the dialog opens, so the scrollbar gap is measured while it shows.
+  useLockBodyScroll(open);
 
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
     if (open && !dialog.open) {
       returnFocus.current = document.activeElement;
+      scrollAtOpen.current = window.scrollY;
+      // Left focused, the opener would get focus back natively on close —
+      // scrolled into view, and smoothly, after the close handler has run. Focus
+      // goes back from `onClose` instead, without scrolling.
+      returnFocus.current?.blur?.();
       dialog.showModal();
     } else if (!open && dialog.open) {
       dialog.close();
@@ -55,7 +70,11 @@ export function Lightbox({ items, index, onIndex, onClose, label = 'Photo viewer
       aria-label={label}
       onClose={() => {
         onClose();
-        returnFocus.current?.focus?.();
+        returnFocus.current?.focus?.({ preventScroll: true });
+        // Whatever happened behind the viewer, the page is where it was left.
+        if (Math.abs(window.scrollY - scrollAtOpen.current) >= 1) {
+          window.scrollTo({ top: scrollAtOpen.current, behavior: 'instant' });
+        }
       }}
       onClick={(e) => e.target === ref.current && ref.current.close()}
       onKeyDown={onKeyDown}
@@ -73,6 +92,9 @@ export function Lightbox({ items, index, onIndex, onClose, label = 'Photo viewer
               className="max-h-[calc(100svh-10rem)] w-auto max-w-full rounded-edge bg-navy-900 object-contain shadow-deep"
             />
             <figcaption className="mt-3 max-w-2xl text-center text-[0.875rem] leading-snug text-navy-100/85">
+              {item.meta && (
+                <span className="mb-1 block font-mono text-[0.625rem] uppercase tracking-[0.14em] text-tech">{item.meta}</span>
+              )}
               {item.alt}
               {many && (
                 <span className="ml-2 font-mono text-[0.6875rem] tabular text-navy-200/60">

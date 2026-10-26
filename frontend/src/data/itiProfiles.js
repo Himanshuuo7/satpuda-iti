@@ -38,10 +38,16 @@ import { tradeById } from './trades';
 import manjhapurBuilding from '../assets/images/institutes/campus/manjhapur-building.webp';
 import manjhapurTrainees from '../assets/images/institutes/campus/manjhapur-campus-trainees.webp';
 import budhiBuilding from '../assets/images/institutes/campus/budhi-building.webp';
+import baiharBuilding from '../assets/images/institutes/campus/baihar-building.webp';
 import katangiBuilding from '../assets/images/institutes/campus/katangi-building.webp';
 import kundipuraBuilding from '../assets/images/institutes/campus/kundipura-building.webp';
 import seoniBuilding from '../assets/images/institutes/campus/seoni-building.webp';
 import mandlaBuilding from '../assets/images/institutes/campus/mandla-building.webp';
+import warehouseBuilding from '../assets/images/institutes/campus/warehouse-building.webp';
+import multaiBuilding from '../assets/images/institutes/campus/multai-building.webp';
+import itarsiBuilding from '../assets/images/institutes/campus/itarsi-building.webp';
+import betulBuilding from '../assets/images/institutes/campus/betul-building.webp';
+import sarniBuilding from '../assets/images/institutes/campus/sarni-building.webp';
 
 import principalManjhapur from '../assets/images/institutes/principals/manjhapur.webp';
 import principalBudhi from '../assets/images/institutes/principals/budhi.webp';
@@ -54,6 +60,9 @@ import principalMauganj from '../assets/images/institutes/principals/mauganj.web
 import principalMultai from '../assets/images/institutes/principals/multai.webp';
 import principalRewa from '../assets/images/institutes/principals/rewa.webp';
 import principalSeoni from '../assets/images/institutes/principals/seoni.webp';
+import principalWarehouse from '../assets/images/institutes/principals/warehouse.webp';
+import principalItarsi from '../assets/images/institutes/principals/itarsi.webp';
+import principalSarni from '../assets/images/institutes/principals/sarni.webp';
 
 export const ITI_BASE = '/iti';
 
@@ -129,9 +138,11 @@ const PROFILES = [
   {
     id: 'budhi',
     sourceUrl: `${SATPUDA_SITE}/iti-bhudhi/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
     image: {
       src: budhiBuilding,
-      alt: 'New Satpuda Private I.T.I. Budhi, बालाघाट का भवन, जिस पर संस्थान का बोर्ड लगा है',
+      alt: 'New Satpuda Private I.T.I. बालाघाट (बूढ़ी) का भवन, जिस पर "न्यू सतपुड़ा निजी औद्योगिक प्रशिक्षण संस्थान" का बोर्ड लगा है',
+      credit: 'Satpuda ITI',
     },
     intro:
       'New Satpuda Private ITI, Budhi बालाघाट के बूढ़ी क्षेत्र में वार्ड नंबर 13, धीमरटोला में स्थित है और वर्ष 2015 में स्थापित हुआ। संस्थान के प्राचार्य के अनुसार यह शहर के मध्य स्थित है और सभी संसाधनों से परिपूर्ण है।',
@@ -152,26 +163,46 @@ const PROFILES = [
       ],
       photo: principalBudhi,
     },
+    galleryIntro: 'Budhi कैंपस में विश्वकर्मा जयंती का उत्सव — सजा हुआ पूजा-स्थल, हवन, आरती और साथ बैठे प्रशिक्षु और स्टाफ़।',
+    // No placement record of its own on the site: its page shows the
+    // Manjhapur campus's drives, as the institute asked (2026-10-26).
+    drivesFrom: 'manjhapur',
   },
   {
     id: 'katangi',
     sourceUrl: `${SATPUDA_SITE}/new-satpuda-pvt-iti-katangi/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
     image: {
       src: katangiBuilding,
-      alt: 'New Satpuda Private I.T.I. Katangi, बालाघाट का भवन, जिसकी दीवार पर संस्थान का नाम लिखा है',
+      alt: 'New Satpuda Private I.T.I. Katangi, बालाघाट का भवन — छत की मुँडेर पर "सतपुड़ा आईटीआई" लिखा है',
+      credit: 'Satpuda ITI',
     },
     intro:
       'New Satpuda Private ITI, Katangi बालाघाट ज़िले के कटंगी में, बालाघाट रोड पर स्टेट बैंक के पास स्थित है। वर्ष 2015 में स्थापित यह संस्थान बालाघाट क्षेत्र में Satpuda समूह के कैंपसों में से एक है।',
     messageFor: standardMessage,
     principalPhoto: principalKatangi,
+    galleryIntro: 'Katangi कैंपस की झलक — औद्योगिक भ्रमण, छत पर लगे सोलर पावर प्लांट पर प्रशिक्षण और कैंपस कार्यक्रम।',
+    // No placement record of its own on the site: its page shows the
+    // Manjhapur campus's drives, as the institute asked (2026-10-26).
+    drivesFrom: 'manjhapur',
   },
   {
     id: 'baihar',
     sourceUrl: `${SATPUDA_SITE}/iti-baihar/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: baiharBuilding,
+      alt: 'Maharana Pratap Private I.T.I. बैहर का भवन — "महाराणा प्रताप प्रा. आई.टी.आई." के बोर्ड वाली इमारत, ऊपर रंगीन झंडियाँ',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Maharana Pratap Private ITI, Baihar बालाघाट ज़िले के बैहर में कंपाउंडर टोला, सोमानी मिल के पास स्थित है और अगस्त 2014 से Satpuda समूह के आईटीआई के रूप में संचालित है।',
     messageFor: standardMessage,
     principalPhoto: principalBaihar,
+    galleryIntro: 'Baihar कैंपस की झलक — ओपन कैंपस प्लेसमेंट ड्राइव का दिन, शिक्षक दिवस, पूजा और कैंपस के साथी।',
+    // No placement record of its own on the site: its page shows the
+    // Manjhapur campus's drives, as the institute asked (2026-10-26).
+    drivesFrom: 'manjhapur',
   },
   {
     id: 'chhindwara-kundipura',
@@ -190,9 +221,19 @@ const PROFILES = [
   {
     id: 'chhindwara-warehouse',
     sourceUrl: `${SATPUDA_SITE}/satpuda-pvt-iti-chhindwara-warehouse/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: warehouseBuilding,
+      alt: 'Satpuda Private I.T.I. Warehouse, छिंदवाड़ा का तीन-मंज़िला भवन और सामने खुला मैदान',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Warehouse छिंदवाड़ा में फटाका गोदाम के पीछे स्थित है। कुंडीपुरा के साथ यह छिंदवाड़ा ज़िले में Satpuda समूह के दो आईटीआई में से एक है।',
     messageFor: standardMessage,
+    principalPhoto: principalWarehouse,
+    // Its Drive folder holds the institute's photo collages, one per theme.
+    galleryIntro:
+      'Warehouse कैंपस की झलक, संस्थान के अपने फ़ोटो-कोलाज में — प्रायोगिक कार्य, औद्योगिक भ्रमण, परीक्षा और प्रोजेक्ट, खेल महोत्सव और कैंपस के कार्यक्रम।',
   },
   {
     id: 'rewa',
@@ -220,10 +261,17 @@ const PROFILES = [
   {
     id: 'multai',
     sourceUrl: `${SATPUDA_SITE}/multai/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: multaiBuilding,
+      alt: 'Satpuda Private I.T.I. मुलताई का दो-मंज़िला भवन, जिस पर "सतपुड़ा (प्रा.) आई.टी.आई." लिखा है, और सामने खुला मैदान',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Multai बैतूल ज़िले के मुलताई में, छिंदवाड़ा रोड पर चिखली खुर्द में स्थित है। अगस्त 2015 से संचालित इस संस्थान में Electrician ट्रेड का प्रशिक्षण दिया जाता है।',
     messageFor: standardMessage,
     principalPhoto: principalMultai,
+    galleryIntro: 'Multai कैंपस की झलक — वर्कशॉप में पूजन, प्रोजेक्ट प्रदर्शनी, कौशल दीक्षांत समारोह और कैंपस के कार्यक्रम।',
   },
   {
     id: 'mandla',
@@ -244,24 +292,50 @@ const PROFILES = [
   {
     id: 'itarsi',
     sourceUrl: `${SATPUDA_SITE}/itarsi/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: itarsiBuilding,
+      alt: 'Satpuda Private I.T.I. इटारसी का दो-मंज़िला भवन, जिस पर "SATPUDA PRIVATE I.T.I." के बोर्ड लगे हैं, और सामने की सड़क',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Itarsi नर्मदापुरम ज़िले के इटारसी में, जमानी रोड पर FCI के पास स्थित है। यहाँ Electrician और Fitter के साथ COPA (Computer Operator & Programming Assistant) ट्रेड भी संचालित होता है।',
     message: { paragraphs: readerMessage, photo: null },
+    principalPhoto: principalItarsi,
+    galleryIntro:
+      'Itarsi कैंपस की झलक — प्लेसमेंट ड्राइव, पोस्टर प्रतियोगिता, Satpuda Library के कार्यक्रम, ध्वजारोहण, पूजा-हवन और स्कूली विद्यार्थियों का भ्रमण।',
   },
   {
     id: 'betul',
     sourceUrl: `${SATPUDA_SITE}/betul/`,
+    // Building and principal photographs supplied by the institute (2026-10-25);
+    // the building photograph is cropped above its GPS-camera stamp.
+    image: {
+      src: betulBuilding,
+      alt: 'Satpuda I.T.I. बैतूल का कार्यालय — प्रवेश द्वार के ऊपर "कार्यालय सतपुड़ा आई.टी.आई." का बोर्ड और सामने पेड़-पौधे',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Betul बैतूल ज़िले में मुलताई के पास चिखली खुर्द में स्थित है और अगस्त 2015 से Satpuda समूह के आईटीआई के रूप में संचालित है।',
     messageFor: standardMessage,
     principalPhoto: principalBetul,
+    galleryIntro:
+      'Betul कैंपस की झलक — कैंपस ड्राइव और रोज़गार मेले, औद्योगिक भ्रमण, स्कूली विद्यार्थियों का भ्रमण, उत्सव और कैंपस के कार्यक्रम।',
   },
   {
     id: 'sarni',
     sourceUrl: `${SATPUDA_SITE}/iti-sarni/`,
+    // Building and principal photographs supplied by the institute (2026-10-25).
+    image: {
+      src: sarniBuilding,
+      alt: 'Satpuda Private I.T.I. सारनी का लाल-पीले रंग का दो-मंज़िला भवन, जिस पर "सतपुड़ा प्राइवेट आईटीआई" लिखा है, और सामने हरा मैदान',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Sarni बैतूल ज़िले के सारनी में, सलैया क्षेत्र में गीता मंदिर के पास स्थित है। यहाँ Electrician और Fitter ट्रेड में प्रशिक्षण दिया जाता है।',
     messageFor: standardMessage,
+    principalPhoto: principalSarni,
+    galleryIntro: 'Sarni कैंपस की झलक — वार्षिकोत्सव "गूंज", योग की झाँकी, वर्कशॉप और कैंपस के साथी।',
   },
   {
     id: 'mauganj',
@@ -288,6 +362,13 @@ const recordById = Object.fromEntries(itiInstitutes.map((i) => [i.id, i]));
 const splitName = (name) => {
   const at = name.lastIndexOf(', ');
   return at < 0 ? ['', name] : [name.slice(0, at), name.slice(at + 2)];
+};
+
+/** Name, place and page of a campus whose drive record another page shows. */
+const hostOf = (id) => {
+  const record = recordById[id];
+  if (!record) throw new Error(`itiProfiles: no itiInstitutes record for drives host "${id}"`);
+  return { name: record.name, place: splitName(record.name)[1], path: `${ITI_BASE}/${record.id}` };
 };
 
 /** Oldest first. The sort is stable, so a tie keeps the menu order. */
@@ -331,7 +412,9 @@ export const itiProfiles = [...PROFILES].sort(byFounding).map((profile, index) =
         : null,
     gallery: profile.gallery ?? itiGalleries[profile.id] ?? null,
     galleryIntro: profile.galleryIntro ?? null,
-    drives: itiDrives[profile.id] ?? null,
+    drives: itiDrives[profile.drivesFrom ?? profile.id] ?? null,
+    // The campus whose record `drives` is, when it is not this one.
+    drivesHost: profile.drivesFrom ? hostOf(profile.drivesFrom) : null,
   };
 });
 
