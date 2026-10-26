@@ -13,7 +13,7 @@ import {
   UserRound,
   Users,
 } from 'lucide-react';
-import jobsahiLogo from '../../assets/images/brand/jobsahi-logo.png';
+import jobsahiLogo from '../../assets/images/brand/jobsahi-logo.webp';
 import jobsahiMark from '../../assets/images/brand/jobsahi-mark.svg';
 import useReveal from '../../hooks/useReveal';
 import { cn } from '../../utils/cn';
