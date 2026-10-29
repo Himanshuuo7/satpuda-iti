@@ -11,14 +11,22 @@
  * role "CEO jobsahi, Training and placement officer". No email address is
  * published, so none is given.
  *
+ * The second officer, Mohd. Firoz Mansuri, is listed on the same placements
+ * page as Training & Placement Officer, with a photograph ("mansuri
+ * sir.webp", retrieved 2026-10-29; cropped the same way) and a one-line
+ * description that his Hindi summary follows. His mobile number was
+ * supplied by the institute (2026-10-29).
+ *
  * As across the site, headings, names, designations, labels and buttons are
  * in English and every paragraph is in Hindi (rendered with lang="hi").
  */
 
 import tpoPhoto from '../assets/images/placement/tpo-gorakhnath-bhure.webp';
+import mansuriPhoto from '../assets/images/placement/tpo-firoz-mansuri.webp';
 
 const TPO_MOBILE = '+91 9424752071';
 const WHATSAPP = `https://wa.me/${TPO_MOBILE.replace(/\D/g, '')}`;
+const MANSURI_MOBILE = '+91 9424436422';
 
 /** A WhatsApp chat with the officer, the visitor's message already typed. */
 export const whatsappWith = (text) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
@@ -38,6 +46,27 @@ export const trainingPlacementOfficer = {
     height: 800,
   },
 };
+
+/** Both officers, in the order their cards appear. */
+export const trainingPlacementOfficers = [
+  { id: 'bhure', ...trainingPlacementOfficer },
+  {
+    id: 'mansuri',
+    name: 'Mohd. Firoz Mansuri',
+    designation: 'Training & Placement Officer',
+    additionalDesignation: null,
+    summary:
+      'Mohd. Firoz Mansuri उद्योग साझेदारियों को मज़बूत करने, भर्ती ड्राइव आयोजित करने और विभिन्न क्षेत्रों में विद्यार्थियों के लिए रोज़गार के अवसर बढ़ाने के लिए संपर्क सूत्र हैं।',
+    mobile: MANSURI_MOBILE,
+    whatsappHref: `https://wa.me/${MANSURI_MOBILE.replace(/\D/g, '')}`,
+    photo: {
+      src: mansuriPhoto,
+      alt: 'Mohd. Firoz Mansuri, Training & Placement Officer, in a navy suit',
+      width: 640,
+      height: 800,
+    },
+  },
+];
 
 export const partnerships = {
   eyebrow: 'Industry • Training • Career Opportunities',

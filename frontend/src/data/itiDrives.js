@@ -56,6 +56,18 @@
  * Trucks and Buses are one recruiter, VECV. Betul's sheet also lists Tata
  * Motors (Gujarat) and BSA Corporation (Pune) with no date; they are left
  * out here and counted in the group totals only (groupPlacements.js).
+ *
+ * Katangi: its own workbook ("PLACEMENT INFO NSITI KATANGI.xlsx", supplied
+ * 2026-10-29) — dates, companies and where each drive was held, with no
+ * turnout or selections. Where a drive was held goes to `venue` (SITC
+ * Manjhapur and NSITI Katangi are the group's Manjhapur and Katangi
+ * campuses); `place` and `state` come only from a place in the company's
+ * name (Maruti Suzuki Gujarat, Tata Motors Pune, SPM Auto Pithampur, TSPL
+ * Group Nagpur, MPKVVCL Jabalpur). Spelling slips are corrected (valvo →
+ * Volvo Eicher, hair → Haier, werpool → Whirlpool); STPL and TSPL are kept
+ * as two names, as the sheet gives them. Its 14 Feb 2025 drive at Nagpur
+ * names no company. The dates are in order as Excel read them, so none are
+ * swapped.
  */
 
 const AP = 'Andhra Pradesh';
@@ -1359,5 +1371,38 @@ export const itiDrives = {
     { date: '2026-09-10', company: 'Flipkart', place: 'Nagpur', state: MH, attended: 38, selected: 38 },
     { date: '2026-10-09', company: 'Adani Mundra Solar', place: null, state: GJ, attended: 56, selected: 56 },
     { date: '2026-10-23', company: 'Aditya Birla', place: null, state: null, attended: 22, selected: 22 },
+  ],
+  katangi: [
+    { date: '2021-09-13', company: 'Tata Motors', venue: 'Manjhapur campus', place: null, state: null, attended: null },
+    { date: '2022-09-20', company: 'Tata Motors', venue: 'Manjhapur campus', place: null, state: null, attended: null },
+    { date: '2023-08-01', company: 'Volvo Eicher', recruiter: VECV, venue: 'Pithampur', place: null, state: null, attended: null },
+    { date: '2023-09-08', company: 'MPKVVCL', venue: 'Jabalpur', place: 'Jabalpur', state: MP, attended: null },
+    { date: '2023-09-13', company: 'Maruti Suzuki', venue: 'Manjhapur campus', place: null, state: null, attended: null },
+    { date: '2024-02-18', company: 'MPKVVCL', venue: 'Jabalpur', place: 'Jabalpur', state: MP, attended: null },
+    { date: '2024-04-08', company: 'Haier Appliances India', venue: 'Pune', place: null, state: null, attended: null },
+    { date: '2024-06-05', company: 'Volvo Eicher', recruiter: VECV, venue: 'Pithampur', place: null, state: null, attended: null },
+    { date: '2024-11-05', company: 'Whirlpool', venue: 'Pune', place: null, state: null, attended: null },
+    {
+      date: '2025-02-14',
+      title: 'Placement drive',
+      company: null,
+      recruiter: [],
+      venue: 'Nagpur',
+      place: null,
+      state: null,
+      attended: null,
+    },
+    { date: '2025-06-20', company: 'Maruti Suzuki', venue: 'Manjhapur campus', place: null, state: GJ, attended: null },
+    { date: '2025-06-27', company: 'Tata Motors', venue: 'Manjhapur campus', place: 'Pune', state: MH, attended: null },
+    {
+      date: '2025-08-28',
+      company: 'SPM Auto Pvt. Ltd.',
+      venue: 'Katangi campus',
+      place: 'Pithampur',
+      state: MP,
+      attended: null,
+    },
+    { date: '2025-12-13', company: 'STPL Group', venue: 'Katangi campus', place: null, state: null, attended: null },
+    { date: '2026-06-06', company: 'TSPL Group', venue: 'Katangi campus', place: 'Nagpur', state: MH, attended: null },
   ],
 };

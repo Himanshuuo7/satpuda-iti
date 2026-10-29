@@ -6,7 +6,8 @@
  * A photograph appears once. Manjhapur's gallery already holds eight of the
  * website photographs, so those count as Manjhapur's; the rest of the website
  * set is credited to the group as a whole, as the official site publishes it
- * (`campus: 'group'`). Principals' portraits are not campus photographs and
+ * (`campus: 'group'`). Rewa and Mauganj share one gallery, which counts as
+ * Rewa's, the older campus. Principals' portraits are not campus photographs and
  * stay on their own pages.
  *
  * `theme` folds the campuses' own album names into one set for the archive's
@@ -49,6 +50,7 @@ const THEME_OF_ALBUM = {
   'In the news': 'news',
   'Campus life': 'life',
   'Group photos': 'life',
+  Awards: 'celebrations',
 };
 
 /** media.js's gallery groups, and the two of its photographs that are sport. */
@@ -63,6 +65,10 @@ const GROUP = {
   cover: brand.mark,
 };
 
+/** Every photograph already in the archive, by `src`. */
+const held = new Set();
+const first = (src) => !held.has(src) && Boolean(held.add(src));
+
 const campusPhotos = itiProfiles
   .filter((p) => p.gallery?.length)
   .map((p) => ({
@@ -73,7 +79,7 @@ const campusPhotos = itiProfiles
       path: p.path,
       cover: p.image?.src ?? p.gallery[0].thumb ?? p.gallery[0].src,
     },
-    photos: p.gallery.map((g, i) => ({
+    photos: p.gallery.filter((g) => first(g.src)).map((g, i) => ({
       key: `${p.id}-${i}`,
       src: g.src,
       thumb: g.thumb ?? null,
@@ -83,8 +89,6 @@ const campusPhotos = itiProfiles
       place: p.namePlace,
     })),
   }));
-
-const held = new Set(campusPhotos.flatMap((c) => c.photos.map((p) => p.src)));
 
 const groupPhotos = {
   campus: GROUP,

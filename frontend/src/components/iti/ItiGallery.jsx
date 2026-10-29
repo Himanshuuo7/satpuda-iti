@@ -144,19 +144,26 @@ function Tile({ photo, pos, total, hidden, onOpen }) {
 
 /** Album switch: one navy pill slides under whichever album is chosen. */
 function AlbumFilter({ albums, counts, value, onChange }) {
+  const railRef = useRef(null);
   const groupRef = useRef(null);
   const pillRef = useRef(null);
 
   useLayoutEffect(() => {
+    const rail = railRef.current;
     const group = groupRef.current;
     const pill = pillRef.current;
-    if (!group || !pill) return undefined;
+    if (!rail || !group || !pill) return undefined;
     const place = () => {
       const active = group.querySelector('[aria-pressed="true"]');
       if (!active) return;
       pill.style.setProperty('--x', `${active.offsetLeft}px`);
       pill.style.setProperty('--w', `${active.offsetWidth}px`);
-      active.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+      // Keep the chosen album inside the rail by scrolling the rail sideways.
+      // (scrollIntoView would also scroll the page down to the gallery on load.)
+      const r = rail.getBoundingClientRect();
+      const a = active.getBoundingClientRect();
+      if (a.left < r.left) rail.scrollLeft -= r.left - a.left;
+      else if (a.right > r.right) rail.scrollLeft += a.right - r.right;
     };
     place();
     if (typeof ResizeObserver === 'undefined') return undefined;
@@ -166,7 +173,7 @@ function AlbumFilter({ albums, counts, value, onChange }) {
   }, [value]);
 
   return (
-    <div className="-mx-1 max-w-full overflow-x-auto px-1 py-1 [scrollbar-width:none]">
+    <div ref={railRef} className="-mx-1 max-w-full overflow-x-auto px-1 py-1 [scrollbar-width:none]">
       <div
         ref={groupRef}
         role="group"

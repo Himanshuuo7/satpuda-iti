@@ -165,12 +165,12 @@ export function RadioGroupField({ label, name, value, onChange, options, error, 
 /** Numbered group heading inside a long form. */
 export function FormSection({ index, title, children }) {
   return (
-    <section className="border-t border-navy-100 pt-8 first:border-t-0 first:pt-0">
+    <section className="border-t border-navy-100 pt-6 first:border-t-0 first:pt-0">
       <div className="flex items-center gap-3">
         <span className="font-mono text-[0.6875rem] tabular text-royal">{String(index).padStart(2, '0')}</span>
         <h2 className="font-display text-lg font-semibold text-navy-800">{title}</h2>
       </div>
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">{children}</div>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">{children}</div>
     </section>
   );
 }

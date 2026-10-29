@@ -14,18 +14,24 @@ import {
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 import CopyButton from '../iti/CopyButton';
-import { partnerships, trainingPlacementOfficer as tpo, whatsappWith } from '../../data/partnerships';
+import {
+  partnerships,
+  trainingPlacementOfficer as tpo,
+  trainingPlacementOfficers,
+  whatsappWith,
+} from '../../data/partnerships';
 import { telHref } from '../../utils/format';
 import useReveal from '../../hooks/useReveal';
 
 /**
  * Training & Placement partnerships — the invitation to industry.
  *
- * The Training & Placement Officer's card (photograph, role, a short note,
- * the mobile number and the two ways to reach him: WhatsApp and a phone
- * call) sits beside a panel of the four ways an organisation can work with
- * the institute. Each way is itself a link that opens WhatsApp with that
- * topic already typed. Inside the card, above the buttons, a small bridge —
+ * The two Training & Placement Officers' cards (photograph, role, a short
+ * note and, where a number is published, the mobile number and the two ways
+ * to reach the officer: WhatsApp and a phone call) sit side by side above a
+ * panel of the four ways an organisation can work with the institute. Each
+ * way is itself a link that opens WhatsApp to Dr. Bhure with that topic
+ * already typed. Inside each card, above the buttons, a small bridge —
  * Satpuda ITI on one side, industry on the other, a handshake between —
  * pictures the officer's role.
  *
@@ -95,6 +101,118 @@ function Bridge() {
   );
 }
 
+/** One officer: portrait, role, note, and the number with its two buttons. */
+function OfficerCard({ officer, delay }) {
+  const nameId = `tpo-name-${officer.id}`;
+
+  return (
+    <article
+      aria-labelledby={nameId}
+      className="tpp-card reveal relative flex flex-col overflow-hidden rounded-panel border border-navy-100 bg-white shadow-card lg:col-span-6"
+      style={{ '--reveal-delay': `${delay}ms` }}
+    >
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-signal [.is-visible_&]:animate-rule-draw"
+      />
+
+      <div className="flex flex-1 flex-col p-5 sm:p-7">
+        <div className="flex items-start gap-5 sm:gap-7">
+          <div className="relative aspect-[4/5] w-28 shrink-0 sm:w-36">
+            <div className="relative h-full w-full overflow-hidden rounded-panel bg-navy-50">
+              <img
+                src={officer.photo.src}
+                alt={officer.photo.alt}
+                width={officer.photo.width}
+                height={officer.photo.height}
+                loading="lazy"
+                decoding="async"
+                className="tpp-photo h-full w-full object-cover object-top"
+              />
+              <span
+                aria-hidden="true"
+                className="about-shutter absolute inset-0 bg-navy-700"
+                style={{ '--reveal-delay': `${delay + 180}ms` }}
+              />
+            </div>
+            {/* Cyan corner marks frame the portrait */}
+            <span aria-hidden="true" className="tpp-corners pointer-events-none absolute -inset-2">
+              <span className="tpp-corner left-0 top-0 border-l-2 border-t-2" data-c="tl" />
+              <span className="tpp-corner right-0 top-0 border-r-2 border-t-2" data-c="tr" />
+              <span className="tpp-corner bottom-0 left-0 border-b-2 border-l-2" data-c="bl" />
+              <span className="tpp-corner bottom-0 right-0 border-b-2 border-r-2" data-c="br" />
+            </span>
+          </div>
+
+          <div className="min-w-0 pt-1">
+            <p className="eyebrow text-signal">Point of contact</p>
+            <h3
+              id={nameId}
+              className="mt-3 font-display text-[1.375rem] font-semibold leading-tight tracking-tight text-navy-800 sm:text-[1.75rem]"
+            >
+              {officer.name}
+            </h3>
+            <p className="mt-2 text-[0.9375rem] font-medium leading-snug text-navy-700">{officer.designation}</p>
+            {officer.additionalDesignation && (
+              <p className="mt-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-ink-soft">
+                {officer.additionalDesignation}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <p lang="hi" className="mt-6 text-[0.9688rem] leading-[1.7] text-ink-muted">
+          {officer.summary}
+        </p>
+
+        {officer.mobile && (
+          <dl className="mt-6 flex items-center justify-between gap-4 border-y border-navy-100 py-2.5">
+            <dt className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">Mobile</dt>
+            <dd className="flex items-center gap-3">
+              <a
+                href={telHref(officer.mobile)}
+                className="rounded-sharp font-mono text-[0.9375rem] font-medium tabular text-navy-800 transition-colors duration-200 hover:text-signal"
+              >
+                {officer.mobile}
+              </a>
+              <CopyButton value={officer.mobile} label="mobile number" />
+            </dd>
+          </dl>
+        )}
+
+        {/* The officer is the bridge: it takes whatever height the
+            card has beyond its content, centred. */}
+        <div className="flex flex-1 items-center py-7">
+          <Bridge />
+        </div>
+
+        {/* Side by side wherever the card is wide enough for both labels on
+            one line; stacked on phones. */}
+        {officer.mobile && (
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button
+              href={officer.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              className="w-full sm:flex-1"
+            >
+              <MessageCircle aria-hidden="true" strokeWidth={2} className="tpp-hop h-[1.125rem] w-[1.125rem]" />
+              Contact TPO
+              <span className="sr-only"> {officer.name} on WhatsApp (opens in a new tab)</span>
+            </Button>
+            <Button href={telHref(officer.mobile)} variant="outline" className="w-full sm:flex-1">
+              <Phone aria-hidden="true" strokeWidth={2} className="campus-ring h-[1.125rem] w-[1.125rem]" />
+              Call TPO
+              <span className="sr-only"> {officer.name} on {officer.mobile}</span>
+            </Button>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
 export function TrainingPlacementPartnerships() {
   const ref = useReveal();
 
@@ -124,111 +242,15 @@ export function TrainingPlacementPartnerships() {
         />
 
         <div className="mt-12 grid gap-5 lg:mt-14 lg:grid-cols-12 lg:gap-6">
-          {/* Training & Placement Officer */}
-          <article
-            aria-labelledby="tpo-name"
-            className="tpp-card reveal relative flex flex-col overflow-hidden rounded-panel border border-navy-100 bg-white shadow-card lg:col-span-5"
-            style={{ '--reveal-delay': '120ms' }}
-          >
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-signal [.is-visible_&]:animate-rule-draw"
-            />
-
-            <div className="flex flex-1 flex-col p-5 sm:p-7">
-              <div className="flex items-start gap-5 sm:gap-7">
-                <div className="relative aspect-[4/5] w-28 shrink-0 sm:w-36">
-                  <div className="relative h-full w-full overflow-hidden rounded-panel bg-navy-50">
-                    <img
-                      src={tpo.photo.src}
-                      alt={tpo.photo.alt}
-                      width={tpo.photo.width}
-                      height={tpo.photo.height}
-                      loading="lazy"
-                      decoding="async"
-                      className="tpp-photo h-full w-full object-cover object-top"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="about-shutter absolute inset-0 bg-navy-700"
-                      style={{ '--reveal-delay': '300ms' }}
-                    />
-                  </div>
-                  {/* Cyan corner marks frame the portrait */}
-                  <span aria-hidden="true" className="tpp-corners pointer-events-none absolute -inset-2">
-                    <span className="tpp-corner left-0 top-0 border-l-2 border-t-2" data-c="tl" />
-                    <span className="tpp-corner right-0 top-0 border-r-2 border-t-2" data-c="tr" />
-                    <span className="tpp-corner bottom-0 left-0 border-b-2 border-l-2" data-c="bl" />
-                    <span className="tpp-corner bottom-0 right-0 border-b-2 border-r-2" data-c="br" />
-                  </span>
-                </div>
-
-                <div className="min-w-0 pt-1">
-                  <p className="eyebrow text-signal">Point of contact</p>
-                  <h3
-                    id="tpo-name"
-                    className="mt-3 font-display text-[1.375rem] font-semibold leading-tight tracking-tight text-navy-800 sm:text-[1.75rem]"
-                  >
-                    {tpo.name}
-                  </h3>
-                  <p className="mt-2 text-[0.9375rem] font-medium leading-snug text-navy-700">{tpo.designation}</p>
-                  <p className="mt-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-ink-soft">
-                    {tpo.additionalDesignation}
-                  </p>
-                </div>
-              </div>
-
-              <p lang="hi" className="mt-6 text-[0.9688rem] leading-[1.7] text-ink-muted">
-                {tpo.summary}
-              </p>
-
-              <dl className="mt-6 flex items-center justify-between gap-4 border-y border-navy-100 py-2.5">
-                <dt className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-soft">Mobile</dt>
-                <dd className="flex items-center gap-3">
-                  <a
-                    href={telHref(tpo.mobile)}
-                    className="rounded-sharp font-mono text-[0.9375rem] font-medium tabular text-navy-800 transition-colors duration-200 hover:text-signal"
-                  >
-                    {tpo.mobile}
-                  </a>
-                  <CopyButton value={tpo.mobile} label="mobile number" />
-                </dd>
-              </dl>
-
-              {/* The officer is the bridge: it takes whatever height the
-                  card has beyond its content, centred. */}
-              <div className="flex flex-1 items-center py-7">
-                <Bridge />
-              </div>
-
-              {/* Side by side wherever the card is wide enough for both
-                  labels on one line; stacked on phones and in the narrower
-                  two-column laptop layout. */}
-              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-                <Button
-                  href={tpo.whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="primary"
-                  className="w-full sm:flex-1"
-                >
-                  <MessageCircle aria-hidden="true" strokeWidth={2} className="tpp-hop h-[1.125rem] w-[1.125rem]" />
-                  Contact TPO
-                  <span className="sr-only"> on WhatsApp (opens in a new tab)</span>
-                </Button>
-                <Button href={telHref(tpo.mobile)} variant="outline" className="w-full sm:flex-1">
-                  <Phone aria-hidden="true" strokeWidth={2} className="campus-ring h-[1.125rem] w-[1.125rem]" />
-                  Call TPO
-                  <span className="sr-only"> on {tpo.mobile}</span>
-                </Button>
-              </div>
-            </div>
-          </article>
+          {/* Training & Placement Officers */}
+          {trainingPlacementOfficers.map((officer, i) => (
+            <OfficerCard key={officer.id} officer={officer} delay={120 + i * 80} />
+          ))}
 
           {/* Ways to partner */}
           <div
-            className="tpp-panel reveal flex flex-col rounded-panel border border-navy-100 bg-canvas-soft p-5 sm:p-7 lg:col-span-7"
-            style={{ '--reveal-delay': '200ms' }}
+            className="tpp-panel reveal flex flex-col rounded-panel border border-navy-100 bg-canvas-soft p-5 sm:p-7 lg:col-span-12"
+            style={{ '--reveal-delay': '280ms' }}
           >
             <div className="flex items-center gap-3">
               <span aria-hidden="true" className="h-px w-6 bg-signal" />
@@ -236,11 +258,11 @@ export function TrainingPlacementPartnerships() {
               <span aria-hidden="true" className="h-px flex-1 tick-rule text-navy-200" />
             </div>
 
-            <ul className="mt-6 grid gap-px overflow-hidden rounded-panel border border-navy-100 bg-navy-100 sm:grid-cols-2">
+            <ul className="mt-6 grid gap-px overflow-hidden rounded-panel border border-navy-100 bg-navy-100 sm:grid-cols-2 lg:grid-cols-4">
               {partnerships.opportunities.map((o, i) => {
                 const Icon = ICONS[o.id];
                 return (
-                  <li key={o.id} className="reveal flex bg-white" style={{ '--reveal-delay': `${280 + i * 90}ms` }}>
+                  <li key={o.id} className="reveal flex bg-white" style={{ '--reveal-delay': `${360 + i * 90}ms` }}>
                     <a
                       href={whatsappWith(messageAbout(o.topic))}
                       target="_blank"

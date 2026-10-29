@@ -48,6 +48,7 @@ import multaiBuilding from '../assets/images/institutes/campus/multai-building.w
 import itarsiBuilding from '../assets/images/institutes/campus/itarsi-building.webp';
 import betulBuilding from '../assets/images/institutes/campus/betul-building.webp';
 import sarniBuilding from '../assets/images/institutes/campus/sarni-building.webp';
+import rewaBuilding from '../assets/images/institutes/campus/rewa-building.webp';
 
 import principalManjhapur from '../assets/images/institutes/principals/manjhapur.webp';
 import principalBudhi from '../assets/images/institutes/principals/budhi.webp';
@@ -182,9 +183,6 @@ const PROFILES = [
     messageFor: standardMessage,
     principalPhoto: principalKatangi,
     galleryIntro: 'Katangi कैंपस की झलक — औद्योगिक भ्रमण, छत पर लगे सोलर पावर प्लांट पर प्रशिक्षण और कैंपस कार्यक्रम।',
-    // No placement record of its own on the site: its page shows the
-    // Manjhapur campus's drives, as the institute asked (2026-10-26).
-    drivesFrom: 'manjhapur',
   },
   {
     id: 'baihar',
@@ -238,9 +236,17 @@ const PROFILES = [
   {
     id: 'rewa',
     sourceUrl: `${SATPUDA_SITE}/iti-rewa/`,
+    // Building photograph supplied by the institute (2026-10-29).
+    image: {
+      src: rewaBuilding,
+      alt: 'Satpuda Private I.T.I. रीवा का भवन — पीले बोर्ड पर "सतपुड़ा औद्योगिक प्रशिक्षण केन्द्र, चोरहटा रीवा (म.प्र.)" लिखा है, सामने हरी झाड़ियाँ',
+      credit: 'Satpuda ITI',
+    },
     intro:
       'Satpuda Private ITI, Rewa रीवा के चोरहटा क्षेत्र में स्थित है। यहाँ Electrician, Fitter और Mechanic Diesel — तीनों ट्रेड में प्रशिक्षण दिया जाता है।',
     message: { paragraphs: readerMessage, photo: principalRewa },
+    // Its gallery (itiGalleries.js) is the Mauganj page's too.
+    galleryIntro: 'Rewa कैंपस की झलक — Electrician और Fitter की वर्कशॉप, प्रोजेक्ट मॉडल, कक्षाएँ और पुरस्कार वितरण समारोह।',
   },
   {
     id: 'seoni',
@@ -349,6 +355,8 @@ const PROFILES = [
       ],
       photo: principalMauganj,
     },
+    // The photographs supplied for Rewa (itiGalleries.js), shown here too.
+    galleryIntro: 'Satpuda ITI की झलक — Electrician और Fitter की वर्कशॉप, प्रोजेक्ट मॉडल, कक्षाएँ और पुरस्कार वितरण समारोह।',
   },
 ];
 

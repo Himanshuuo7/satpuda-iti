@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import SectionHeading from '../ui/SectionHeading';
@@ -12,13 +12,12 @@ import cn from '../../utils/cn';
  * Training & trades — an industrial dashboard.
  *
  * Four trade panels carry the published duration and, where an official page
- * states it, eligibility. Campus coverage is computed from the institute
- * records, then laid out in full as a campus × trade matrix so nobody has to
- * assume every campus runs every trade.
+ * states it, eligibility. Each panel's campus coverage is computed from the
+ * institute records and names the campuses, so nobody has to assume every
+ * campus runs every trade.
  */
 
 const TOTAL = itiInstitutes.length;
-const UNPUBLISHED = itiInstitutes.filter((i) => !i.trades.length).map((i) => i.shortName);
 
 function TradePanel({ trade, index }) {
   const Icon = iconFor(trade.icon);
@@ -110,7 +109,7 @@ export function TradeSection() {
               Four NCVT trades. <span className="text-ink-muted">Not every trade at every campus.</span>
             </>
           }
-          lede="सभी ट्रेड Craftsman Training Scheme (CTS) के अंतर्गत चलते हैं और NCVT, नई दिल्ली से संबद्ध हैं। नीचे दी गई तालिका बताती है कि किस कैंपस में कौन-से ट्रेड उपलब्ध हैं।"
+          lede="सभी ट्रेड Craftsman Training Scheme (CTS) के अंतर्गत चलते हैं और NCVT, नई दिल्ली से संबद्ध हैं। हर ट्रेड के साथ लिखा है कि वह किन कैंपसों में उपलब्ध है।"
           className="max-w-3xl"
         />
 
@@ -118,65 +117,6 @@ export function TradeSection() {
           {tradeDetails.map((t, i) => (
             <TradePanel key={t.id} trade={t} index={i} />
           ))}
-        </div>
-
-        {/* Campus × trade matrix */}
-        <div className="reveal mt-12 rounded-panel border border-navy-100" style={{ '--reveal-delay': '120ms' }}>
-          <div
-            className="about-scroll-x relative overflow-x-auto"
-            tabIndex={0}
-            role="region"
-            aria-label="Campus and trade matrix (scrolls horizontally)"
-          >
-            <table className="w-full min-w-[40rem] border-collapse text-left text-[0.875rem]">
-              <caption className="border-b border-navy-100 bg-canvas-soft px-5 py-3 text-left font-mono text-label uppercase text-ink-muted">
-                Trades offered per campus
-              </caption>
-              <thead>
-                <tr className="border-b border-navy-100">
-                  <th scope="col" className="sticky left-0 z-10 bg-white px-5 py-3 font-medium text-ink-soft">
-                    Campus
-                  </th>
-                  {tradeDetails.map((t) => (
-                    <th key={t.id} scope="col" className="px-4 py-3 text-center font-mono text-[0.6875rem] font-semibold tracking-[0.14em] text-royal">
-                      <abbr title={t.name} className="no-underline">{t.code}</abbr>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {itiInstitutes.map((inst) => (
-                  <tr key={inst.id} className="group border-b border-navy-50 transition-colors last:border-0 hover:bg-canvas-soft">
-                    <th scope="row" className="sticky left-0 z-10 bg-white px-5 py-2.5 font-medium text-navy-800 transition-colors group-hover:bg-canvas-soft">
-                      <span className="block">{inst.shortName}</span>
-                      <span className="block text-[0.75rem] font-normal text-ink-soft">{inst.district}</span>
-                    </th>
-                    {tradeDetails.map((t) => {
-                      const has = inst.trades.some((x) => x.id === t.id);
-                      return (
-                        <td key={t.id} className="px-4 py-2.5 text-center">
-                          {has ? (
-                            <span className="inline-grid h-6 w-6 place-items-center rounded-sharp bg-royal text-white">
-                              <Check aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />
-                              <span className="sr-only">Offered</span>
-                            </span>
-                          ) : (
-                            <span className="text-navy-200">
-                              <span aria-hidden="true">—</span>
-                              <span className="sr-only">{inst.trades.length ? 'Not offered' : 'Contact the campus'}</span>
-                            </span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="border-t border-navy-100 px-5 py-3 text-[0.75rem] text-ink-soft">
-            {UNPUBLISHED.join(', ')} — ट्रेड सूची के लिए संबंधित कैंपस से संपर्क करें।
-          </p>
         </div>
       </div>
     </section>

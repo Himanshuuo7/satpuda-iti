@@ -1,5 +1,5 @@
 import { useId, useRef, useState } from 'react';
-import { ArrowUpRight, CalendarDays, Flag, IndianRupee, MapPin, Repeat, Sparkles, Trophy } from 'lucide-react';
+import { ArrowUpRight, Building2, CalendarDays, Flag, IndianRupee, MapPin, Repeat, Sparkles, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import SectionHeading from '../ui/SectionHeading';
@@ -15,7 +15,9 @@ import useRevealEach from '../../hooks/useRevealEach';
  * Every figure is counted from the drives themselves. Selections and
  * salaries appear only where the campus's record lists them (Seoni's does,
  * Kundipura's lists turnout alone, Mandla's dates alone), so a record without
- * them never speaks of trainees placed.
+ * them never speaks of trainees placed. A drive's `venue` (Katangi's record
+ * gives where each drive was held) shows under its place when they differ,
+ * and a drive whose company is not recorded goes by its `title` alone.
  *
  * A page may show another campus's record (`inst.drivesHost`); the heading,
  * lede and footnote then name that campus, so its drives never read as this
@@ -126,6 +128,8 @@ function summarise(drives) {
       (d) => d.salaryTo ?? d.salary
     ),
     salaryReported: sorted.filter((d) => d.salary != null).length,
+    named: sorted.filter((d) => d.company).length,
+    venues: sorted.some((d) => d.venue),
     states,
   };
 }
@@ -246,11 +250,17 @@ function DriveTicket({ d, top }) {
         )}
       </div>
       <h4 className="mt-2 text-[0.9375rem] font-semibold leading-snug text-navy-800">{heading(d)}</h4>
-      {d.title && <p className="mt-1 text-[0.75rem] leading-snug text-ink-soft">{d.company}</p>}
+      {d.title && d.company && <p className="mt-1 text-[0.75rem] leading-snug text-ink-soft">{d.company}</p>}
       {where(d) && (
         <p className="mt-1.5 flex items-start gap-1.5 text-[0.8125rem] leading-snug text-ink-muted">
           <MapPin aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-signal" strokeWidth={2} />
           {where(d)}
+        </p>
+      )}
+      {d.venue && d.venue !== d.place && (
+        <p className="mt-1.5 flex items-start gap-1.5 text-[0.8125rem] leading-snug text-ink-muted">
+          <Building2 aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-royal" strokeWidth={2} />
+          Held at {d.venue}
         </p>
       )}
       {d.salary != null && (
@@ -536,7 +546,11 @@ export function ItiPlacements({ inst, id }) {
             ) : s.reported ? (
               <>उपस्थिति {s.reported} ड्राइव के लिए दर्ज है, और चयनित प्रशिक्षुओं की संख्या इस रिकॉर्ड में दर्ज नहीं है।</>
             ) : (
-              <>इसमें हर ड्राइव की तारीख़ और कंपनी दर्ज है; उपस्थित या चयनित प्रशिक्षुओं की संख्या दर्ज नहीं है।</>
+              <>
+                इसमें हर ड्राइव की तारीख़{s.venues ? ', जगह' : ''} और{' '}
+                {s.named === s.sorted.length ? '' : `${s.named} ड्राइव की `}कंपनी दर्ज है; उपस्थित या चयनित प्रशिक्षुओं की संख्या
+                दर्ज नहीं है।
+              </>
             )}{' '}
             प्लेसमेंट सहायता का अर्थ नौकरी की गारंटी नहीं है।
           </p>

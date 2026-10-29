@@ -17,7 +17,9 @@
  * institute supplied separately on 2026-10-26 (all of them), with the
  * building. Baihar and Budhi
  * (2026-10-26) are chosen the same way; Budhi's photographs are all of its
- * Vishwakarma Jayanti celebration.
+ * Vishwakarma Jayanti celebration. Rewa and Mauganj share one gallery, as
+ * the institute asked: the 11 photographs it supplied for Rewa on
+ * 2026-10-29, all of them.
  *
  * Manjhapur's gallery, as the institute asked, joins three sources: its
  * campus page's four photographs, the Drive's "POLY" folder (a school's
@@ -77,10 +79,30 @@ const betul = supplied('betul');
 const baihar = supplied('baihar');
 const budhi = supplied('budhi');
 const sarni = supplied('sarni');
+const rewa = supplied('rewa');
 /** A photograph from the institute's website, under a caption of its own. */
 const website = (src, album, alt) => ({ src, album, alt });
 /** A campus's own building photograph, shipped once (it is small). */
 const building = (src, album, alt) => ({ src, album, alt, credit: CREDIT });
+
+/** The photographs supplied for Rewa, which the Mauganj page shows too. */
+const rewaGallery = [
+  rewa('workshop-class', 'Training', 'वर्कशॉप हॉल में कक्षा के दौरान डेस्क पर लिखते प्रशिक्षु और उनके बीच प्रशिक्षक'),
+  rewa('project-model', 'Training', 'Electrician वर्कशॉप में मेज़ पर रखा प्रशिक्षुओं का थर्मोकोल का प्रोजेक्ट मॉडल, पीछे ट्रेनिंग पैनल और मोटरें'),
+  rewa('fitter-workshop', 'Training', 'वाइस लगी बेंचों वाली Fitter वर्कशॉप में प्रशिक्षु'),
+  rewa('campus-path', 'Campus life', 'कैंपस का रास्ता — आगे "सतपुड़ा प्रा. आई.टी.आई." का बोर्ड और उसकी ओर जाते प्रशिक्षु'),
+  rewa('electrician-workshop', 'Training', 'Electrician वर्कशॉप — दीवार पर सुरक्षा व सावधानियों के चार्ट और कतार में लगी ग्राइंडर व ड्रिल मशीनें'),
+  rewa(
+    'cricket-prize-ceremony',
+    'Awards',
+    '"पुरस्कार वितरण समारोह, चोरहटा, रीवा" के बैनर के साथ बल्ले लिए क्रिकेट खिलाड़ी प्रशिक्षु, स्टाफ़ और अतिथि'
+  ),
+  rewa('workshop-models', 'Training', 'प्रोजेक्ट मॉडल और वायरिंग बोर्ड वाली Electrician वर्कशॉप में प्रशिक्षक'),
+  rewa('workshop-session', 'Seminars', 'वर्कशॉप हॉल में एक सत्र के दौरान बैठे प्रशिक्षु'),
+  rewa('diesel-workshop-entrance', 'Campus life', 'डीज़ल इंजन के पास से वर्कशॉप का प्रवेश द्वार, भीतर इंजन के पुर्ज़े और उपकरण'),
+  rewa('certificates-trophies', 'Awards', 'वर्कशॉप हॉल में प्रमाण-पत्र और ट्रॉफ़ियों के साथ प्रशिक्षु'),
+  rewa('session-phones', 'Seminars', 'वर्कशॉप हॉल में एक सत्र के दौरान अपने मोबाइल फ़ोन ऊपर उठाकर दिखाते प्रशिक्षु'),
+];
 
 export const itiGalleries = {
   'chhindwara-kundipura': [
@@ -355,4 +377,6 @@ export const itiGalleries = {
     sarni('workshop-motor-group', 'Campus life', 'वर्कशॉप में AC मोटर के पास प्रशिक्षुओं की समूह फ़ोटो'),
     building(sarniBuilding, 'Campus life', 'Satpuda Private I.T.I. सारनी का भवन'),
   ],
+  rewa: rewaGallery,
+  mauganj: rewaGallery,
 };

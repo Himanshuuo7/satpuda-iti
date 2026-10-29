@@ -35,10 +35,10 @@ export function Home() {
       <TrustStrip />
       <About />
       <ItiInstitutes />
-      <JobSahi />
       <Trades />
       <WhySatpuda />
       <Training />
+      <JobSahi />
       <Placements />
       <TrainingPlacementPartnerships />
       <Impact />

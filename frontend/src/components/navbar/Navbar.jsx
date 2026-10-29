@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, ChevronDown, Mail, MapPin, Menu, Phone } from
 import Logo from '../ui/Logo';
 import Button from '../ui/Button';
 import MobileDrawer from './MobileDrawer';
+import AdmissionMarquee from './AdmissionMarquee';
 import { contact, navigation } from '../../data/satpudaData';
 import useScrollState from '../../hooks/useScrollState';
 import { telHref } from '../../utils/format';
@@ -13,11 +14,11 @@ import cn from '../../utils/cn';
 /**
  * Sticky header.
  *
- * Two decks: a navy enquiry rail carrying the published contact details and
- * standing, and a white bar holding the lock-up, the primary navigation and
- * the single red action. Every surface on the site is light, so the bar is
- * always solid — scrolling only tightens it (the rail collapses, the bar
- * shortens) and commits the shadow.
+ * Three decks: a navy enquiry rail carrying the published contact details and
+ * standing, the red admission band, and a white bar holding the lock-up, the
+ * primary navigation and the single red action. Every surface on the site is
+ * light, so the bar is always solid — scrolling only tightens it (the rail
+ * and the band collapse, the bar shortens) and commits the shadow.
  */
 
 /** Standing claims shown on the navy rail. */
@@ -124,6 +125,8 @@ export function Navbar() {
             </ul>
           </div>
         </div>
+
+        <AdmissionMarquee collapsed={scrolled} />
 
         <nav
           aria-label="Primary"

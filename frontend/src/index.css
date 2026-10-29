@@ -19,12 +19,14 @@
      * the document has to reserve `--header-h` itself. The navbar reads these
      * same variables for its own heights, which is what keeps the reservation
      * and the real bar from drifting apart. The enquiry rail is lg-only, so
-     * below that breakpoint it contributes nothing.
+     * below that breakpoint it contributes nothing; the admission band shows
+     * at every width. Both collapse on scroll, leaving `--navbar-h-scrolled`.
      */
     --utility-h: 0rem;
+    --announce-h: 2rem;
     --navbar-h: 4.75rem;
     --navbar-h-scrolled: 4.5rem;
-    --header-h: calc(var(--utility-h) + var(--navbar-h));
+    --header-h: calc(var(--utility-h) + var(--announce-h) + var(--navbar-h));
   }
 
   @media (min-width: 768px) {
@@ -36,6 +38,7 @@
   @media (min-width: 1024px) {
     :root {
       --utility-h: 2.25rem;
+      --announce-h: 2.25rem;
       --navbar-h: 5.5rem;
     }
   }

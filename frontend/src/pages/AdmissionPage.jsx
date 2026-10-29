@@ -51,7 +51,6 @@ const INITIAL = {
   dateOfBirth: '',
   gender: '',
   phone: '',
-  email: '',
   qualification: '',
   percentage: '',
   trade: '',
@@ -144,7 +143,7 @@ export function AdmissionPage() {
         <div className="shell relative grid gap-8 py-14 sm:py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
           {/* Form */}
           <div className="lg:col-span-8">
-            <div className="rounded-panel border border-navy-100 bg-white p-6 shadow-card sm:p-8 lg:p-10">
+            <div className="rounded-panel border border-navy-100 bg-white p-5 shadow-card sm:p-7 lg:p-8">
               {status === 'success' ? (
                 <div role="status" aria-live="polite" className="py-6 text-center sm:py-10">
                   <CheckCircle2 aria-hidden="true" strokeWidth={1.5} className="mx-auto h-14 w-14 text-tech-600" />
@@ -170,15 +169,12 @@ export function AdmissionPage() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="space-y-8">
+                <form onSubmit={onSubmit} className="space-y-6">
                   <FormSection index={1} title="Personal details">
                     <TextField label="Full name" required autoComplete="name" maxLength={100} placeholder="जैसा 10वीं की अंकसूची में लिखा है" {...field('fullName')} />
                     <TextField label="Father's name" required maxLength={100} {...field('fatherName')} />
                     <TextField label="Date of birth" type="date" required max={maxDob()} {...field('dateOfBirth')} />
                     <RadioGroupField label="Gender" required options={GENDER_OPTIONS} {...field('gender')} />
-                  </FormSection>
-
-                  <FormSection index={2} title="Contact details">
                     <TextField
                       label="Mobile number"
                       type="tel"
@@ -186,24 +182,21 @@ export function AdmissionPage() {
                       required
                       autoComplete="tel-national"
                       placeholder="10 अंकों का मोबाइल नंबर"
-                      hint="हम आपको इसी नंबर पर कॉल करेंगे।"
                       {...field('phone')}
                     />
-                    <TextField label="Email" type="email" autoComplete="email" {...field('email')} />
-                    <TextAreaField
+                    <TextField label="District" required maxLength={60} placeholder="जैसे: बालाघाट" {...field('district')} />
+                    <TextField
                       label="Address"
                       required
-                      rows={2}
                       maxLength={300}
                       autoComplete="street-address"
                       placeholder="मकान / वार्ड, गाँव या शहर"
                       className="sm:col-span-2"
                       {...field('address')}
                     />
-                    <TextField label="District" required maxLength={60} placeholder="जैसे: बालाघाट" {...field('district')} />
                   </FormSection>
 
-                  <FormSection index={3} title="Education">
+                  <FormSection index={2} title="Education">
                     <SelectField label="Highest qualification" required options={QUALIFICATION_OPTIONS} {...field('qualification')} />
                     <TextField
                       label="Percentage"
@@ -215,20 +208,16 @@ export function AdmissionPage() {
                       placeholder="जैसे: 68.5"
                       {...field('percentage')}
                     />
-                  </FormSection>
-
-                  <FormSection index={4} title="Course preference">
                     <SelectField label="Trade" required options={TRADE_OPTIONS} {...tradeField} onChange={onTradeChange} />
                     <SelectField
-                      label="Preferred campus"
+                      label="Select ITI"
                       required
                       options={campusOptions}
-                      hint={values.trade ? 'वे कैंपस दिखाए जा रहे हैं जहाँ यह ट्रेड उपलब्ध है।' : 'सूची छोटी करने के लिए पहले ट्रेड चुनें।'}
                       {...field('campus')}
                     />
                     <TextAreaField
                       label="Anything else?"
-                      rows={3}
+                      rows={2}
                       maxLength={1000}
                       placeholder="फीस, हॉस्टल, समय आदि से जुड़े सवाल…"
                       className="sm:col-span-2"
@@ -242,7 +231,7 @@ export function AdmissionPage() {
                     </p>
                   )}
 
-                  <div className="flex flex-col gap-4 border-t border-navy-100 pt-8 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-4 border-t border-navy-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
                     <p className="text-[0.8125rem] text-ink-soft">
                       <span className="text-signal">*</span> चिह्नित फ़ील्ड भरना ज़रूरी है।
                     </p>
