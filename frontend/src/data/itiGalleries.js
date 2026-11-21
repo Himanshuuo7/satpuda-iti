@@ -379,4 +379,5 @@ export const itiGalleries = {
   ],
   rewa: rewaGallery,
   mauganj: rewaGallery,
+  'shiksha-rewa': rewaGallery,
 };

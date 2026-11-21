@@ -182,7 +182,7 @@ export function Footer() {
             {campuses.map((campus) => (
               <li key={campus.id}>
                 <Link
-                  to={{ pathname: '/contact', hash: '#campuses' }}
+                  to={`/iti/${campus.id}`}
                   className="inline-flex min-h-[1.75rem] items-center text-[0.8125rem] text-navy-100/60 transition-colors duration-200 hover:text-tech"
                 >
                   {campus.city}

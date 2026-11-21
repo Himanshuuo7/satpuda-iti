@@ -64,6 +64,7 @@ import principalSeoni from '../assets/images/institutes/principals/seoni.webp';
 import principalWarehouse from '../assets/images/institutes/principals/warehouse.webp';
 import principalItarsi from '../assets/images/institutes/principals/itarsi.webp';
 import principalSarni from '../assets/images/institutes/principals/sarni.webp';
+import principalShiksha from '../assets/images/institutes/principals/shiksha.jpg';
 
 export const ITI_BASE = '/iti';
 
@@ -73,7 +74,15 @@ const SHIFTS = 3;
 /** Eligibility, only where a campus page states it plainly. */
 export const eligibilityHi = {
   electrician: '10वीं उत्तीर्ण (विज्ञान विषय के साथ)',
+  fitter: '10वीं उत्तीर्ण (गणित व विज्ञान विषय के साथ)',
 };
+
+/** Message from the Principal of Shiksha ITI Rewa. */
+const shikshaPrincipalMessage = [
+  'शिक्षा प्राइवेट आईटीआई, रीवा में आपका हार्दिक स्वागत है। आज के तकनीकी और औद्योगिक युग में केवल पारंपरिक शिक्षा ही पर्याप्त नहीं है, बल्कि व्यावहारिक कौशल (Practical Skills) और तकनीकी ज्ञान का होना अनिवार्य है। हमारा मुख्य उद्देश्य ग्रामीण एवं शहरी युवाओं को गुणवत्तापूर्ण तकनीकी प्रशिक्षण देकर उन्हें आत्मनिर्भर और उद्योग-सक्षम बनाना है।',
+  'हमारे संस्थान में आधुनिक वर्कशॉप्स, सुसज्जित प्रयोगशालाएँ और अनुभवी प्रशिक्षक उपलब्ध हैं, जो प्रत्येक विद्यार्थी के सर्वांगीण विकास और व्यावहारिक दक्षता पर विशेष ध्यान देते हैं। हम विद्यार्थियों में तकनीकी दक्षता के साथ-साथ अनुशासन, समर्पण और व्यावसायिक नैतिकता का निर्माण करते हैं।',
+  'प्रिय विद्यार्थियों, निरंतर प्रयास और लगन ही सफलता की कुंजी है। हम आपको आश्वस्त करते हैं कि यहाँ प्राप्त आपका प्रशिक्षण आपके उज्ज्वल भविष्य और सफल करियर की सुदृढ़ नींव बनेगा। आइए, अपने कौशल को तराशें और राष्ट्र निर्माण में अपनी सार्थक भागीदारी सुनिश्चित करें।',
+];
 
 // ---------------------------------------------------------------------------
 // Shared source text
@@ -358,6 +367,26 @@ const PROFILES = [
     // The photographs supplied for Rewa (itiGalleries.js), shown here too.
     galleryIntro: 'Satpuda ITI की झलक — Electrician और Fitter की वर्कशॉप, प्रोजेक्ट मॉडल, कक्षाएँ और पुरस्कार वितरण समारोह।',
   },
+  {
+    id: 'shiksha-rewa',
+    namePlace: 'Shiksha',
+    namePrefix: 'Rewa',
+    sourceUrl: 'https://www.ncvtmis.gov.in/',
+    image: null,
+    intro:
+      'Shiksha Private ITI, Rewa रीवा के आनंद नगर, बोड़ा बाग में स्थित एक प्रमुख औद्योगिक प्रशिक्षण संस्थान है। वर्ष 2014 में स्थापित यह संस्थान NCVT से संबद्ध (MIS Code: PU23000801) है और क्षेत्र के युवाओं को Electrician एवं Fitter जैसे महत्वपूर्ण इंजीनियरिंग ट्रेड्स में गुणवत्तापूर्ण व्यावसायिक व तकनीकी प्रशिक्षण प्रदान करता है।',
+    objectives: [
+      'प्रशिक्षुओं को अद्यतन पाठ्यक्रम और आधुनिक वर्कशॉप उपकरणों के माध्यम से उच्चस्तरीय व्यावहारिक एवं तकनीकी प्रशिक्षण देना।',
+      'औद्योगिक आवश्यकताओं के अनुरूप कुशल, अनुशासित एवं आत्मनिर्भर तकनीकी मानव संसाधन तैयार करना।',
+      'व्यावसायिक प्रशिक्षण के साथ-साथ सुरक्षा मानकों, व्यक्तित्व विकास और कार्यस्थल नैतिकता को सुदृढ़ बनाना।',
+      'विभिन्न औद्योगिक संस्थानों के साथ प्लेसमेंट ड्राइव व अप्रेंटिसशिप के बेहतर अवसर उपलब्ध कराना।',
+    ],
+    message: {
+      paragraphs: shikshaPrincipalMessage,
+      photo: principalShiksha,
+    },
+    galleryIntro: 'Shiksha ITI की झलक — Electrician और Fitter की वर्कशॉप, प्रोजेक्ट मॉडल, कक्षाएँ और पुरस्कार वितरण समारोह।',
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -401,8 +430,8 @@ export const itiProfiles = [...PROFILES].sort(byFounding).map((profile, index) =
     slug: record.id,
     path: `${ITI_BASE}/${record.id}`,
     order: index + 1,
-    namePrefix: prefix,
-    namePlace: place,
+    namePrefix: profile.namePrefix ?? prefix,
+    namePlace: profile.namePlace ?? place,
     sourceUrl: profile.sourceUrl,
     image: profile.image ?? null,
     heroImage: profile.heroImage ?? profile.image ?? null,
@@ -431,6 +460,12 @@ export const itiProfiles = [...PROFILES].sort(byFounding).map((profile, index) =
  * like /iti/constructor resolves to nothing instead of an inherited property.
  */
 const bySlug = new Map(itiProfiles.map((p) => [p.slug, p]));
+for (const p of itiProfiles) {
+  if (p.id === 'shiksha-rewa') {
+    bySlug.set('shiksha', p);
+    bySlug.set('shiksha-iti', p);
+  }
+}
 export const getItiProfile = (slug) => bySlug.get(slug) ?? null;
 
 /** Districts the fourteen institutes cover, in the order they were reached. */
